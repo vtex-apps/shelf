@@ -1,0 +1,7 @@
+.git/
+node_modules/
+src/
+webpack.config.js
+package.json
+.eslintrc
+.gitignore

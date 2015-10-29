@@ -1,0 +1,37 @@
+
+.v-arrow-icon {
+  fill: none;
+  stroke: #EDAF97;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+
+  &[data-is-disabled=true] {
+    stroke: #eee;
+  }
+
+  &:active:not([data-is-disabled=true]) {
+    stroke-width: 4;
+    stroke: darken(#EDAF97, 10%);
+  }
+}
+
+.v-shelf__title {
+  font-size: 27px;
+  font-style: italic;
+  font-weight: 400;
+  color: #153243;
+  text-align: center;
+}
+
+.v-shelf__products {
+  position: relative;
+  height: 235px;
+}
+
+.v-arrow {
+  position: relative;
+  padding-top: 110px;
+  padding-bottom: 170px;
+}
