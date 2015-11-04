@@ -1,8 +1,8 @@
 {
   "name": "storefront-shelf",
   "vendor": "vtex",
-  "title": "",
-  "description": "",
+  "title": "Shelf",
+  "description": "Shelf",
   "version": "0.1.0",
   "dependencies": {
     "vtex.storefront": "0"
