@@ -18,14 +18,15 @@ class ShelfSlider extends React.Component {
   }
 
   static getPropsFromStores(props) {
+    const currentURL = (window.location.pathname + window.location.search);
     let query = Immutable.Map({
       category: props.settings.get('category'),
       pageSize: props.settings.get('quantity')
     });
 
     let searchStore = stores.SearchStore.getState();
-    let productsIds = searchStore.getIn([props.id, 'results'])
-    productsIds = productsIds ? productsIds : searchStore.getIn([query, 'results']);
+    let productsIds = searchStore.getIn([currentURL, props.id, 'results'])
+    productsIds = productsIds ? productsIds : searchStore.getIn([currentURL, query, 'results']);
     let products = productsIds ? stores.ProductStore.getProducts(productsIds) : null;
 
     return {
