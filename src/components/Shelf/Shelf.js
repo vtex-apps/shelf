@@ -6,7 +6,7 @@ import ShelfPlaceholder from './ShelfPlaceholder';
 import ShelfSlider from './ShelfSlider';
 
 @storefront({
-  name: 'Shelf@vtex.storefront-shelf',
+  name: 'Shelf@vtex.shelf',
   title: 'Shelf',
   editable: true
 })

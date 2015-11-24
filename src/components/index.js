@@ -3,7 +3,7 @@ import Shelf from './Shelf/Shelf';
 
 let components = [
   {
-    name: 'Shelf@vtex.storefront-shelf',
+    name: 'Shelf@vtex.shelf',
     constructor: Shelf,
   }
 ];
