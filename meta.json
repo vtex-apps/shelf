@@ -5,6 +5,7 @@
   "description": "Shelf component",
   "version": "0.1.3",
   "dependencies": {
+    "vtex.editor": "0.x",
     "vtex.storefront": "0"
   }
 }
