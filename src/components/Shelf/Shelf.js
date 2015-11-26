@@ -1,14 +1,13 @@
-import { storefront } from 'sdk';
+import { editable } from 'vtex-editor';
 import React from 'react';
 import Immutable from 'immutable';
 import './Shelf.less';
 import ShelfPlaceholder from './ShelfPlaceholder';
 import ShelfSlider from './ShelfSlider';
 
-@storefront({
+@editable({
   name: 'Shelf@vtex.shelf',
-  title: 'Shelf',
-  editable: true
+  title: 'Shelf'
 })
 class Shelf extends React.Component {
   static defaultProps = {
