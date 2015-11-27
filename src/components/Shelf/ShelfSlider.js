@@ -25,7 +25,7 @@ class ShelfSlider extends React.Component {
     });
 
     let searchStore = stores.SearchStore.getState();
-    let productsIds = searchStore.getIn([currentURL, props.id, 'results'])
+    let productsIds = searchStore.getIn([currentURL, props.id, 'results']);
     productsIds = productsIds ? productsIds : searchStore.getIn([currentURL, query, 'results']);
     let products = productsIds ? stores.ProductStore.getProducts(productsIds) : null;
 

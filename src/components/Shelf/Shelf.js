@@ -22,7 +22,7 @@ class Shelf extends React.Component {
     if (!this.props.settings) {
       return (
         <ShelfPlaceholder title="Destaques"/>
-      )
+      );
     }
     return <ShelfSlider {...this.props}/>;
   }
