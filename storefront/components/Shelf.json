@@ -1,12 +1,15 @@
 {
-  "resourceBinding": {
-    "locator": "products@vtex.storefront-sdk",
-    "relativePath": "/{{ 'dreamstore' }}/products",
-    "queryParams": {
-      "category": "fera-fashion",
-      "pageSize": "2"
+  "resourceBindings": [
+    {
+      "locator": "search@vtex.storefront-sdk",
+      "relativePath": "/{{ account }}/products",
+      "queryParams": {
+        "category": "fera-fashion",
+        "pageSize": "2"
+      },
+      "bindTo": "products@vtex"
     }
-  },
+  ],
   "assets": [
     "Shelf.js",
     "editors/index.js"
