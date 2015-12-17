@@ -1,9 +1,10 @@
 import React from 'react';
 import './ShelfProduct.less';
 import { Link, History } from 'react-router';
-import { utils } from 'sdk';
+import { stores } from 'sdk';
 
-let { Price, Img } = utils;
+const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'constructor']);
+const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class Product extends React.Component {
   static contextTypes = History.contextTypes
