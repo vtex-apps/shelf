@@ -1,4 +1,4 @@
-import { stores, actions, utils } from 'sdk';
+import { stores, actions, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
 import ShelfProduct from './ShelfProduct';
@@ -7,7 +7,7 @@ import SVGIcon from 'utils/SVGIcon';
 import arrowLeftIcon from 'assets/icons/arrow-left.svg';
 import arrowRightIcon from 'assets/icons/arrow-right.svg';
 
-@utils.connectToStores()
+@connectToStores()
 class ShelfSlider extends React.Component {
   state = {
     currentProductVisible: 0
