@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShelfProduct.less';
+import './style.less';
 import { stores, history } from 'sdk';
 
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
@@ -20,24 +20,20 @@ class Product extends React.Component {
     let price = defaultSku.offers[0].price;
 
     return (
-      <div className="v-shelf__product row" style={{display: display}}>
-        <div className="col-xs-12">
-          <div className="row">
-            <Img className="v-shelf__product-photo col-xs-12" src={imageUrl} width={200} height={235}/>
+      <div className="ShelfProduct col-xs-12 col-sm-6 col-md-4 col-lg-4" style={{display: display}}>
+        <Link to={`/${this.props.slug}/p`}>
+          <div className="ShelfProduct__photo-wrapper theme__background-color--white">
+              <Img className="ShelfProduct__photo" src={imageUrl} />
           </div>
-          <div className="row">
-            <Link to={`/${this.props.slug}/p`} className="v-shelf__product-title col-xs-12">{name}</Link>
-          </div>
-          <div className="row">
-            <p className="v-shelf__product-price col-xs-12">
-              <Price value={price}/>
-            </p>
-          </div>
-          <div className="row">
-            <button className="v-shelf__product-btn btn col-xs-12" onTouchTap={this._handleDetails.bind(this)}>
-              Ver detalhes
-            </button>
-          </div>
+        </Link>
+        <div className="ShelfProduct__content">
+          <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title row">{name}</Link>
+          <span className="ShelfProduct__price">
+          <Price value={price}/>
+          </span>
+          <button className="ShelfProduct__btn" onTouchTap={this._handleDetails.bind(this)}>
+          Ver detalhes
+          </button>
         </div>
       </div>
     );

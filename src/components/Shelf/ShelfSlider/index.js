@@ -1,11 +1,13 @@
 import { stores, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
-import ShelfProduct from './ShelfProduct';
-import './Shelf.less';
+import ShelfProduct from '../ShelfProduct';
+import './style.less';
 import SVGIcon from 'utils/SVGIcon';
-import arrowLeftIcon from 'assets/icons/arrow-left.svg';
-import arrowRightIcon from 'assets/icons/arrow-right.svg';
+import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
+import arrowLeftImg from 'assets/icons/arrowLeft.png';
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
+import arrowRightImg from 'assets/icons/arrowRight.png';
 
 @connectToStores()
 class ShelfSlider extends React.Component {
@@ -57,7 +59,7 @@ class ShelfSlider extends React.Component {
 
   render() {
     let products = this.props.products;
-    let title = this.props.settings.get('title');
+    //let title = this.props.settings.get('title');
 
     let settingsQuantity = this.props.settings.get('quantity');
     let productsQuantity = products ? products.length : 0;
@@ -70,28 +72,30 @@ class ShelfSlider extends React.Component {
     const canMoveRight = (this.state.currentProductVisible !== maxQuantity - 1);
 
     return (
-      <div className="v-shelf row-fluid">
-        <h2 className="v-shelf__title">{title}</h2>
-
-        <div className="row-fluid clearfix">
-          <button className="v-arrow col-xs-2 v-clean-btn v-no-outlines">
-            <SVGIcon className="v-arrow-icon" svg={arrowLeftIcon} width={26} height={88}
-                     data-is-disabled={!canMoveLeft}
-                     onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
+      <div className="ShelfSlider clearfix">
+        <h2 className="ShelfSlider__title row-fluid">Promoções {/*title*/}</h2>
+        <div className="row-fluid">
+          <button className="ShelfSlider__arrow pull-left col-xs-1">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} fallback={arrowLeftImg} height={88}
+            data-is-disabled={!canMoveLeft}
+            onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
           </button>
-
-          <div className="v-shelf__products col-xs-8">
-          {products ? products.map((product, index) =>
-            <ShelfProduct {...product}
-                    isVisible={(index === this.state.currentProductVisible)}
-                    key={product.slug}/>
-          ) : <div>Carregando</div>}
+          <div className="ShelfSlider__product-wrapper col-xs-10">
+          {
+            products ? products.map((product, index) => {
+              return (
+                <ShelfProduct {...product}
+                isVisible={(index === this.state.currentProductVisible)}
+                key={product.slug}/>
+              );
+            }) : <div>Carregando</div>
+          }
           </div>
 
-          <button className="v-arrow col-xs-2 v-clean-btn v-no-outlines">
-            <SVGIcon className="v-arrow-icon" svg={arrowRightIcon} width={26} height={88}
-                     data-is-disabled={!canMoveRight}
-                     onTouchTap={canMoveRight ? this.moveRight.bind(this) : null}/>
+          <button className="ShelfSlider__arrow pull-right col-xs-1">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} fallback={arrowRightImg} height={88}
+            data-is-disabled={!canMoveRight}
+            onTouchTap={canMoveRight ? this.moveRight.bind(this) : null} />
           </button>
         </div>
       </div>

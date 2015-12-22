@@ -1,6 +1,6 @@
 import { editable } from 'vtex-editor';
 import React from 'react';
-import './Shelf.less';
+import Immutable from 'immutable';
 import ShelfPlaceholder from './ShelfPlaceholder';
 import ShelfSlider from './ShelfSlider';
 
