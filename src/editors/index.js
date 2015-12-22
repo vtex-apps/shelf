@@ -1,5 +1,5 @@
 import { actions } from 'sdk';
-import ShelfEditor from './ShelfEditor/ShelfEditor';
+import ShelfEditor from './ShelfEditor';
 
 let components = [
   {

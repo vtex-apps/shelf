@@ -1,0 +1,69 @@
+@import "~vtex-css-utils/less/_css-utils";
+
+.ShelfEditor {
+  background-color: @gray-soft;
+  height: 100%;
+  overflow: auto;
+
+  &__inner {
+    margin: 1em 1em 0em 1em;
+  }
+
+  &__field, &__text-field, &__quant-field {
+    margin-bottom: 1.5em;
+
+    label {
+      font-family: @font-body;
+      color: @black-soft;
+    }
+  }
+
+  &__quant-selector {
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 0px 0px darken(#FFF, 8%);
+    border-radius: 3px;
+  }
+
+  &__quant-selector__input {
+    .css-utils-no-outlines;
+    border-bottom: 2px solid darken(#FFF, 8%);
+    border-top: 2px solid darken(#FFF, 8%);
+    border-right: none;
+    border-left: none;
+    color: #555555;
+    text-align: center;
+    height: 50px;
+    width: 60%;
+  }
+
+  .ShelfEditor__quant-button {
+    .css-utils-clean-btn;
+    .css-utils-no-outlines;
+    background-color: #FFF;
+    color: darken(#FFF, 45%);
+    border: 2px solid darken(#FFF, 8%);
+    font-size: 1.6em;
+    font-weight: 500;
+    height: 50px;
+    line-height: 1em;
+
+    &:active {
+      background-color: darken(#FFF, 6%);
+    }
+  }
+
+  &__quant-button--left {
+    .ShelfEditor__quant-button;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    width: 20%;
+  }
+
+  &__quant-button--right {
+    .ShelfEditor__quant-button;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 20%;
+  }
+}
