@@ -42,6 +42,7 @@
     "postreleasy": "vtex publish"
   },
   "dependencies": {
-    "lodash-compat": "^3.10.1"
+    "lodash-compat": "^3.10.1",
+    "vtex-css-utils": "^2.0.2"
   }
 }

@@ -2,7 +2,7 @@ import { stores, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
 import ShelfProduct from '../ShelfProduct';
-import '../Shelf.less';
+import './style.less';
 import SVGIcon from 'utils/SVGIcon';
 import arrowLeftIcon from 'assets/icons/arrow-left.svg';
 import arrowRightIcon from 'assets/icons/arrow-right.svg';
@@ -70,17 +70,17 @@ class ShelfSlider extends React.Component {
     const canMoveRight = (this.state.currentProductVisible !== maxQuantity - 1);
 
     return (
-      <div className="v-shelf row-fluid">
-        <h2 className="v-shelf__title">{title}</h2>
+      <div className="ShelfSlider">
+        <h2 className="ShelfSlider__title">{title}</h2>
 
         <div className="row-fluid clearfix">
-          <button className="v-arrow col-xs-2 v-clean-btn v-no-outlines">
-            <SVGIcon className="v-arrow-icon" svg={arrowLeftIcon} width={26} height={88}
+          <button className="ShelfSlider__arrow col-xs-2">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} width={26} height={88}
                      data-is-disabled={!canMoveLeft}
                      onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
           </button>
 
-          <div className="v-shelf__products col-xs-8">
+          <div className="ShelfSlider__product col-xs-8">
           {products ? products.map((product, index) =>
             <ShelfProduct {...product}
                     isVisible={(index === this.state.currentProductVisible)}
@@ -88,8 +88,8 @@ class ShelfSlider extends React.Component {
           ) : <div>Carregando</div>}
           </div>
 
-          <button className="v-arrow col-xs-2 v-clean-btn v-no-outlines">
-            <SVGIcon className="v-arrow-icon" svg={arrowRightIcon} width={26} height={88}
+          <button className="ShelfSlider__arrow col-xs-2">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} width={26} height={88}
                      data-is-disabled={!canMoveRight}
                      onTouchTap={canMoveRight ? this.moveRight.bind(this) : null}/>
           </button>

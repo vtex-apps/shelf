@@ -1,0 +1,45 @@
+@import "~vtex-css-utils/less/_css-utils";
+
+.ShelfSlider {
+  &__arrow {
+    .css-utils-clean-btn();
+    .css-utils-no-outlines();
+    position: relative;
+    padding-top: 110px;
+    padding-bottom: 170px;
+    cursor: default;
+  }
+
+  &__arrow-icon {
+    fill: none;
+    stroke: #EDAF97;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+
+    &[data-is-disabled=true] {
+      stroke: #eee;
+      cursor: default;
+    }
+
+    &:active:not([data-is-disabled=true]), &:hover:not([data-is-disabled=true]) {
+      cursor: pointer;
+      stroke-width: 4;
+      stroke: darken(#EDAF97, 10%);
+    }
+  }
+
+  &__title {
+    font-size: 27px;
+    font-style: italic;
+    font-weight: 400;
+    color: #153243;
+    text-align: center;
+  }
+
+  &__product {
+    position: relative;
+    height: 235px;
+  }
+}
