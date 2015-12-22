@@ -1,8 +1,8 @@
 import { stores, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
-import ShelfProduct from './ShelfProduct';
-import './Shelf.less';
+import ShelfProduct from '../ShelfProduct';
+import '../Shelf.less';
 import SVGIcon from 'utils/SVGIcon';
 import arrowLeftIcon from 'assets/icons/arrow-left.svg';
 import arrowRightIcon from 'assets/icons/arrow-right.svg';
