@@ -81,11 +81,15 @@ class ShelfSlider extends React.Component {
           </button>
 
           <div className="ShelfSlider__product col-xs-8">
-          {products ? products.map((product, index) =>
-            <ShelfProduct {...product}
-                    isVisible={(index === this.state.currentProductVisible)}
-                    key={product.slug}/>
-          ) : <div>Carregando</div>}
+            {
+              products ? products.map((product, index) => {
+                return (
+                  <ShelfProduct {...product}
+                        isVisible={(index === this.state.currentProductVisible)}
+                        key={product.slug}/>
+                );
+              }) : <div>Carregando</div>
+            }
           </div>
 
           <button className="ShelfSlider__arrow col-xs-2">
