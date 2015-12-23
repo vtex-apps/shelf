@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.less';
 import SVGIcon from 'utils/SVGIcon';
-import arrowLeftIcon from 'assets/icons/arrow-left.svg';
-import arrowRightIcon from 'assets/icons/arrow-right.svg';
+import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
+import arrowLeftImg from 'assets/icons/arrowLeft.png';
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
+import arrowRightImg from 'assets/icons/arrowRight.png';
 
 class ShelfPlaceholder extends React.Component {
   render() {
@@ -12,7 +14,7 @@ class ShelfPlaceholder extends React.Component {
 
         <div className="row-fluid clearfix">
           <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} width={26} height={88}
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} fallback={arrowLeftImg} height={88}
                      data-is-disabled={true}/>
           </button>
 
@@ -21,7 +23,7 @@ class ShelfPlaceholder extends React.Component {
           </div>
 
           <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} width={26} height={88}
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} fallback={arrowRightImg} height={88}
                      data-is-disabled={true}/>
           </button>
         </div>

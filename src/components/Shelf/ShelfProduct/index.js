@@ -20,25 +20,15 @@ class Product extends React.Component {
     let price = defaultSku.offers[0].price;
 
     return (
-      <div className="v-shelf__product row" style={{display: display}}>
-        <div className="col-xs-12">
-          <div className="row">
-            <Img className="v-shelf__product-photo col-xs-12" src={imageUrl} width={200} height={235}/>
-          </div>
-          <div className="row">
-            <Link to={`/${this.props.slug}/p`} className="v-shelf__product-title col-xs-12">{name}</Link>
-          </div>
-          <div className="row">
-            <p className="v-shelf__product-price col-xs-12">
-              <Price value={price}/>
-            </p>
-          </div>
-          <div className="row">
-            <button className="v-shelf__product-btn btn col-xs-12" onTouchTap={this._handleDetails.bind(this)}>
-              Ver detalhes
-            </button>
-          </div>
-        </div>
+      <div className="ShelfProduct" style={{display: display}}>
+        <Img className="ShelfProduct__photo" src={imageUrl} width={200} height={235}/>
+        <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title col-xs-12">{name}</Link>
+        <p className="ShelfProduct__price">
+          <Price value={price}/>
+        </p>
+        <button className="ShelfProduct__btn btn" onTouchTap={this._handleDetails.bind(this)}>
+          Ver detalhes
+        </button>
       </div>
     );
   }

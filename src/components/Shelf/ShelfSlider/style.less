@@ -1,26 +1,34 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .ShelfSlider {
+  padding-left: 15px;
+  padding-right: 15px;
+
   &__arrow {
     .css-utils-clean-btn();
     .css-utils-no-outlines();
-    position: relative;
-    padding-top: 110px;
-    padding-bottom: 170px;
     cursor: default;
+    position: relative;
+    padding-top: 80px;
+
+    @media (min-width: @screen-sm-min) {
+      padding-top: 10%;
+    }
   }
 
   &__arrow-icon {
     fill: none;
-    stroke: #EDAF97;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
+
+    path {
+      stroke: @gray-solid-b;
+    }
 
     &[data-is-disabled=true] {
-      stroke: #eee;
       cursor: default;
+
+      path {
+        stroke: #eee;
+      }
     }
 
     &:active:not([data-is-disabled=true]), &:hover:not([data-is-disabled=true]) {
@@ -38,8 +46,6 @@
     text-align: center;
   }
 
-  &__product {
-    position: relative;
-    height: 235px;
+  &__product-wrapper {
   }
 }

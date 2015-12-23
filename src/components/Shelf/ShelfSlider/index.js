@@ -4,8 +4,10 @@ import Immutable from 'immutable';
 import ShelfProduct from '../ShelfProduct';
 import './style.less';
 import SVGIcon from 'utils/SVGIcon';
-import arrowLeftIcon from 'assets/icons/arrow-left.svg';
-import arrowRightIcon from 'assets/icons/arrow-right.svg';
+import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
+import arrowLeftImg from 'assets/icons/arrowLeft.png';
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
+import arrowRightImg from 'assets/icons/arrowRight.png';
 
 @connectToStores()
 class ShelfSlider extends React.Component {
@@ -70,32 +72,30 @@ class ShelfSlider extends React.Component {
     const canMoveRight = (this.state.currentProductVisible !== maxQuantity - 1);
 
     return (
-      <div className="ShelfSlider">
-        <h2 className="ShelfSlider__title">{title}</h2>
-
-        <div className="row-fluid clearfix">
-          <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} width={26} height={88}
-                     data-is-disabled={!canMoveLeft}
-                     onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
+      <div className="ShelfSlider clearfix">
+        <h2 className="ShelfSlider__title row-fluid">Promoções {/*title*/}</h2>
+        <div className="row-fluid">
+          <button className="ShelfSlider__arrow pull-left col-xs-1">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} fallback={arrowLeftImg} height={88}
+            data-is-disabled={!canMoveLeft}
+            onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
           </button>
-
-          <div className="ShelfSlider__product col-xs-8">
-            {
-              products ? products.map((product, index) => {
-                return (
-                  <ShelfProduct {...product}
-                        isVisible={(index === this.state.currentProductVisible)}
-                        key={product.slug}/>
-                );
-              }) : <div>Carregando</div>
-            }
+          <div className="ShelfSlider__product-wrapper col-xs-10">
+          {
+            products ? products.map((product, index) => {
+              return (
+                <ShelfProduct {...product}
+                isVisible={(index === this.state.currentProductVisible)}
+                key={product.slug}/>
+              );
+            }) : <div>Carregando</div>
+          }
           </div>
 
-          <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} width={26} height={88}
-                     data-is-disabled={!canMoveRight}
-                     onTouchTap={canMoveRight ? this.moveRight.bind(this) : null}/>
+          <button className="ShelfSlider__arrow pull-right col-xs-1">
+            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} fallback={arrowRightImg} height={88}
+            data-is-disabled={!canMoveRight}
+            onTouchTap={canMoveRight ? this.moveRight.bind(this) : null} />
           </button>
         </div>
       </div>
