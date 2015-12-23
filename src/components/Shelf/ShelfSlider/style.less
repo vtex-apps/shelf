@@ -9,10 +9,16 @@
     .css-utils-no-outlines();
     cursor: default;
     position: relative;
-    padding-top: 80px;
+    margin-top: 80px;
 
     @media (min-width: @screen-sm-min) {
-      padding-top: 10%;
+      margin-top: 10%;
+    }
+
+    &:hover {
+      path {
+        stroke-width: 4px;
+      }
     }
   }
 
@@ -28,6 +34,12 @@
 
       path {
         stroke: #eee;
+      }
+
+      &:hover {
+        path {
+          stroke-width: 3px;
+        }
       }
     }
 
@@ -47,5 +59,7 @@
   }
 
   &__product-wrapper {
+    padding-right: 0px;
+    padding-left: 0px;
   }
 }

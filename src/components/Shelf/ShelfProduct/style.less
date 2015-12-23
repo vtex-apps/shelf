@@ -2,7 +2,10 @@
 
 .ShelfProduct {
   position: relative;
-  width: 30%;
+
+  @media (max-width: @screen-sm-max) {
+    max-width: 235px;
+  }
 
   &__photo {
     height: 235px;
@@ -18,7 +21,6 @@
     padding-left: 0;
     margin: 0;
     width: 100%;
-
   }
 
   &__price {

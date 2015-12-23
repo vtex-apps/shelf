@@ -59,7 +59,7 @@ class ShelfSlider extends React.Component {
 
   render() {
     let products = this.props.products;
-    let title = this.props.settings.get('title');
+    //let title = this.props.settings.get('title');
 
     let settingsQuantity = this.props.settings.get('quantity');
     let productsQuantity = products ? products.length : 0;
