@@ -21,12 +21,12 @@ class Product extends React.Component {
 
     return (
       <div className="ShelfProduct" style={{display: display}}>
-        <Img className="ShelfProduct__photo" src={imageUrl} width={200} height={235}/>
-        <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title col-xs-12">{name}</Link>
+        <Img className="ShelfProduct__photo" src={imageUrl} width={200} />
+        <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title">{name}</Link>
         <p className="ShelfProduct__price">
           <Price value={price}/>
         </p>
-        <button className="ShelfProduct__btn btn" onTouchTap={this._handleDetails.bind(this)}>
+        <button className="ShelfProduct__btn" onTouchTap={this._handleDetails.bind(this)}>
           Ver detalhes
         </button>
       </div>
