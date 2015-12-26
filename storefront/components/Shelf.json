@@ -1,11 +1,12 @@
 {
   "resourceBindings": [
     {
-      "locator": "search@vtex.storefront-sdk",
+      "locator": "search@vtex.shelf",
       "relativePath": "/{{ account }}/products",
       "queryParams": {
-        "category": "fera-fashion",
-        "pageSize": "2"
+        "category": "{{ settings.category }}",
+        "collection": "{{ settings.collection }}",
+        "pageSize": "{{ settings.quantity }}"
       },
       "bindTo": "products@vtex"
     }

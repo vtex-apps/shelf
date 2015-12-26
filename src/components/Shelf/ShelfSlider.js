@@ -21,6 +21,7 @@ class ShelfSlider extends React.Component {
     const currentURL = (window.location.pathname + window.location.search);
     let query = Immutable.Map({
       category: props.settings.get('category'),
+      collection: props.settings.get('collection'),
       pageSize: props.settings.get('quantity')
     });
 
@@ -49,6 +50,7 @@ class ShelfSlider extends React.Component {
   getSearch(props) {
     return Immutable.Map({
       category: props.settings.get('category'),
+      collection: props.settings.get('collection'),
       pageSize: props.settings.get('quantity')
     });
   }
