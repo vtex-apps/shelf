@@ -8,25 +8,21 @@ class ShelfEditor extends React.Component {
     let settings = this.props.settings;
     if (settings) {
       this.state = settings.toJS();
+      this.state.quantity = this.state.quantity ? this.state.quantity : 1;
     } else {
       this.state = {
         title: '',
         category: '',
+        collection: '',
         quantity: 1
       };
     }
   }
 
-  maxQuantity = 6
   minQuantity = 1
 
   saveSettings = () => {
     this.props.saveSettings(this.state);
-  }
-
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    this.handleSave(ev);
   }
 
   handleSave = (ev) => {
@@ -36,21 +32,20 @@ class ShelfEditor extends React.Component {
 
   incrementQuantity(ev) {
     ev.preventDefault();
-    if (parseInt(this.state.quantity) === this.maxQuantity) {
-      return false;
-    }
+    let newQuantity = parseInt(this.state.quantity);
     this.setState({
-      quantity: (parseInt(this.state.quantity) + 1)
+      quantity: newQuantity + 1
     });
   }
 
   decrementQuantity(ev) {
     ev.preventDefault();
-    if (parseInt(this.state.quantity) === this.minQuantity) {
+    let newQuantity = parseInt(this.state.quantity);
+    if (newQuantity === this.minQuantity) {
       return false;
     }
     this.setState({
-      quantity: (parseInt(this.state.quantity) - 1)
+      quantity: newQuantity - 1
     });
   }
 
@@ -62,7 +57,7 @@ class ShelfEditor extends React.Component {
 
   changeQuantity(ev) {
     let value = ev.target.value;
-    if (isNaN(value) || (value !== '' && parseInt(value) < this.minQuantity || parseInt(value) > this.maxQuantity)) {
+    if (isNaN(value) || (value !== '' && parseInt(value) < this.minQuantity)) {
       return false;
     }
 

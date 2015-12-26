@@ -80,11 +80,14 @@ class ShelfSlider extends React.Component {
     let title = this.props.settings.get('title');
 
     let settingsQuantity = this.props.settings.get('quantity');
-    let produtsQuantity = products.length - 1;
+    let productsQuantity = products ? products.length : 0;
 
-    let maxQuantity = produtsQuantity > settingsQuantity ? settingsQuantity : produtsQuantity;
+    let maxQuantity = productsQuantity > settingsQuantity
+          ? settingsQuantity
+          : productsQuantity;
+
     const canMoveLeft = (this.state.currentProductVisible !== 0);
-    const canMoveRight = (this.state.currentProductVisible !== maxQuantity);
+    const canMoveRight = (this.state.currentProductVisible !== maxQuantity - 1);
 
     return (
       <div className="v-shelf row-fluid">
