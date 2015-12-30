@@ -1,7 +1,7 @@
 {
   "resourceBindings": [
     {
-      "locator": "search@vtex.shelf",
+      "locator": "search@vtex.storefront-sdk",
       "relativePath": "/{{ account }}/products",
       "queryParams": {
         "category": "{{ settings.category }}",
