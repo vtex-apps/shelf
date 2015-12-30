@@ -4,44 +4,46 @@
   position: relative;
 
   @media (max-width: @screen-sm-max) {
-    max-width: 235px;
   }
 
   &__photo {
-    height: 235px;
-    border: 1px solid #eee;
-    width: 100%;
+    height: 210px;
+    width: 210px;
   }
 
   &__title {
+    display: block;
     font-family: 'Lato';
     font-size: 16px;
     font-weight: 300;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 0;
     margin: 0;
-    width: 100%;
+    width: 210px;
   }
 
   &__price {
-    font-size: 14px;
-    font-weight: 600;
-    padding-left: 0;
     color: #75CCB1;
-    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-left: 0;
+    width: 210px;
   }
 
   &__btn {
     .css-utils-clean-btn();
-    font-family: 'Lato';
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    padding: 12px;
     background-color: #75CCB1;
     border: none;
     border-radius: 5px;
-    width: 100%;
+    color: #fff;
+    display: inline-block;
+    font-family: 'Lato';
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 7.5px;
+    padding: 12px;
+    width: 210px;
   }
 }
