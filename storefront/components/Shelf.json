@@ -4,8 +4,9 @@
       "locator": "search@vtex.storefront-sdk",
       "relativePath": "/{{ account }}/products",
       "queryParams": {
-        "category": "fera-fashion",
-        "pageSize": "2"
+        "category": "{{ settings.category }}",
+        "collection": "{{ settings.collection }}",
+        "pageSize": "{{ settings.quantity }}"
       },
       "bindTo": "products@vtex"
     }
