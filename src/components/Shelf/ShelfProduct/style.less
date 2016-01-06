@@ -3,12 +3,15 @@
 .ShelfProduct {
   position: relative;
 
-  @media (max-width: @screen-sm-max) {
-  }
-
   &__photo {
     height: 210px;
     width: 210px;
+
+    @media (max-width: 540px) {
+      width: 80%;
+      height: auto;
+      margin-left: 10%;
+    }
   }
 
   &__title {
@@ -20,6 +23,10 @@
     padding-left: 0;
     margin: 0;
     width: 210px;
+
+    @media (max-width: 540px) {
+      margin-left: 10%;
+    }
   }
 
   &__price {
@@ -30,6 +37,10 @@
     padding-top: 5px;
     padding-left: 0;
     width: 210px;
+
+    @media (max-width: 540px) {
+      margin-left: 10%;
+    }
   }
 
   &__btn {
@@ -45,5 +56,10 @@
     margin-top: 7.5px;
     padding: 12px;
     width: 210px;
+
+    @media (max-width: 540px) {
+      margin-left: 10%;
+      width: 80%;
+    }
   }
 }
