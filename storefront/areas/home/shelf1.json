@@ -1,0 +1,7 @@
+{
+  "component": "Shelf@vtex.shelf",
+  "settings": {
+    "category": "fera-fashion",
+    "pageSize": 3
+  }
+}
