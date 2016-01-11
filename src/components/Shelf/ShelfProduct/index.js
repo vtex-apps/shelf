@@ -21,7 +21,11 @@ class Product extends React.Component {
 
     return (
       <div className="ShelfProduct col-xs-12 col-sm-6 col-md-4 col-lg-4" style={{display: display}}>
-        <div className="ShelfProduct__photo-wrapper"><Img className="ShelfProduct__photo" src={imageUrl} /></div>
+        <Link to={`/${this.props.slug}/p`}>
+          <div className="ShelfProduct__photo-wrapper theme__background-color--white">
+              <Img className="ShelfProduct__photo" src={imageUrl} />
+          </div>
+        </Link>
         <div className="ShelfProduct__content">
           <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title row">{name}</Link>
           <span className="ShelfProduct__price">
