@@ -1,20 +1,14 @@
 import { stores, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
+import Slider from 'react-slick';
+import 'utils/slick/slick.less';
+import 'utils/slick/slick-theme.less';
 import ShelfProduct from '../ShelfProduct';
 import './style.less';
-import SVGIcon from 'utils/SVGIcon';
-import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
-import arrowLeftImg from 'assets/icons/arrowLeft.png';
-import arrowRightIcon from 'assets/icons/arrowRight.svg';
-import arrowRightImg from 'assets/icons/arrowRight.png';
 
 @connectToStores()
 class ShelfSlider extends React.Component {
-  state = {
-    currentProductVisible: 0
-  }
-
   static getStores() {
     return [stores.SearchStore];
   }
@@ -37,18 +31,6 @@ class ShelfSlider extends React.Component {
     };
   }
 
-  moveLeft() {
-    this.setState({
-      currentProductVisible: this.state.currentProductVisible - 1
-    });
-  }
-
-  moveRight() {
-    this.setState({
-      currentProductVisible: this.state.currentProductVisible + 1
-    });
-  }
-
   getSearch(props) {
     return Immutable.Map({
       category: props.settings.get('category'),
@@ -58,45 +40,60 @@ class ShelfSlider extends React.Component {
   }
 
   render() {
-    let products = this.props.products;
-    //let title = this.props.settings.get('title');
-
     let settingsQuantity = this.props.settings.get('quantity');
-    let productsQuantity = products ? products.length : 0;
-
-    let maxQuantity = productsQuantity > settingsQuantity
-          ? settingsQuantity
-          : productsQuantity;
-
-    const canMoveLeft = (this.state.currentProductVisible !== 0);
-    const canMoveRight = (this.state.currentProductVisible !== maxQuantity - 1);
+    let productsQuantity = this.props.products ? this.props.products.length : 0;
+    let maxQuantity = productsQuantity > settingsQuantity ?
+      settingsQuantity : productsQuantity;
+    let products = this.props.products.slice(0, maxQuantity);
+    let title = this.props.settings.get('title') || '';
+    let settings = {
+      dots: false,
+      arrows: true,
+      autoplay: false,
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }
+      ]
+    };
 
     return (
       <div className="ShelfSlider clearfix">
-        <h2 className="ShelfSlider__title row-fluid">Promoções {/*title*/}</h2>
+        <h2 className="ShelfSlider__title row-fluid">{ title }</h2>
         <div className="row-fluid">
-          <button className="ShelfSlider__arrow pull-left col-xs-1">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} fallback={arrowLeftImg} height={88}
-            data-is-disabled={!canMoveLeft}
-            onTouchTap={canMoveLeft ? this.moveLeft.bind(this) : null}/>
-          </button>
-          <div className="ShelfSlider__product-wrapper col-xs-10">
-          {
-            products ? products.map((product, index) => {
-              return (
-                <ShelfProduct {...product}
-                isVisible={(index === this.state.currentProductVisible)}
-                key={product.slug}/>
-              );
-            }) : <div>Carregando</div>
-          }
-          </div>
-
-          <button className="ShelfSlider__arrow pull-right col-xs-1">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} fallback={arrowRightImg} height={88}
-            data-is-disabled={!canMoveRight}
-            onTouchTap={canMoveRight ? this.moveRight.bind(this) : null} />
-          </button>
+          <Slider {...settings}>
+            {
+              products ?
+                products.map((product) => {
+                  return (
+                    <div key={product.slug}>
+                      <ShelfProduct {...product} />
+                    </div>
+                  );
+                }) : <div>Carregando</div>
+            }
+          </Slider>
         </div>
       </div>
     );
