@@ -13,26 +13,31 @@ class Product extends React.Component {
   }
 
   render() {
-    let display = this.props.isVisible ? 'block' : 'none';
     let defaultSku = this.props.skus[0];
     let name = this.props.name;
-    let imageUrl = defaultSku.images.length > 0 ? defaultSku.images[0].src : 'http://placehold.it/200x235';
+    let imageUrl = defaultSku.images.length > 0 ?
+      defaultSku.images[0].src : 'http://placehold.it/200x235';
     let price = defaultSku.offers[0].price;
 
     return (
-      <div className="ShelfProduct col-xs-12 col-sm-6 col-md-4 col-lg-4" style={{display: display}}>
+      <div className="ShelfProduct">
         <Link to={`/${this.props.slug}/p`}>
           <div className="ShelfProduct__photo-wrapper theme__background-color--white">
-              <Img className="ShelfProduct__photo" src={imageUrl} />
+            <Img className="ShelfProduct__photo" src={imageUrl} />
           </div>
         </Link>
         <div className="ShelfProduct__content">
-          <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title row">{name}</Link>
+          <Link to={`/${this.props.slug}/p`} className="ShelfProduct__title row">
+            { name }
+          </Link>
           <span className="ShelfProduct__price">
-          <Price value={price}/>
+            <Price value={price}/>
           </span>
-          <button className="ShelfProduct__btn" onTouchTap={this._handleDetails.bind(this)}>
-          Ver detalhes
+          <button
+            className="ShelfProduct__btn"
+            onTouchTap={this._handleDetails}
+          >
+            Ver detalhes
           </button>
         </div>
       </div>

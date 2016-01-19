@@ -46,10 +46,10 @@ var config = {
           ]
         })]
       }, {
-        test: /\.(png|jpg|woff|ttf|eot|woff2)$/,
+        test: /\.(woff|ttf|eot|woff2)$/,
         loader: 'url-loader?limit=100000'
       }, {
-        test: /\.jpg$/,
+        test: /\.(jpg|png|gif)$/,
         loader: 'file-loader'
       }
     ]
