@@ -34,12 +34,66 @@
 /* Arrows */
 
 .ShelfSlider {
+    @media (min-width: 992px) {
+        .slick-prev,
+        .slick-next {
+            height: 100px;
+            width: 100px;
+        }
+
+        .slick-prev:before, .slick-next:before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .slick-prev {
+            left: -100px;
+        }
+
+        .slick-next {
+            right: -100px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .slick-prev,
+        .slick-next {
+            height: 65px;
+            width: 55px;
+        }
+
+        .slick-prev:before, .slick-next:before {
+            height: 65px;
+        }
+
+        .slick-prev {
+            left: -30px;
+        }
+
+        .slick-next {
+            right: -30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .slick-prev,
+        .slick-next {
+            width: 40px;
+        }
+
+        .slick-prev {
+            left: -15px;
+        }
+
+        .slick-next {
+            right: -15px;
+        }
+    }
+
     .slick-prev,
     .slick-next {
         position: absolute;
         display: block;
-        height: 100px;
-        width: 100px;
         line-height: 0px;
         font-size: 0px;
         cursor: pointer;
@@ -69,8 +123,6 @@
     .slick-prev:before, .slick-next:before {
         content: "";
         display: block;
-        width: 100px;
-        height: 100px;
         font-family: @slick-font-family;
         font-size: 20px;
         line-height: 1;
@@ -81,11 +133,6 @@
     }
 
     .slick-prev {
-        left: -100px;
-        &[dir="rtl"] {
-            left: auto;
-            right: -25px;
-        }
         &:before {
             background: @slick-prev-character;
             background-size: contain;
@@ -98,11 +145,6 @@
     }
 
     .slick-next {
-        right: -100px;
-        &[dir="rtl"] {
-            left: -25px;
-            right: auto;
-        }
         &:before {
             background: @slick-next-character;
             background-size: contain;

@@ -1,7 +1,13 @@
 @import "~vtex-css-utils/less/_css-utils";
 
 .ShelfProduct {
-  padding: 0 15px;
+  @media (min-width: 992px) {
+    padding: 0 15px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 0 30px;
+  }
 
   &__photo-wrapper {
     border-radius: 2.5px;
