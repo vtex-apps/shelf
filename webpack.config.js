@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
-var meta = require('./meta.json');
-var publicPath = '/assets/@' + meta.vendor + '.' + meta.name + '/';
+var manifest = require('./manifest.json');
+var publicPath = '/assets/@' + manifest.vendor + '.' + manifest.name + '/';
 var production = process.env.NODE_ENV === 'production';
 
 var config = {
@@ -71,7 +71,6 @@ var config = {
     'react': 'React',
     'react-dom': 'ReactDOM',
     'react-intl': 'ReactIntl',
-    'react-router': 'ReactRouter',
     'sdk': 'storefront.sdk',
     'vtex-editor': 'vtex.editor'
   },
@@ -92,8 +91,8 @@ var config = {
     publicPath: publicPath,
     filename: '[name].js',
     chunkFilename: '[name].js',
-    jsonpFunction: 'webpackJsonp_' + meta.vendor.replace(/\-/g, '') + '_' + meta.name.replace(/\-/g, ''),
-    devtoolModuleFilenameTemplate: 'webpack:///' + meta.name + '/[resource]'
+    jsonpFunction: 'webpackJsonp_' + manifest.vendor.replace(/\-/g, '') + '_' + manifest.name.replace(/\-/g, ''),
+    devtoolModuleFilenameTemplate: 'webpack:///' + manifest.name + '/[resource]'
   },
 
   eslint: {
