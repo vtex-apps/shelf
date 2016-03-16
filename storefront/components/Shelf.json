@@ -14,5 +14,6 @@
   "assets": [
     "Shelf.js",
     "editors/index.js"
-  ]
+  ],
+  "implements": ["HomePage@vtex.storefront-theme#shelf"]
 }
