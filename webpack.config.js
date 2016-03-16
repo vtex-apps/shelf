@@ -71,6 +71,7 @@ var config = {
     'react': 'React',
     'react-dom': 'ReactDOM',
     'react-intl': 'ReactIntl',
+    'react-router': 'ReactRouter',
     'sdk': 'storefront.sdk',
     'vtex-editor': 'vtex.editor'
   },
