@@ -1,4 +1,4 @@
-import { stores, actions, connectToStores } from 'sdk';
+import { stores, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
 import ShelfProduct from './ShelfProduct';
@@ -53,28 +53,6 @@ class ShelfSlider extends React.Component {
       collection: props.settings.get('collection'),
       pageSize: props.settings.get('quantity')
     });
-  }
-
-  requestSearch = (props) => {
-    if (!props.settings) {
-      return;
-    }
-
-    if (!props.products) {
-      let search = this.getSearch(props);
-      let alreadyRequested = stores.SearchStore.getState().getIn([search, 'loading']);
-      if (!alreadyRequested) {
-        actions.SearchActions.requestSearch(search);
-      }
-    }
-  }
-
-  componentWillMount() {
-    this.requestSearch(this.props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.requestSearch(nextProps);
   }
 
   render() {

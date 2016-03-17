@@ -1,17 +1,15 @@
 import React from 'react';
 import './ShelfProduct.less';
-import { Link, History } from 'react-router';
-import { stores } from 'sdk';
+import { stores, history } from 'sdk';
 
+const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);
 const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'constructor']);
 const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class Product extends React.Component {
-  static contextTypes = History.contextTypes
-
   _handleDetails = (ev) => {
     ev.preventDefault();
-    this.context.history.pushState(null, `/${this.props.slug}/p`);
+    history.pushState(null, `/${this.props.slug}/p`);
   }
 
   render() {
