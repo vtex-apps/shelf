@@ -1,4 +1,4 @@
-import { stores, connectToStores } from 'sdk';
+import { stores, actions, connectToStores } from 'sdk';
 import React from 'react';
 import Immutable from 'immutable';
 import Slider from 'react-slick';
@@ -6,6 +6,14 @@ import 'utils/slick/slick.less';
 import 'utils/slick/slick-theme.less';
 import ShelfProduct from '../ShelfProduct';
 import './style.less';
+
+const getSearchParams = (settings) => {
+  return Immutable.Map({
+    category: settings.get('category'),
+    collection: settings.get('collection'),
+    pageSize: settings.get('quantity')
+  });
+}
 
 @connectToStores()
 class ShelfSlider extends React.Component {
@@ -15,37 +23,41 @@ class ShelfSlider extends React.Component {
 
   static getPropsFromStores(props) {
     const currentURL = (window.location.pathname + window.location.search);
-    let query = Immutable.Map({
-      category: props.settings.get('category'),
-      collection: props.settings.get('collection'),
-      pageSize: props.settings.get('quantity')
-    });
-
-    let searchStore = stores.SearchStore.getState();
+    const query = getSearchParams(props.settings);
+    const searchStore = stores.SearchStore.getState();
+    const results = searchStore.getIn([query, 'results']);
     let productsIds = searchStore.getIn([currentURL, props.id, 'results']);
-    productsIds = productsIds ? productsIds : searchStore.getIn([query, 'results']);
-    let products = productsIds ? stores.ProductStore.getProducts(productsIds) : null;
 
+    productsIds = results ? results : productsIds;
+
+    const products = productsIds ? stores.ProductStore.getProducts(productsIds) : [];
     return {
       products: products
     };
   }
 
-  getSearch(props) {
-    return Immutable.Map({
-      category: props.settings.get('category'),
-      collection: props.settings.get('collection'),
-      pageSize: props.settings.get('quantity')
-    });
+  componentWillReceiveProps = (nextProps) => {
+    const query = getSearchParams(nextProps.settings);
+    const searchStore = stores.SearchStore.getState();
+    const loading = searchStore.getIn([query, 'loading']);
+
+    if (!loading) {
+      const results = searchStore.getIn([query, 'results']);
+      if (!results) {
+        actions.SearchActions.requestSearch(query);
+      }
+    }
   }
 
   render() {
+    // se nao tem os produtos com as settings que eu tenho - tenho que ir buscar
     let settingsQuantity = this.props.settings.get('quantity');
     let productsQuantity = this.props.products ? this.props.products.length : 0;
-    let maxQuantity = productsQuantity > settingsQuantity ?
-      settingsQuantity : productsQuantity;
+
+    let maxQuantity = productsQuantity > settingsQuantity ? settingsQuantity : productsQuantity;
     let products = this.props.products.slice(0, maxQuantity);
     let title = this.props.settings.get('title') || '';
+
     let settings = {
       dots: false,
       arrows: true,
