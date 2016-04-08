@@ -35,7 +35,7 @@ class Product extends React.Component {
           </span>
           <button
             className="ShelfProduct__btn"
-            onTouchTap={this._handleDetails}
+            onClick={this._handleDetails}
           >
             Ver detalhes
           </button>
