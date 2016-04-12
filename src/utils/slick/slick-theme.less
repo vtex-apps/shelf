@@ -31,7 +31,7 @@
     src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype');
 }
 
-/* Arrows */
+/* Arrows and custom stuff */
 
 .ShelfSlider {
     @media (min-width: 992px) {
@@ -76,6 +76,16 @@
     }
 
     @media (max-width: 768px) {
+        .slick-slide {
+            &.slick-active {
+                margin-right: -15px;
+            }
+
+            > div {
+                padding: 0 45px 0 0;
+            }
+        }
+
         .slick-prev,
         .slick-next {
             width: 40px;
