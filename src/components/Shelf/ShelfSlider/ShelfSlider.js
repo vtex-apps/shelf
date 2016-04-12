@@ -1,11 +1,11 @@
-import { stores, actions, connectToStores } from 'sdk';
 import React from 'react';
+import './ShelfSlider.less';
+import { stores, actions, connectToStores } from 'sdk';
 import Immutable from 'immutable';
 import Slider from 'react-slick';
+import ShelfProduct from '../ShelfProduct/ShelfProduct';
 import 'utils/slick/slick.less';
 import 'utils/slick/slick-theme.less';
-import ShelfProduct from '../ShelfProduct';
-import './style.less';
 
 const getSearchParams = (settings) => {
   return Immutable.Map({
@@ -50,7 +50,6 @@ class ShelfSlider extends React.Component {
   }
 
   render() {
-    // se nao tem os produtos com as settings que eu tenho - tenho que ir buscar
     let settingsQuantity = this.props.settings.get('quantity');
     let productsQuantity = this.props.products ? this.props.products.length : 0;
 
@@ -63,12 +62,14 @@ class ShelfSlider extends React.Component {
       arrows: true,
       autoplay: false,
       infinite: true,
+      draggable: false,
       slidesToShow: 4,
       slidesToScroll: 4,
       responsive: [
         {
           breakpoint: 768,
           settings: {
+            arrows: false,
             slidesToShow: 1,
             slidesToScroll: 1
           }
@@ -76,6 +77,7 @@ class ShelfSlider extends React.Component {
         {
           breakpoint: 992,
           settings: {
+            arrows: false,
             slidesToShow: 2,
             slidesToScroll: 2
           }

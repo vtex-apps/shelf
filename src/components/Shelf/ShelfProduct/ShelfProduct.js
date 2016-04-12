@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.less';
+import './ShelfProduct.less';
 import { stores, history } from 'sdk';
 
 const Link = stores.ComponentStore.state.getIn(['Link@vtex.storefront-sdk', 'constructor']);

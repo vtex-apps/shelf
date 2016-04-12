@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.less';
+import './ShelfPlaceholder.less';
 import SVGIcon from 'utils/SVGIcon';
 import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
 import arrowLeftImg from 'assets/icons/arrowLeft.png';

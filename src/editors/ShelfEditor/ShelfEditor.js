@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.less';
+import './ShelfEditor.less';
 
 class ShelfEditor extends React.Component {
   constructor(props) {
@@ -124,7 +124,10 @@ class ShelfEditor extends React.Component {
           </div>
         </form>
 
-        <ActionBar onSave={this.handleSave} />
+        <ActionBar
+          id={this.props.componentProps.id}
+          onSave={this.handleSave}
+        />
       </div>
     );
   }
