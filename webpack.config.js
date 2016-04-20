@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var manifest = require('./manifest.json');
-var publicPath = '/assets/@' + manifest.vendor + '.' + manifest.name + '/';
+var publicPath = '/assets/'+ manifest.vendor + '/' + manifest.name + '/' + manifest.version + '/';
 var production = process.env.NODE_ENV === 'production';
 
 var config = {
