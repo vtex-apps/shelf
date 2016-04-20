@@ -50,26 +50,24 @@ class ShelfSlider extends React.Component {
   }
 
   render() {
-    let settingsQuantity = this.props.settings.get('quantity');
-    let productsQuantity = this.props.products ? this.props.products.length : 0;
-
-    let maxQuantity = productsQuantity > settingsQuantity ? settingsQuantity : productsQuantity;
-    let products = this.props.products.slice(0, maxQuantity);
-    let title = this.props.settings.get('title') || '';
-
-    let settings = {
+    const { products } = this.props;
+    const desktopQty = this.props.settings.get('desktopQty');
+    const tabletQty = this.props.settings.get('tabletQty');
+    const title = this.props.settings.get('title') || '';
+    const slickSettings = {
       dots: false,
       arrows: true,
       autoplay: false,
       infinite: true,
       draggable: false,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: desktopQty,
+      slidesToScroll: desktopQty,
       responsive: [
         {
           breakpoint: 768,
           settings: {
             arrows: false,
+            draggable: true,
             slidesToShow: 1,
             slidesToScroll: 1
           }
@@ -78,15 +76,9 @@ class ShelfSlider extends React.Component {
           breakpoint: 992,
           settings: {
             arrows: false,
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 1200,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
+            draggable: true,
+            slidesToShow: tabletQty,
+            slidesToScroll: tabletQty
           }
         }
       ]
@@ -94,18 +86,21 @@ class ShelfSlider extends React.Component {
 
     return (
       <div className="ShelfSlider clearfix">
-        <h2 className="ShelfSlider__title row-fluid">{ title }</h2>
+        <h2 className="ShelfSlider__title row-fluid">
+          { title }
+        </h2>
         <div className="row-fluid">
-          <Slider {...settings}>
+          <Slider {...slickSettings}>
             {
               products ?
-                products.map((product) => {
+                products.map(product => {
                   return (
                     <div key={product.slug}>
                       <ShelfProduct {...product} />
                     </div>
                   );
-                }) : <div>Carregando</div>
+                }) :
+                <div>Carregando</div>
             }
           </Slider>
         </div>
