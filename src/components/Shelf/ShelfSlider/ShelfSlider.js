@@ -36,8 +36,13 @@ class ShelfSlider extends React.Component {
     };
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    const query = getSearchParams(nextProps.settings);
+  shouldComponentUpdate() {
+    const loading = stores.ContextStore.getState().get('loading');
+    return !loading;
+  }
+
+  componentDidUpdate() {
+    const query = getSearchParams(this.props.settings);
     const searchStore = stores.SearchStore.getState();
     const loading = searchStore.getIn([query, 'loading']);
 
