@@ -3,7 +3,7 @@
   "vendor": "vtex",
   "title": "Shelf",
   "description": "Shelf component",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "vtex.editor": "0.x",
     "vtex.storefront": "0"
