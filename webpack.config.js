@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var manifest = require('./manifest.json');
-var publicPath = '/assets/@' + manifest.vendor + '.' + manifest.name + '/';
+var publicPath = '/assets/'+ manifest.vendor + '/' + manifest.name + '/' + manifest.version + '/';
 var production = process.env.NODE_ENV === 'production';
 
 var config = {
@@ -46,10 +46,10 @@ var config = {
           ]
         })]
       }, {
-        test: /\.(png|jpg|woff|ttf|eot|woff2)$/,
+        test: /\.(woff|ttf|eot|woff2)$/,
         loader: 'url-loader?limit=100000'
       }, {
-        test: /\.jpg$/,
+        test: /\.(jpg|png|gif)$/,
         loader: 'file-loader'
       }
     ]

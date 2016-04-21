@@ -42,6 +42,8 @@
     "postreleasy": "vtex publish"
   },
   "dependencies": {
-    "lodash-compat": "^3.10.1"
+    "lodash-compat": "^3.10.1",
+    "react-slick": "^0.11.1",
+    "vtex-css-utils": "^2.0.2"
   }
 }
