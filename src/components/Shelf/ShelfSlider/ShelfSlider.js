@@ -59,7 +59,8 @@ class ShelfSlider extends React.Component {
     const desktopQty = this.props.settings.get('desktopQty');
     const tabletQty = this.props.settings.get('tabletQty');
     const title = this.props.settings.get('title') || '';
-    const slidesQty = desktopQty ? desktopQty : 4;
+    const desktopSlidesQty = desktopQty ? desktopQty : 4;
+    const tabletSlidesQty = tabletQty ? tabletQty : 2;
 
     const slickSettings = {
       dots: false,
@@ -67,8 +68,8 @@ class ShelfSlider extends React.Component {
       autoplay: false,
       infinite: true,
       draggable: false,
-      slidesToShow: slidesQty,
-      slidesToScroll: slidesQty,
+      slidesToShow: desktopSlidesQty,
+      slidesToScroll: desktopSlidesQty,
       responsive: [
         {
           breakpoint: 768,
@@ -84,8 +85,8 @@ class ShelfSlider extends React.Component {
           settings: {
             arrows: false,
             draggable: true,
-            slidesToShow: tabletQty,
-            slidesToScroll: tabletQty
+            slidesToShow: tabletSlidesQty,
+            slidesToScroll: tabletSlidesQty
           }
         }
       ]
