@@ -10,12 +10,19 @@ class ShelfPlaceholder extends React.Component {
   render() {
     return (
       <div className="ShelfSlider row-fluid">
-        <h2 className="ShelfSlider__title">{this.props.title}</h2>
+        <h2 className="ShelfSlider__title">
+          { this.props.title }
+        </h2>
 
         <div className="row-fluid clearfix">
           <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowLeftIcon} fallback={arrowLeftImg} height={88}
-                     data-is-disabled={true}/>
+            <SVGIcon
+              className="ShelfSlider__arrow-icon"
+              svg={arrowLeftIcon}
+              fallback={arrowLeftImg}
+              height={88}
+              data-is-disabled={true}
+            />
           </button>
 
           <div className="ShelfSlider__products col-xs-8">
@@ -23,8 +30,13 @@ class ShelfPlaceholder extends React.Component {
           </div>
 
           <button className="ShelfSlider__arrow col-xs-2">
-            <SVGIcon className="ShelfSlider__arrow-icon" svg={arrowRightIcon} fallback={arrowRightImg} height={88}
-                     data-is-disabled={true}/>
+            <SVGIcon
+              className="ShelfSlider__arrow-icon"
+              svg={arrowRightIcon}
+              fallback={arrowRightImg}
+              height={88}
+              data-is-disabled={true}
+            />
           </button>
         </div>
       </div>
