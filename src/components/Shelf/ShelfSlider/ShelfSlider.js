@@ -59,14 +59,16 @@ class ShelfSlider extends React.Component {
     const desktopQty = this.props.settings.get('desktopQty');
     const tabletQty = this.props.settings.get('tabletQty');
     const title = this.props.settings.get('title') || '';
+    const slidesQty = desktopQty ? desktopQty : 4;
+
     const slickSettings = {
       dots: false,
       arrows: true,
       autoplay: false,
       infinite: true,
       draggable: false,
-      slidesToShow: desktopQty,
-      slidesToScroll: desktopQty,
+      slidesToShow: slidesQty,
+      slidesToScroll: slidesQty,
       responsive: [
         {
           breakpoint: 768,
