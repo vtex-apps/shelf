@@ -16,7 +16,7 @@ class Product extends React.Component {
     let defaultSku = this.props.skus[0];
     let name = this.props.name;
     let imageUrl = defaultSku.images.length > 0 ?
-      defaultSku.images[0].src : 'http://placehold.it/200x235';
+      defaultSku.images[0].src : '//placehold.it/200x235';
     let price = defaultSku.offers[0].price;
 
     return (
