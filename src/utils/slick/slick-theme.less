@@ -98,6 +98,24 @@
         .slick-next {
             right: -15px;
         }
+
+        .slick-track {
+            .slick-slide:last-child {
+                &.slick-active {
+                  margin-right: 0px;
+                }
+
+                > div {
+                  padding: 0 30px;
+                }
+            }
+
+            .slick-slide:nth-last-child(2) {
+                &.slick-active {
+                  margin-right: -45px;
+                }
+            }
+        }
     }
 
     .slick-prev,

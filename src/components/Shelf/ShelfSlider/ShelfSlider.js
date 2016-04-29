@@ -75,6 +75,7 @@ class ShelfSlider extends React.Component {
           breakpoint: 768,
           settings: {
             arrows: false,
+            infinite: false,
             draggable: true,
             slidesToShow: 1,
             slidesToScroll: 1
