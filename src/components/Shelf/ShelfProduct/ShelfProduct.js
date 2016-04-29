@@ -7,23 +7,71 @@ const Price = stores.ComponentStore.state.getIn(['Price@vtex.storefront-sdk', 'c
 const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class Product extends React.Component {
+  componentWillMount() {
+    this.setState({ imageSize: null });
+  }
+
+  componentDidMount() {
+    this.setState({ imageSize: this.photoWrap.clientHeight });
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() {
+    if (this.photoWrap.clientWidth < this.photoWrap.scrollWidth) {
+      this.setState({ imageSize: this.photoWrap.clientWidth });
+    }
+  }
+
+  componentWillUnmount() {
+    this.clearResizeTimeout();
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    this.clearResizeTimeout();
+
+    this.resizeTimeout = setTimeout(() => {
+      this.setState({ imageSize: this.photoWrap.clientHeight });
+    }, 200);
+  }
+
   _handleDetails = (ev) => {
     ev.preventDefault();
     history.pushState(null, `/${this.props.slug}/p`);
   }
 
+  clearResizeTimeout = () => {
+    if (this.resizeTimeout) {
+      clearInterval(this.resizeTimeout);
+      this.resizeTimeout = null;
+    }
+  }
+
   render() {
-    let defaultSku = this.props.skus[0];
-    let name = this.props.name;
-    let imageUrl = defaultSku.images.length > 0 ?
-      defaultSku.images[0].src : '//placehold.it/200x235';
-    let price = defaultSku.offers[0].price;
+    const { imageSize } = this.state;
+    const defaultSku = this.props.skus[0];
+    const name = this.props.name;
+    const imageUrl = defaultSku.images.length > 0 ?
+      defaultSku.images[0].src : 'http://placehold.it/200x235';
+    const price = defaultSku.offers[0].price;
 
     return (
       <div className="ShelfProduct">
         <Link to={`/${this.props.slug}/p`}>
-          <div className="ShelfProduct__photo-wrapper theme__background-color--white">
-            <Img className="ShelfProduct__photo" src={imageUrl} />
+          <div
+            className="ShelfProduct__photo-wrapper theme__background-color--white"
+            ref={(photoWrap) => this.photoWrap = photoWrap}
+          >
+            {
+              imageSize ?
+                <Img
+                  className="ShelfProduct__photo"
+                  src={imageUrl}
+                  width={imageSize}
+                  height={imageSize}
+                /> : null
+            }
           </div>
         </Link>
         <div className="ShelfProduct__content">
