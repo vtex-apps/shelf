@@ -6,7 +6,7 @@
   "categories": [
     "appearance"
   ],
-  "version": "0.4.2",
+  "version": "0.4.3",
   "dependencies": {
     "vtex.editor": "0.x",
     "vtex.storefront": "0"
