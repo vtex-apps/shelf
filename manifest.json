@@ -1,0 +1,18 @@
+{
+  "name": "shelf",
+  "vendor": "vtex",
+  "version": "0.1.0",
+  "title": "VTEX Shelf",
+  "description": "A shelf component",
+  "mustUpdateAt": "2017-09-26",
+  "categories": [],
+  "settingsSchema": {},
+  "dependencies": {
+    "vtex.render": "0.x",
+    "npm:react": "15.3.0",
+    "npm:classnames": "2.2.5",
+    "npm:react-apollo": "0.5.5",
+    "npm:graphql-tag": "0.1.14",
+    "npm:ramda": "0.22.1"
+  }
+}
