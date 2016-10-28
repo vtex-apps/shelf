@@ -9,10 +9,9 @@
   "settingsSchema": {},
   "dependencies": {
     "vtex.render": "0.x",
-    "npm:react": "15.3.0",
     "npm:classnames": "2.2.5",
     "npm:react-apollo": "0.5.5",
     "npm:graphql-tag": "0.1.14",
-    "npm:ramda": "0.22.1"
+    "npm:exenv": "1.2.1"
   }
 }

@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from 'react'
-import Img from 'vtex.render/Img'
-import Link from 'vtex.render/Link'
 import Price from './Price'
-import classNames from 'classnames/bind'
+import Img from 'vtex.render/Img'
 import style from './tachyons.css'
+import Link from 'vtex.render/Link'
+import classNames from 'classnames/bind'
+import React, {Component, PropTypes} from 'react'
 
 const cx = classNames.bind(style)
 
@@ -25,18 +25,17 @@ class ShelfProduct extends Component {
         <Link to={`/${this.props.slug}/p`}>
           <div className={cx('tc')}>
             <Img
-              backgroundColor={this.props.imgBackgroundColor}
-              height={this.props.imgHeight}
               src={imageUrl}
               width={this.props.imgWidth}
+              height={this.props.imgHeight}
             />
           </div>
         </Link>
         <div>
           <Link
-            className={this.props.textStyle || cx('no-underline', 'db', 'tc', 'black')}
             title={name}
             to={`/${this.props.slug}/p`}
+            className={this.props.textStyle || cx('no-underline', 'db', 'tc', 'black')}
           >
             {name}
           </Link>
@@ -44,8 +43,8 @@ class ShelfProduct extends Component {
             <Price value={price} />
           </span>
           <Link
-            className={cx('db', 'tc')}
             title={name}
+            className={cx('db', 'tc')}
             to={`/${this.props.slug}/p`}
           >
             <button className={this.props.buttonStyle || cx('f6', 'link', 'dim', 'br2', 'ba', 'ph3', 'pv2', 'mb2', 'dib', 'near-black')}>

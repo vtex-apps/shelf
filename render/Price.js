@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {FormattedNumber} from 'react-intl'
+import React, {Component, PropTypes} from 'react'
 
 class Price extends React.Component {
   static propTypes = {
