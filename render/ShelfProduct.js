@@ -14,11 +14,25 @@ class ShelfProduct extends Component {
   }
 
   render () {
-    const defaultSku = this.props.skus[0]
+    let defaultSkuIndex
+    let lowestOffer
+    this.props.skus.map((sku, skuIndex) => {
+      let isLowest
+      sku.offers.map((offer, index) => {
+        if (offer.price === 0) return
+        else if (!lowestOffer || (lowestOffer && offer.price < lowestOffer.price)) {
+          lowestOffer = offer
+          defaultSkuIndex = skuIndex
+          isLowest = true
+        }
+      })
+      if(isLowest) defaultSkuIndex = skuIndex
+    })
+    const sku = this.props.skus[defaultSkuIndex]
     const name = this.props.name
-    const imageUrl = defaultSku.images.length > 0
-      ? defaultSku.images[0].src : 'http://placehold.it/200x235'
-    const price = defaultSku.offers[0].price
+    const imageUrl = sku.images.length > 0
+      ? sku.images[0].src : 'http://placehold.it/200x235'
+    const price = lowestOffer.price
 
     return (
       <div>

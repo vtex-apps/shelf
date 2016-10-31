@@ -119,7 +119,7 @@ ShelfSlider.propTypes = {
 
 const query = gql`
   query ProductsQuery($category: String, $brands: String, $collection: String, $pageSize: Int){
-    products(category: $category, brands: $brands, collection: $collection, pageSize: $pageSize) {
+    products(category: $category, brands: $brands, collection: $collection, pageSize: $pageSize, availableOnly: true) {
       name,
       slug,
       skus {
