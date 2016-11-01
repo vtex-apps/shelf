@@ -19,7 +19,11 @@ class ShelfSlider extends Component {
 
   componentDidMount() {
     if (canUseDOM) {
-      document.addEventListener('readystatechange', () => this.setState({ready: true}))
+      if (document.readyState === 'loading') {
+        document.addEventListener('readystatechange', () => this.setState({ready: true}))
+      } else {
+        this.setState({ready: true})
+      }
     }
   }
 
