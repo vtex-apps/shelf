@@ -13,7 +13,7 @@ const cx = classnames.bind(styles)
 class ShelfSlider extends Component {
   constructor (props) {
     super(props)
-    this.state = {ready: document.readyState === 'interactive'}
+    this.state = {ready: canUseDOM && document.readyState === 'interactive'}
     this.createCarouselItem = this.createCarouselItem.bind(this)
   }
 
