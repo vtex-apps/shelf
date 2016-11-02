@@ -2,20 +2,25 @@ import {connect} from 'react-redux'
 import {FormattedNumber} from 'react-intl'
 import React, {Component, PropTypes} from 'react'
 
-class Price extends React.Component {
+//eslint-disable-next-line
+class Price extends Component {
   static propTypes = {
-    value: React.PropTypes.number.isRequired
+    value: React.PropTypes.number.isRequired,
   }
 
-  render() {
+  render () {
     return (
       <FormattedNumber
+        currency={this.props.currency}
         style="currency"
         value={this.props.value}
-        currency={this.props.currency}
       />
     )
   }
+}
+
+Price.propTypes = {
+  currency: PropTypes.string,
 }
 
 const mapStateToProps = (state) => {

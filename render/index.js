@@ -13,17 +13,13 @@ const cx = classnames.bind(styles)
 class ShelfSlider extends Component {
   constructor (props) {
     super(props)
-    this.state = {ready: false}
+    this.state = {ready: document.readyState === 'interactive'}
     this.createCarouselItem = this.createCarouselItem.bind(this)
   }
 
-  componentDidMount() {
-    if (canUseDOM) {
-      if (document.readyState === 'loading') {
-        document.addEventListener('readystatechange', () => this.setState({ready: true}))
-      } else {
-        this.setState({ready: true})
-      }
+  componentDidMount () {
+    if (canUseDOM && document.readyState === 'loading') {
+      document.addEventListener('readystatechange', () => this.setState({ready: true}))
     }
   }
 
@@ -42,13 +38,13 @@ class ShelfSlider extends Component {
       <div key={product.slug}>
         <ShelfProduct
           {...product}
-          textStyle={textStyle}
-          buttonText={buttonText}
-          priceStyle={priceStyle}
           buttonStyle={buttonStyle}
-          imgWidth={imgWidth || null}
-          imgHeight={imgHeight || null}
+          buttonText={buttonText}
           imgBackgroundColor={imgBackgroundColor}
+          imgHeight={imgHeight || null}
+          imgWidth={imgWidth || null}
+          priceStyle={priceStyle}
+          textStyle={textStyle}
         />
       </div>
     )
@@ -60,7 +56,7 @@ class ShelfSlider extends Component {
     const settingsDesktop = {
       dots: false,
       arrows: true,
-      infinite: true,
+      infinite: false,
       autoplay: false,
       draggable: false,
       slidesToShow: this.props.desktopQty || 4,
@@ -82,23 +78,21 @@ class ShelfSlider extends Component {
           {title}
         </h2>
         {
-          this.state.ready
-            ? (
-              <div>
-                <div className={cx('dn', 'db-l')}>
-                  <Slider {...settingsDesktop}>
-                    {shelfItems}
-                  </Slider>
-                </div>
-
-                <div className={cx('db', 'dn-l')}>
-                  <Slider {...settingsTouch}>
-                    {shelfItems}
-                  </Slider>
-                </div>
+          this.state.ready ? (
+            <div>
+              <div className={cx('dn', 'db-l')}>
+                <Slider {...settingsDesktop}>
+                  {shelfItems}
+                </Slider>
               </div>
-            )
-            : <div>Carregando</div>
+
+              <div className={cx('db', 'dn-l')}>
+                <Slider {...settingsTouch}>
+                  {shelfItems}
+                </Slider>
+              </div>
+            </div>
+          ) : <div>Carregando</div>
         }
       </div>
     )
@@ -106,19 +100,19 @@ class ShelfSlider extends Component {
 }
 
 ShelfSlider.propTypes = {
+  buttonStyle: PropTypes.string,
+  buttonText: PropTypes.string,
   data: PropTypes.object,
-  title: PropTypes.string,
-  imgWidth: PropTypes.number,
+  desktopQty: PropTypes.number,
+  imgBackgroundColor: PropTypes.string,
   imgHeight: PropTypes.number,
+  imgWidth: PropTypes.number,
+  priceStyle: PropTypes.string,
+  slickSettings: PropTypes.object,
   tabletQty: PropTypes.number,
   textStyle: PropTypes.string,
-  buttonText: PropTypes.string,
-  desktopQty: PropTypes.number,
-  priceStyle: PropTypes.string,
+  title: PropTypes.string,
   titleStyle: PropTypes.string,
-  buttonStyle: PropTypes.string,
-  slickSettings: PropTypes.object,
-  imgBackgroundColor: PropTypes.string,
 }
 
 const query = gql`

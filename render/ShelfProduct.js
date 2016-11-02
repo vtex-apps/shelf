@@ -18,7 +18,7 @@ class ShelfProduct extends Component {
     let lowestOffer
     this.props.skus.map((sku, skuIndex) => {
       let isLowest
-      sku.offers.map((offer, index) => {
+      sku.offers.map(offer => {
         if (offer.price === 0) return
         else if (!lowestOffer || (lowestOffer && offer.price < lowestOffer.price)) {
           lowestOffer = offer
@@ -26,7 +26,7 @@ class ShelfProduct extends Component {
           isLowest = true
         }
       })
-      if(isLowest) defaultSkuIndex = skuIndex
+      if (isLowest) defaultSkuIndex = skuIndex
     })
     const sku = this.props.skus[defaultSkuIndex]
     const name = this.props.name
@@ -39,17 +39,17 @@ class ShelfProduct extends Component {
         <Link to={`/${this.props.slug}/p`}>
           <div className={cx('tc')}>
             <Img
+              height={this.props.imgHeight}
               src={imageUrl}
               width={this.props.imgWidth}
-              height={this.props.imgHeight}
             />
           </div>
         </Link>
         <div>
           <Link
+            className={this.props.textStyle || cx('no-underline', 'db', 'tc', 'black')}
             title={name}
             to={`/${this.props.slug}/p`}
-            className={this.props.textStyle || cx('no-underline', 'db', 'tc', 'black')}
           >
             {name}
           </Link>
@@ -57,8 +57,8 @@ class ShelfProduct extends Component {
             <Price value={price} />
           </span>
           <Link
-            title={name}
             className={cx('db', 'tc')}
+            title={name}
             to={`/${this.props.slug}/p`}
           >
             <button className={this.props.buttonStyle || cx('f6', 'link', 'dim', 'br2', 'ba', 'ph3', 'pv2', 'mb2', 'dib', 'near-black')}>
