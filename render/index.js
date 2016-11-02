@@ -1,5 +1,4 @@
 import gql from 'graphql-tag'
-import {canUseDOM} from 'exenv'
 import styles from './tachyons.css'
 import {graphql} from 'react-apollo'
 import Slider from 'vtex.react-slick'
@@ -13,14 +12,7 @@ const cx = classnames.bind(styles)
 class ShelfSlider extends Component {
   constructor (props) {
     super(props)
-    this.state = {ready: canUseDOM && document.readyState === 'interactive'}
     this.createCarouselItem = this.createCarouselItem.bind(this)
-  }
-
-  componentDidMount () {
-    if (canUseDOM && document.readyState === 'loading') {
-      document.addEventListener('readystatechange', () => this.setState({ready: true}))
-    }
   }
 
   createCarouselItem (product) {
@@ -68,40 +60,36 @@ class ShelfSlider extends Component {
       draggable: true,
     }
 
-    const shelfItems = products
-      ? products.map(this.createCarouselItem)
-      : <div>Carregando</div>
+    const shelfItems = (products || []).map(this.createCarouselItem)
 
     return (
       <div>
         <h2 className={titleStyle || ''}>
           {title}
         </h2>
-        {
-          this.state.ready ? (
-            <div>
-              <div className={cx('dn', 'db-l')}>
-                <Slider {...settingsDesktop}>
-                  {shelfItems}
-                </Slider>
-              </div>
-
-              <div className={cx('db', 'dn-l')}>
-                <Slider {...settingsTouch}>
-                  {shelfItems}
-                </Slider>
-              </div>
-            </div>
-          ) : <div>Carregando</div>
-        }
+        <div>
+          <div className={cx('dn', 'db-l')}>
+            <Slider {...settingsDesktop}>
+              {shelfItems}
+            </Slider>
+          </div>
+          <div className={cx('db', 'dn-l')}>
+            <Slider {...settingsTouch}>
+              {shelfItems}
+            </Slider>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 ShelfSlider.propTypes = {
+  brands: PropTypes.arrayOf(PropTypes.string),
   buttonStyle: PropTypes.string,
   buttonText: PropTypes.string,
+  category: PropTypes.string,
+  collection: PropTypes.string,
   data: PropTypes.object,
   desktopQty: PropTypes.number,
   imgBackgroundColor: PropTypes.string,
@@ -133,8 +121,15 @@ const query = gql`
   }
 `
 
-const Shelf = graphql(query, {
-  options: ({category, brands, collection, productQty}) => ({variables: {category, brands, collection, pageSize: productQty || defaultProductQty}}),
-})(ShelfSlider)
+const options = ({category, brands, collection, productQty}) => ({
+  variables: {
+    category,
+    brands,
+    collection,
+    pageSize: productQty || defaultProductQty,
+  },
+})
+
+const Shelf = graphql(query, {options})(ShelfSlider)
 
 export default Shelf
