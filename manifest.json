@@ -9,9 +9,13 @@
   "settingsSchema": {},
   "dependencies": {
     "vtex.render": "0.x",
+    "vtex.react-slick": "0.15.0-beta",
     "npm:classnames": "2.2.5",
     "npm:react-apollo": "0.5.5",
     "npm:graphql-tag": "0.1.14",
     "npm:exenv": "1.2.1"
+  },
+  "scripts": {
+    "postreleasy": "vtex publish"
   }
 }
