@@ -52,7 +52,7 @@ class ShelfSlider extends Component {
       autoplay: false,
       draggable: false,
       slidesToShow: this.props.desktopQty || 4,
-      slidesToScroll: this.props.desktopQty || 4,
+      slidesToScroll: this.props.desktopQty || 1,
     }
 
     const settingsTouch = {
