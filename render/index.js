@@ -48,7 +48,7 @@ class ShelfSlider extends Component {
     const settingsDesktop = {
       dots: false,
       arrows: true,
-      infinite: false,
+      infinite: true,
       autoplay: false,
       draggable: false,
       slidesToShow: this.props.desktopQty || 4,
