@@ -67,7 +67,6 @@ class ShelfSlider extends Component {
     }
 
     const shelfItems = products.map(this.createCarouselItem)
-    console.log(shelfItems.length)
     const title = shelfItems.length > 0 && titleProp ? titleProp : ''
 
     return (
