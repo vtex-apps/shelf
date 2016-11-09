@@ -49,7 +49,6 @@ class ShelfSlider extends Component {
     const productQty = products.length || 0
     const slidesToShow = this.props.qty || (productQty >= 4 ? 4 : productQty)
     const slidesToScroll = this.props.qty || 1
-    const title = titleProp || ''
     const settingsDesktop = {
       dots: false,
       arrows: true,
@@ -68,6 +67,8 @@ class ShelfSlider extends Component {
     }
 
     const shelfItems = products.map(this.createCarouselItem)
+    console.log(shelfItems.length)
+    const title = shelfItems.length > 0 && titleProp ? titleProp : ''
 
     return (
       <div>
@@ -139,4 +140,6 @@ const options = ({category, brands, collection, productQty, products}) => ({
 
 const Shelf = graphql(query, {options})(ShelfSlider)
 
-export default connect()(Shelf)
+const ShelfConnected = connect()(Shelf)
+delete ShelfConnected.fetchData
+export default ShelfConnected
