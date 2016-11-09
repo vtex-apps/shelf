@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import styles from './tachyons.css'
 import {graphql} from 'react-apollo'
+import {connect} from 'react-redux'
 import Slider from 'vtex.react-slick'
 import classnames from 'classnames/bind'
 import ShelfProduct from './ShelfProduct'
@@ -43,7 +44,11 @@ class ShelfSlider extends Component {
   }
 
   render () {
-    const {title: titleProp, data: {products}, titleStyle} = this.props
+    const {title: titleProp, data: {products: productsFromQuery}, titleStyle, products: productsFromProps} = this.props
+    const products = productsFromProps || productsFromQuery || []
+    const productQty = products.length || 0
+    const slidesToShow = this.props.qty || (productQty >= 4 ? 4 : productQty)
+    const slidesToScroll = this.props.qty || 1
     const title = titleProp || ''
     const settingsDesktop = {
       dots: false,
@@ -51,16 +56,18 @@ class ShelfSlider extends Component {
       infinite: true,
       autoplay: false,
       draggable: false,
-      slidesToShow: this.props.desktopQty || 4,
-      slidesToScroll: this.props.desktopQty || 1,
+      slidesToShow: slidesToShow,
+      slidesToScroll: slidesToScroll,
+      ...this.props.slickSettings,
     }
 
     const settingsTouch = {
       ...settingsDesktop,
       draggable: true,
+      ...this.props.slickSettings,
     }
 
-    const shelfItems = (products || []).map(this.createCarouselItem)
+    const shelfItems = products.map(this.createCarouselItem)
 
     return (
       <div>
@@ -91,13 +98,12 @@ ShelfSlider.propTypes = {
   category: PropTypes.string,
   collection: PropTypes.string,
   data: PropTypes.object,
-  desktopQty: PropTypes.number,
   imgBackgroundColor: PropTypes.string,
   imgHeight: PropTypes.number,
   imgWidth: PropTypes.number,
   priceStyle: PropTypes.string,
+  qty: PropTypes.number,
   slickSettings: PropTypes.object,
-  tabletQty: PropTypes.number,
   textStyle: PropTypes.string,
   title: PropTypes.string,
   titleStyle: PropTypes.string,
@@ -121,15 +127,16 @@ const query = gql`
   }
 `
 
-const options = ({category, brands, collection, productQty}) => ({
+const options = ({category, brands, collection, productQty, products}) => ({
   variables: {
     category,
     brands,
     collection,
     pageSize: productQty || defaultProductQty,
   },
+  skip: products ? true : false,
 })
 
 const Shelf = graphql(query, {options})(ShelfSlider)
 
-export default Shelf
+export default connect()(Shelf)
