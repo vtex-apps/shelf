@@ -1,14 +1,11 @@
 import gql from 'graphql-tag'
-import styles from './tachyons.css'
 import {graphql} from 'react-apollo'
 import {connect} from 'react-redux'
 import Slider from 'vtex.react-slick'
-import classnames from 'classnames/bind'
 import ShelfProduct from './ShelfProduct'
 import React, {Component, PropTypes} from 'react'
 
 const defaultProductQty = 4
-const cx = classnames.bind(styles)
 
 class ShelfSlider extends Component {
   constructor (props) {
@@ -75,12 +72,12 @@ class ShelfSlider extends Component {
           {title}
         </h2>
         <div>
-          <div className={cx('dn', 'db-l')}>
+          <div className="dn db-l">
             <Slider {...settingsDesktop}>
               {shelfItems}
             </Slider>
           </div>
-          <div className={cx('db', 'dn-l')}>
+          <div className="db dn-l">
             <Slider {...settingsTouch}>
               {shelfItems}
             </Slider>
@@ -102,6 +99,7 @@ ShelfSlider.propTypes = {
   imgHeight: PropTypes.number,
   imgWidth: PropTypes.number,
   priceStyle: PropTypes.string,
+  products: PropTypes.arrayOf(PropTypes.object),
   qty: PropTypes.number,
   slickSettings: PropTypes.object,
   textStyle: PropTypes.string,
@@ -134,7 +132,7 @@ const options = ({category, brands, collection, productQty, products}) => ({
     collection,
     pageSize: productQty || defaultProductQty,
   },
-  skip: products ? true : false,
+  skip: products,
 })
 
 const Shelf = graphql(query, {options})(ShelfSlider)

@@ -1,11 +1,7 @@
 import Price from './Price'
 import Img from 'vtex.render/Img'
-import style from './tachyons.css'
 import Link from 'vtex.render/Link'
-import classNames from 'classnames/bind'
 import React, {Component, PropTypes} from 'react'
-
-const cx = classNames.bind(style)
 
 class ShelfProduct extends Component {
   handleDetails = (ev) => {
@@ -39,7 +35,7 @@ class ShelfProduct extends Component {
     return (
       <div>
         <Link to={`/${this.props.slug}/p`}>
-          <div className={cx('tc')}>
+          <div className="tc">
             <Img
               height={this.props.imgHeight}
               src={imageUrl}
@@ -49,21 +45,21 @@ class ShelfProduct extends Component {
         </Link>
         <div>
           <Link
-            className={this.props.textStyle || cx('no-underline', 'db', 'tc', 'black')}
+            className={this.props.textStyle || 'no-underline db tc black'}
             title={name}
             to={`/${this.props.slug}/p`}
           >
             {name}
           </Link>
-          <span className={this.props.priceStyle || cx('no-underline', 'db', 'tc', 'black')}>
+          <span className={this.props.priceStyle || 'no-underline db tc black'}>
             <Price value={price} />
           </span>
           <Link
-            className={cx('db', 'tc')}
+            className="db tc"
             title={name}
             to={`/${this.props.slug}/p`}
           >
-            <button className={this.props.buttonStyle || cx('f6', 'link', 'dim', 'br2', 'ba', 'ph3', 'pv2', 'mb2', 'dib', 'near-black')}>
+            <button className={this.props.buttonStyle || 'f6 link dim br2 ba ph3 pv2 mb2 dib near-black'}>
               {this.props.buttonText || 'Ver Detalhes'}
             </button>
           </Link>
