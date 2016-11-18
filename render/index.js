@@ -41,7 +41,8 @@ class ShelfSlider extends Component {
   }
 
   render () {
-    const {title: titleProp, data: {products: productsFromQuery}, titleStyle, products: productsFromProps} = this.props
+    const {title: titleProp, data, titleStyle, products: productsFromProps} = this.props
+    const productsFromQuery = data ? data.products : null
     const products = productsFromProps || productsFromQuery || []
     const productQty = products.length || 0
     const slidesToShow = this.props.qty || (productQty >= 4 ? 4 : productQty)
