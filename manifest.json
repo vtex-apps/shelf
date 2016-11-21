@@ -8,9 +8,8 @@
   "categories": [],
   "settingsSchema": {},
   "dependencies": {
-    "vtex.render": "0.0.50",
+    "vtex.render": "0.x",
     "vtex.react-slick": "0.x",
-    "npm:classnames": "2.2.5",
     "npm:exenv": "1.2.1"
   },
   "scripts": {
