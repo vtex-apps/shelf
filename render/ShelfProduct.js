@@ -33,37 +33,25 @@ class ShelfProduct extends Component {
     const price = lowestOffer ? lowestOffer.price : 0
 
     return (
-      <div>
-        <Link to={`/${this.props.slug}/p`}>
-          <div className="tc">
-            <Img
-              height={this.props.imgHeight}
-              src={imageUrl}
-              width={this.props.imgWidth}
-            />
+      <div className="tc">
+        <Link
+          className={this.props.textStyle || 'link db dim mh1 mh2-ns f6 f5-ns'}
+          title={name}
+          to={`/${this.props.slug}/p`}
+        >
+          <Img
+            height={this.props.imgHeight || 380}
+            src={imageUrl}
+            alt={name}
+            width={this.props.imgWidth || 380}
+          />
+          <div className={this.props.priceStyle || 'tl lh-title mt1 black-60'}>
+            {name}
+          </div>
+          <div className={this.props.priceStyle || 'tl b mt1 primary'}>
+            <Price value={price} />
           </div>
         </Link>
-        <div>
-          <Link
-            className={this.props.textStyle || 'no-underline db tc black'}
-            title={name}
-            to={`/${this.props.slug}/p`}
-          >
-            {name}
-          </Link>
-          <span className={this.props.priceStyle || 'no-underline db tc black'}>
-            <Price value={price} />
-          </span>
-          <Link
-            className="db tc"
-            title={name}
-            to={`/${this.props.slug}/p`}
-          >
-            <button className={this.props.buttonStyle || 'f6 link dim br2 ba ph3 pv2 mb2 dib near-black'}>
-              {this.props.buttonText || 'Ver Detalhes'}
-            </button>
-          </Link>
-        </div>
       </div>
     )
   }

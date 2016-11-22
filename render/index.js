@@ -58,9 +58,12 @@ class ShelfSlider extends Component {
       ...this.props.slickSettings,
     }
 
+    const slidesToShowTouch = this.props.qty || (productQty >= 2 ? 2 : productQty)
     const settingsTouch = {
       ...settingsDesktop,
+      arrows: false,
       draggable: true,
+      slidesToShow: slidesToShowTouch,
       ...this.props.slickSettings,
     }
 
@@ -68,21 +71,19 @@ class ShelfSlider extends Component {
     const title = shelfItems.length > 0 && titleProp ? titleProp : ''
 
     return (
-      <div>
-        <h2 className={titleStyle || ''}>
+      <div className="ph1 bt b--black-10">
+        <h2 className={titleStyle || 'font-display f3 normal ma0 pt3 mb2 black-70 light-secondary'}>
           {title}
         </h2>
-        <div>
-          <div className="dn db-l">
-            <Slider {...settingsDesktop}>
-              {shelfItems}
-            </Slider>
-          </div>
-          <div className="db dn-l">
-            <Slider {...settingsTouch}>
-              {shelfItems}
-            </Slider>
-          </div>
+        <div className="dn db-ns">
+          <Slider {...settingsDesktop}>
+            {shelfItems}
+          </Slider>
+        </div>
+        <div className="db dn-ns">
+          <Slider {...settingsTouch}>
+            {shelfItems}
+          </Slider>
         </div>
       </div>
     )
