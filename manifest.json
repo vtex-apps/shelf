@@ -10,6 +10,7 @@
   "dependencies": {
     "vtex.render": "0.x",
     "vtex.react-slick": "0.x",
+    "vtex.loading": "0.x",
     "npm:exenv": "1.2.1"
   },
   "scripts": {
