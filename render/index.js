@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import Loading from './Loading'
 import {graphql} from 'react-apollo'
 import {connect} from 'react-redux'
 import Slider from 'vtex.react-slick'
@@ -40,11 +41,22 @@ class ShelfSlider extends Component {
     )
   }
 
+  createLoadingItems (length) {
+    return Array(length).fill(null).map((_, idx) => {
+      return (
+        <div key={idx} className="w-25">
+          <Loading />
+        </div>
+      )
+    })
+  }
+
   render () {
     const {title: titleProp, data, titleStyle, products: productsFromProps} = this.props
+    const loading = data ? data.loading : false
     const productsFromQuery = data ? data.products : null
     const products = productsFromProps || productsFromQuery || []
-    const productQty = products.length || 0
+    const productQty = products.length || defaultProductQty
     const slidesToShow = this.props.qty || (productQty >= 4 ? 4 : productQty)
     const slidesToScroll = this.props.qty || 1
     const settingsDesktop = {
@@ -77,12 +89,20 @@ class ShelfSlider extends Component {
         </h2>
         <div className="dn db-ns">
           <Slider {...settingsDesktop}>
-            {shelfItems}
+            {
+              loading
+                ? this.createLoadingItems(slidesToShow)
+                : shelfItems
+            }
           </Slider>
         </div>
         <div className="db dn-ns">
           <Slider {...settingsTouch}>
-            {shelfItems}
+            {
+              loading
+                ? this.createLoadingItems(slidesToShowTouch)
+                : shelfItems
+            }
           </Slider>
         </div>
       </div>
