@@ -52,7 +52,7 @@ class ShelfSlider extends Component {
   }
 
   render () {
-    const {title: titleProp, data, titleStyle, products: productsFromProps} = this.props
+    const {title: titleProp, data, titleStyle, products: productsFromProps, className, header} = this.props
     const loading = data ? data.loading : false
     const productsFromQuery = data ? data.products : null
     const products = productsFromProps || productsFromQuery || []
@@ -81,12 +81,17 @@ class ShelfSlider extends Component {
 
     const shelfItems = products.map(this.createCarouselItem)
     const title = shelfItems.length > 0 && titleProp ? titleProp : ''
+    const defaultHeader = (
+      <h2 className={titleStyle || 'font-display f3 normal ma0 pt3 mb2 black-70 light-secondary'}>
+        {title}
+      </h2>
+    )
 
     return (
-      <div className="ph1 bt b--black-10">
-        <h2 className={titleStyle || 'font-display f3 normal ma0 pt3 mb2 black-70 light-secondary'}>
-          {title}
-        </h2>
+      <div className={className || 'ph1 bt b--black-10'}>
+        {
+          header || defaultHeader
+        }
         <div className="dn db-ns">
           <Slider {...settingsDesktop}>
             {
@@ -115,8 +120,10 @@ ShelfSlider.propTypes = {
   buttonStyle: PropTypes.string,
   buttonText: PropTypes.string,
   category: PropTypes.string,
+  className: PropTypes.string,
   collection: PropTypes.string,
   data: PropTypes.object,
+  header: PropTypes.object,
   imgBackgroundColor: PropTypes.string,
   imgHeight: PropTypes.number,
   imgWidth: PropTypes.number,
