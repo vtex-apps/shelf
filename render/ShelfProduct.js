@@ -49,14 +49,24 @@ class ShelfProduct extends Component {
           <div className={this.props.nameStyle || 'tl lh-title mt1 black-60'}>
             {name}
           </div>
-          <div className={this.props.listPriceStyle || 'tl b mt1 black-40'}>
-            <span>De: </span>
-            <span className="black-40 strike"><Price value={listPrice} /></span>
-          </div>
-          <div className={this.props.priceStyle || 'tl b mt1 primary'}>
-            <span>Por: </span>
-            <Price value={price} />
-          </div>
+          {
+            listPrice !== price ? (
+              <div>
+                <div className={this.props.listPriceStyle || 'tl b mt1 black-40'}>
+                  <span>De: </span>
+                  <span className="black-40 strike"><Price value={listPrice} /></span>
+                </div>
+                <div className={this.props.priceStyle || 'tl b mt1 primary'}>
+                  <span>Por: </span>
+                  <Price value={price} />
+                </div>
+              </div>
+            ) : (
+              <div className={this.props.priceStyle || 'tl b mt1 primary'}>
+                <Price value={price} />
+              </div>
+            )
+          }
         </Link>
       </div>
     )
