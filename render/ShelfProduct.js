@@ -31,6 +31,7 @@ class ShelfProduct extends Component {
     const imageUrl = sku.images.length > 0
       ? sku.images[0].src : 'http://placehold.it/200x235'
     const price = lowestOffer ? lowestOffer.price : 0
+    const listPrice = lowestOffer ? lowestOffer.listPrice : 0
 
     return (
       <div className="tc">
@@ -45,10 +46,15 @@ class ShelfProduct extends Component {
             alt={name}
             width={this.props.imgWidth || 380}
           />
-          <div className={this.props.priceStyle || 'tl lh-title mt1 black-60'}>
+          <div className={this.props.nameStyle || 'tl lh-title mt1 black-60'}>
             {name}
           </div>
+          <div className={this.props.listPriceStyle || 'tl b mt1 black-40'}>
+            <span>De: </span>
+            <span className="black-40 strike"><Price value={listPrice} /></span>
+          </div>
           <div className={this.props.priceStyle || 'tl b mt1 primary'}>
+            <span>Por: </span>
             <Price value={price} />
           </div>
         </Link>
@@ -63,7 +69,9 @@ ShelfProduct.propTypes = {
   imgBackgroundColor: PropTypes.string,
   imgHeight: PropTypes.number,
   imgWidth: PropTypes.number,
+  listPriceStyle: PropTypes.string,
   name: PropTypes.string,
+  nameStyle: PropTypes.string,
   priceStyle: PropTypes.string,
   skus: PropTypes.array,
   slug: PropTypes.string,
