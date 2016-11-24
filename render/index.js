@@ -141,6 +141,10 @@ const query = gql`
     products(category: $category, brands: $brands, collection: $collection, pageSize: $pageSize, availableOnly: true) {
       name,
       slug,
+      brand {
+        name,
+        slug
+      },
       skus {
         images {
           src
