@@ -52,7 +52,7 @@ class ShelfProduct extends Component {
           {
             listPrice !== price ? (
               <div>
-                <div className={this.props.listPriceStyle || 'tl b mt1 black-40'}>
+                <div className={this.props.listPriceStyle || 'tl mt1 black-40'}>
                   <span>De: </span>
                   <span className="black-40 strike"><Price value={listPrice} /></span>
                 </div>
