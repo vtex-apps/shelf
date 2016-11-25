@@ -45,6 +45,7 @@ class ShelfProduct extends Component {
             src={imageUrl}
             alt={name}
             width={this.props.imgWidth || 380}
+            className="br2 ba b--black-05"
           />
           <div className={this.props.nameStyle || 'tl lh-title mt1 black-60'}>
             {name}
