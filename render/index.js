@@ -61,8 +61,8 @@ class ShelfSlider extends Component {
     const slidesToScroll = this.props.qty || 1
     const settingsDesktop = {
       dots: false,
-      arrows: true,
-      infinite: true,
+      arrows: productQty > slidesToShow,
+      infinite: productQty > slidesToShow,
       autoplay: false,
       draggable: false,
       slidesToShow: slidesToShow,
