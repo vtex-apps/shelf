@@ -1,12 +1,14 @@
 import gql from 'graphql-tag'
-import Loading from './Loading'
-import {graphql} from 'react-apollo'
-import {connect} from 'react-redux'
+import { graphql } from 'react-apollo'
+import { connect } from 'react-redux'
 import Slider from 'vtex.react-slick'
+import React, { Component, PropTypes } from 'react'
+
+import Loading from './Loading'
 import ShelfProduct from './ShelfProduct'
-import React, {Component, PropTypes} from 'react'
 
 const defaultProductQty = 4
+const EMPTY_ARRAY = []
 
 class ShelfSlider extends Component {
   constructor (props) {
@@ -36,7 +38,7 @@ class ShelfSlider extends Component {
           imgWidth={imgWidth || null}
           priceStyle={priceStyle}
           textStyle={textStyle}
-        />
+          />
       </div>
     )
   }
@@ -55,9 +57,9 @@ class ShelfSlider extends Component {
     const {title: titleProp, data, titleStyle, products: productsFromProps, className, header} = this.props
     const loading = data ? data.loading : false
     const productsFromQuery = data ? data.products : null
-    const products = productsFromProps || productsFromQuery || []
+    const products = productsFromProps || productsFromQuery || EMPTY_ARRAY
     const productQty = products.length || defaultProductQty
-    const slidesToShow = this.props.qty || (productQty >= 4 ? 4 : productQty)
+    const slidesToShow = this.props.qty || Math.min(4, productQty)
     const slidesToScroll = this.props.qty || 1
     const settingsDesktop = {
       dots: false,
@@ -70,11 +72,12 @@ class ShelfSlider extends Component {
       ...this.props.slickSettings,
     }
 
-    const slidesToShowTouch = this.props.qty || (productQty >= 2 ? 2 : productQty)
+    const slidesToShowTouch = this.props.qty || (productQty >= 1 ? 1 : productQty)
     const settingsTouch = {
       ...settingsDesktop,
       arrows: false,
       draggable: true,
+      centerMode: true,
       slidesToShow: slidesToShowTouch,
       ...this.props.slickSettings,
     }
@@ -88,7 +91,7 @@ class ShelfSlider extends Component {
     )
 
     return (
-      <div className={className || 'ph1 bt b--black-10'}>
+      <div className={className || ''}>
         {
           header || defaultHeader
         }
@@ -131,6 +134,7 @@ ShelfSlider.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
   qty: PropTypes.number,
   slickSettings: PropTypes.object,
+  slickSettingsMobile: PropTypes.object,
   textStyle: PropTypes.string,
   title: PropTypes.string,
   titleStyle: PropTypes.string,
@@ -168,7 +172,7 @@ const options = ({category, brands, collection, productQty, products}) => ({
   skip: products,
 })
 
-const Shelf = graphql(query, {options})(ShelfSlider)
+const Shelf = graphql(query, { options })(ShelfSlider)
 
 const ShelfConnected = connect()(Shelf)
 delete ShelfConnected.fetchData

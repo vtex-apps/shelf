@@ -3,7 +3,7 @@ import {ShimmerLoading, TextLineLoading} from 'vtex.loading'
 
 // eslint-disable-next-line
 class Loading extends Component {
-  render() {
+  render () {
     return (
       <div className="ph2">
         <ShimmerLoading
