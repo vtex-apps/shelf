@@ -156,6 +156,7 @@ const query = gql`
         offers {
           price
           listPrice
+          availability
           seller {
             id
             name
