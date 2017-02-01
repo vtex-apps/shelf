@@ -9,7 +9,12 @@ export const SHELF_PRODUCT_IMG_WIDTH = 291
 const EMPTY_ARRAY = []
 
 class ShelfProduct extends Component {
-  handleDetails = (ev) => {
+  constructor (props) {
+    super(props)
+    this.handleDetails = this.handleDetails.bind(this)
+  }
+  
+  handleDetails (ev) {
     ev.preventDefault()
     history.pushState(null, `/${this.props.slug}/p`)
   }
