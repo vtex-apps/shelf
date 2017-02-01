@@ -4,10 +4,6 @@ import React, { Component, PropTypes } from 'react'
 
 // eslint-disable-next-line
 class Price extends Component {
-  static propTypes = {
-    value: React.PropTypes.number.isRequired,
-  }
-
   render () {
     return (
       <FormattedNumber
@@ -20,6 +16,7 @@ class Price extends Component {
 }
 
 Price.propTypes = {
+  value: PropTypes.number.isRequired,
   currency: PropTypes.string,
 }
 
