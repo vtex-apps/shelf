@@ -1,8 +1,7 @@
 import Img from 'vtex.render-runtime/components/Img'
 import Link from 'vtex.render-runtime/components/Link'
+import Price from 'vtex.price'
 import React, { Component, PropTypes } from 'react'
-
-import Price from './Price'
 
 export const SHELF_PRODUCT_IMG_WIDTH = 291
 
