@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import { FormattedNumber } from 'react-intl'
 import React, { Component, PropTypes } from 'react'
 
@@ -20,12 +19,4 @@ Price.propTypes = {
   currency: PropTypes.string,
 }
 
-const mapStateToProps = (state) => {
-  const {culture} = state.context
-  const {currency} = culture
-  return { currency }
-}
-
-const PriceWithDataConnected = connect(mapStateToProps)(Price)
-
-export default PriceWithDataConnected
+export default Price

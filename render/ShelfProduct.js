@@ -1,5 +1,5 @@
-import Img from 'vtex.render/Img'
-import Link from 'vtex.render/Link'
+import Img from 'vtex.render-runtime/components/Img'
+import Link from 'vtex.render-runtime/components/Link'
 import React, { Component, PropTypes } from 'react'
 
 import Price from './Price'
@@ -22,6 +22,7 @@ class ShelfProduct extends Component {
   render () {
     let defaultSkuIndex = 0
     let lowestOffer
+    const {currency} = this.props
     const skus = this.props.skus || EMPTY_ARRAY
     skus.forEach((sku, skuIndex) => {
       let isLowest
@@ -66,16 +67,16 @@ class ShelfProduct extends Component {
                 <div className="pb3">
                   <div className={this.props.listPriceStyle || 'fl f6 mt2 black-40'}>
                     <span>De: </span>
-                    <span className="strike"><Price value={listPrice} /></span>
+                    <span className="strike"><Price value={listPrice} currency={currency} /></span>
                   </div>
                   <div className={this.props.priceStyle || 'fr dib pv1 ph2 ba br2 b--washed-primary tc mt1 light-primary'}>
                     <span className="clip">Por: </span>
-                    <Price value={price} />
+                    <Price value={price} currency={currency} />
                   </div>
                 </div>
               ) : (
                 <div className={this.props.priceStyle || 'fr dib pv1 ph2 ba br2 b--washed-primary tc mt1 light-primary'}>
-                    <Price value={price} />
+                    <Price value={price} currency={currency} />
                   </div>
                 )
             }
@@ -89,6 +90,7 @@ class ShelfProduct extends Component {
 ShelfProduct.propTypes = {
   buttonStyle: PropTypes.string,
   buttonText: PropTypes.string,
+  currency: PropTypes.string.isRequired,
   imgBackgroundColor: PropTypes.string,
   imgHeight: PropTypes.number,
   imgWidth: PropTypes.number,

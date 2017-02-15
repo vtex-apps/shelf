@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import { connect } from 'react-redux'
 import Slider from 'vtex.react-slick'
 import React, { Component, PropTypes } from 'react'
 
@@ -24,6 +23,7 @@ class ShelfSlider extends Component {
       priceStyle,
       buttonText,
       buttonStyle,
+      currency,
       imgBackgroundColor,
     } = this.props
 
@@ -33,6 +33,7 @@ class ShelfSlider extends Component {
           {...product}
           buttonStyle={buttonStyle}
           buttonText={buttonText}
+          currency={currency}
           imgBackgroundColor={imgBackgroundColor}
           imgHeight={imgHeight || null}
           imgWidth={imgWidth || null}
@@ -125,6 +126,7 @@ ShelfSlider.propTypes = {
   category: PropTypes.string,
   className: PropTypes.string,
   collection: PropTypes.string,
+  currency: PropTypes.string.isRequired,
   data: PropTypes.object,
   header: PropTypes.object,
   imgBackgroundColor: PropTypes.string,
@@ -177,8 +179,4 @@ const options = ({category, brands, collection, productQty, products}) => ({
   skip: products,
 })
 
-const Shelf = graphql(query, { options })(ShelfSlider)
-
-const ShelfConnected = connect()(Shelf)
-delete ShelfConnected.fetchData
-export default ShelfConnected
+export default graphql(query, { options })(ShelfSlider)
