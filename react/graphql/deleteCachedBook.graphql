@@ -1,0 +1,3 @@
+mutation deleteCachedBook($id: ID!) {
+  deleteCachedBook(id: $id)
+}

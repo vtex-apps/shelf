@@ -1,0 +1,12 @@
+query GetBooks {
+  autopersistedBooks {
+    id
+    name
+    authors
+  }
+  cachedBooks {
+    id
+    name
+    authors
+  }
+}

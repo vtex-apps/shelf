@@ -1,21 +1,25 @@
 {
   "name": "shelf",
   "vendor": "vtex",
-  "version": "0.8.1",
-  "title": "VTEX Shelf",
-  "description": "A shelf component",
-  "mustUpdateAt": "2017-09-26",
-  "categories": [],
-  "settingsSchema": {},
-  "dependencies": {
-    "vtex.render-runtime": "0.x",
-    "vtex.render-builder": "0.x",
-    "vtex.react-slick": "0.x",
-    "vtex.price": "0.1.x",
-    "vtex.loading": "0.x",
-    "npm:exenv": "1.2.1"
-  },
+  "version": "0.1.0",
+  "title": "Shelf",
+  "description": "",
+  "mustUpdateAt": "2019-04-03",
+  "registries": [
+    "smartcheckout"
+  ],
   "scripts": {
-    "postreleasy": "vtex publish"
-  }
+    "postreleasy": "vtex publish --public"
+  },
+  "builders": {
+    "node": "3.x",
+    "graphql": "1.x",
+    "react": "2.x",
+    "pages": "0.x"
+  },
+  "policies": [
+    {
+      "name": "full-access"
+    }
+  ]
 }

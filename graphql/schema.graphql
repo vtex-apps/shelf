@@ -1,0 +1,33 @@
+# To really understand GraphQL, go to http://graphql.org/learn/
+
+# Autopersisted types are stored automatically in VTEX masterdata
+type AutopersistedBook @autopersist {
+  id: ID!                   # Autopersisted types must have an ID
+  name: String @searchable  # @searchable allows you to fetch a book by it's name
+  authors: [String!]        # This is an array of non-null strings
+}
+
+# Cache control can be set at each field
+# ref: https://www.apollographql.com/docs/engine/caching.html
+type CachedBook @cacheControl(scope: PUBLIC, maxAge: SHORT) {
+  id: ID!
+  name: String       @cacheControl(scope: PUBLIC, maxAge: MEDIUM)
+  authors: [String!] @cacheControl(scope: PRIVATE)
+}
+
+# It is necessary to generate input types for creating books
+# ref: http://graphql.org/graphql-js/mutations-and-input-types/
+input CachedBookInput {
+  name: String
+  authors: [String!]
+}
+
+type Query {
+  cachedBooks: [CachedBook!]
+  cachedBook(id: ID!): CachedBook
+}
+
+type Mutation {
+  deleteCachedBook(id: ID!): Boolean
+  createCachedBook(data: CachedBookInput): CachedBook
+}
