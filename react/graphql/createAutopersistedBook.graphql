@@ -1,8 +1,0 @@
-mutation CreateBook($name: String, $authors: [String!]) {
-  createAutopersistedBook(data: {
-    name: $name
-    authors: $authors
-  }) {
-    id
-  }
-}

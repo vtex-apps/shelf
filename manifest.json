@@ -5,6 +5,7 @@
   "title": "Shelf",
   "description": "",
   "mustUpdateAt": "2019-04-03",
+  "credentialType": "absolute",
   "registries": [
     "smartcheckout"
   ],
@@ -19,7 +20,11 @@
   },
   "policies": [
     {
-      "name": "full-access"
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/catalog_system/*"
+      }
     }
   ]
 }

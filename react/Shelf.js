@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import {compose, graphql} from 'react-apollo'
+
 import Slider from 'react-slick'
-import products from './productsMock.js'
 import ShelfItem from './ShelfItem';
 
+import getRecomendations from './graphql/getRecomendations.graphql'
+
 const defaultSettings = {
-  dots: true,
+  dots: false,
   arrows: true,
   infinite: false,
   speed: 500,
   initialSlide: 0,
+  slidesToShow: 5,
+  slidesToScroll: 1,
   responsive: [{
     breakpoint: 1024,
     settings: {
@@ -26,16 +32,47 @@ const defaultSettings = {
   }]
 };
 
-export default class Shelf extends Component {
+class Shelf extends Component {
 
-  static defaultProps = {
-    itemProperties: {
-      imgWidth: 200
+  static schema = {
+    title: 'Shelf',
+    description: 'A product shelf featuring a collection',
+    type: 'object',
+    properties: {
+      // orderBy: {
+      //   title: 'Order by',
+      //   type: 'string',
+      //   enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC'],
+      //   enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
+      // },
+      slidesToShow: {
+        title: 'Quantity',
+        type: 'number',
+        default: 5,
+        enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      },
+      imgWidth: {
+        title: 'Image Size',
+        type: 'number',
+        default: 200,
+        enum: [50, 100, 150, 200, 250, 300, 350]
+      },
+      slidesToScroll: {
+        title: 'Scrool Size',
+        type: 'number',
+        default: 1
+      },
+      arrows: {
+        title: 'Arrows',
+        type: 'boolean',
+        default: true
+      },
+      dots: {
+        title: 'Dots',
+        type: 'boolean',
+        default: false
+      },
     },
-    slideProperties: {
-      slidesToShow: 5,
-      slidesToScroll: 1
-    }
   }
 
   state = {
@@ -49,16 +86,18 @@ export default class Shelf extends Component {
   }
 
   render() {
+    const { data, imgWidth } = this.props;
     const { sliderMounted } = this.state;
-    const { itemProperties, slideProperties } = this.props;
-
+    const recomendations = data['error'] ? [] : data.getRecomendations;
+    
     return (
       <div className="ml7 mr7">
-        <Slider {...defaultSettings} {...slideProperties}>
-          {sliderMounted && products.map((product) => {
+        {data.loading && <div> Loading... </div>}
+        <Slider {...defaultSettings} {...this.props}>
+          {sliderMounted && recomendations && recomendations.map((product) => {
             return (
               <div key={product.name}>
-                <ShelfItem {...product} {...itemProperties} />
+                <ShelfItem {...product} imgWidth={imgWidth || 200} />
               </div>
             )
           })}
@@ -67,3 +106,32 @@ export default class Shelf extends Component {
     )
   }
 }
+
+const options = {
+  options: ({
+    imgWidth,
+    slidesToShow,
+    slidesToScroll,
+    arrows,
+    dots
+  }) => ({
+    variables: {
+      imgWidth,
+      slidesToShow,
+      slidesToScroll,
+      arrows,
+      dots
+    },
+    ssr: false
+  }),
+}
+
+Shelf.propTypes = {
+  imgWidth: PropTypes.number,
+  slidesToShow: PropTypes.number,
+  slidesToScroll: PropTypes.number,
+  arrows: PropTypes.bool,
+  dots: PropTypes.bool
+}
+
+export default graphql(getRecomendations, options)(Shelf)

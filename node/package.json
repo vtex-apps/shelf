@@ -1,7 +1,7 @@
 {
-  "name": "vtex.shelf",
-  "version": "0.0.1",
-  "description": "",
+  "name": "vtex.server.shelf",
+  "version": "0.1.0",
+  "description": "Dependencies of the Shelf resolvers",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react-slick": "^0.22.3",
-    "slick-carousel": "^1.8.1"
+    "axios": "^0.18.0"
   }
 }

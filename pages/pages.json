@@ -1,12 +1,12 @@
 {
   "pages": {
-    "library": {
+    "shelf": {
       "path": "/",
       "theme": "theme"
     }
   },
   "extensions": {
-    "library": {
+    "shelf": {
       "component": "Shelf"
     }
   }

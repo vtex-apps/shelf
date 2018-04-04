@@ -1,3 +1,0 @@
-mutation deleteAutopersistedBook($id: ID!) {
-  deleteAutopersistedBook(id: $id)
-}
