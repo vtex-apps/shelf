@@ -3,7 +3,7 @@
 type Product {
   id: ID!
   name: String
-  image: String
+  imagePath: String
   price: Float
 }
 

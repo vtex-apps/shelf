@@ -1,5 +1,5 @@
 query GetRecomendations {
   getRecomendations(productId: 2) {
-    id, name, image, price
+    id, name, imagePath, price
   }
 }
