@@ -3,23 +3,12 @@ import PropTypes from 'prop-types'
 import {compose, graphql} from 'react-apollo'
 
 import Slider from 'react-slick'
-import ShelfItem from './ShelfItem';
-import Spinner from '@vtex/styleguide/lib/Spinner';
+import ShelfItem from './ShelfItem'
+import Arrow from './Arrow'
+import Spinner from '@vtex/styleguide/lib/Spinner'
 
 import getRecomendations from './graphql/getRecomendations.graphql'
-
-const spinnerStyle = require('./node_modules/@vtex/styleguide/lib/Spinner/style.css')
-
-const Arrow = (props) => {
-  const { className, style, onClick, colorHex, arrowSize } = props
-  return (
-    <div
-      className={className}
-      style={{ ...style, color: `#${colorHex}`, fontSize: `${arrowSize}px`  }}
-      onClick={onClick}
-    />
-  )
-}
+import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
 /**
  * Shelf Component. Shows a collection of products.
@@ -39,35 +28,35 @@ class Shelf extends Component {
   configureSettings() {
     let { 
       slidesToShow, autoplay, autoplaySpeed, 
-      arrows, dots, arrowColorHex, arrowSize 
+      arrows, dots, iconsColor
     } = this.props
 
-    slidesToShow = slidesToShow || 5
-    arrowColorHex = arrowColorHex || '000'
-    arrowSize = arrowSize || 20
-    arrows = arrows == undefined ? true : arrows
-
     return {
-      slidesToShow: slidesToShow,
-      autoplay: autoplay,
+      slidesToShow: slidesToShow || 5,
+      autoplay,
       autoplaySpeed: autoplaySpeed ? autoplaySpeed * 1000 : 3000,
       dots, 
-      arrows,
+      arrows: arrows == undefined ? true : arrows,
       pauseOnHover: true,
-      nextArrow: <Arrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
-      prevArrow: <Arrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
+      nextArrow: <Arrow color={iconsColor || '#000'} />,
+      prevArrow: <Arrow color={iconsColor || '#000'} />,
       infinite: false,
+      appendDots: (dots) => (
+        <div className="pa2 br4">
+          <ul className="ma0 pa0" style={{ color: iconsColor }}> 
+            {dots} 
+          </ul>
+        </div>
+      ),
       responsive: [{
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          arrows: false
+          slidesToShow: 3
         }
       }, {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
-          arrows: false
+          slidesToShow: 1
         }
       }]
     }
@@ -140,41 +129,31 @@ Shelf.schema = {
       type: 'boolean',
       default: true
     },
-    arrowColorHex: {
-      title: 'Arrow Color (Hex)',
+    iconsColor: {
+      title: 'Icons Color',
       type: 'string',
-      default: '000'
-    },
-    arrowSize: {
-      title: 'Arrow Size (px)',
-      type: 'number',
-      default: 15
+      default: '#000'
     }
   }
 }
 
-/**
- * @type {Object}
- * @property {?Object} data - The graphql data response
- * @property {?number} slidesToShow - How many slides to show in one frame
- * @property {?number} maxItems - Maximum number of items in the shelf
- * @property {?bool}  autoplay - Should change images automatically
- * @property {?number}  autoplaySpeed - Delay between each auto scroll (in seconds)
- * @property {?boolean} arrows - Should show the arrows or not
- * @property {?boolean} dots - Should show the dots or not
- * @property {?string} arrowColorHex - The Hex value of the arrow color
- * @property {?number} arrowSize - The size of the arrow (in px)
- */
 Shelf.propTypes = {
+  /** The graphql data response */
   data: PropTypes.object,
-  slidesToShow: PropTypes.number,
-  maxItems: PropTypes.number,
+  /** How many slides to show in one frame */
+  slidesToShow: PropTypes.number.isRequired,
+  /** Maximum number of items in the shelf */
+  maxItems: PropTypes.number.isRequired,
+  /** Should change images automatically */
   autoplay: PropTypes.bool,
+  /** Delay between each auto scroll (in seconds) */
   autoplaySpeed: PropTypes.number,
+  /** Should show the arrows or not */
   arrows: PropTypes.bool,
+  /** Should show the dots or not */
   dots: PropTypes.bool,
-  arrowColorHex: PropTypes.string,
-  arrowSize: PropTypes.number
+  /** The value of the arrow color. Ex: '#FFF' or 'rgb(255,0,0)' */
+  iconsColor: PropTypes.string
 }
 
 export default graphql(getRecomendations)(Shelf)

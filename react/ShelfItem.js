@@ -18,17 +18,14 @@ class ShelfItem extends Component {
   }
 }
 
-/**
- * @type {Object}
- * @property {!string} name - The name of the item
- * @property {!string} imagePath - The path of the image representing the item
- * @property {!number} price - The price of the item
- * @property {?number} imageWidth - The width of the image
- */
 ShelfItem.propTypes = {
+  /** The name of the item */
   name: PropTypes.string.isRequired,
+  /** The path of the image representing the item */
   imagePath: PropTypes.string.isRequired,
+  /** The price of the item */
   price: PropTypes.number.isRequired,
+  /** The width of the image */
   imageWidth: PropTypes.number
 }
 

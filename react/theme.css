@@ -181,7 +181,6 @@
 .slick-next.slick-disabled:before
 {
     opacity: .25;
-    font-size: inherit;
     color: inherit;
 }
 
@@ -189,11 +188,10 @@
 .slick-next:before
 {
     font-family: 'slick';
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1;
 
     opacity: .75;
-    font-size: inherit;
     color: inherit;
 
     -webkit-font-smoothing: antialiased;
@@ -220,7 +218,7 @@
 
 .slick-next
 {
-    right: -25px;
+    right: -15px;
 }
 [dir='rtl'] .slick-next
 {
@@ -282,8 +280,9 @@
     padding: 5px;
 
     cursor: pointer;
+    color: inherit;
 
-    color: transparent;
+    color: inherit;
     border: 0;
     outline: none;
     background: transparent;
@@ -301,7 +300,7 @@
 .slick-dots li button:before
 {
     font-family: 'slick';
-    font-size: 6px;
+    font-size: 16px;
     line-height: 20px;
 
     position: absolute;
@@ -315,7 +314,7 @@
     text-align: center;
 
     opacity: .25;
-    color: black;
+    color: inherit;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -323,5 +322,5 @@
 .slick-dots li.slick-active button:before
 {
     opacity: .75;
-    color: black;
+    color: inherit;
 }
