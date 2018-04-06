@@ -82,9 +82,11 @@ class Shelf extends Component {
     return (
       <div className="ml7 mr7 pv4">
         {
-          data.loading && 
-          <div style={{width: "30px", height: "30px"}}>
-            <Spinner style={spinnerStyle}/>
+          data.loading &&
+          <div className="w-100 flex justify-center">
+            <div className="w3 ma0">
+              <Spinner style={spinnerStyle}/>
+            </div>
           </div>
         }
         <Slider {...slideSettings}>
@@ -153,15 +155,15 @@ Shelf.schema = {
 
 /**
  * @type {Object}
- * @property {Object} data - The graphql data response
- * @property {number} slidesToShow - How many slides to show in one frame
- * @property {number} maxItems - Maximum number of items in the shelf
- * @property {bool}  autoplay - Should change images automatically
- * @property {number}  autoplaySpeed - Delay between each auto scroll (in seconds)
- * @property {boolean} arrows - Should show the arrows or not
- * @property {boolean} dots - Should show the dots or not
- * @property {string} arrowColorHex - The Hex value of the arrow color
- * @property {number} arrowSize - The size of the arrow (in px)
+ * @property {?Object} data - The graphql data response
+ * @property {?number} slidesToShow - How many slides to show in one frame
+ * @property {?number} maxItems - Maximum number of items in the shelf
+ * @property {?bool}  autoplay - Should change images automatically
+ * @property {?number}  autoplaySpeed - Delay between each auto scroll (in seconds)
+ * @property {?boolean} arrows - Should show the arrows or not
+ * @property {?boolean} dots - Should show the dots or not
+ * @property {?string} arrowColorHex - The Hex value of the arrow color
+ * @property {?number} arrowSize - The size of the arrow (in px)
  */
 Shelf.propTypes = {
   data: PropTypes.object,

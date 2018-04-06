@@ -20,20 +20,15 @@ class ShelfItem extends Component {
 
 /**
  * @type {Object}
- * @property {!boolean} autoplay - Should change images automatically
- * @property {!number}  autoplaySpeed - How long it should wait to change the banner in secs
- * @property {?boolean} showDots - Should show the dots or not
- * @property {?boolean} showArrows - Should show the arrows or not
- * @property {?string}  arrowColor - The color of the arrows background
- * @property {Object}   banner[n] - Banners that will be displayed by the Carousel
- * @property {!string}   banner[n].image - The image url of the banner
- * @property {?string}   banner[n].page - The page that the banner will be liking to
- * @property {!string}   banner[n].description - The description of the image
+ * @property {!string} name - The name of the item
+ * @property {!string} imagePath - The path of the image representing the item
+ * @property {!number} price - The price of the item
+ * @property {?number} imageWidth - The width of the image
  */
 ShelfItem.propTypes = {
-  name: PropTypes.string,
-  imagePath: PropTypes.string,
-  price: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   imageWidth: PropTypes.number
 }
 
