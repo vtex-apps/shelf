@@ -148,14 +148,13 @@ Shelf.schema = {
     arrowColorHex: {
       title: 'Arrow Color (Hex)',
       type: 'string',
-      default: 'FFF'
+      default: '000'
     },
     arrowSize: {
       title: 'Arrow Size (px)',
       type: 'number',
       default: 15
-    },
-    ssr: false
+    }
   }
 }
 
