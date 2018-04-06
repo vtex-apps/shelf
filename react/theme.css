@@ -1,3 +1,4 @@
+/* ============== SLICK CSS =============== */
 /* Slider */
 .slick-slider
 {
@@ -55,6 +56,8 @@
     left: 0;
 
     display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .slick-track:before,
 .slick-track:after
@@ -116,6 +119,22 @@
     display: none;
 }
 
+/* =============== Slick theme ================ */
+
+/* Slider */
+.slick-loading .slick-list {
+}
+
+/* Icons */
+@font-face
+{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('./node_modules/slick-carousel/slick/fonts/slick.eot');
+    src: url('./node_modules/slick-carousel/slick/fonts/slick.eot?#iefix') format('embedded-opentype'), url('./node_modules/slick-carousel/slick/fonts/slick.woff') format('woff'), url('./node_modules/slick-carousel/slick/fonts/slick.ttf') format('truetype'), url('./node_modules/slick-carousel/slick/fonts/slick.svg#slick') format('svg');
+}
 /* Arrows */
 .slick-prev,
 .slick-next
@@ -128,8 +147,8 @@
 
     display: block;
 
-    width: 20px;
-    height: 20px;
+    width: auto;
+    height: auto;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -162,6 +181,8 @@
 .slick-next.slick-disabled:before
 {
     opacity: .25;
+    font-size: inherit;
+    color: inherit;
 }
 
 .slick-prev:before,
@@ -172,7 +193,8 @@
     line-height: 1;
 
     opacity: .75;
-    color: white;
+    font-size: inherit;
+    color: inherit;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -189,13 +211,11 @@
 }
 .slick-prev:before
 {
-    content: '<';
-    color: black;
+    content: '←';
 }
 [dir='rtl'] .slick-prev:before
 {
-    content: '<';
-    color: black;
+    content: '→';
 }
 
 .slick-next
@@ -205,17 +225,15 @@
 [dir='rtl'] .slick-next
 {
     right: auto;
-    left: -25px;
+    left: -20px;
 }
 .slick-next:before
 {
-    content: '>';
-    color: black;
+    content: '→';
 }
 [dir='rtl'] .slick-next:before
 {
-    content: '>';
-    color: black;
+    content: '←';
 }
 
 /* Dots */
@@ -283,7 +301,7 @@
 .slick-dots li button:before
 {
     font-family: 'slick';
-    font-size: 26px;
+    font-size: 6px;
     line-height: 20px;
 
     position: absolute;
@@ -293,7 +311,7 @@
     width: 20px;
     height: 20px;
 
-    content: 'o';
+    content: '•';
     text-align: center;
 
     opacity: .25;

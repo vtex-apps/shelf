@@ -11,17 +11,13 @@ export const resolvers = {
       let productId = 2
       let url = `http://${account}.${environment}.com.br/api/catalog_system/pub/products/crossselling/whoboughtalsobought/${productId}`
       
-      // axios.get(url, {
+      // let whoboughtalsobought= await axios.get(url, {
       //   headers: {
       //         'X-VTEX-API-AppKey': VTEX_API_KEY,
       //         'X-VTEX-API-AppToken': VTEX_API_TOKEN,
       //         'Proxy-Authorization': VTEX_API_TOKEN
       //       }
-      // }).then((response) => {
-      //   console.log(response)
-      // }, (err) => {
-      //   console.log(err)
-      // })
+      // });
 
       return [
         {
