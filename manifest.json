@@ -2,8 +2,8 @@
   "name": "shelf",
   "vendor": "vtex",
   "version": "0.9.0",
-  "title": "Shelf",
-  "description": "",
+  "title": "VTEX Shelf",
+  "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
   "registries": [
     "smartcheckout"
