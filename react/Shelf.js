@@ -10,24 +10,12 @@ import getRecomendations from './graphql/getRecomendations.graphql'
 
 const spinnerStyle = require('./node_modules/@vtex/styleguide/lib/Spinner/style.css')
 
-const NextArrow = (props) => {
+const Arrow = (props) => {
   const { className, style, onClick, colorHex, arrowSize } = props
   return (
     <div
       className={className}
       style={{ ...style, color: `#${colorHex}`, fontSize: `${arrowSize}px`  }}
-      onClick={onClick}
-    />
-  )
-}
- 
-
-const PrevArrow = (props) => {
-  const { className, style, onClick, colorHex, arrowSize } = props
-  return (
-    <div
-      className={className}
-      style={{ ...style, color: `#${colorHex}`, fontSize: `${arrowSize}px` }}
       onClick={onClick}
     />
   )
@@ -49,20 +37,25 @@ class Shelf extends Component {
   }
 
   configureSettings() {
-    const { 
+    let { 
       slidesToShow, autoplay, autoplaySpeed, 
       arrows, dots, arrowColorHex, arrowSize 
     } = this.props
 
+    slidesToShow = slidesToShow || 5
+    arrowColorHex = arrowColorHex || '000'
+    arrowSize = arrowSize || 20
+    arrows = arrows == undefined ? true : arrows
+
     return {
-      slidesToShow,
-      autoplay,
+      slidesToShow: slidesToShow,
+      autoplay: autoplay,
       autoplaySpeed: autoplaySpeed ? autoplaySpeed * 1000 : 3000,
       dots, 
       arrows,
       pauseOnHover: true,
-      nextArrow: <NextArrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
-      prevArrow: <PrevArrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
+      nextArrow: <Arrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
+      prevArrow: <Arrow colorHex={arrowColorHex} arrowSize={arrowSize}/>,
       infinite: false,
       responsive: [{
         breakpoint: 1024,
@@ -132,8 +125,8 @@ Shelf.schema = {
     autoplaySpeed: {
       title: 'Auto Play Speed (s)',
       type: 'number',
-      default: 3000,
-      enum: [500, 1000, 1500, 2000, 3500, 3000]
+      default: 3,
+      enum: [0.5, 1, 1.5, 2, 3.5, 3]
     },
     dots: {
       title: 'Dots',
@@ -143,7 +136,7 @@ Shelf.schema = {
     arrows: {
       title: 'Arrows',
       type: 'boolean',
-      default: false
+      default: true
     },
     arrowColorHex: {
       title: 'Arrow Color (Hex)',
