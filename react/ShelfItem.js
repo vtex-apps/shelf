@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 /**
- * Shelf Item. Shows a summary of a product.
+ * Shelf Item Component. Shows a summary of a product.
  */
 class ShelfItem extends Component {
   render() {

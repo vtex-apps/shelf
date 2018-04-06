@@ -33,6 +33,9 @@ const PrevArrow = (props) => {
   )
 }
 
+/**
+ * Shelf Component. Shows a collection of products.
+ */
 class Shelf extends Component {
 
   state = {
@@ -85,7 +88,12 @@ class Shelf extends Component {
 
     return (
       <div className="ml7 mr7 pv4">
-        
+        {
+          data.loading && 
+          <div style={{width: "30px", height: "30px"}}>
+            <Spinner style={spinnerStyle}/>
+          </div>
+        }
         <Slider {...slideSettings}>
           {sliderMounted && recomendations && recomendations.slice(0, maxItems).map((item) => {
             return (
