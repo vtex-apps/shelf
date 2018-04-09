@@ -42,11 +42,9 @@ class Shelf extends Component {
       prevArrow: <Arrow color={iconsColor || '#000'} />,
       infinite: false,
       appendDots: (dots) => (
-        <div className="pa2 br4">
-          <ul className="ma0 pa0" style={{ color: iconsColor }}> 
-            {dots} 
-          </ul>
-        </div>
+        <ul className="pa2 br4 ma0 pa0" style={{ color: iconsColor }}> 
+          {dots} 
+        </ul>
       ),
       responsive: [{
         breakpoint: 1024,
@@ -148,6 +146,11 @@ Shelf.schema = {
       default: '#222'
     }
   }
+}
+
+Shelf.defaultProps = {
+  slidesToShow: 5,
+  maxItems: 7
 }
 
 Shelf.propTypes = {

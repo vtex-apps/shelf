@@ -8,4 +8,3 @@ type Product {
 type Query {
   getRecomendations(productId: ID): [Product]
 }
-
