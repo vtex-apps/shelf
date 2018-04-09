@@ -63,13 +63,16 @@ class Shelf extends Component {
   }
 
   render() {
-    const { data, maxItems } = this.props
+    const { data, maxItems, titleColor, titleText } = this.props
     const recomendations = data['error'] ? [] : data.getRecomendations
     const { sliderMounted } = this.state
     const slideSettings = this.configureSettings()
 
     return (
       <div className="ml7 mr7 pv4">
+        <div className="w-100 flex justify-center">
+          <h1 style={{color: titleColor}}> { titleText }</h1>
+        </div>
         {
           data.loading &&
           <div className="w-100 flex justify-center">
@@ -133,27 +136,41 @@ Shelf.schema = {
       title: 'Icons Color',
       type: 'string',
       default: '#000'
+    },
+    titleText: {
+      title: 'Title Text',
+      type: 'string',
+      default: 'Default Title'
+    },
+    titleColor: {
+      title: 'Title Color',
+      type: 'string',
+      default: '#222'
     }
   }
 }
 
 Shelf.propTypes = {
-  /** The graphql data response */
+  /** The graphql data response. */
   data: PropTypes.object,
-  /** How many slides to show in one frame */
+  /** How many slides to show in one frame. */
   slidesToShow: PropTypes.number.isRequired,
-  /** Maximum number of items in the shelf */
+  /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
-  /** Should change images automatically */
+  /** Should change images automatically. */
   autoplay: PropTypes.bool,
-  /** Delay between each auto scroll (in seconds) */
+  /** Delay between each auto scroll (in seconds). */
   autoplaySpeed: PropTypes.number,
-  /** Should show the arrows or not */
+  /** Should show the arrows or not. */
   arrows: PropTypes.bool,
-  /** Should show the dots or not */
+  /** Should show the dots or not. */
   dots: PropTypes.bool,
-  /** The value of the arrow color. Ex: '#FFF' or 'rgb(255,0,0)' */
-  iconsColor: PropTypes.string
+  /** The value of the arrow color. Ex: '#FFF' or 'rgb(255,0,0)'. */
+  iconsColor: PropTypes.string,
+  /** The text value of the title. */
+  titleText: PropTypes.string,
+  /** The value of the title color. Ex: '#FFF' or 'rgb(255,0,0)'. */
+  titleColor: PropTypes.string
 }
 
 export default graphql(getRecomendations)(Shelf)

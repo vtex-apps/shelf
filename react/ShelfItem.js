@@ -19,13 +19,13 @@ class ShelfItem extends Component {
 }
 
 ShelfItem.propTypes = {
-  /** The name of the item */
+  /** The name of the item. */
   name: PropTypes.string.isRequired,
-  /** The path of the image representing the item */
+  /** The path of the image representing the item. */
   imagePath: PropTypes.string.isRequired,
-  /** The price of the item */
+  /** The price of the item. */
   price: PropTypes.number.isRequired,
-  /** The width of the image */
+  /** The width of the image. */
   imageWidth: PropTypes.number
 }
 
