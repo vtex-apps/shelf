@@ -6,9 +6,10 @@ import Slider from 'react-slick'
 import ShelfItem from './ShelfItem'
 import Arrow from './Arrow'
 import Spinner from '@vtex/styleguide/lib/Spinner'
+import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
 import getRecomendations from './graphql/getRecomendations.graphql'
-import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
+import productsQuery from './graphql/productsQuery.graphql'
 
 /**
  * Shelf Component. Shows a collection of products.
@@ -35,7 +36,7 @@ class Shelf extends Component {
       slidesToShow: slidesToShow || 5,
       autoplay,
       autoplaySpeed: autoplaySpeed ? autoplaySpeed * 1000 : 3000,
-      dots, 
+      dots,
       arrows: arrows == undefined ? true : arrows,
       pauseOnHover: true,
       nextArrow: <Arrow color={iconsColor || '#000'} />,
@@ -64,7 +65,10 @@ class Shelf extends Component {
 
   render() {
     const { data, maxItems, titleColor, titleText } = this.props
-    const recomendations = data['error'] ? [] : data.getRecomendations
+    const products = data['error'] ? [] : data.products
+    
+    console.log(data)
+
     const { sliderMounted } = this.state
     const slideSettings = this.configureSettings()
 
@@ -82,9 +86,9 @@ class Shelf extends Component {
           </div>
         }
         <Slider {...slideSettings}>
-          {sliderMounted && recomendations && recomendations.slice(0, maxItems).map((item) => {
+          {sliderMounted && products && products.slice(0, maxItems).map((item) => {
             return (
-              <div key={item.name}>
+              <div key={item.productId}>
                 <ShelfItem {...item} imageWidth={200} />
               </div>
             )
@@ -100,6 +104,12 @@ Shelf.schema = {
   description: 'A product shelf featuring a collection',
   type: 'object',
   properties: {
+    collectionType: {
+      title: 'Collection Type',
+      type: 'string',
+      default: "By Category (Category 1)",
+      enum: ["By Category (Category 1)"]
+    },
     slidesToShow: {
       title: 'Items Per Line',
       type: 'number',
@@ -150,9 +160,16 @@ Shelf.schema = {
   }
 }
 
+Shelf.defaultProps = {
+  slidesToShow: 5,
+  maxItems: 10
+}
+
 Shelf.propTypes = {
   /** The graphql data response. */
   data: PropTypes.object,
+  /** The collection type to be rendered in the shelf. */
+  collectionType: PropTypes.string,
   /** How many slides to show in one frame. */
   slidesToShow: PropTypes.number.isRequired,
   /** Maximum number of items in the shelf. */
@@ -173,4 +190,29 @@ Shelf.propTypes = {
   titleColor: PropTypes.string
 }
 
-export default graphql(getRecomendations)(Shelf)
+const options = {
+  options: ({
+    category = '',
+    specificationFilters = '',
+    priceRange = '',
+    collection = '',
+    orderBy = '',
+    from = 0,
+    to = 8,
+    salesChannel = '',
+  }) => ({
+    variables: {
+      category,
+      specificationFilters: specificationFilters ? [specificationFilters] : [],
+      priceRange,
+      collection,
+      orderBy,
+      from,
+      to: to - 1,
+      salesChannel,
+    },
+    ssr: false,
+  }),
+}
+
+export default graphql(productsQuery, options)(Shelf)
