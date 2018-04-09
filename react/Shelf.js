@@ -5,6 +5,7 @@ import {compose, graphql} from 'react-apollo'
 import Slider from 'react-slick'
 import ShelfItem from './ShelfItem'
 import Arrow from './Arrow'
+import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 
 import getRecomendations from './graphql/getRecomendations.graphql'
@@ -41,11 +42,7 @@ class Shelf extends Component {
       nextArrow: <Arrow color={iconsColor || '#000'} />,
       prevArrow: <Arrow color={iconsColor || '#000'} />,
       infinite: false,
-      appendDots: (dots) => (
-        <ul className="pa2 br4 ma0 pa0" style={{ color: iconsColor }}> 
-          {dots} 
-        </ul>
-      ),
+      appendDots: (dots) => Dots(dots, iconsColor),
       responsive: [{
         breakpoint: 1024,
         settings: {
