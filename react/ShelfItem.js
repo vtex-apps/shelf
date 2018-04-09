@@ -4,16 +4,24 @@ import React, { Component } from 'react'
  * Shelf Item Component. Shows a summary of a product.
  */
 class ShelfItem extends Component {
+
+  getImagePath(imageTag, imageWidth) {
+    return imageTag.replace('~/', '')
+      .replace(/#width#/g, imageWidth)
+      .replace(/#height#/g, imageWidth)
+  }
+
   render() {
-    const { productId, productName, items, imageWidth } = this.props;
+    const { productId, productName, items, imageWidth } = this.props
     const imagePath = items[0].images[0].imageUrl
-    const price = items[0].sellers[0].commertialOffer.Price;
+    const imageTag = this.getImagePath(items[0].images[0].imageTag, imageWidth)
+    const price = items[0].sellers[0].commertialOffer.Price
     return (
       <div className="ma4 shadow-2 br3 items-center flex flex-column grow pointer">
         <h4 className="w-90 tc truncate mid-gray" title={productName}>
           {productName}
         </h4>
-        <img width={imageWidth} src={imagePath} />
+        <div dangerouslySetInnerHTML={{__html: imageTag}}></div>
         <h5 className="near-black">R$ {price.toFixed(2)}</h5>
       </div>
     )
@@ -21,15 +29,14 @@ class ShelfItem extends Component {
 }
 
 ShelfItem.propTypes = {
-  
-  /** The name of the item. */
-  // name: PropTypes.string.isRequired,
-  /** The path of the image representing the item. */
-  // imagePath: PropTypes.string.isRequired,
-  /** The price of the item. */
-  // price: PropTypes.number.isRequired,
+  /** The id of the product. */
+  productId: PropTypes.string.isRequired,
+  /** The name of the product. */
+  productName: PropTypes.string.isRequired,
+  /** The skus of the product. */
+  items: PropTypes.array,
   /** The width of the image. */
-  // imageWidth: PropTypes.number
+  imageWidth: PropTypes.number
 }
 
 export default ShelfItem
