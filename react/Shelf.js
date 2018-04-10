@@ -16,15 +16,24 @@ import productsQuery from './graphql/productsQuery.graphql'
  */
 class Shelf extends Component {
 
-  state = {
-    sliderMounted: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      sliderMounted: false
+    }
+    props.data.refetch({ skip: false })
   }
   
   componentDidMount() {
     this.setState({
       sliderMounted: true
     })
-    this.props.data.refetch()
+  }
+
+  componentWillReceiveProps(props) {
+    if ((props.category != this.props.category) || (props.orderBy != this.props.orderBy)) {
+      this.props.data.refetch({ skip: false })
+    }
   }
 
   configureSettings() {
@@ -34,25 +43,25 @@ class Shelf extends Component {
     } = this.props
 
     return {
-      slidesToShow: slidesToShow || 5,
-      autoplay,
-      autoplaySpeed: autoplaySpeed ? autoplaySpeed * 1000 : 3000,
-      dots,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      dots: true, 
       arrows: arrows == undefined ? true : arrows,
-      pauseOnHover: true,
-      nextArrow: <Arrow color={iconsColor || '#000'} />,
-      prevArrow: <Arrow color={iconsColor || '#000'} />,
+      nextArrow: <Arrow color='#000' />,
+      prevArrow: <Arrow color='#000' />,
       infinite: false,
-      appendDots: dots => <Dots color={iconsColor} dots={dots} />,
+      appendDots: dots => <Dots color='#000' dots={dots} />,
       responsive: [{
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 3,
+          slidesToScroll: 3
         }
       }, {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1
+          slidesToShow: 1,
+          slidesToScroll: 1
         }
       }]
     }
@@ -61,8 +70,6 @@ class Shelf extends Component {
   render() {
     const { data, maxItems, titleColor, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
-
-    console.log(this.props);
     const { sliderMounted } = this.state
     const slideSettings = this.configureSettings()
 
@@ -79,15 +86,18 @@ class Shelf extends Component {
             </div>
           </div>
         }
-        <Slider {...slideSettings}>
-          {sliderMounted && products && products.slice(0, maxItems).map((item) => {
-            return (
-              <div key={item.productId} className="ph4 grow">
-                <ShelfItem {...item} imageWidth={200} />
-              </div>
-            )
-          })}
-        </Slider>
+        {
+          data && !data.loading &&
+          <Slider {...slideSettings}>
+            {sliderMounted && products && products.slice(0, maxItems).map((item) => {
+              return (
+                <div key={item.productId} className="ph4 grow">
+                  <ShelfItem {...item} imageWidth={200} />
+                </div>
+              )
+            })}
+          </Slider>
+        }
       </div>
     )
   }
@@ -98,90 +108,55 @@ Shelf.schema = {
   description: 'A product shelf featuring a collection',
   type: 'object',
   properties: {
-    collectionType: {
-      title: 'Collection Type',
-      type: 'string',
-      default: "By Category (Category 1)",
-      enum: ["By Category (Category 1)"]
-    },
-    slidesToShow: {
-      title: 'Items Per Line',
+    category: {
+      title: 'List By Category',
       type: 'number',
-      default: 5,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      enum: [1, 2],
+      enumNames: ['Category', 'Category Fail'],
+      default: 1
+    },
+    orderBy: {
+      title: 'List Ordenation',
+      type: 'string',
+      enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC'],
+      enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
+      default: 'Sales'
     },
     maxItems: {
       title: 'Max Items',
       type: 'number',
       default: 7
     },
-    autoplay: {
-      title: 'Auto Play',
-      type: 'boolean',
-      default: false
-    },
-    autoplaySpeed: {
-      title: 'Auto Play Speed (s)',
-      type: 'number',
-      default: 3,
-      enum: [0.5, 1, 1.5, 2, 3.5, 3]
-    },
-    dots: {
-      title: 'Dots',
-      type: 'boolean',
-      default: false
-    },
     arrows: {
       title: 'Arrows',
       type: 'boolean',
       default: true
     },
-    iconsColor: {
-      title: 'Icons Color',
-      type: 'string',
-      default: '#000'
-    },
     titleText: {
       title: 'Title Text',
       type: 'string',
       default: 'Default Title'
-    },
-    titleColor: {
-      title: 'Title Color',
-      type: 'string',
-      default: '#222'
     }
   }
 }
 
 Shelf.defaultProps = {
-  slidesToShow: 5,
   maxItems: 7
 }
 
 Shelf.propTypes = {
   /** The graphql data response. */
   data: PropTypes.object,
-  /** The collection type to be rendered in the shelf. */
-  collectionType: PropTypes.string,
-  /** How many slides to show in one frame. */
-  slidesToShow: PropTypes.number.isRequired,
+  /** The Category Id. */
+  category: PropTypes.number,
+  /** The Ordenation Type. */
+  orderBy: PropTypes.string,
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
-  /** Should change images automatically. */
-  autoplay: PropTypes.bool,
-  /** Delay between each auto scroll (in seconds). */
-  autoplaySpeed: PropTypes.number,
   /** Should show the arrows or not. */
   arrows: PropTypes.bool,
-  /** Should show the dots or not. */
-  dots: PropTypes.bool,
-  /** The value of the arrow color. Ex: '#FFF' or 'rgb(255,0,0)'. */
-  iconsColor: PropTypes.string,
   /** The text value of the title. */
-  titleText: PropTypes.string,
-  /** The value of the title color. Ex: '#FFF' or 'rgb(255,0,0)'. */
-  titleColor: PropTypes.string
+  titleText: PropTypes.string
 }
 
 const options = {

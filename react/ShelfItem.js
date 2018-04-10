@@ -14,7 +14,7 @@ class ShelfItem extends Component {
         <h4 className="w-90 tc truncate mid-gray" title={productName}>
           {productName}
         </h4>
-        <img height={imageWidth} src={imagePath} />
+        <img height={imageWidth} src={imagePath.replace('http:', '')} />
         <h5 className="near-black">R$ {price.toFixed(2)}</h5>
       </div>
     )
