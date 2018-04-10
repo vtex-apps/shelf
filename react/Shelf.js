@@ -5,10 +5,10 @@ import {compose, graphql} from 'react-apollo'
 import Slider from 'react-slick'
 import ShelfItem from './ShelfItem'
 import Arrow from './Arrow'
+import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
-import getRecomendations from './graphql/getRecomendations.graphql'
 import productsQuery from './graphql/productsQuery.graphql'
 
 /**
@@ -24,6 +24,7 @@ class Shelf extends Component {
     this.setState({
       sliderMounted: true
     })
+    this.props.data.refetch()
   }
 
   configureSettings() {
@@ -42,11 +43,7 @@ class Shelf extends Component {
       nextArrow: <Arrow color={iconsColor || '#000'} />,
       prevArrow: <Arrow color={iconsColor || '#000'} />,
       infinite: false,
-      appendDots: (dots) => (
-        <ul className="pa2 br4 ma0 pa0" style={{ color: iconsColor }}> 
-          {dots} 
-        </ul>
-      ),
+      appendDots: dots => <Dots color={iconsColor} dots={dots} />,
       responsive: [{
         breakpoint: 1024,
         settings: {
@@ -63,17 +60,19 @@ class Shelf extends Component {
 
   render() {
     const { data, maxItems, titleColor, titleText } = this.props
-    const products = data['error'] ? [] : data.products
+    const products = !data || data['error'] ? [] : data.products
+
+    console.log(this.props);
     const { sliderMounted } = this.state
     const slideSettings = this.configureSettings()
 
     return (
-      <div className="ml7 mr7 pv4">
+      <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
           <h1 style={{color: titleColor}}> { titleText }</h1>
         </div>
         {
-          data.loading &&
+          data && data.loading &&
           <div className="w-100 flex justify-center">
             <div className="w3 ma0">
               <Spinner style={spinnerStyle}/>
@@ -83,7 +82,7 @@ class Shelf extends Component {
         <Slider {...slideSettings}>
           {sliderMounted && products && products.slice(0, maxItems).map((item) => {
             return (
-              <div key={item.productId} className="grow ph4">
+              <div key={item.productId} className="ph4 grow">
                 <ShelfItem {...item} imageWidth={200} />
               </div>
             )
@@ -205,9 +204,10 @@ const options = {
       from,
       to: to - 1,
       salesChannel,
+      skip: true 
     },
     ssr: false,
-  }),
+  })
 }
 
 export default graphql(productsQuery, options)(Shelf)
