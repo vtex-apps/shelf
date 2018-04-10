@@ -42,7 +42,7 @@ class Shelf extends Component {
       nextArrow: <Arrow color={iconsColor || '#000'} />,
       prevArrow: <Arrow color={iconsColor || '#000'} />,
       infinite: false,
-      appendDots: (dots) => Dots(dots, iconsColor),
+      appendDots: dots => <Dots color={iconsColor} dots={dots} />,
       responsive: [{
         breakpoint: 1024,
         settings: {
@@ -64,7 +64,7 @@ class Shelf extends Component {
     const slideSettings = this.configureSettings()
 
     return (
-      <div className="ml7 mr7 pv4">
+      <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
           <h1 style={{color: titleColor}}> { titleText }</h1>
         </div>
@@ -79,7 +79,7 @@ class Shelf extends Component {
         <Slider {...slideSettings}>
           {sliderMounted && recomendations && recomendations.slice(0, maxItems).map((item) => {
             return (
-              <div key={item.name}>
+              <div key={item.name} className="ph4">
                 <ShelfItem {...item} imageWidth={200} />
               </div>
             )
