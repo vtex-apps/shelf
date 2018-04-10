@@ -5,23 +5,16 @@ import React, { Component } from 'react'
  */
 class ShelfItem extends Component {
 
-  getImagePath(imageTag, imageWidth) {
-    return imageTag.replace('~/', '')
-      .replace(/#width#/g, imageWidth)
-      .replace(/#height#/g, imageWidth)
-  }
-
   render() {
     const { productId, productName, items, imageWidth } = this.props
     const imagePath = items[0].images[0].imageUrl
-    const imageTag = this.getImagePath(items[0].images[0].imageTag, imageWidth)
     const price = items[0].sellers[0].commertialOffer.Price
     return (
-      <div className="ma4 shadow-2 br3 items-center flex flex-column grow pointer">
+      <div className="ma4 shadow-2 br3 items-center flex flex-column pointer">
         <h4 className="w-90 tc truncate mid-gray" title={productName}>
           {productName}
         </h4>
-        <div dangerouslySetInnerHTML={{__html: imageTag}}></div>
+        <img height={imageWidth} src={imagePath} />
         <h5 className="near-black">R$ {price.toFixed(2)}</h5>
       </div>
     )

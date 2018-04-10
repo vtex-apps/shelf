@@ -83,7 +83,7 @@ class Shelf extends Component {
         <Slider {...slideSettings}>
           {sliderMounted && products && products.slice(0, maxItems).map((item) => {
             return (
-              <div key={item.productId}>
+              <div key={item.productId} className="grow ph4">
                 <ShelfItem {...item} imageWidth={200} />
               </div>
             )
