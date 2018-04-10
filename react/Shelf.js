@@ -33,25 +33,25 @@ class Shelf extends Component {
     } = this.props
 
     return {
-      slidesToShow: slidesToShow || 5,
-      autoplay,
-      autoplaySpeed: autoplaySpeed ? autoplaySpeed * 1000 : 3000,
-      dots, 
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      dots: true, 
       arrows: arrows == undefined ? true : arrows,
-      pauseOnHover: true,
-      nextArrow: <Arrow color={iconsColor || '#000'} />,
-      prevArrow: <Arrow color={iconsColor || '#000'} />,
+      nextArrow: <Arrow color='#000' />,
+      prevArrow: <Arrow color='#000' />,
       infinite: false,
-      appendDots: dots => <Dots color={iconsColor} dots={dots} />,
+      appendDots: dots => <Dots color='#000' dots={dots} />,
       responsive: [{
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 3,
+          slidesToScroll: 3
         }
       }, {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1
+          slidesToShow: 1,
+          slidesToScroll: 1
         }
       }]
     }
@@ -95,82 +95,37 @@ Shelf.schema = {
   description: 'A product shelf featuring a collection',
   type: 'object',
   properties: {
-    slidesToShow: {
-      title: 'Items Per Line',
-      type: 'number',
-      default: 5,
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    },
     maxItems: {
       title: 'Max Items',
       type: 'number',
-      default: 7
-    },
-    autoplay: {
-      title: 'Auto Play',
-      type: 'boolean',
-      default: false
-    },
-    autoplaySpeed: {
-      title: 'Auto Play Speed (s)',
-      type: 'number',
-      default: 3,
-      enum: [0.5, 1, 1.5, 2, 3.5, 3]
-    },
-    dots: {
-      title: 'Dots',
-      type: 'boolean',
-      default: false
+      default: 5
     },
     arrows: {
       title: 'Arrows',
       type: 'boolean',
       default: true
     },
-    iconsColor: {
-      title: 'Icons Color',
-      type: 'string',
-      default: '#000'
-    },
     titleText: {
       title: 'Title Text',
       type: 'string',
       default: 'Default Title'
-    },
-    titleColor: {
-      title: 'Title Color',
-      type: 'string',
-      default: '#222'
     }
   }
 }
 
 Shelf.defaultProps = {
-  slidesToShow: 5,
   maxItems: 7
 }
 
 Shelf.propTypes = {
   /** The graphql data response. */
   data: PropTypes.object,
-  /** How many slides to show in one frame. */
-  slidesToShow: PropTypes.number.isRequired,
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
-  /** Should change images automatically. */
-  autoplay: PropTypes.bool,
-  /** Delay between each auto scroll (in seconds). */
-  autoplaySpeed: PropTypes.number,
   /** Should show the arrows or not. */
   arrows: PropTypes.bool,
-  /** Should show the dots or not. */
-  dots: PropTypes.bool,
-  /** The value of the arrow color. Ex: '#FFF' or 'rgb(255,0,0)'. */
-  iconsColor: PropTypes.string,
   /** The text value of the title. */
-  titleText: PropTypes.string,
-  /** The value of the title color. Ex: '#FFF' or 'rgb(255,0,0)'. */
-  titleColor: PropTypes.string
+  titleText: PropTypes.string
 }
 
 export default graphql(getRecomendations)(Shelf)

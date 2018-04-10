@@ -9,39 +9,22 @@ Add "vtex.shelf" as your app dependency.
 ## Schema Properties
 
 ``` javascript
-- slidesToShow (Items Per Line)
-  - Type: Number
-  - Default: 5
-
+/**
+ * Maximum number of items in the shelf.
+ */
 - maxItems
   - Type: Number
   - Default: 7
-
-- autoplay
-  - Type: Boolean
-  - Default: false
-
-- autoplaySpeed
-  - Type: Number
-  - Default: 3
-  
-- dots
-  - Type: Boolean
-  - Default: false
-
+/**
+ * If the arrows are showable or not.
+ */
 - arrows
   - Type: Boolean
   - Default: true
-
-- iconsColor
-  - Type: String
-  - Default: '#000'
-
+/**
+ * The title of the shelf.
+ */
 - titleText
   - Type: String
   - Default: 'Default Title'
-    
-- titleColor
-  - Type: String
-  - Default: '#222'
 ```
