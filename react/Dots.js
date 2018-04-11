@@ -2,7 +2,7 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /**
- * Dots container. Shows the nav dots of the carousel component;
+ * Dots container. Shows the nav dots of the carousel component.
  */
 class Dots extends Component {
   render() {

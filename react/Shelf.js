@@ -21,7 +21,6 @@ class Shelf extends Component {
     this.state = {
       sliderMounted: false
     }
-    props.data.refetch({ skip: false })
   }
   
   componentDidMount() {
@@ -30,11 +29,11 @@ class Shelf extends Component {
     })
   }
 
-  componentWillReceiveProps(props) {
-    if ((props.category != this.props.category) || (props.orderBy != this.props.orderBy)) {
-      this.props.data.refetch({ skip: false })
-    }
-  }
+  // componentWillReceiveProps(props) {
+  //   if ((props.category != this.props.category) || (props.orderBy != this.props.orderBy)) {
+  //     this.props.data.refetch({ skip: false })
+  //   }
+  // }
 
   configureSettings() {
     let { 
@@ -112,7 +111,7 @@ Shelf.schema = {
       title: 'List By Category',
       type: 'number',
       enum: [1, 2],
-      enumNames: ['Category', 'Category Fail'],
+      enumNames: ['Veiculos', 'Computers'],
       default: 1
     },
     orderBy: {
@@ -120,7 +119,7 @@ Shelf.schema = {
       type: 'string',
       enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC'],
       enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
-      default: 'Sales'
+      default: 'OrderByTopSaleDESC'
     },
     maxItems: {
       title: 'Max Items',
@@ -141,7 +140,7 @@ Shelf.schema = {
 }
 
 Shelf.defaultProps = {
-  maxItems: 7
+  maxItems: 10
 }
 
 Shelf.propTypes = {
@@ -161,25 +160,16 @@ Shelf.propTypes = {
 
 const options = {
   options: ({
-    category = '',
-    specificationFilters = '',
-    priceRange = '',
-    collection = '',
-    orderBy = '',
-    from = 0,
-    to = 8,
-    salesChannel = '',
+    category = 1,
+    orderBy = 'OrderByTopSaleDESC',
+    maxItems = 10
   }) => ({
     variables: {
       category,
-      specificationFilters: specificationFilters ? [specificationFilters] : [],
-      priceRange,
-      collection,
+      specificationFilters: [],
       orderBy,
-      from,
-      to: to - 1,
-      salesChannel,
-      skip: true 
+      from: 0,
+      to: maxItems - 1
     },
     ssr: false,
   })
