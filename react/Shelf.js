@@ -16,25 +16,6 @@ import productsQuery from './graphql/productsQuery.graphql'
  */
 class Shelf extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      sliderMounted: false
-    }
-  }
-  
-  componentDidMount() {
-    this.setState({
-      sliderMounted: true
-    })
-  }
-
-  // componentWillReceiveProps(props) {
-  //   if ((props.category != this.props.category) || (props.orderBy != this.props.orderBy)) {
-  //     this.props.data.refetch({ skip: false })
-  //   }
-  // }
-
   configureSettings() {
     let { 
       slidesToShow, autoplay, autoplaySpeed, 
@@ -69,7 +50,6 @@ class Shelf extends Component {
   render() {
     const { data, maxItems, titleColor, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
-    const { sliderMounted } = this.state
     const slideSettings = this.configureSettings()
 
     return (
@@ -86,9 +66,9 @@ class Shelf extends Component {
           </div>
         }
         {
-          data && !data.loading &&
+          data && !data.loading && products &&
           <Slider {...slideSettings}>
-            {sliderMounted && products && products.slice(0, maxItems).map((item) => {
+            {products.slice(0, maxItems).map((item) => {
               return (
                 <div key={item.productId} className="ph4 grow">
                   <ShelfItem {...item} imageWidth={200} />
