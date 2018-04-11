@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Shelf Item Component. Shows a summary of a product.
  */
 class ShelfItem extends Component {
-
   render() {
-    const { productId, productName, items, imageWidth } = this.props
+    const { productName, items, imageWidth } = this.props
     const imagePath = items[0].images[0].imageUrl
     const price = items[0].sellers[0].commertialOffer.Price
     return (
@@ -22,14 +22,12 @@ class ShelfItem extends Component {
 }
 
 ShelfItem.propTypes = {
-  /** The id of the product. */
-  productId: PropTypes.string.isRequired,
   /** The name of the product. */
   productName: PropTypes.string.isRequired,
   /** The skus of the product. */
   items: PropTypes.array,
   /** The width of the image. */
-  imageWidth: PropTypes.number
+  imageWidth: PropTypes.number,
 }
 
 export default ShelfItem
