@@ -1,0 +1,16 @@
+{
+  "name": "vtex.shelf",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vtex/styleguide": "^2.0.0-rc.34",
+    "react-slick": "^0.22.3",
+    "slick-carousel": "^1.8.1"
+  }
+}

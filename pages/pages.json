@@ -1,0 +1,13 @@
+{
+  "pages": {
+    "shelf": {
+      "path": "/",
+      "theme": "theme"
+    }
+  },
+  "extensions": {
+    "shelf": {
+      "component": "Shelf"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+type Product {
+  id: ID!
+  name: String
+  imagePath: String
+  price: Float
+}
+
+type Query {
+  getRecomendations(productId: ID): [Product]
+}
