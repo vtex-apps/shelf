@@ -10,6 +10,18 @@ Add "vtex.shelf" as your app dependency.
 
 ``` javascript
 /**
+ * The category Id of the listed items in the shelf.
+ */
+- category
+  - Type: Number
+  - Default: 1
+  /**
+ * The ordenation type os the items in the shelf.
+ */
+- orderBy
+  - Type: String
+  - Default: 'OrderByTopSaleDESC'
+/**
  * Maximum number of items in the shelf.
  */
 - maxItems
