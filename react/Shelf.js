@@ -10,6 +10,9 @@ import Spinner from '@vtex/styleguide/lib/Spinner'
 import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
 import productsQuery from './graphql/productsQuery.graphql'
+import ProductSummaryTypes from './ProductSummaryTypes'
+
+import { ExtensionPoint } from 'render'
 
 /**
  * Shelf Component. Shows a collection of products.
@@ -46,16 +49,25 @@ class Shelf extends Component {
     }
   }
 
+  renderShelfItem(item) {
+    switch (this.props.productSummary) {
+      case 'SIMPLE':
+        return <ShelfItem {...item} imageWidth={200} />
+      case 'SMALL_IMAGE':
+        return <ShelfItem {...item} imageWidth={50} />
+    }
+  }
+
   render() {
     const { data, maxItems, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
     const slideSettings = this.configureSettings()
-
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
           <h1> {titleText}</h1>
         </div>
+
         {
           data && data.loading && (
             <div className="w-100 flex justify-center">
@@ -69,13 +81,16 @@ class Shelf extends Component {
             <Slider {...slideSettings}>
               {products.slice(0, maxItems).map(item => {
                 return (
-                  <div key={item.productId} className="ph4 grow">
-                    <ShelfItem {...item} imageWidth={200} />
+                  <div key={item.productId}>
+                    <ExtensionPoint id={`shelfitem${item.productId}`}>
+                    </ExtensionPoint>
+                    {/* {this.renderShelfItem(item)} */}
                   </div>
                 )
               })}
             </Slider>
-          )}
+          )
+        }
       </div>
     )
   }
@@ -100,6 +115,13 @@ Shelf.schema = {
       enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
       default: 'OrderByTopSaleDESC',
     },
+    // productSummary: {
+    //   title: 'Product Summary',
+    //   type: 'string',
+    //   enum: Object.keys(ProductSummaryTypes),
+    //   enumNames: Object.values(ProductSummaryTypes),
+    //   default: 'SIMPLE',
+    // },
     maxItems: {
       title: 'Max Items',
       type: 'number',
@@ -120,6 +142,7 @@ Shelf.schema = {
 
 Shelf.defaultProps = {
   maxItems: 10,
+  productSummary: 'SIMPLE',
 }
 
 Shelf.propTypes = {
@@ -135,6 +158,8 @@ Shelf.propTypes = {
   arrows: PropTypes.bool,
   /** The text value of the title. */
   titleText: PropTypes.string,
+  /** The product summary type. */
+  productSummary: PropTypes.string,
 }
 
 const options = {

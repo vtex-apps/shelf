@@ -7,6 +7,11 @@
     color: inherit;
 }
 
+.vtex-shelf .slick-slider {
+    width: 100%;
+    position: absolute;
+}
+
 .vtex-shelf .slick-prev:before,
 .vtex-shelf .slick-next:before
 {

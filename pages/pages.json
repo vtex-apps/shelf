@@ -8,6 +8,9 @@
   "extensions": {
     "shelf": {
       "component": "Shelf"
+    },
+    "shelfitem": {
+      "component": "ShelfItem"
     }
   }
 }
