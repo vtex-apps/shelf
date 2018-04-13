@@ -9,18 +9,18 @@ import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
-import productsQuery from './graphql/productsQuery.graphql'
+import productsQuery from './graphql/productsQuery.gql'
 
 /**
  * Shelf Component. Shows a collection of products.
  */
 class Shelf extends Component {
   configureSettings() {
-    const arrows = this.props.arrows
-
+    const { arrows, scroll } = this.props
+    
     return {
       slidesToShow: 5,
-      slidesToScroll: 5,
+      slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
       arrows: arrows === undefined ? true : arrows,
       nextArrow: <Arrow color="#000" />,
@@ -32,7 +32,7 @@ class Shelf extends Component {
           breakpoint: 1024,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToScroll: scroll === 'BY_PAGE' ? 3 : 1,
           },
         },
         {
@@ -87,11 +87,12 @@ Shelf.schema = {
   type: 'object',
   properties: {
     category: {
-      title: 'List By Category',
+      title: 'Category',
+      type: 'number'
+    },
+    collection: {
+      title: 'Collection',
       type: 'number',
-      enum: [1, 2],
-      enumNames: ['Veiculos', 'Computers'],
-      default: 1,
     },
     orderBy: {
       title: 'List Ordenation',
@@ -103,7 +104,14 @@ Shelf.schema = {
     maxItems: {
       title: 'Max Items',
       type: 'number',
-      default: 7,
+      default: 10,
+    },
+    scroll: {
+      title: 'Scroll Type',
+      type: 'string',
+      enum: ['BY_PAGE', 'ONE_TO_ONE'],
+      enumNames: ['By Page', 'One To One'],
+      default: 'BY_PAGE',
     },
     arrows: {
       title: 'Arrows',
@@ -120,6 +128,7 @@ Shelf.schema = {
 
 Shelf.defaultProps = {
   maxItems: 10,
+  scroll: 'BY_PAGE'
 }
 
 Shelf.propTypes = {
@@ -127,11 +136,15 @@ Shelf.propTypes = {
   data: PropTypes.object,
   /** The Category Id. */
   category: PropTypes.number,
+  /** The Collection Id. */
+  collection: PropTypes.number,
   /** The Ordenation Type. */
   orderBy: PropTypes.string,
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
-  /** Should show the arrows or not. */
+  /** The scroll options. */
+  scroll: PropTypes.string,
+  /** The Collection Id. */
   arrows: PropTypes.bool,
   /** The text value of the title. */
   titleText: PropTypes.string,
@@ -139,14 +152,16 @@ Shelf.propTypes = {
 
 const options = {
   options: ({
-    category = 1,
-    orderBy = 'OrderByTopSaleDESC',
+    category = undefined,
+    orderBy = undefined,
     maxItems = 10,
+    collection = undefined
   }) => ({
     variables: {
-      category,
+      category: category || undefined,
+      collection: collection || undefined,
       specificationFilters: [],
-      orderBy,
+      orderBy: orderBy || undefined,
       from: 0,
       to: maxItems - 1,
     },

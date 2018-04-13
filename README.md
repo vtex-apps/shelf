@@ -40,3 +40,10 @@ Add "vtex.shelf" as your app dependency.
   - Type: String
   - Default: 'Default Title'
 ```
+
+## Tests
+
+Run the tests with the command
+```
+cd react && npm run tests
+```
