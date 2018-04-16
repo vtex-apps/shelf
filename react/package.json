@@ -3,7 +3,7 @@
   "version": "0.9.0",
   "description": "A Shelf Component.",
   "scripts": {
-    "tests": "jest"
+    "test": "jest"
   },
   "author": "VTEX",
   "license": "ISC",

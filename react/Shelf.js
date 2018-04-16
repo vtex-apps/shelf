@@ -22,7 +22,7 @@ class Shelf extends Component {
       slidesToShow: 5,
       slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
-      arrows: arrows === undefined ? true : arrows,
+      arrows,
       nextArrow: <Arrow color="#000" />,
       prevArrow: <Arrow color="#000" />,
       infinite: false,
@@ -57,7 +57,7 @@ class Shelf extends Component {
           <h1> {titleText}</h1>
         </div>
         {
-          data && data.loading && (
+          data.loading && (
             <div className="w-100 flex justify-center">
               <div className="w3 ma0">
                 <Spinner style={spinnerStyle} />
@@ -65,12 +65,12 @@ class Shelf extends Component {
             </div>
           )}
         {
-          data && !data.loading && products && (
+          !data.loading && products && (
             <Slider {...slideSettings}>
               {products.slice(0, maxItems).map(item => {
                 return (
                   <div key={item.productId} className="ph4 grow">
-                    <ShelfItem {...item} imageWidth={200} />
+                    <ShelfItem {...item} imageHeight={200} />
                   </div>
                 )
               })}
@@ -128,12 +128,15 @@ Shelf.schema = {
 
 Shelf.defaultProps = {
   maxItems: 10,
-  scroll: 'BY_PAGE'
+  scroll: 'BY_PAGE',
+  arrows: true
 }
 
 Shelf.propTypes = {
   /** The graphql data response. */
-  data: PropTypes.object,
+  data: PropTypes.shape({ 
+    products: PropTypes.arrayOf(PropTypes.object)
+  }).isRequired,
   /** The Category Id. */
   category: PropTypes.number,
   /** The Collection Id. */
@@ -143,9 +146,9 @@ Shelf.propTypes = {
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** The scroll options. */
-  scroll: PropTypes.string,
+  scroll: PropTypes.string.isRequired,
   /** The Collection Id. */
-  arrows: PropTypes.bool,
+  arrows: PropTypes.bool.isRequired,
   /** The text value of the title. */
   titleText: PropTypes.string,
 }
