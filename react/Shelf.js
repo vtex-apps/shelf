@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 
 import Slider from 'react-slick'
-import ShelfItem from './ShelfItem'
 import Arrow from './Arrow'
 import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
-import productsQuery from './graphql/productsQuery.graphql'
-import ProductSummaryTypes from './ProductSummaryTypes'
+import productsQuery from './graphql/productsQuery.gql'
 
 import { ExtensionPoint } from 'render'
 
@@ -19,11 +17,11 @@ import { ExtensionPoint } from 'render'
  */
 class Shelf extends Component {
   configureSettings() {
-    const arrows = this.props.arrows
+    const { arrows, scroll } = this.props
 
     return {
       slidesToShow: 5,
-      slidesToScroll: 5,
+      slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
       arrows: arrows === undefined ? true : arrows,
       nextArrow: <Arrow color="#000" />,
@@ -35,7 +33,7 @@ class Shelf extends Component {
           breakpoint: 1024,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToScroll: scroll === 'BY_PAGE' ? 3 : 1,
           },
         },
         {
@@ -49,25 +47,68 @@ class Shelf extends Component {
     }
   }
 
-  renderShelfItem(item) {
-    switch (this.props.productSummary) {
-      case 'SIMPLE':
-        return <ShelfItem {...item} imageWidth={200} />
-      case 'SMALL_IMAGE':
-        return <ShelfItem {...item} imageWidth={50} />
+  normalizeProductSummaryProps(product) {
+    return {
+      listPrice: product.items[0].sellers[0].commertialOffer.Price,
+      sellingPrice: product.items[0].sellers[0].commertialOffer.Price,
+      imageUrl: product.items[0].images[0].imageUrl,
+      url: `/product/${product.productId}`,
+      name: product.productName,
     }
+  }
+
+  isEditorMode() {
+    return !!document.querySelector('.edit-mode')
+  }
+
+  renderSlideProperly(products, maxItems) {
+    if (this.isEditorMode()) {
+      if (products.length) {
+        return (
+          <div key={products[0].productId}>
+            <ExtensionPoint id="shelfitem"
+              product={this.normalizeProductSummaryProps(products[0])}>
+            </ExtensionPoint>
+          </div>
+        )
+      }
+      return (
+        <div key="1">
+          <ExtensionPoint id="shelfitem"
+            product={{
+              listPrice: 200,
+              sellingPrice: 40,
+              imageUrl: '//www.allfree-clipart.com/Business/computer.jpg',
+              url: '/product/1',
+              name: 'Product1',
+            }}>
+          </ExtensionPoint>
+        </div>
+      )
+    }
+    return (
+      products.slice(0, maxItems).map(item => {
+        return (
+          <div key={item.productId}>
+            <ExtensionPoint id={'shelfitem'}
+              product={this.normalizeProductSummaryProps(item)}>
+            </ExtensionPoint>
+          </div>
+        )
+      })
+    )
   }
 
   render() {
     const { data, maxItems, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
     const slideSettings = this.configureSettings()
+
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
-          <h1> {titleText}</h1>
+          <h1> {titleText || 'alksdlka'}</h1>
         </div>
-
         {
           data && data.loading && (
             <div className="w-100 flex justify-center">
@@ -75,19 +116,14 @@ class Shelf extends Component {
                 <Spinner style={spinnerStyle} />
               </div>
             </div>
-          )}
+          )
+        }
         {
           data && !data.loading && products && (
             <Slider {...slideSettings}>
-              {products.slice(0, maxItems).map(item => {
-                return (
-                  <div key={item.productId}>
-                    <ExtensionPoint id={`shelfitem${item.productId}`}>
-                    </ExtensionPoint>
-                    {/* {this.renderShelfItem(item)} */}
-                  </div>
-                )
-              })}
+              {
+                this.renderSlideProperly(products, maxItems)
+              }
             </Slider>
           )
         }
@@ -102,11 +138,12 @@ Shelf.schema = {
   type: 'object',
   properties: {
     category: {
-      title: 'List By Category',
+      title: 'Category',
       type: 'number',
-      enum: [1, 2],
-      enumNames: ['Veiculos', 'Computers'],
-      default: 1,
+    },
+    collection: {
+      title: 'Collection',
+      type: 'number',
     },
     orderBy: {
       title: 'List Ordenation',
@@ -115,17 +152,17 @@ Shelf.schema = {
       enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
       default: 'OrderByTopSaleDESC',
     },
-    // productSummary: {
-    //   title: 'Product Summary',
-    //   type: 'string',
-    //   enum: Object.keys(ProductSummaryTypes),
-    //   enumNames: Object.values(ProductSummaryTypes),
-    //   default: 'SIMPLE',
-    // },
     maxItems: {
       title: 'Max Items',
       type: 'number',
-      default: 7,
+      default: 10,
+    },
+    scroll: {
+      title: 'Scroll Type',
+      type: 'string',
+      enum: ['BY_PAGE', 'ONE_TO_ONE'],
+      enumNames: ['By Page', 'One To One'],
+      default: 'BY_PAGE',
     },
     arrows: {
       title: 'Arrows',
@@ -150,28 +187,32 @@ Shelf.propTypes = {
   data: PropTypes.object,
   /** The Category Id. */
   category: PropTypes.number,
+  /** The Collection Id. */
+  collection: PropTypes.number,
   /** The Ordenation Type. */
   orderBy: PropTypes.string,
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
-  /** Should show the arrows or not. */
+  /** The scroll options. */
+  scroll: PropTypes.string,
+  /** The Collection Id. */
   arrows: PropTypes.bool,
   /** The text value of the title. */
   titleText: PropTypes.string,
-  /** The product summary type. */
-  productSummary: PropTypes.string,
 }
 
 const options = {
   options: ({
-    category = 1,
-    orderBy = 'OrderByTopSaleDESC',
+    category = undefined,
+    orderBy = undefined,
     maxItems = 10,
+    collection = undefined,
   }) => ({
     variables: {
-      category,
+      category: category || undefined,
+      collection: collection || undefined,
       specificationFilters: [],
-      orderBy,
+      orderBy: orderBy || undefined,
       from: 0,
       to: maxItems - 1,
     },
