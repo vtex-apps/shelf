@@ -23,7 +23,7 @@ class Shelf extends Component {
       slidesToShow: 5,
       slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
-      arrows: arrows === undefined ? true : arrows,
+      arrows,
       nextArrow: <Arrow color="#000" />,
       prevArrow: <Arrow color="#000" />,
       infinite: false,
@@ -51,7 +51,7 @@ class Shelf extends Component {
     return {
       listPrice: product.items[0].sellers[0].commertialOffer.Price,
       sellingPrice: product.items[0].sellers[0].commertialOffer.Price,
-      imageUrl: product.items[0].images[0].imageUrl,
+      imageUrl: product.items[0].images[0].imageUrl.replace('http:', ''),
       url: `/product/${product.productId}`,
       name: product.productName,
     }
@@ -107,10 +107,10 @@ class Shelf extends Component {
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
-          <h1> {titleText || 'alksdlka'}</h1>
+          <h1> {titleText}</h1>
         </div>
         {
-          data && data.loading && (
+          data.loading && (
             <div className="w-100 flex justify-center">
               <div className="w3 ma0">
                 <Spinner style={spinnerStyle} />
@@ -119,7 +119,7 @@ class Shelf extends Component {
           )
         }
         {
-          data && !data.loading && products && (
+          !data.loading && products && (
             <Slider {...slideSettings}>
               {
                 this.renderSlideProperly(products, maxItems)
@@ -179,12 +179,28 @@ Shelf.schema = {
 
 Shelf.defaultProps = {
   maxItems: 10,
-  productSummary: 'SIMPLE',
+  scroll: 'BY_PAGE',
+  arrows: true,
 }
 
 Shelf.propTypes = {
   /** The graphql data response. */
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    products: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.string.isRequired,
+      productName: PropTypes.string.isRequired,
+      items: PropTypes.arrayOf(PropTypes.shape({
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired,
+        })).isRequired,
+        sellers: PropTypes.arrayOf(PropTypes.shape({
+          commertialOffer: PropTypes.shape({
+            Price: PropTypes.number.isRequired,
+          }),
+        })).isRequired,
+      })),
+    })),
+  }).isRequired,
   /** The Category Id. */
   category: PropTypes.number,
   /** The Collection Id. */
@@ -194,9 +210,9 @@ Shelf.propTypes = {
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** The scroll options. */
-  scroll: PropTypes.string,
+  scroll: PropTypes.string.isRequired,
   /** The Collection Id. */
-  arrows: PropTypes.bool,
+  arrows: PropTypes.bool.isRequired,
   /** The text value of the title. */
   titleText: PropTypes.string,
 }

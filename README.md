@@ -45,5 +45,5 @@ Add "vtex.shelf" as your app dependency.
 
 Run the tests with the command
 ```
-cd react && npm run tests
+cd react && npm t
 ```
