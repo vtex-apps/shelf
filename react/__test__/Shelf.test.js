@@ -13,7 +13,7 @@ describe('Shelf component', () => {
   beforeEach( (done) => {
     const mockedProducts = [
       {
-        productId: 1,
+        productId: '1',
         productName: 'Product1',
         items: [{
           images: [{
@@ -27,7 +27,7 @@ describe('Shelf component', () => {
         }],
       },
       {
-        productId: 2,
+        productId: '2',
         productName: 'Product2',
         items: [{
           images: [{
@@ -41,7 +41,7 @@ describe('Shelf component', () => {
         }],
       },
       {
-        productId: 3,
+        productId: '3',
         productName: 'Product3',
         items: [{
           images: [{

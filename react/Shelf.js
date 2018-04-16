@@ -134,8 +134,21 @@ Shelf.defaultProps = {
 
 Shelf.propTypes = {
   /** The graphql data response. */
-  data: PropTypes.shape({ 
-    products: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.shape({
+    products: PropTypes.arrayOf(PropTypes.shape({
+      productId: PropTypes.string.isRequired,
+      productName: PropTypes.string.isRequired,
+      items: PropTypes.arrayOf(PropTypes.shape({
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired
+        })).isRequired,
+        sellers: PropTypes.arrayOf(PropTypes.shape({
+          commertialOffer: PropTypes.shape({
+            Price: PropTypes.number.isRequired
+          })
+        })).isRequired
+      })),
+    })),
   }).isRequired,
   /** The Category Id. */
   category: PropTypes.number,
