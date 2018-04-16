@@ -57,15 +57,16 @@ class Shelf extends Component {
     }
   }
 
-  isEditorMode() {
+  isEditMode() {
     return !!document.querySelector('.edit-mode')
   }
 
   renderSlideProperly(products, maxItems) {
-    if (this.isEditorMode()) {
+    const slideSettings = this.configureSettings()
+    if (this.isEditMode()) {
       if (products.length) {
         return (
-          <div key={products[0].productId}>
+          <div className="w-20" key={products[0].productId}>
             <ExtensionPoint id="shelfitem"
               product={this.normalizeProductSummaryProps(products[0])}>
             </ExtensionPoint>
@@ -73,7 +74,7 @@ class Shelf extends Component {
         )
       }
       return (
-        <div key="1">
+        <div className="w-20" key="1">
           <ExtensionPoint id="shelfitem"
             product={{
               listPrice: 200,
@@ -87,22 +88,25 @@ class Shelf extends Component {
       )
     }
     return (
-      products.slice(0, maxItems).map(item => {
-        return (
-          <div key={item.productId}>
-            <ExtensionPoint id={'shelfitem'}
-              product={this.normalizeProductSummaryProps(item)}>
-            </ExtensionPoint>
-          </div>
-        )
-      })
+      <Slider {...slideSettings}>
+        {
+          products.slice(0, maxItems).map(item => {
+            return (
+              <div key={item.productId}>
+                <ExtensionPoint id={'shelfitem'}
+                  product={this.normalizeProductSummaryProps(item)}>
+                </ExtensionPoint>
+              </div>
+            )
+          })
+        }
+      </Slider>
     )
   }
 
   render() {
     const { data, maxItems, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
-    const slideSettings = this.configureSettings()
 
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
@@ -120,11 +124,7 @@ class Shelf extends Component {
         }
         {
           !data.loading && products && (
-            <Slider {...slideSettings}>
-              {
-                this.renderSlideProperly(products, maxItems)
-              }
-            </Slider>
+            this.renderSlideProperly(products, maxItems)
           )
         }
       </div>
