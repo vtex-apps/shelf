@@ -168,18 +168,18 @@ Shelf.propTypes = {
 
 const options = {
   options: ({
-    category = undefined,
-    orderBy = undefined,
-    maxItems = 10,
-    collection = undefined
+    category,
+    collection,
+    orderBy,
+    maxItems = Shelf.defaultProps.maxItems,
   }) => ({
     variables: {
-      category: category || undefined,
-      collection: collection || undefined,
-      specificationFilters: [],
-      orderBy: orderBy || undefined,
+      category,
+      collection,
+      orderBy,
       from: 0,
       to: maxItems - 1,
+      specificationFilters: [],
     },
     ssr: false,
   }),
