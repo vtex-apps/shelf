@@ -10,7 +10,7 @@ class ShelfItem extends Component {
     const imagePath = items[0].images[0].imageUrl
     const price = items[0].sellers[0].commertialOffer.Price
     return (
-      <div className="ma4 shadow-2 br3 items-center flex flex-column pointer">
+      <div className="items-center flex flex-column pointer">
         <h4 className="w-90 tc truncate mid-gray" title={productName}>
           {productName}
         </h4>

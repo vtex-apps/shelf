@@ -7,6 +7,7 @@ import ShelfItem from './ShelfItem'
 import Arrow from './Arrow'
 import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
+import Card from '@vtex/styleguide/lib/Card'
 import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
 import productsQuery from './graphql/productsQuery.gql'
@@ -69,8 +70,10 @@ class Shelf extends Component {
             <Slider {...slideSettings}>
               {products.slice(0, maxItems).map(item => {
                 return (
-                  <div key={item.productId} className="ph4 grow">
-                    <ShelfItem {...item} imageHeight={200} />
+                  <div key={item.productId} className="pa4">
+                    <Card>
+                      <ShelfItem {...item} imageHeight={200} />
+                    </Card>
                   </div>
                 )
               })}
