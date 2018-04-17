@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shelf component should match snapshot 1`] = `
+<div>
+  <div
+    class="ml7 mr7 pv4 vtex-shelf"
+  >
+    <div
+      class="w-100 flex justify-center"
+    >
+      <h1 />
+    </div>
+    <div
+      class="regular slider slick-initialized slick-slider"
+    >
+      
+      <div
+        class="slick-list"
+      >
+        <div
+          class="slick-track"
+          style="opacity: 1;"
+        >
+          <div
+            class="slick-slide slick-active slick-current ph4 grow"
+            data-index="0"
+            style="outline: none; width: 0px;"
+            tabindex="-1"
+          >
+            <div
+              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
+            >
+              <h4
+                class="w-90 tc truncate mid-gray"
+                title="Product1"
+              >
+                Product1
+              </h4>
+              <img
+                height="200"
+                src="//www.allfree-clipart.com/Business/computer.jpg"
+              />
+              <h5
+                class="near-black"
+              >
+                R$ 
+                400.00
+              </h5>
+            </div>
+          </div>
+          <div
+            class="slick-slide slick-active ph4 grow"
+            data-index="1"
+            style="outline: none; width: 0px;"
+            tabindex="-1"
+          >
+            <div
+              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
+            >
+              <h4
+                class="w-90 tc truncate mid-gray"
+                title="Product2"
+              >
+                Product2
+              </h4>
+              <img
+                height="200"
+                src="//www.allfree-clipart.com/Business/computer.jpg"
+              />
+              <h5
+                class="near-black"
+              >
+                R$ 
+                400.00
+              </h5>
+            </div>
+          </div>
+          <div
+            class="slick-slide slick-active ph4 grow"
+            data-index="2"
+            style="outline: none; width: 0px;"
+            tabindex="-1"
+          >
+            <div
+              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
+            >
+              <h4
+                class="w-90 tc truncate mid-gray"
+                title="Product3"
+              >
+                Product3
+              </h4>
+              <img
+                height="200"
+                src="//www.allfree-clipart.com/Business/computer.jpg"
+              />
+              <h5
+                class="near-black"
+              >
+                R$ 
+                400.00
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+`;

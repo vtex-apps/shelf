@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Shelf Item Component. Shows a summary of a product.
  */
 class ShelfItem extends Component {
   render() {
-    const { name, imagePath, price, imageWidth } = this.props;
+    const { productName, items, imageHeight } = this.props
+    const imagePath = items[0].images[0].imageUrl
+    const price = items[0].sellers[0].commertialOffer.Price
     return (
-      <div className="ma4 shadow-2 br3 items-center flex flex-column grow pointer">
-        <h4 className="w-90 tc truncate mid-gray" title={name}>
-          {name}
+      <div className="items-center flex flex-column pointer">
+        <h4 className="w-90 tc truncate mid-gray" title={productName}>
+          {productName}
         </h4>
-        <img width={imageWidth} src={imagePath} />
+        <img height={imageHeight} src={imagePath.replace('http:', '')} />
         <h5 className="near-black">R$ {price.toFixed(2)}</h5>
       </div>
     )
@@ -19,14 +22,12 @@ class ShelfItem extends Component {
 }
 
 ShelfItem.propTypes = {
-  /** The name of the item. */
-  name: PropTypes.string.isRequired,
-  /** The path of the image representing the item. */
-  imagePath: PropTypes.string.isRequired,
-  /** The price of the item. */
-  price: PropTypes.number.isRequired,
+  /** The name of the product. */
+  productName: PropTypes.string.isRequired,
+  /** The skus of the product. */
+  items: PropTypes.array,
   /** The width of the image. */
-  imageWidth: PropTypes.number
+  imageHeight: PropTypes.number,
 }
 
 export default ShelfItem

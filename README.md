@@ -10,6 +10,18 @@ Add "vtex.shelf" as your app dependency.
 
 ``` javascript
 /**
+ * The category ID of the listed items in the shelf.
+ */
+- category
+  - Type: Number
+  - Default: 1
+  /**
+ * The ordenation type of the items in the shelf.
+ */
+- orderBy
+  - Type: String
+  - Default: 'OrderByTopSaleDESC'
+/**
  * Maximum number of items in the shelf.
  */
 - maxItems
@@ -27,4 +39,11 @@ Add "vtex.shelf" as your app dependency.
 - titleText
   - Type: String
   - Default: 'Default Title'
+```
+
+## Tests
+
+Run the tests with the command
+```
+cd react && npm t
 ```
