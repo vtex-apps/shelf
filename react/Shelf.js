@@ -54,7 +54,7 @@ class Shelf extends Component {
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
-          <h1> {titleText}</h1>
+          <h1>{titleText}</h1>
         </div>
         {
           data.loading && (
@@ -109,8 +109,8 @@ Shelf.schema = {
     scroll: {
       title: 'Scroll Type',
       type: 'string',
-      enum: ['BY_PAGE', 'ONE_TO_ONE'],
-      enumNames: ['By Page', 'One To One'],
+      enum: ['BY_PAGE', 'ONE_BY_ONE'],
+      enumNames: ['By Page', 'One By One'],
       default: 'BY_PAGE',
     },
     arrows: {

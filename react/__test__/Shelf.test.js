@@ -10,7 +10,7 @@ import gql from 'graphql-tag';
 describe('Shelf component', () => {
   let wrapper
 
-  beforeEach( (done) => {
+  beforeEach(done => {
     const mockedProducts = [
       {
         productId: '1',
