@@ -6,7 +6,24 @@ A Shelf Component. Shows a collection of products.
 
 Add "vtex.shelf" as your app dependency.
 
-## Schema Properties
+## ExtensionPoint
+
+The Shelf Component was built to support extensions with the following props:
+```javascript
+product: {
+  listPrice: Number,
+  sellingPrice: Number,
+  imageUrl: String,
+  imageTag: String,
+  url: String, // product url link
+  name: String,
+  skuName: String,
+  brandName: String,
+  referenceCode: String,
+}
+```
+
+## Schema Properties (Used By Editor)
 
 ``` javascript
 /**
@@ -14,19 +31,31 @@ Add "vtex.shelf" as your app dependency.
  */
 - category
   - Type: Number
-  - Default: 1
-  /**
+/**
+ * The collection ID of the listed items in the shelf.
+ */
+- collection
+  - Type: Number
+/**
  * The ordenation type of the items in the shelf.
  */
 - orderBy
   - Type: String
   - Default: 'OrderByTopSaleDESC'
+  - Enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC']
 /**
  * Maximum number of items in the shelf.
  */
 - maxItems
   - Type: Number
   - Default: 7
+/**
+ * The scroll type of slide transiction.
+ */
+- scroll
+  - Type: String
+  - Default: 'BY_PAGE'
+  - Enum: ['BY_PAGE', 'ONE_BY_ONE']
 /**
  * If the arrows are showable or not.
  */
