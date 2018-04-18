@@ -13,9 +13,13 @@
     font-size: 2rem;
     color: inherit;
 }
+.vtex-shelf .slick-prev
+{
+    z-index: 999;
+}
 .vtex-shelf .slick-next
 {
-    right: -0.7rem;
+    right: -1rem;
 }
 .vtex-shelf .slick-dots li button
 {

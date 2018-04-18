@@ -24,86 +24,41 @@ exports[`Shelf component should match snapshot 1`] = `
           style="opacity: 1;"
         >
           <div
-            class="slick-slide slick-active slick-current ph4 grow"
+            class="slick-slide slick-active slick-current pa4"
             data-index="0"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          >
-            <div
-              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
-            >
-              <h4
-                class="w-90 tc truncate mid-gray"
-                title="Product1"
-              >
-                Product1
-              </h4>
-              <img
-                height="200"
-                src="//www.allfree-clipart.com/Business/computer.jpg"
-              />
-              <h5
-                class="near-black"
-              >
-                R$ 
-                400.00
-              </h5>
-            </div>
-          </div>
+          />
           <div
-            class="slick-slide slick-active ph4 grow"
+            class="slick-slide slick-active pa4"
             data-index="1"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          >
-            <div
-              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
-            >
-              <h4
-                class="w-90 tc truncate mid-gray"
-                title="Product2"
-              >
-                Product2
-              </h4>
-              <img
-                height="200"
-                src="//www.allfree-clipart.com/Business/computer.jpg"
-              />
-              <h5
-                class="near-black"
-              >
-                R$ 
-                400.00
-              </h5>
-            </div>
-          </div>
+          />
           <div
-            class="slick-slide slick-active ph4 grow"
+            class="slick-slide slick-active pa4"
             data-index="2"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          >
-            <div
-              class="ma4 shadow-2 br3 items-center flex flex-column pointer"
-            >
-              <h4
-                class="w-90 tc truncate mid-gray"
-                title="Product3"
-              >
-                Product3
-              </h4>
-              <img
-                height="200"
-                src="//www.allfree-clipart.com/Business/computer.jpg"
-              />
-              <h5
-                class="near-black"
-              >
-                R$ 
-                400.00
-              </h5>
-            </div>
-          </div>
+          />
+          <div
+            class="slick-slide slick-active slick-cloned pa4"
+            data-index="3"
+            style="width: 0px;"
+            tabindex="-1"
+          />
+          <div
+            class="slick-slide slick-active slick-cloned pa4"
+            data-index="4"
+            style="width: 0px;"
+            tabindex="-1"
+          />
+          <div
+            class="slick-slide slick-cloned pa4"
+            data-index="5"
+            style="width: 0px;"
+            tabindex="-1"
+          />
         </div>
       </div>
       

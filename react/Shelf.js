@@ -20,13 +20,13 @@ class Shelf extends Component {
     const { arrows, scroll } = this.props
 
     return {
+      infinite: true,
       slidesToShow: 5,
       slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
       arrows,
       nextArrow: <Arrow color="#000" />,
       prevArrow: <Arrow color="#000" />,
-      infinite: false,
       appendDots: dots => <Dots color="#000" dots={dots} />,
       responsive: [
         {
@@ -39,8 +39,11 @@ class Shelf extends Component {
         {
           breakpoint: 600,
           settings: {
+            centerMode: true,
             slidesToShow: 1,
             slidesToScroll: 1,
+            arrows: false,
+            dots: false,
           },
         },
       ],
@@ -49,11 +52,15 @@ class Shelf extends Component {
 
   normalizeProductSummaryProps(product) {
     return {
-      listPrice: product.items[0].sellers[0].commertialOffer.Price,
+      listPrice: product.items[0].sellers[0].commertialOffer.ListPrice,
       sellingPrice: product.items[0].sellers[0].commertialOffer.Price,
       imageUrl: product.items[0].images[0].imageUrl.replace('http:', ''),
-      url: `/product/${product.productId}`,
+      imageTag: product.items[0].images[0].imageTag,
+      url: product.link,
       name: product.productName,
+      skuName: product.items[0].name,
+      brandName: product.brand,
+      referenceCode: product.items[0].referenceId[0].Value,
     }
   }
 
@@ -66,7 +73,7 @@ class Shelf extends Component {
     if (this.isEditMode()) {
       if (products.length) {
         return (
-          <div className="w-20" key={products[0].productId}>
+          <div className="w-20 pa4" key={products[0].productId}>
             <ExtensionPoint id="shelfitem"
               product={this.normalizeProductSummaryProps(products[0])}>
             </ExtensionPoint>
@@ -74,7 +81,7 @@ class Shelf extends Component {
         )
       }
       return (
-        <div className="w-20" key="1">
+        <div className="w-20 pa4" key="1">
           <ExtensionPoint id="shelfitem"
             product={{
               listPrice: 200,
@@ -92,7 +99,7 @@ class Shelf extends Component {
         {
           products.slice(0, maxItems).map(item => {
             return (
-              <div key={item.productId}>
+              <div key={item.productId} className="pa4">
                 <ExtensionPoint id={'shelfitem'}
                   product={this.normalizeProductSummaryProps(item)}>
                 </ExtensionPoint>
@@ -103,11 +110,9 @@ class Shelf extends Component {
       </Slider>
     )
   }
-
   render() {
     const { data, maxItems, titleText } = this.props
     const products = !data || data['error'] ? [] : data.products
-
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
         <div className="w-100 flex justify-center">
@@ -189,13 +194,21 @@ Shelf.propTypes = {
     products: PropTypes.arrayOf(PropTypes.shape({
       productId: PropTypes.string.isRequired,
       productName: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      brand: PropTypes.string.isRequired,
       items: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        referenceId: PropTypes.arrayOf(PropTypes.shape({
+          Value: PropTypes.string,
+        })),
         images: PropTypes.arrayOf(PropTypes.shape({
           imageUrl: PropTypes.string.isRequired,
+          imageTag: PropTypes.string.isRequired,
         })).isRequired,
         sellers: PropTypes.arrayOf(PropTypes.shape({
           commertialOffer: PropTypes.shape({
             Price: PropTypes.number.isRequired,
+            ListPrice: PropTypes.number.isRequired,
           }),
         })).isRequired,
       })),
@@ -219,16 +232,16 @@ Shelf.propTypes = {
 
 const options = {
   options: ({
-    category = undefined,
-    orderBy = undefined,
-    maxItems = 10,
-    collection = undefined,
+    category,
+    orderBy,
+    maxItems = Shelf.defaultProps.maxItems,
+    collection,
   }) => ({
     variables: {
-      category: category || undefined,
-      collection: collection || undefined,
+      category,
+      collection,
       specificationFilters: [],
-      orderBy: orderBy || undefined,
+      orderBy,
       from: 0,
       to: maxItems - 1,
     },

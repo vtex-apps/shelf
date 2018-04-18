@@ -14,13 +14,21 @@ describe('Shelf component', () => {
       {
         productId: '1',
         productName: 'Product1',
+        brand: 'brand',
+        link: 'http://mylink.com',
         items: [{
+          name: 'name',
+          referenceId: [{
+            Value: 'ref1234',
+          }],
           images: [{
             imageUrl: '//www.allfree-clipart.com/Business/computer.jpg',
+            imageTag: '<img src="//www.allfree-clipart.com/Business/computer.jpg">',
           }],
           sellers: [{
             commertialOffer: {
               Price: 400,
+              ListPrice: 200,
             },
           }],
         }],
@@ -28,13 +36,21 @@ describe('Shelf component', () => {
       {
         productId: '2',
         productName: 'Product2',
+        brand: 'brand',
+        link: 'http://mylink.com',
         items: [{
+          name: 'name',
+          referenceId: [{
+            Value: 'ref1234',
+          }],
           images: [{
             imageUrl: '//www.allfree-clipart.com/Business/computer.jpg',
+            imageTag: '<img src="//www.allfree-clipart.com/Business/computer.jpg"',
           }],
           sellers: [{
             commertialOffer: {
               Price: 400,
+              ListPrice: 200,
             },
           }],
         }],
@@ -42,13 +58,21 @@ describe('Shelf component', () => {
       {
         productId: '3',
         productName: 'Product3',
+        brand: 'brand',
+        link: 'http://mylink.com',
         items: [{
+          name: 'name',
+          referenceId: [{
+            Value: 'ref1234',
+          }],
           images: [{
             imageUrl: '//www.allfree-clipart.com/Business/computer.jpg',
+            imageTag: '<img src="//www.allfree-clipart.com/Business/computer.jpg"',
           }],
           sellers: [{
             commertialOffer: {
               Price: 400,
+              ListPrice: 200,
             },
           }],
         }],
@@ -96,6 +120,6 @@ describe('Shelf component', () => {
     ).toBe(1)
     expect(
       wrapper.container.querySelectorAll('.slick-slide').length
-    ).toBe(3)
+    ).toBe(6) // 6 because the slide is infinite
   })
 })
