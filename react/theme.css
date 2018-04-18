@@ -1,37 +1,39 @@
 @import url('~slick-carousel/slick/slick.css');
 @import url('~slick-carousel/slick/slick-theme.css');
 
-.vtex-shelf .slick-prev.slick-disabled:before,
-.vtex-shelf .slick-next.slick-disabled:before
+.vtex-shelf .vtex-shelf__arrow-left,
+.vtex-shelf .vtex-shelf__arrow-right {
+    color: black;
+}
+.vtex-shelf .vtex-shelf__arrow-left.slick-disabled:before,
+.vtex-shelf .vtex-shelf__arrow-right.slick-disabled:before
 {
     color: inherit;
 }
-
-.vtex-shelf .slick-prev:before,
-.vtex-shelf .slick-next:before
+.vtex-shelf .vtex-shelf__arrow-left:before,
+.vtex-shelf .vtex-shelf__arrow-right:before
 {
     font-size: 2rem;
     color: inherit;
 }
-.vtex-shelf .slick-prev
+.vtex-shelf .vtex-shelf__arrow-left
 {
     z-index: 999;
 }
-.vtex-shelf .slick-next
+.vtex-shelf .vtex-shelf__arrow-right
 {
     right: -1rem;
 }
-.vtex-shelf .slick-dots li button
+.vtex-shelf .vtex-shelf__dots li button
 {
-    color: inherit;
+    color: black;
 }
-
-.vtex-shelf .slick-dots li button:before
+.vtex-shelf .vtex-shelf__dots li button:before
 {
     font-size: 1rem;
     color: inherit;
 }
-.vtex-shelf .slick-dots li.slick-active button:before
+.vtex-shelf .vtex-shelf__dots li.slick-active button:before
 {
     color: inherit;
 }

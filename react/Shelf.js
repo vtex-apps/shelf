@@ -25,9 +25,9 @@ class Shelf extends Component {
       slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
       arrows,
-      nextArrow: <Arrow color="#000" />,
-      prevArrow: <Arrow color="#000" />,
-      appendDots: dots => <Dots color="#000" dots={dots} />,
+      nextArrow: <Arrow arrowClass="vtex-shelf__arrow-right" />,
+      prevArrow: <Arrow arrowClass="vtex-shelf__arrow-left" />,
+      appendDots: dots => <Dots dots={dots} />,
       responsive: [
         {
           breakpoint: 1024,
@@ -86,7 +86,7 @@ class Shelf extends Component {
             product={{
               listPrice: 200,
               sellingPrice: 40,
-              imageUrl: '//www.allfree-clipart.com/Business/computer.jpg',
+              imageUrl: '',
               url: '/product/1',
               name: 'Product1',
             }}>
@@ -99,7 +99,7 @@ class Shelf extends Component {
         {
           products.slice(0, maxItems).map(item => {
             return (
-              <div key={item.productId} className="pa4">
+              <div key={item.productId} className="vtex-shelf__slide pa4">
                 <ExtensionPoint id={'shelfitem'}
                   product={this.normalizeProductSummaryProps(item)}>
                 </ExtensionPoint>
@@ -115,8 +115,8 @@ class Shelf extends Component {
     const products = !data || data['error'] ? [] : data.products
     return (
       <div className="ml7 mr7 pv4 vtex-shelf">
-        <div className="w-100 flex justify-center">
-          <h1> {titleText}</h1>
+        <div className="vtex-shelf__title-content w-100 flex justify-center">
+          <h1 className="vtex-shelf__title-text"> {titleText}</h1>
         </div>
         {
           data.loading && (
