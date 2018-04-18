@@ -16,13 +16,21 @@ query Products(
     ) {
       productId
       productName
+      link
+      brand
       items {
+        name
+        referenceId {
+          Value
+        }
         images {
           imageUrl
+          imageTag
         }
         sellers {
           commertialOffer {
             Price
+            ListPrice
           }
         }
       }

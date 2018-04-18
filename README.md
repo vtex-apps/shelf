@@ -41,6 +41,18 @@ Add "vtex.shelf" as your app dependency.
   - Default: 'Default Title'
 ```
 
+## CSS Classes
+
+```css
+vtex-shelf
+vtex-shelf__title-text
+vtex-shelf__title-content
+vtex-shelf__slide
+vtex-shelf__arrow-right
+vtex-shelf__arrow-left
+vtex-shelf__dots
+```
+
 ## Tests
 
 Run the tests with the command
