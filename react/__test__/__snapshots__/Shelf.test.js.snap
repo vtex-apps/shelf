@@ -28,37 +28,61 @@ exports[`Shelf component should match snapshot 1`] = `
             data-index="0"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
           <div
             class="slick-slide slick-active pa4"
             data-index="1"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
           <div
             class="slick-slide slick-active pa4"
             data-index="2"
             style="outline: none; width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
           <div
             class="slick-slide slick-active slick-cloned pa4"
             data-index="3"
             style="width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
           <div
             class="slick-slide slick-active slick-cloned pa4"
             data-index="4"
             style="width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
           <div
             class="slick-slide slick-cloned pa4"
             data-index="5"
             style="width: 0px;"
             tabindex="-1"
-          />
+          >
+            <div>
+              Extension Point
+            </div>
+          </div>
         </div>
       </div>
       

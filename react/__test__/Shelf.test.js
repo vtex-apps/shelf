@@ -111,7 +111,7 @@ describe('Shelf component', () => {
     expect(wrapper.container).toMatchSnapshot()
   })
 
-  it('should render 3 slide items', () => {
+  it('should render 6 slide items', () => {
     expect(
       wrapper.container.querySelectorAll('.vtex-shelf').length
     ).toBe(1)
