@@ -8,7 +8,7 @@ Add "vtex.shelf" as your app dependency.
 
 ## ExtensionPoint
 
-The Shelf Component was built to support extensions with the following props:
+Shelf Component was built to support extensions with the following props:
 ```javascript
 product: {
   listPrice: Number,
