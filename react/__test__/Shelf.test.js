@@ -9,7 +9,7 @@ import productsQuery from '../graphql/productsQuery.gql'
 describe('Shelf component', () => {
   let wrapper
 
-  beforeEach((done) => {
+  beforeEach(done => {
     const mockedProducts = [
       {
         productId: '1',

@@ -165,8 +165,8 @@ Shelf.schema = {
     scroll: {
       title: 'Scroll Type',
       type: 'string',
-      enum: ['BY_PAGE', 'ONE_TO_ONE'],
-      enumNames: ['By Page', 'One To One'],
+      enum: ['BY_PAGE', 'ONE_BY_ONE'],
+      enumNames: ['By Page', 'One By One'],
       default: 'BY_PAGE',
     },
     arrows: {
@@ -233,17 +233,17 @@ Shelf.propTypes = {
 const options = {
   options: ({
     category,
+    collection,
     orderBy,
     maxItems = Shelf.defaultProps.maxItems,
-    collection,
   }) => ({
     variables: {
       category,
       collection,
-      specificationFilters: [],
       orderBy,
       from: 0,
       to: maxItems - 1,
+      specificationFilters: [],
     },
     ssr: false,
   }),

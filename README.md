@@ -10,13 +10,13 @@ Add "vtex.shelf" as your app dependency.
 
 ``` javascript
 /**
- * The category Id of the listed items in the shelf.
+ * The category ID of the listed items in the shelf.
  */
 - category
   - Type: Number
   - Default: 1
   /**
- * The ordenation type os the items in the shelf.
+ * The ordenation type of the items in the shelf.
  */
 - orderBy
   - Type: String

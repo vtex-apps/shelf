@@ -8,9 +8,7 @@ exports[`Shelf component should match snapshot 1`] = `
     <div
       class="w-100 flex justify-center"
     >
-      <h1>
-         
-      </h1>
+      <h1 />
     </div>
     <div
       class="regular slider slick-initialized slick-slider"
