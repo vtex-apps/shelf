@@ -16,11 +16,11 @@ import { ExtensionPoint } from 'render'
  * Shelf Component. Shows a collection of products.
  */
 class Shelf extends Component {
-  configureSettings() {
+  configureSettings(itemsLength) {
     const { arrows, scroll } = this.props
 
     return {
-      infinite: true,
+      infinite: itemsLength > 5,
       slidesToShow: 5,
       slidesToScroll: scroll === 'BY_PAGE' ? 5 : 1,
       dots: true,
@@ -32,6 +32,7 @@ class Shelf extends Component {
         {
           breakpoint: 1024,
           settings: {
+            infinite: itemsLength > 3,
             slidesToShow: 3,
             slidesToScroll: scroll === 'BY_PAGE' ? 3 : 1,
           },
@@ -39,6 +40,7 @@ class Shelf extends Component {
         {
           breakpoint: 600,
           settings: {
+            infinite: itemsLength > 1,
             centerMode: true,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -69,7 +71,7 @@ class Shelf extends Component {
   }
 
   renderSlideProperly(products, maxItems) {
-    const slideSettings = this.configureSettings()
+    const slideSettings = this.configureSettings(products.length)
     if (this.isEditMode()) {
       if (products.length) {
         return (
