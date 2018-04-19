@@ -6,7 +6,6 @@ import Slider from 'react-slick'
 import Arrow from './Arrow'
 import Dots from './Dots'
 import Spinner from '@vtex/styleguide/lib/Spinner'
-import spinnerStyle from '@vtex/styleguide/lib/Spinner/style.css'
 
 import productsQuery from './graphql/productsQuery.gql'
 
@@ -124,7 +123,7 @@ class Shelf extends Component {
           data.loading && (
             <div className="w-100 flex justify-center">
               <div className="w3 ma0">
-                <Spinner style={spinnerStyle} />
+                <Spinner />
               </div>
             </div>
           )
