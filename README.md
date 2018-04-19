@@ -2,6 +2,11 @@
 
 A Shelf Component. Shows a collection of products.
 
+## Continuous Integrations 
+
+### Travis CI 
+[![Build Status](https://travis-ci.org/vtex-apps/shelf.svg?branch=master)](https://travis-ci.org/vtex-apps/shelf)
+
 ## Usage
 
 Add "vtex.shelf" as your app dependency.
