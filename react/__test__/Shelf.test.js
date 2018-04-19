@@ -111,7 +111,7 @@ describe('Shelf component', () => {
     expect(wrapper.container).toMatchSnapshot()
   })
 
-  it('should render 6 slide items', () => {
+  it('should render 3 slide items', () => {
     expect(
       wrapper.container.querySelectorAll('.vtex-shelf').length
     ).toBe(1)
@@ -120,6 +120,6 @@ describe('Shelf component', () => {
     ).toBe(1)
     expect(
       wrapper.container.querySelectorAll('.slick-slide').length
-    ).toBe(6) // 6 because the slide is infinite
+    ).toBe(3)
   })
 })

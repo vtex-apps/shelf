@@ -242,10 +242,10 @@ const options = {
     variables: {
       category,
       collection,
+      specificationFilters: [],
       orderBy,
       from: 0,
       to: maxItems - 1,
-      specificationFilters: [],
     },
     ssr: false,
   }),

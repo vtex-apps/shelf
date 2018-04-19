@@ -6,9 +6,13 @@ exports[`Shelf component should match snapshot 1`] = `
     class="ml7 mr7 pv4 vtex-shelf"
   >
     <div
-      class="w-100 flex justify-center"
+      class="vtex-shelf__title-content w-100 flex justify-center"
     >
-      <h1 />
+      <h1
+        class="vtex-shelf__title-text"
+      >
+         
+      </h1>
     </div>
     <div
       class="regular slider slick-initialized slick-slider"
@@ -22,7 +26,7 @@ exports[`Shelf component should match snapshot 1`] = `
           style="opacity: 1;"
         >
           <div
-            class="slick-slide slick-active slick-current pa4"
+            class="slick-slide slick-active slick-current vtex-shelf__slide pa4"
             data-index="0"
             style="outline: none; width: 0px;"
             tabindex="-1"
@@ -32,7 +36,7 @@ exports[`Shelf component should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="slick-slide slick-active pa4"
+            class="slick-slide slick-active vtex-shelf__slide pa4"
             data-index="1"
             style="outline: none; width: 0px;"
             tabindex="-1"
@@ -42,39 +46,9 @@ exports[`Shelf component should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="slick-slide slick-active pa4"
+            class="slick-slide slick-active vtex-shelf__slide pa4"
             data-index="2"
             style="outline: none; width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-          <div
-            class="slick-slide slick-active slick-cloned pa4"
-            data-index="3"
-            style="width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-          <div
-            class="slick-slide slick-active slick-cloned pa4"
-            data-index="4"
-            style="width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-          <div
-            class="slick-slide slick-cloned pa4"
-            data-index="5"
-            style="width: 0px;"
             tabindex="-1"
           >
             <div>
