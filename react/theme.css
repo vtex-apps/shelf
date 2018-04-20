@@ -37,3 +37,11 @@
 {
     color: inherit;
 }
+.vtex-shelf .vtex-shelf__item-edit-mode {
+    max-width: 20%;
+}
+@media only screen and (max-width: 600px) {
+    .vtex-shelf .vtex-shelf__item-edit-mode {
+        max-width: 100%;
+    }
+}

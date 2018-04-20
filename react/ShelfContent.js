@@ -17,7 +17,6 @@ class ShelfContent extends Component {
   BREAKPOINT_MEDIUM_VIEWPORT = 1024
   BREAKPOINT_MOBILE_VIEWPORT = 600
 
-  MAX_ITEMS_LARGE_VIEWPORT = 5
   MAX_ITEMS_MEDIUM_VIEWPORT = 3
   MAX_ITEMS_MOBILE_VIEWPORT = 1
 
@@ -47,12 +46,12 @@ class ShelfContent extends Component {
   }
 
   configureSlideSettings(itemsLength) {
-    const { arrows, scroll } = this.props
+    const { arrows, scroll, itemsPerPage } = this.props
 
     return {
-      infinite: this.MAX_ITEMS_LARGE_VIEWPORT < itemsLength,
-      slidesToShow: this.MAX_ITEMS_LARGE_VIEWPORT,
-      slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? this.MAX_ITEMS_LARGE_VIEWPORT : 1,
+      infinite: itemsPerPage < itemsLength,
+      slidesToShow: itemsPerPage,
+      slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : 1,
       dots: this.DOTS_LARGE_VIEWPORT,
       arrows,
       nextArrow: <Arrow arrowClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
@@ -93,13 +92,13 @@ class ShelfContent extends Component {
     if (this.isEditMode()) {
       if (products && products.length) {
         return (
-          <div className="w-20 pa4" key={products[0].productId}>
+          <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key={products[0].productId}>
             <ShelfItem extentionId="shelfitem" item={products[0]} />
           </div>
         )
       }
       return (
-        <div className="w-20 pa4" key="1">
+        <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key="1">
           <ShelfItem extentionId="shelfitem" item={this.FAKE_PRODUCT} />
         </div>
       )
@@ -122,6 +121,7 @@ class ShelfContent extends Component {
 
 ShelfContent.propTypes = {
   products: PropTypes.arrayOf(ShelfItem.propTypes.item),
+  itemsPerPage: PropTypes.number.isRequired,
   maxItems: PropTypes.number.isRequired,
   arrows: PropTypes.bool.isRequired,
   scroll: PropTypes.string.isRequired,

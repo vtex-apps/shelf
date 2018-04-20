@@ -55,6 +55,12 @@ product: {
   - Type: Number
   - Default: 7
 /**
+ * Maximum number of items in the page.
+ */
+- itemsPerPage
+  - Type: Number
+  - Default: 5
+/**
  * The scroll type of slide transiction.
  */
 - scroll

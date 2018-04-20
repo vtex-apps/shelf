@@ -11,13 +11,14 @@ import VTEXClasses from './CustomClasses'
 import productsQuery from './graphql/productsQuery.gql'
 
 const DEFAULT_MAX_ITEMS = 10
+const DEFAULT_ITEMS_PER_PAGE = 5
 
 /**
  * Shelf Component. Shows a collection of products.
  */
 class Shelf extends Component {
   render() {
-    const { data, maxItems, titleText, arrows, scroll } = this.props
+    const { data, maxItems, titleText, arrows, scroll, itemsPerPage } = this.props
     const products = !data || data['error'] ? [] : data.products
     return (
       <div className={`ml7 mr7 pv4 ${VTEXClasses.MAIN_CLASS}`}>
@@ -35,7 +36,8 @@ class Shelf extends Component {
         }
         {
           !data.loading && (
-            <ShelfContent products={products} maxItems={maxItems} arrows={arrows} scroll={scroll} />
+            <ShelfContent products={products} maxItems={maxItems}
+              arrows={arrows} scroll={scroll} itemsPerPage={itemsPerPage} />
           )
         }
       </div>
@@ -45,6 +47,7 @@ class Shelf extends Component {
 
 Shelf.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
+  itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
   arrows: true,
 }
@@ -73,6 +76,12 @@ Shelf.schema = {
       title: 'Max Items',
       type: 'number',
       default: Shelf.defaultProps.maxItems,
+    },
+    itemsPerPage: {
+      title: 'Items Per Page',
+      type: 'number',
+      enum: [3, 4, 5],
+      default: Shelf.defaultProps.itemsPerPage,
     },
     scroll: {
       title: 'Scroll Type',
@@ -107,6 +116,8 @@ Shelf.propTypes = {
   orderBy: PropTypes.oneOf(getOrdenationValues()),
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
+  /** Maximum number of items in a page. */
+  itemsPerPage: PropTypes.number.isRequired,
   /** The scroll options. */
   scroll: PropTypes.oneOf(getScrollValues()),
   /** The Collection Id. */
