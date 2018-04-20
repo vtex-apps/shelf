@@ -28,14 +28,14 @@ class ShelfContent extends Component {
 
   FAKE_PRODUCT = {
     productId: '1',
-    productName: 'Product1',
-    link: '/product/1',
-    brand: 'brand1',
+    productName: 'Product Sample',
+    link: '#',
+    brand: 'Brand Sample',
     items: [{
-      name: 'sku1',
+      name: 'Sku Sample',
       images: [{
-        imageUrl: '/path/product/1',
-        imageTag: '<img />',
+        imageUrl: '',
+        imageTag: '',
       }],
       sellers: [{
         commertialOffer: {
