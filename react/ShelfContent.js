@@ -9,42 +9,42 @@ import ShelfItem from './ShelfItem'
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 
+const BREAKPOINT_MEDIUM_VIEWPORT = 1024
+const BREAKPOINT_MOBILE_VIEWPORT = 600
+
+const MAX_ITEMS_MEDIUM_VIEWPORT = 3
+const MAX_ITEMS_MOBILE_VIEWPORT = 1
+
+const DOTS_LARGE_VIEWPORT = true
+const DOTS_MOBILE_VIEWPORT = false
+const ARROWS_MOBILE_VIEWPORT = false
+const SLIDER_CENTER_MODE_MOBILE = true
+
+const PLACEHOLDER_PRODUCT = {
+  productId: '1',
+  productName: 'Product Sample',
+  link: '#',
+  brand: 'Brand Sample',
+  items: [{
+    name: 'Sku Sample',
+    images: [{
+      imageUrl: '',
+      imageTag: '',
+    }],
+    sellers: [{
+      commertialOffer: {
+        Price: 200,
+        ListPrice: 200,
+      },
+    }],
+  }],
+}
+
 /**
  * ShelfContent Component. Realizes the interaction with react-slick
  * and render the properly content of the Shelf depending of edit mode state.
  */
 class ShelfContent extends Component {
-  BREAKPOINT_MEDIUM_VIEWPORT = 1024
-  BREAKPOINT_MOBILE_VIEWPORT = 600
-
-  MAX_ITEMS_MEDIUM_VIEWPORT = 3
-  MAX_ITEMS_MOBILE_VIEWPORT = 1
-
-  DOTS_LARGE_VIEWPORT = true
-  DOTS_MOBILE_VIEWPORT = false
-  ARROWS_MOBILE_VIEWPORT = false
-  SLIDER_CENTER_MODE_MOBILE = true
-
-  FAKE_PRODUCT = {
-    productId: '1',
-    productName: 'Product Sample',
-    link: '#',
-    brand: 'Brand Sample',
-    items: [{
-      name: 'Sku Sample',
-      images: [{
-        imageUrl: '',
-        imageTag: '',
-      }],
-      sellers: [{
-        commertialOffer: {
-          Price: 200,
-          ListPrice: 200,
-        },
-      }],
-    }],
-  }
-
   configureSlideSettings(itemsLength) {
     const { arrows, scroll, itemsPerPage } = this.props
 
@@ -52,30 +52,30 @@ class ShelfContent extends Component {
       infinite: itemsPerPage < itemsLength,
       slidesToShow: itemsPerPage,
       slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : 1,
-      dots: this.DOTS_LARGE_VIEWPORT,
+      dots: DOTS_LARGE_VIEWPORT,
       arrows,
       nextArrow: <Arrow arrowClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
       prevArrow: <Arrow arrowClass={VTEXClasses.ARROW_LEFT_CLASS} />,
       appendDots: dots => <Dots dots={dots} />,
       responsive: [
         {
-          breakpoint: this.BREAKPOINT_MEDIUM_VIEWPORT,
+          breakpoint: BREAKPOINT_MEDIUM_VIEWPORT,
           settings: {
-            infinite: this.MAX_ITEMS_MEDIUM_VIEWPORT < itemsLength,
-            slidesToShow: this.MAX_ITEMS_MEDIUM_VIEWPORT,
+            infinite: MAX_ITEMS_MEDIUM_VIEWPORT < itemsLength,
+            slidesToShow: MAX_ITEMS_MEDIUM_VIEWPORT,
             slidesToScroll: scroll === ScrollTypes.BY_PAGE.value
-              ? this.MAX_ITEMS_MEDIUM_VIEWPORT : 1,
+              ? MAX_ITEMS_MEDIUM_VIEWPORT : 1,
           },
         },
         {
-          breakpoint: this.BREAKPOINT_MOBILE_VIEWPORT,
+          breakpoint: BREAKPOINT_MOBILE_VIEWPORT,
           settings: {
-            infinite: this.MAX_ITEMS_MOBILE_VIEWPORT < itemsLength,
-            centerMode: this.SLIDER_CENTER_MODE_MOBILE,
-            slidesToShow: this.MAX_ITEMS_MOBILE_VIEWPORT,
-            slidesToScroll: this.MAX_ITEMS_MOBILE_VIEWPORT,
-            arrows: this.ARROWS_MOBILE_VIEWPORT,
-            dots: this.DOTS_MOBILE_VIEWPORT,
+            infinite: MAX_ITEMS_MOBILE_VIEWPORT < itemsLength,
+            centerMode: SLIDER_CENTER_MODE_MOBILE,
+            slidesToShow: MAX_ITEMS_MOBILE_VIEWPORT,
+            slidesToScroll: MAX_ITEMS_MOBILE_VIEWPORT,
+            arrows: ARROWS_MOBILE_VIEWPORT,
+            dots: DOTS_MOBILE_VIEWPORT,
           },
         },
       ],
@@ -99,7 +99,7 @@ class ShelfContent extends Component {
       }
       return (
         <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key="1">
-          <ShelfItem extentionId="shelfitem" item={this.FAKE_PRODUCT} />
+          <ShelfItem extentionId="shelfitem" item={PLACEHOLDER_PRODUCT} />
         </div>
       )
     }

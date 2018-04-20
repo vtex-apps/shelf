@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+ - Refactor Shelf structure
+ - Create CHANGELOG.md
+ - Add itemsPerPage to the properties of schema
+
 ## [0.9.0] - 2018-19-04
 
 ### Added

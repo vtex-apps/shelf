@@ -21,7 +21,7 @@ class Shelf extends Component {
     const { data, maxItems, titleText, arrows, scroll, itemsPerPage } = this.props
     const products = !data || data['error'] ? [] : data.products
     return (
-      <div className={`ml7 mr7 pv4 ${VTEXClasses.MAIN_CLASS}`}>
+      <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4`}>
         <div className={`${VTEXClasses.TITLE_CONTENT_CLASS} w-100 flex justify-center`}>
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
