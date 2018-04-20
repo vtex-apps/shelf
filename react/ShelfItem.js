@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 
 import { ExtensionPoint } from 'render'
 
+/**
+ * ShelfItem Component. Normalizes the item received in the props
+ * to adapt to the extension point prop.
+ */
 class ShelfItem extends Component {
   normalizeProductSummary(product) {
     return {
@@ -14,14 +18,14 @@ class ShelfItem extends Component {
       name: product.productName,
       skuName: product.items[0].name,
       brandName: product.brand,
-      referenceCode: product.items[0].referenceId[0].Value,
+      referenceCode: product.items[0].referenceId && product.items[0].referenceId[0].Value,
     }
   }
 
   render() {
-    const { item } = this.props
+    const { item, extentionId } = this.props
     return (
-      <ExtensionPoint id="shelfitem"
+      <ExtensionPoint id={extentionId}
         product={this.normalizeProductSummary(item)}>
       </ExtensionPoint>
     )
@@ -37,7 +41,7 @@ ShelfItem.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       referenceId: PropTypes.arrayOf(PropTypes.shape({
-        Value: PropTypes.string,
+        Value: PropTypes.string.isRequired,
       })),
       images: PropTypes.arrayOf(PropTypes.shape({
         imageUrl: PropTypes.string.isRequired,
@@ -49,9 +53,9 @@ ShelfItem.propTypes = {
           ListPrice: PropTypes.number.isRequired,
         }),
       })).isRequired,
-    })),
+    })).isRequired,
   }),
-  extentionId: PropTypes.number.isRequired,
+  extentionId: PropTypes.string.isRequired,
 }
 
 export default ShelfItem

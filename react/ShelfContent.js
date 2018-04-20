@@ -9,7 +9,11 @@ import ShelfItem from './ShelfItem'
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 
-class ShelfSlider extends Component {
+/**
+ * ShelfContent Component. Realizes the interaction with react-slick
+ * and render the properly content of the Shelf depending of edit mode state.
+ */
+class ShelfContent extends Component {
   BREAKPOINT_MEDIUM_VIEWPORT = 1024
   BREAKPOINT_MOBILE_VIEWPORT = 600
 
@@ -23,11 +27,23 @@ class ShelfSlider extends Component {
   SLIDER_CENTER_MODE_MOBILE = true
 
   FAKE_PRODUCT = {
-    listPrice: 200,
-    sellingPrice: 40,
-    imageUrl: '',
-    url: '/product/1',
-    name: 'Product1',
+    productId: '1',
+    productName: 'Product1',
+    link: '/product/1',
+    brand: 'brand1',
+    items: [{
+      name: 'sku1',
+      images: [{
+        imageUrl: '/path/product/1',
+        imageTag: '<img />',
+      }],
+      sellers: [{
+        commertialOffer: {
+          Price: 200,
+          ListPrice: 200,
+        },
+      }],
+    }],
   }
 
   configureSlideSettings(itemsLength) {
@@ -75,7 +91,7 @@ class ShelfSlider extends Component {
     const { products, maxItems } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
     if (this.isEditMode()) {
-      if (products.length) {
+      if (products && products.length) {
         return (
           <div className="w-20 pa4" key={products[0].productId}>
             <ShelfItem extentionId="shelfitem" item={products[0]} />
@@ -104,11 +120,11 @@ class ShelfSlider extends Component {
   }
 }
 
-ShelfSlider.propTypes = {
-  products: PropTypes.arrayOf(ShelfItem.propTypes.item).isRequired,
+ShelfContent.propTypes = {
+  products: PropTypes.arrayOf(ShelfItem.propTypes.item),
   maxItems: PropTypes.number.isRequired,
   arrows: PropTypes.bool.isRequired,
   scroll: PropTypes.string.isRequired,
 }
 
-export default ShelfSlider
+export default ShelfContent

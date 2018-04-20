@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 
 import Spinner from '@vtex/styleguide/lib/Spinner'
-import ShelfSlider from './ShelfSlider'
-import ScrollTypes from './ScrollTypes'
+import ShelfContent from './ShelfContent'
+import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
+import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
 import VTEXClasses from './CustomClasses'
 
 import productsQuery from './graphql/productsQuery.gql'
@@ -16,7 +17,7 @@ const DEFAULT_MAX_ITEMS = 10
  */
 class Shelf extends Component {
   render() {
-    const { data, maxItems, titleText } = this.props
+    const { data, maxItems, titleText, arrows, scroll } = this.props
     const products = !data || data['error'] ? [] : data.products
     return (
       <div className={`ml7 mr7 pv4 ${VTEXClasses.MAIN_CLASS}`}>
@@ -33,14 +34,19 @@ class Shelf extends Component {
           )
         }
         {
-          !data.loading && products && (
-            <ShelfSlider products={products} maxItems={maxItems}
-              arrows={this.props.arrows} scroll={this.props.scroll} />
+          !data.loading && (
+            <ShelfContent products={products} maxItems={maxItems} arrows={arrows} scroll={scroll} />
           )
         }
       </div>
     )
   }
+}
+
+Shelf.defaultProps = {
+  maxItems: DEFAULT_MAX_ITEMS,
+  scroll: ScrollTypes.BY_PAGE.value,
+  arrows: true,
 }
 
 Shelf.schema = {
@@ -59,20 +65,20 @@ Shelf.schema = {
     orderBy: {
       title: 'List Ordenation',
       type: 'string',
-      enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC'],
-      enumNames: ['Sales', 'Price, descending', 'Price, ascending'],
-      default: 'OrderByTopSaleDESC',
+      enum: getOrdenationValues(),
+      enumNames: getOrdenationNames(),
+      default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     },
     maxItems: {
       title: 'Max Items',
       type: 'number',
-      default: Shelf.propTypes.maxItems,
+      default: Shelf.defaultProps.maxItems,
     },
     scroll: {
       title: 'Scroll Type',
       type: 'string',
-      enum: [ScrollTypes.BY_PAGE.value, ScrollTypes.ONE_BY_ONE.value],
-      enumNames: [ScrollTypes.BY_PAGE.name, ScrollTypes.ONE_BY_ONE.name],
+      enum: getScrollValues(),
+      enumNames: getScrollNames(),
       default: ScrollTypes.BY_PAGE.value,
     },
     arrows: {
@@ -88,27 +94,21 @@ Shelf.schema = {
   },
 }
 
-Shelf.defaultProps = {
-  maxItems: DEFAULT_MAX_ITEMS,
-  scroll: ScrollTypes.BY_PAGE,
-  arrows: true,
-}
-
 Shelf.propTypes = {
   /** The graphql data response. */
   data: PropTypes.shape({
-    products: ShelfSlider.propTypes.products,
+    products: ShelfContent.propTypes.products,
   }),
   /** The Category Id. */
   category: PropTypes.number,
   /** The Collection Id. */
   collection: PropTypes.number,
   /** The Ordenation Type. */
-  orderBy: PropTypes.string,
+  orderBy: PropTypes.oneOf(getOrdenationValues()),
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** The scroll options. */
-  scroll: PropTypes.string.isRequired,
+  scroll: PropTypes.oneOf(getScrollValues()),
   /** The Collection Id. */
   arrows: PropTypes.bool.isRequired,
   /** The text value of the title. */
