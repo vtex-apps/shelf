@@ -45,3 +45,8 @@
         max-width: 100%;
     }
 }
+
+.vtex-shelf .slick-slide {
+    display: flex;
+    justify-content: center;
+}

@@ -44,8 +44,45 @@ const PLACEHOLDER_PRODUCT = {
  * and render the properly content of the Shelf depending of edit mode state.
  */
 class ShelfContent extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      itemsPerPage: props.itemsPerPage,
+    }
+    window.addEventListener('resize', () => {
+      this.treatSlideItemSize()
+    })
+  }
+
+  treatSlideItemSize() {
+    const slickListElement = document.querySelector('.slick-list')
+    if (slickListElement) {
+      const slickListWidth = slickListElement.clientWidth
+      const firstSlickSlideElement = document.querySelector('.slick-slide[data-index="0"]')
+      const productSummaryElement = firstSlickSlideElement.childNodes[0]
+      const productSummaryWidth = productSummaryElement.clientWidth
+      const maxItemsPerPage = Math.floor(slickListWidth / productSummaryWidth)
+      if (this.props.itemsPerPage >= maxItemsPerPage) {
+        this.setState({
+          itemsPerPage: maxItemsPerPage || 1,
+        })
+      } else {
+        this.setState({
+          itemsPerPage: this.props.itemsPerPage,
+        })
+      }
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.treatSlideItemSize()
+    }, 100)
+  }
+
   configureSlideSettings(itemsLength) {
-    const { arrows, scroll, itemsPerPage } = this.props
+    const { arrows, scroll } = this.props
+    const { itemsPerPage } = this.state
 
     return {
       infinite: itemsPerPage < itemsLength,
