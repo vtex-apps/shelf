@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Slider from 'react-slick'
-import Arrow from './Arrow'
-import Dots from './Dots'
+import { Dots, Arrow } from '@vtex/slick-components'
 import ShelfItem from './ShelfItem'
 
 import VTEXClasses from './CustomClasses'
@@ -54,9 +53,9 @@ class ShelfContent extends Component {
       slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : 1,
       dots: DOTS_LARGE_VIEWPORT,
       arrows,
-      nextArrow: <Arrow arrowClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
-      prevArrow: <Arrow arrowClass={VTEXClasses.ARROW_LEFT_CLASS} />,
-      appendDots: dots => <Dots dots={dots} />,
+      nextArrow: <Arrow cssClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
+      prevArrow: <Arrow cssClass={VTEXClasses.ARROW_LEFT_CLASS} />,
+      appendDots: dots => <Dots dots={dots} cssClass={VTEXClasses.DOTS_CLASS} />,
       responsive: [
         {
           breakpoint: BREAKPOINT_MEDIUM_VIEWPORT,

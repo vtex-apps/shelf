@@ -84,6 +84,7 @@ product: {
 ## CSS Classes
 
 ```css
+/* ==== '/react/CustomClasses.js' ==== */
 vtex-shelf
 vtex-shelf__title-text
 vtex-shelf__title-content
