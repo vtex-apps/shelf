@@ -32,17 +32,17 @@ product: {
 
 ``` javascript
 /**
- * The category ID of the listed items in the shelf.
+ * Category ID of the listed items in the shelf.
  */
 - category
   - Type: Number
 /**
- * The collection ID of the listed items in the shelf.
+ * Collection ID of the listed items in the shelf.
  */
 - collection
   - Type: Number
 /**
- * The ordenation type of the items in the shelf.
+ * Ordenation type of the items in the shelf.
  */
 - orderBy
   - Type: String
@@ -55,13 +55,13 @@ product: {
   - Type: Number
   - Default: 7
 /**
- * Maximum number of items in the page.
+ * Maximum number of items on the page.
  */
 - itemsPerPage
   - Type: Number
   - Default: 5
 /**
- * The scroll type of slide transiction.
+ * Scroll type of slide transiction.
  */
 - scroll
   - Type: String
@@ -74,7 +74,7 @@ product: {
   - Type: Boolean
   - Default: true
 /**
- * The title of the shelf.
+ * Title of the shelf.
  */
 - titleText
   - Type: String

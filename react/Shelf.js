@@ -104,25 +104,25 @@ Shelf.schema = {
 }
 
 Shelf.propTypes = {
-  /** The graphql data response. */
+  /** Graphql data response. */
   data: PropTypes.shape({
     products: ShelfContent.propTypes.products,
   }),
-  /** The Category Id. */
+  /** Category Id. */
   category: PropTypes.number,
-  /** The Collection Id. */
+  /** Collection Id. */
   collection: PropTypes.number,
-  /** The Ordenation Type. */
+  /** Ordenation Type. */
   orderBy: PropTypes.oneOf(getOrdenationValues()),
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** Maximum number of items in a page. */
   itemsPerPage: PropTypes.number.isRequired,
-  /** The scroll options. */
+  /** Scroll options. */
   scroll: PropTypes.oneOf(getScrollValues()),
-  /** The Collection Id. */
+  /** If the arrows are showable or not. */
   arrows: PropTypes.bool.isRequired,
-  /** The text value of the title. */
+  /** Text value of the title. */
   titleText: PropTypes.string,
 }
 
