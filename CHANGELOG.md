@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
- - **shelf** Refactor Shelf structure
+### Added
  - **shelf** Add `itemsPerPage` to the properties of schema
- - **shelf** Remove components `Arrow` and `Dots`
  - **shelf** Add integration with `@vtex/slick-components`
  - **doc** Create CHANGELOG.md
+
+### Changed
+ - **shelf** Refactor Shelf structure
+
+### Removed
+ - **shelf** Remove components `Arrow` and `Dots`
 
 ## [0.9.0] - 2018-19-04
 
