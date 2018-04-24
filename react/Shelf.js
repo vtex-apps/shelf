@@ -26,18 +26,19 @@ class Shelf extends Component {
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
         {
-          data.loading && (
+          data.loading ? (
             <div className="w-100 flex justify-center">
               <div className="w3 ma0">
                 <Spinner />
               </div>
             </div>
-          )
-        }
-        {
-          !data.loading && (
-            <ShelfContent products={products} maxItems={maxItems}
-              arrows={arrows} scroll={scroll} itemsPerPage={itemsPerPage} />
+          ) : (
+            <ShelfContent
+              products={products}
+              maxItems={maxItems}
+              arrows={arrows}
+              scroll={scroll}
+              itemsPerPage={itemsPerPage} />
           )
         }
       </div>

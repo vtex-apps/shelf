@@ -40,7 +40,7 @@ const PLACEHOLDER_PRODUCT = {
 }
 
 /**
- * ShelfContent Component. Realizes the interaction with react-slick
+ * ShelfContent Component. Executes the interaction with react-slick
  * and render the properly content of the Shelf depending of edit mode state.
  */
 class ShelfContent extends Component {
