@@ -8,36 +8,15 @@ import ShelfItem from './ShelfItem'
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 
-const BREAKPOINT_MEDIUM_VIEWPORT = 1024
 const BREAKPOINT_MOBILE_VIEWPORT = 600
-
-const MAX_ITEMS_MEDIUM_VIEWPORT = 3
-const MAX_ITEMS_MOBILE_VIEWPORT = 1
 
 const DOTS_LARGE_VIEWPORT = true
 const DOTS_MOBILE_VIEWPORT = false
 const ARROWS_MOBILE_VIEWPORT = false
 const SLIDER_CENTER_MODE_MOBILE = true
 
-const PLACEHOLDER_PRODUCT = {
-  productId: '1',
-  productName: 'Product Sample',
-  link: '#',
-  brand: 'Brand Sample',
-  items: [{
-    name: 'Sku Sample',
-    images: [{
-      imageUrl: '',
-      imageTag: '',
-    }],
-    sellers: [{
-      commertialOffer: {
-        Price: 200,
-        ListPrice: 200,
-      },
-    }],
-  }],
-}
+const SLIDER_MARGIN = 66
+const DEFAULT_SHELF_ITEM_WIDTH = 395
 
 /**
  * ShelfContent Component. Executes the interaction with react-slick
@@ -46,44 +25,51 @@ const PLACEHOLDER_PRODUCT = {
 class ShelfContent extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      itemsPerPage: props.itemsPerPage,
-    }
     window.addEventListener('resize', () => {
-      this.treatSlideItemSize()
+      if (this._isMounted) {
+        this.forceUpdate()
+      }
     })
   }
 
-  treatSlideItemSize() {
-    const slickListElement = document.querySelector('.slick-list')
-    if (slickListElement) {
-      const slickListWidth = slickListElement.clientWidth
-      const firstSlickSlideElement = document.querySelector('.slick-slide[data-index="0"]')
-      const productSummaryElement = firstSlickSlideElement.childNodes[0]
-      const productSummaryWidth = productSummaryElement.clientWidth
-      const maxItemsPerPage = Math.floor(slickListWidth / productSummaryWidth)
-      if (this.props.itemsPerPage >= maxItemsPerPage) {
-        this.setState({
-          itemsPerPage: maxItemsPerPage || 1,
-        })
-      } else {
-        this.setState({
-          itemsPerPage: this.props.itemsPerPage,
-        })
-      }
-    }
+  componentDidMount() {
+    this._isMounted = true
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.treatSlideItemSize()
-    }, 100)
+  componentWillUnmount() {
+    this._isMounted = false
+  }
+
+  getSlideListWidth() {
+    return document.querySelector('body').clientWidth - SLIDER_MARGIN
+  }
+
+  getShelfItemWidth() {
+    const selector = `.${VTEXClasses.MAIN_CLASS} .slick-slide[data-index="0"]`
+    const slickSlildeElement = document.querySelector(selector)
+    let shelfItemWidth = DEFAULT_SHELF_ITEM_WIDTH
+    if (slickSlildeElement) {
+      const slideChilds = slickSlildeElement.childNodes
+      if (slideChilds && slideChilds.length) {
+        shelfItemWidth = slideChilds[0].clientWidth
+      }
+    }
+    return shelfItemWidth
+  }
+
+  getCorrectItemsPerPage = () => {
+    const slideListWidth = this.getSlideListWidth()
+    const shelfItemWidth = this.getShelfItemWidth()
+    const maxItemsPerPage = Math.floor(slideListWidth / shelfItemWidth)
+    if (this.props.itemsPerPage >= maxItemsPerPage) {
+      return maxItemsPerPage || 1
+    }
+    return this.props.itemsPerPage
   }
 
   configureSlideSettings(itemsLength) {
     const { arrows, scroll } = this.props
-    const { itemsPerPage } = this.state
-
+    const itemsPerPage = this.getCorrectItemsPerPage() || 1
     return {
       infinite: itemsPerPage < itemsLength,
       slidesToShow: itemsPerPage,
@@ -95,21 +81,9 @@ class ShelfContent extends Component {
       appendDots: dots => <Dots dots={dots} cssClass={VTEXClasses.DOTS_CLASS} />,
       responsive: [
         {
-          breakpoint: BREAKPOINT_MEDIUM_VIEWPORT,
-          settings: {
-            infinite: MAX_ITEMS_MEDIUM_VIEWPORT < itemsLength,
-            slidesToShow: MAX_ITEMS_MEDIUM_VIEWPORT,
-            slidesToScroll: scroll === ScrollTypes.BY_PAGE.value
-              ? MAX_ITEMS_MEDIUM_VIEWPORT : 1,
-          },
-        },
-        {
           breakpoint: BREAKPOINT_MOBILE_VIEWPORT,
           settings: {
-            infinite: MAX_ITEMS_MOBILE_VIEWPORT < itemsLength,
             centerMode: SLIDER_CENTER_MODE_MOBILE,
-            slidesToShow: MAX_ITEMS_MOBILE_VIEWPORT,
-            slidesToScroll: MAX_ITEMS_MOBILE_VIEWPORT,
             arrows: ARROWS_MOBILE_VIEWPORT,
             dots: DOTS_MOBILE_VIEWPORT,
           },
@@ -135,7 +109,7 @@ class ShelfContent extends Component {
       }
       return (
         <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key="1">
-          <ShelfItem extentionId="shelfitem" item={PLACEHOLDER_PRODUCT} />
+          <ShelfItem extentionId="shelfitem" />
         </div>
       )
     }
