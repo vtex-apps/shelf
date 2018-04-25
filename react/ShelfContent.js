@@ -41,7 +41,11 @@ class ShelfContent extends Component {
   }
 
   getSlideListWidth() {
-    return document.querySelector('body').clientWidth - SLIDER_MARGIN
+    const bodyElement = document.querySelector('body')
+    if (bodyElement && bodyElement.clientWidth) {
+      return bodyElement.clientWidth - SLIDER_MARGIN
+    }
+    return null
   }
 
   getShelfItemWidth() {
@@ -59,10 +63,12 @@ class ShelfContent extends Component {
 
   getCorrectItemsPerPage = () => {
     const slideListWidth = this.getSlideListWidth()
-    const shelfItemWidth = this.getShelfItemWidth()
-    const maxItemsPerPage = Math.floor(slideListWidth / shelfItemWidth)
-    if (this.props.itemsPerPage >= maxItemsPerPage) {
-      return maxItemsPerPage || 1
+    if (slideListWidth) {
+      const shelfItemWidth = this.getShelfItemWidth()
+      const maxItemsPerPage = Math.floor(slideListWidth / shelfItemWidth)
+      if (this.props.itemsPerPage >= maxItemsPerPage) {
+        return maxItemsPerPage || 1
+      }
     }
     return this.props.itemsPerPage
   }

@@ -12,6 +12,7 @@ exports[`Shelf component should match snapshot 1`] = `
         class="vtex-shelf__title-text"
       >
          
+        Default Title
       </h1>
     </div>
     <div
