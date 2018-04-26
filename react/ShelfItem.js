@@ -9,6 +9,7 @@ import { ExtensionPoint } from 'render'
  */
 class ShelfItem extends Component {
   normalizeProduct(product) {
+    if (!product) return null
     const newProduct = { ...product }
     newProduct.sku = { ...newProduct.items[0] }
     newProduct.sku.seller = newProduct.sku.sellers[0]
