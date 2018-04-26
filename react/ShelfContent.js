@@ -105,27 +105,17 @@ class ShelfContent extends Component {
   render() {
     const { products, maxItems } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
-    if (this.isEditMode()) {
-      if (products && products.length) {
-        return (
-          <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key={products[0].productId}>
-            <ShelfItem extentionId="shelfitem" item={products[0]} />
-          </div>
-        )
-      }
-      return (
-        <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`} key="1">
-          <ShelfItem extentionId="shelfitem" />
-        </div>
-      )
-    }
-    return (
+    return this.isEditMode() ? (
+      <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`}>
+        <ShelfItem extensionId="shelfitem" item={products && products[0]} />
+      </div>
+    ) : (
       <Slider {...slideSettings}>
         {
           products.slice(0, maxItems).map(item => {
             return (
               <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-                <ShelfItem extentionId="shelfitem" item={item} />
+                <ShelfItem extensionId="shelfitem" item={item} />
               </div>
             )
           })

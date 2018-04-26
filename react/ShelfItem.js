@@ -24,9 +24,9 @@ class ShelfItem extends Component {
   }
 
   render() {
-    const { item, extentionId } = this.props
+    const { item, extensionId } = this.props
     return (
-      <ExtensionPoint id={extentionId}
+      <ExtensionPoint id={extensionId}
         product={this.normalizeProductSummary(item)}>
       </ExtensionPoint>
     )
@@ -56,7 +56,7 @@ ShelfItem.propTypes = {
       })).isRequired,
     })).isRequired,
   }),
-  extentionId: PropTypes.string.isRequired,
+  extensionId: PropTypes.string.isRequired,
 }
 
 export default ShelfItem
