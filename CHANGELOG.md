@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - **defaultProps** Add default value to prop `title` in the Shelf
 
 ### Changed
- - **file** Change filename `Theme.css` to `Global.css`
+ - **file** Change filename `theme.css` to `global.css`
  - **shelf** Adjust the `maximum number` of items inside the Shelf based on the screen resolution
 
 ### Removed
