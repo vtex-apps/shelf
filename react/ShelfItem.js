@@ -8,10 +8,23 @@ import { ExtensionPoint } from 'render'
  * to adapt to the extension point prop.
  */
 class ShelfItem extends Component {
+  normalizeProduct(product) {
+    const newProduct = { ...product }
+    newProduct.sku = { ...newProduct.items[0] }
+    newProduct.sku.seller = newProduct.sku.sellers[0]
+    newProduct.sku.image = { ...newProduct.sku.images[0] }
+    newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('http2:', '')
+    newProduct.sku.referenceId = newProduct.sku.referenceId[0]
+    delete newProduct.sku.sellers
+    delete newProduct.sku.images
+    delete newProduct.items
+    return newProduct
+  }
+
   render() {
     const { item, extensionId } = this.props
     return (
-      <ExtensionPoint id={extensionId} product={item}>
+      <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
       </ExtensionPoint>
     )
   }

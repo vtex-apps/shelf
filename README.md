@@ -16,15 +16,29 @@ Add "vtex.shelf" as your app dependency.
 Shelf Component was built to support extensions with the following props:
 ```javascript
 product: {
-  listPrice: Number,
-  sellingPrice: Number,
-  imageUrl: String,
-  imageTag: String,
-  url: String, // product url link
-  name: String,
-  skuName: String,
-  brandName: String,
-  referenceCode: String,
+  productId: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
+  link: PropTypes.string.isRequired,
+  linkText: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  sku: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    referenceId: PropTypes.shape({
+      Value: PropTypes.string.isRequired,
+    }),
+    image: PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      imageTag: PropTypes.string.isRequired,
+    }).isRequired,
+    seller: PropTypes.shape({
+      commertialOffer: PropTypes.shape({
+        Price: PropTypes.number.isRequired,
+        ListPrice: PropTypes.number.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }),
 }
 ```
 

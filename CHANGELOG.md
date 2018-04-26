@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
  - **file** Change filename `theme.css` to `global.css`
  - **shelf** Adjust the `maximum number` of items inside the Shelf based on the screen resolution
+ - **extension** Change schema of `product` passed to the ExtensionPoint
 
 ### Removed
  - **pages** Remove `css` reference
