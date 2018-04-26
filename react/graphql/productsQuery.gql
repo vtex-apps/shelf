@@ -16,7 +16,10 @@ query Products(
     ) {
       productId
       productName
+      description
+      categories
       link
+      linkText
       brand
       items {
         name
