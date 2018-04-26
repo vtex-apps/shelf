@@ -11,6 +11,7 @@ import ScrollTypes from './ScrollTypes'
 const SLIDER_MARGIN = 66
 const DEFAULT_SHELF_ITEM_WIDTH = 395
 const DOTS_LARGE_VIEWPORT = true
+const MINIMUM_NUMBER_OF_ITEMS_PER_PAGE = 1
 
 /**
  * ShelfContent Component. Executes the interaction with react-slick
@@ -64,16 +65,16 @@ class ShelfContent extends Component {
 
   configureSlideSettings(itemsLength) {
     const { arrows, scroll } = this.props
-    const itemsPerPage = this.getCorrectItemsPerPage() || 1
+    const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
     return {
       infinite: itemsPerPage < itemsLength,
       slidesToShow: itemsPerPage,
-      slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : 1,
-      dots: itemsPerPage !== 1 && DOTS_LARGE_VIEWPORT,
-      arrows: itemsPerPage !== 1 && arrows,
+      slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
+      dots: itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE && DOTS_LARGE_VIEWPORT,
+      arrows: itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE && arrows,
       nextArrow: <Arrow cssClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
       prevArrow: <Arrow cssClass={VTEXClasses.ARROW_LEFT_CLASS} />,
-      centerMode: itemsPerPage === 1,
+      centerMode: itemsPerPage === MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
       appendDots: dots => <Dots dots={dots} cssClass={VTEXClasses.DOTS_CLASS} />,
     }
   }
