@@ -1,8 +1,7 @@
 {
   "pages": {
     "shelf": {
-      "path": "/",
-      "theme": "theme"
+      "path": "/"
     }
   },
   "extensions": {

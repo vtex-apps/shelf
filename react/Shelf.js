@@ -10,6 +10,8 @@ import VTEXClasses from './CustomClasses'
 
 import productsQuery from './graphql/productsQuery.gql'
 
+import './global.css'
+
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 
@@ -51,6 +53,7 @@ Shelf.defaultProps = {
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
   arrows: true,
+  titleText: 'Default Title',
 }
 
 Shelf.schema = {

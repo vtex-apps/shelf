@@ -9,6 +9,7 @@ import { ExtensionPoint } from 'render'
  */
 class ShelfItem extends Component {
   normalizeProductSummary(product) {
+    if (!product) return null
     return {
       listPrice: product.items[0].sellers[0].commertialOffer.ListPrice,
       sellingPrice: product.items[0].sellers[0].commertialOffer.Price,
@@ -23,9 +24,9 @@ class ShelfItem extends Component {
   }
 
   render() {
-    const { item, extentionId } = this.props
+    const { item, extensionId } = this.props
     return (
-      <ExtensionPoint id={extentionId}
+      <ExtensionPoint id={extensionId}
         product={this.normalizeProductSummary(item)}>
       </ExtensionPoint>
     )
@@ -51,11 +52,11 @@ ShelfItem.propTypes = {
         commertialOffer: PropTypes.shape({
           Price: PropTypes.number.isRequired,
           ListPrice: PropTypes.number.isRequired,
-        }),
+        }).isRequired,
       })).isRequired,
     })).isRequired,
   }),
-  extentionId: PropTypes.string.isRequired,
+  extensionId: PropTypes.string.isRequired,
 }
 
 export default ShelfItem

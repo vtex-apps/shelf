@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+ - **defaultProps** Add default value to prop `title` in the Shelf
+
+### Changed
+ - **file** Change filename `theme.css` to `global.css`
+ - **shelf** Adjust the `maximum number` of items inside the Shelf based on the screen resolution
+
+### Removed
+ - **pages** Remove `css` reference
+ - **placeholder product** Now the `responsible` to set the default item value is the Extension
 
 ## [0.10.0] - 2018-24-04
 
