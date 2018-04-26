@@ -66,12 +66,13 @@ class ShelfContent extends Component {
   configureSlideSettings(itemsLength) {
     const { arrows, scroll } = this.props
     const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
+    const hasMoreThanOneItemsPerPage = itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
     return {
       infinite: itemsPerPage < itemsLength,
       slidesToShow: itemsPerPage,
       slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
-      dots: itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE && DOTS_LARGE_VIEWPORT,
-      arrows: itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE && arrows,
+      dots: hasMoreThanOneItemsPerPage && DOTS_LARGE_VIEWPORT,
+      arrows: hasMoreThanOneItemsPerPage && arrows,
       nextArrow: <Arrow cssClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
       prevArrow: <Arrow cssClass={VTEXClasses.ARROW_LEFT_CLASS} />,
       centerMode: itemsPerPage === MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
