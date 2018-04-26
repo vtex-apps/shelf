@@ -14,7 +14,7 @@ class ShelfItem extends Component {
     newProduct.sku = { ...newProduct.items[0] }
     newProduct.sku.seller = newProduct.sku.sellers[0]
     newProduct.sku.image = { ...newProduct.sku.images[0] }
-    newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('http2:', '')
+    newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('https:', '')
     newProduct.sku.referenceId = newProduct.sku.referenceId[0]
     delete newProduct.sku.sellers
     delete newProduct.sku.images
