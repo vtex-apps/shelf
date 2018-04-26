@@ -13,6 +13,13 @@ const DEFAULT_SHELF_ITEM_WIDTH = 395
 const DOTS_LARGE_VIEWPORT = true
 const MINIMUM_NUMBER_OF_ITEMS_PER_PAGE = 1
 
+const BREAKPOINT_MOBILE_VIEWPORT = 600
+const SLIDER_CENTER_MODE_MOBILE = true
+const ARROWS_MOBILE_VIEWPORT = false
+const DOTS_MOBILE_VIEWPORT = false
+const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
+const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 1
+
 /**
  * ShelfContent Component. Executes the interaction with react-slick
  * and render the properly content of the Shelf depending of edit mode state.
@@ -66,17 +73,27 @@ class ShelfContent extends Component {
   configureSlideSettings(itemsLength) {
     const { arrows, scroll } = this.props
     const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
-    const hasMoreThanOneItemsPerPage = itemsPerPage !== MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
     return {
       infinite: itemsPerPage < itemsLength,
       slidesToShow: itemsPerPage,
       slidesToScroll: scroll === ScrollTypes.BY_PAGE.value ? itemsPerPage : MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
-      dots: hasMoreThanOneItemsPerPage && DOTS_LARGE_VIEWPORT,
-      arrows: hasMoreThanOneItemsPerPage && arrows,
+      dots: DOTS_LARGE_VIEWPORT,
+      arrows,
       nextArrow: <Arrow cssClass={VTEXClasses.ARROW_RIGHT_CLASS} />,
       prevArrow: <Arrow cssClass={VTEXClasses.ARROW_LEFT_CLASS} />,
-      centerMode: itemsPerPage === MINIMUM_NUMBER_OF_ITEMS_PER_PAGE,
       appendDots: dots => <Dots dots={dots} cssClass={VTEXClasses.DOTS_CLASS} />,
+      responsive: [
+        {
+          breakpoint: BREAKPOINT_MOBILE_VIEWPORT,
+          settings: {
+            slidesToShow: SLIDES_TO_SHOW_MOBILE_VIEWPORT,
+            slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
+            arrows: ARROWS_MOBILE_VIEWPORT,
+            dots: DOTS_MOBILE_VIEWPORT,
+            centerMode: SLIDER_CENTER_MODE_MOBILE,
+          },
+        },
+      ],
     }
   }
 
