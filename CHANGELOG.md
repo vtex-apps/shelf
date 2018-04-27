@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.10.0] - 2018-04-27
+## [0.11.0] - 2018-04-27
 
 ### Changed
  - **defaultProps** Add default value to prop `title` in the Shelf
