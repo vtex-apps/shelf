@@ -14,8 +14,11 @@ describe('Shelf component', () => {
       {
         productId: '1',
         productName: 'Product1',
+        description: 'Description',
+        categories: [],
+        link: 'http://mylink.com/p',
+        linkText: 'p',
         brand: 'brand',
-        link: 'http://mylink.com',
         items: [{
           name: 'name',
           referenceId: [{
@@ -36,8 +39,11 @@ describe('Shelf component', () => {
       {
         productId: '2',
         productName: 'Product2',
+        description: 'Description',
+        categories: [],
+        link: 'http://mylink.com/p',
+        linkText: 'p',
         brand: 'brand',
-        link: 'http://mylink.com',
         items: [{
           name: 'name',
           referenceId: [{
@@ -58,8 +64,11 @@ describe('Shelf component', () => {
       {
         productId: '3',
         productName: 'Product3',
+        description: 'Description',
+        categories: [],
+        link: 'http://mylink.com/p',
+        linkText: 'p',
         brand: 'brand',
-        link: 'http://mylink.com',
         items: [{
           name: 'name',
           referenceId: [{
