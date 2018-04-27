@@ -8,26 +8,24 @@ import { ExtensionPoint } from 'render'
  * to adapt to the extension point prop.
  */
 class ShelfItem extends Component {
-  normalizeProductSummary(product) {
+  normalizeProduct(product) {
     if (!product) return null
-    return {
-      listPrice: product.items[0].sellers[0].commertialOffer.ListPrice,
-      sellingPrice: product.items[0].sellers[0].commertialOffer.Price,
-      imageUrl: product.items[0].images[0].imageUrl.replace('http:', ''),
-      imageTag: product.items[0].images[0].imageTag,
-      url: product.link,
-      name: product.productName,
-      skuName: product.items[0].name,
-      brandName: product.brand,
-      referenceCode: product.items[0].referenceId && product.items[0].referenceId[0].Value,
-    }
+    const newProduct = { ...product }
+    newProduct.sku = { ...newProduct.items[0] }
+    newProduct.sku.seller = newProduct.sku.sellers[0]
+    newProduct.sku.image = { ...newProduct.sku.images[0] }
+    newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('https:', '')
+    newProduct.sku.referenceId = newProduct.sku.referenceId[0]
+    delete newProduct.sku.sellers
+    delete newProduct.sku.images
+    delete newProduct.items
+    return newProduct
   }
 
   render() {
     const { item, extensionId } = this.props
     return (
-      <ExtensionPoint id={extensionId}
-        product={this.normalizeProductSummary(item)}>
+      <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
       </ExtensionPoint>
     )
   }
@@ -37,7 +35,10 @@ ShelfItem.propTypes = {
   item: PropTypes.shape({
     productId: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    categories: PropTypes.array.isRequired,
     link: PropTypes.string.isRequired,
+    linkText: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
