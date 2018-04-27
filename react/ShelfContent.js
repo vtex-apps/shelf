@@ -127,7 +127,7 @@ class ShelfContent extends Component {
       }
     }
     return this.isEditMode() ? (
-      <div className="flex">
+      <div className="flex justify-center">
         {
           productList.map((item, i) => {
             return (
