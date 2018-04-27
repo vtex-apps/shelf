@@ -111,15 +111,32 @@ class ShelfContent extends Component {
   }
 
   isEditMode() {
-    return !!document.querySelector('.edit-mode')
+    return !!document.querySelector('.vtex-button .items-center .pl4 svg')
   }
 
   render() {
     const { products, maxItems } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
+    const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
+    let productList = []
+    if (this.isEditMode()) {
+      if (!products || !products.length) {
+        productList = Array(itemsPerPage).fill()
+      } else {
+        productList = products.slice(0, itemsPerPage)
+      }
+    }
     return this.isEditMode() ? (
-      <div className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`}>
-        <ShelfItem extensionId="shelfitem" item={products && products[0]} />
+      <div className="flex">
+        {
+          productList.map((item, i) => {
+            return (
+              <div key={`slide${i}`} className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`}>
+                <ShelfItem extensionId="shelfitem" item={item} />
+              </div>
+            )
+          })
+        }
       </div>
     ) : (
       <Slider {...slideSettings}>
