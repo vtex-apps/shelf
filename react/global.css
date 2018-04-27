@@ -47,16 +47,8 @@
     justify-content: center;
 }
 
-.vtex-shelf__slide div:first-child {
-    display: inline-table;
-}
-
 @media only screen and (max-width: 600px) {
-    .vtex-shelf__slide div:first-child {
-        display: initial
-    }
     .vtex-shelf .vtex-shelf__item-edit-mode {
-        display: initial;
         max-width: 100%;
     }
 }
