@@ -9,7 +9,7 @@ import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 
 const SLIDER_MARGIN = 66
-const DEFAULT_SHELF_ITEM_WIDTH = 395
+const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
 const MINIMUM_NUMBER_OF_ITEMS_PER_PAGE = 1
 
