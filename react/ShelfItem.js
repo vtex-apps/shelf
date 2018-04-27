@@ -27,10 +27,8 @@ class ShelfItem extends Component {
         newProduct.sku.image = { ...newProduct.sku.images[0] }
         newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('https:', '')
       }
-      if (newProduct.sku.referenceId && newProduct.sku.referenceId.length) {
-        newProduct.sku.referenceId = (newProduct.sku.referenceId && newProduct.sku.referenceId[0]) || {
-          Value: '',
-        }
+      newProduct.sku.referenceId = (newProduct.sku.referenceId && newProduct.sku.referenceId[0]) || {
+        Value: '',
       }
       delete newProduct.sku.sellers
       delete newProduct.sku.images
