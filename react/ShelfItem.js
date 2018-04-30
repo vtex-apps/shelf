@@ -40,8 +40,9 @@ class ShelfItem extends Component {
   render() {
     const { item, extensionId } = this.props
     const fallback = (
-      <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
-      </ExtensionPoint>
+      <div>Product Summary</div>
+      // <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
+      // </ExtensionPoint>
     )
     return (
       <NoSSR onSSR={fallback}>
