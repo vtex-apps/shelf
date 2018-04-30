@@ -8,7 +8,6 @@ import ShelfItem from './ShelfItem'
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 
-const SLIDER_MARGIN = 66
 const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
 const MINIMUM_NUMBER_OF_ITEMS_PER_PAGE = 1
@@ -23,6 +22,7 @@ const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 1
 const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 350
 const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
 const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
+
 /**
  * ShelfContent Component. Executes the interaction with react-slick
  * and render the properly content of the Shelf depending of edit mode state.
@@ -41,21 +41,31 @@ class ShelfContent extends Component {
   }
 
   getSlideListWidth() {
-    const bodyElement = document.querySelector('body')
-    if (bodyElement && bodyElement.clientWidth) {
-      return bodyElement.clientWidth - SLIDER_MARGIN
+    return this._slick && this._slick.innerSlider && this._slick.innerSlider.list.clientWidth
+  }
+
+  /**
+   * Makes the slider width to adapt with the Shelf Header width.
+   */
+  updateSlickSliderWidth() {
+    if (this._slick && this._slick.innerSlider) {
+      const innerSliderElement = this._slick.innerSlider.list.parentNode
+      const shelfHeaderWidth = innerSliderElement.parentNode.clientWidth
+      innerSliderElement.setAttribute('style', `position:absolute;width:${shelfHeaderWidth}px;`)
     }
-    return null
   }
 
   getShelfItemWidth() {
-    const selector = `.${VTEXClasses.MAIN_CLASS} .slick-slide[data-index="0"]`
-    const slickSlildeElement = document.querySelector(selector)
     let shelfItemWidth = DEFAULT_SHELF_ITEM_WIDTH
-    if (slickSlildeElement) {
-      const slideChilds = slickSlildeElement.childNodes
-      if (slideChilds && slideChilds.length) {
-        shelfItemWidth = slideChilds[0].clientWidth
+    if (this._slick) {
+      const nodes = this._slick.innerSlider.list.childNodes[0].childNodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = 0; j < nodes[i].attributes.length; j++) {
+          const attr = nodes[i].attributes[j]
+          if (attr.nodeName === 'data-index' && attr.nodeValue === '0' && nodes[i].childNodes[0]) {
+            shelfItemWidth = nodes[i].childNodes[0].clientWidth
+          }
+        }
       }
     }
     return shelfItemWidth
@@ -74,6 +84,7 @@ class ShelfContent extends Component {
   }
 
   configureSlideSettings(itemsLength) {
+    this.updateSlickSliderWidth()
     const { arrows, scroll } = this.props
     const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
     return {
@@ -110,36 +121,11 @@ class ShelfContent extends Component {
     }
   }
 
-  isEditMode() {
-    return !!document.querySelector('.vtex-button .items-center .pl4 svg')
-  }
-
   render() {
     const { products, maxItems } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
-    const itemsPerPage = this.getCorrectItemsPerPage() || MINIMUM_NUMBER_OF_ITEMS_PER_PAGE
-    let productList = []
-    if (this.isEditMode()) {
-      if (!products || !products.length) {
-        productList = Array(itemsPerPage).fill()
-      } else {
-        productList = products.slice(0, itemsPerPage)
-      }
-    }
-    return this.isEditMode() ? (
-      <div className="flex justify-center">
-        {
-          productList.map((item, i) => {
-            return (
-              <div key={`slide${i}`} className={`${VTEXClasses.ITEM_EDIT_MODE} pa4`}>
-                <ShelfItem extensionId="shelfitem" item={item} />
-              </div>
-            )
-          })
-        }
-      </div>
-    ) : (
-      <Slider {...slideSettings}>
+    return (
+      <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
         {
           products.slice(0, maxItems).map(item => {
             return (
