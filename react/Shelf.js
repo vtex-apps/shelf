@@ -7,6 +7,7 @@ import ShelfContent from './ShelfContent'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
 import VTEXClasses from './CustomClasses'
+import { NoSSR } from 'render'
 
 import productsQuery from './graphql/productsQuery.gql'
 
@@ -22,28 +23,38 @@ class Shelf extends Component {
   render() {
     const { data, maxItems, titleText, arrows, scroll, itemsPerPage } = this.props
     const products = !data || data['error'] ? [] : data.products
+    const fallback = (
+      <ShelfContent
+        products={products && products.slice(0, 4)}
+        maxItems={maxItems}
+        arrows={arrows}
+        scroll={scroll}
+        itemsPerPage={itemsPerPage} />
+    )
     return (
-      <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4`}>
-        <div className={`${VTEXClasses.TITLE_CONTENT_CLASS} w-100 flex justify-center`}>
-          <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
-        </div>
-        {
-          data.loading ? (
-            <div className="w-100 flex justify-center">
-              <div className="w3 ma0">
-                <Spinner />
+      <NoSSR onSSR={fallback}>
+        <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4`}>
+          <div className={`${VTEXClasses.TITLE_CONTENT_CLASS} w-100 flex justify-center`}>
+            <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
+          </div>
+          {
+            data.loading ? (
+              <div className="w-100 flex justify-center">
+                <div className="w3 ma0">
+                  <Spinner />
+                </div>
               </div>
-            </div>
-          ) : (
-            <ShelfContent
-              products={products}
-              maxItems={maxItems}
-              arrows={arrows}
-              scroll={scroll}
-              itemsPerPage={itemsPerPage} />
-          )
-        }
-      </div>
+            ) : (
+              <ShelfContent
+                products={products}
+                maxItems={maxItems}
+                arrows={arrows}
+                scroll={scroll}
+                itemsPerPage={itemsPerPage} />
+            )
+          }
+        </div>
+      </NoSSR>
     )
   }
 }
@@ -145,7 +156,7 @@ const options = {
       from: 0,
       to: maxItems - 1,
     },
-    ssr: false,
+    ssr: true,
   }),
 }
 
