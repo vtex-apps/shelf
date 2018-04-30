@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+  - **edit** Edit mode working on slick component
+
 ## [0.11.1] - 2018-04-27
 
 ### Fixed
