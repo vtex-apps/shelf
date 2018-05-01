@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint, NoSSR } from 'render'
 
 /**
  * ShelfItem Component. Normalizes the item received in the props
@@ -39,9 +39,16 @@ class ShelfItem extends Component {
 
   render() {
     const { item, extensionId } = this.props
+    const fallback = (
+      <div>Product Summary</div>
+      // <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
+      // </ExtensionPoint>
+    )
     return (
-      <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
-      </ExtensionPoint>
+      <NoSSR onSSR={fallback}>
+        <ExtensionPoint id={extensionId} product={this.normalizeProduct(item)}>
+        </ExtensionPoint>
+      </NoSSR>
     )
   }
 }

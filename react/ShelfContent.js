@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { NoSSR } from 'render'
 
 import Slider from 'react-slick'
 import { Dots, Arrow } from '@vtex/slick-components'
@@ -124,18 +125,33 @@ class ShelfContent extends Component {
   render() {
     const { products, maxItems } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
-    return (
-      <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
+    const fallback = (
+      <div className="w-100 flex justify-center">
         {
-          products.slice(0, maxItems).map(item => {
+          products && products.map((product) => {
             return (
-              <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-                <ShelfItem extensionId="shelfitem" item={item} />
+              <div key={product.productId}>
+                <ShelfItem extensionId="shelfitem" item={product} />
               </div>
             )
           })
         }
-      </Slider>
+      </div>
+    )
+    return (
+      <NoSSR onSSR={fallback}>
+        <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
+          {
+            products.slice(0, maxItems).map(item => {
+              return (
+                <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
+                  <ShelfItem extensionId="shelfitem" item={item} />
+                </div>
+              )
+            })
+          }
+        </Slider>
+      </NoSSR>
     )
   }
 }
