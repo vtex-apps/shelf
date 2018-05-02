@@ -13,7 +13,7 @@ import productsQuery from './graphql/productsQuery.gql'
 import './global.css'
 
 const DEFAULT_MAX_ITEMS = 10
-const DEFAULT_ITEMS_PER_PAGE = 5
+const DEFAULT_ITEMS_PER_PAGE = 3
 
 /**
  * Shelf Component. Shows a collection of products.
