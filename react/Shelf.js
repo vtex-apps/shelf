@@ -160,7 +160,6 @@ const options = {
         from: 0,
         to: maxItems - 1,
       },
-      ssr: false,
     }
   },
 }
