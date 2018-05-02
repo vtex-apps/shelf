@@ -94,6 +94,7 @@ describe('Shelf component', () => {
           {
             request: { query: productsQuery, variables: {
               specificationFilters: [],
+              orderBy: 'OrderByTopSaleDESC',
               from: 0,
               to: 9,
             } },
