@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
 import Slider from 'react-slick'
 import { Dots, Arrow } from '@vtex/slick-components'
+import { NoSSR } from 'render'
+
 import ShelfItem from './ShelfItem'
 
 import VTEXClasses from './CustomClasses'
@@ -122,20 +123,33 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, summary } = this.props
+    const { products, maxItems, summary, itemsPerPage } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
+    const fallback = (
+      <div className="flex justify-center">
+        {products.slice(0, itemsPerPage).map(item => {
+      return (
+        <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
+          <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
+        </div>
+      )
+    })
+  }</div>)
+
     return (
-      <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
-        {
-          products.slice(0, maxItems).map(item => {
-            return (
-              <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-                <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
-              </div>
-            )
-          })
-        }
-      </Slider>
+      <NoSSR onSSR={fallback}>
+        <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
+          {
+            products.slice(0, maxItems).map(item => {
+              return (
+                <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
+                  <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
+                </div>
+              )
+            })
+          }
+        </Slider>
+      </NoSSR>
     )
   }
 }
