@@ -126,15 +126,16 @@ class ShelfContent extends Component {
     const { products, maxItems, summary, itemsPerPage } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
     const fallback = (
-      <div className="flex justify-center">
+      <div className="flex justify-between ph7">
         {products.slice(0, itemsPerPage).map(item => {
-      return (
-        <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-          <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
-        </div>
-      )
-    })
-  }</div>)
+          return (
+            <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
+              <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
+            </div>
+          )
+        })}
+      </div>
+    )
 
     return (
       <NoSSR onSSR={fallback}>

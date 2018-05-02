@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { ExtensionPoint } from 'render'
-
 /**
  * ShelfItem Component. Normalizes the item received in the props
  * to adapt to the extension point prop.
@@ -68,7 +66,7 @@ export default class ShelfItem extends Component {
   }
 
   render() {
-    const { item, extensionId, summary } = this.props
+    const { item, summary } = this.props
     const productSummaryExtension = global.__RUNTIME__.extensions['store/__product-summary']
     const ProductSummary = global.__RENDER_7_COMPONENTS__[productSummaryExtension.component]
     return (
