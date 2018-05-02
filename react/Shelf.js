@@ -55,6 +55,7 @@ Shelf.defaultProps = {
   scroll: ScrollTypes.BY_PAGE.value,
   arrows: true,
   titleText: 'Default Title',
+  orderBy: 'OrderByTopSaleDESC',
 }
 
 Shelf.getSchema = (props) => {
@@ -146,19 +147,22 @@ const options = {
   options: ({
     category,
     collection,
-    orderBy,
+    orderBy = Shelf.defaultProps.orderBy,
     maxItems = Shelf.defaultProps.maxItems,
-  }) => ({
-    variables: {
-      category,
-      collection,
-      specificationFilters: [],
-      orderBy,
-      from: 0,
-      to: maxItems - 1,
-    },
-    ssr: false,
-  }),
+  }) => {
+    console.log(`rendering shelf. category=${category} collection=${collection} orderBy=${orderBy} maxItems=${maxItems}`)
+    return {
+      variables: {
+        category,
+        collection,
+        specificationFilters: [],
+        orderBy,
+        from: 0,
+        to: maxItems - 1,
+      },
+      ssr: false,
+    }
+  },
 }
 
 export default graphql(productsQuery, options)(Shelf)
