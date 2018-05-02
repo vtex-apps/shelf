@@ -43,12 +43,12 @@
 }
 
 .vtex-shelf .slick-slide {
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 
 @media only screen and (max-width: 600px) {
-    .vtex-shelf .vtex-shelf__item-edit-mode {
-        /* max-width: 100%; */
+    .vtex-shelf .slick-slide {
+        display: flex;
+        justify-content: center;
     }
 }
