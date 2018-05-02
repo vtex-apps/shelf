@@ -51,7 +51,7 @@ class ShelfContent extends Component {
     if (this._slick && this._slick.innerSlider) {
       const innerSliderElement = this._slick.innerSlider.list.parentNode
       const shelfHeaderWidth = innerSliderElement.parentNode.clientWidth
-      innerSliderElement.setAttribute('style', `position:absolute;width:${shelfHeaderWidth}px;`)
+      innerSliderElement.setAttribute('style', `width:${shelfHeaderWidth}px;`)
     }
   }
 
@@ -122,7 +122,7 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems } = this.props
+    const { products, maxItems, summary } = this.props
     const slideSettings = this.configureSlideSettings(products.length)
     return (
       <Slider {...slideSettings} ref={function(c) { this._slick = c }.bind(this)}>
@@ -130,7 +130,7 @@ class ShelfContent extends Component {
           products.slice(0, maxItems).map(item => {
             return (
               <div key={item.productId} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-                <ShelfItem extensionId="shelfitem" item={item} />
+                <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
               </div>
             )
           })
@@ -146,6 +146,7 @@ ShelfContent.propTypes = {
   maxItems: PropTypes.number.isRequired,
   arrows: PropTypes.bool.isRequired,
   scroll: PropTypes.string.isRequired,
+  summary: PropTypes.any,
 }
 
 export default ShelfContent
