@@ -56,7 +56,7 @@ ShelfItem.propTypes = {
     linkText: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      itemId: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       referenceId: PropTypes.arrayOf(PropTypes.shape({
         Value: PropTypes.string.isRequired,
