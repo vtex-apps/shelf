@@ -23,7 +23,7 @@ query Products(
       brand
       items {
         name
-        id
+        itemId
         referenceId {
           Value
         }

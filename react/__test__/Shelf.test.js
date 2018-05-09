@@ -21,7 +21,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
-          id: 291,
+          itemId: '291',
           referenceId: [{
             Value: 'ref1234',
           }],
@@ -47,7 +47,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
-          id: 292,
+          itemId: '292',
           referenceId: [{
             Value: 'ref1234',
           }],
@@ -73,7 +73,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
-          id: 293,
+          itemId: '293',
           referenceId: [{
             Value: 'ref1234',
           }],
