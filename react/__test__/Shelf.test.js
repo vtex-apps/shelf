@@ -4,7 +4,7 @@ import { render } from 'react-testing-library'
 import { MockedProvider } from 'react-apollo/test-utils'
 
 import Shelf from '../Shelf'
-import productsQuery from '../graphql/productsQuery.gql'
+import productsQuery from '../queries/productsQuery.gql'
 
 describe('Shelf component', () => {
   let wrapper
@@ -21,6 +21,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
+          id: 291,
           referenceId: [{
             Value: 'ref1234',
           }],
@@ -46,6 +47,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
+          id: 292,
           referenceId: [{
             Value: 'ref1234',
           }],
@@ -71,6 +73,7 @@ describe('Shelf component', () => {
         brand: 'brand',
         items: [{
           name: 'name',
+          id: 293,
           referenceId: [{
             Value: 'ref1234',
           }],
@@ -92,11 +95,13 @@ describe('Shelf component', () => {
       <MockedProvider
         mocks={[
           {
-            request: { query: productsQuery, variables: {
-              specificationFilters: [],
-              from: 0,
-              to: 9,
-            } },
+            request: {
+              query: productsQuery, variables: {
+                specificationFilters: [],
+                from: 0,
+                to: 9,
+              },
+            },
             result: { data: { products: mockedProducts } },
           },
         ]}
