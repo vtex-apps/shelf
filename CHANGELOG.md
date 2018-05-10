@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Changed
+## [0.12.1] - 2018-05-10
+### Fixed
 - **css** Fix z-index of left arrow
 
 ## [0.12.0] - 2018-05-09
-## Changed
+### Changed
 - **Queries** Update product query to get skuId. 
 
 ## [0.11.1] - 2018-04-27
