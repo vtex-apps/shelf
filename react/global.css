@@ -1,47 +1,39 @@
-@import url('~slick-carousel/slick/slick.css');
-@import url('~slick-carousel/slick/slick-theme.css');
-
-.vtex-shelf .vtex-shelf__arrow-left,
-.vtex-shelf .vtex-shelf__arrow-right {
+.vtex-shelf .vtex-slick-slider__arrow-left,
+.vtex-shelf .vtex-slick-slider__arrow-right {
     color: black;
 }
-.vtex-shelf .vtex-shelf__arrow-left.slick-disabled:before,
-.vtex-shelf .vtex-shelf__arrow-right.slick-disabled:before
+.vtex-shelf .vtex-slick-slider__arrow-left.slick-disabled:before,
+.vtex-shelf .vtex-slick-slider__arrow-right.slick-disabled:before
 {
     color: inherit;
 }
-.vtex-shelf .vtex-shelf__arrow-left:before,
-.vtex-shelf .vtex-shelf__arrow-right:before
+.vtex-shelf .vtex-slick-slider__arrow-left:before,
+.vtex-shelf .vtex-slick-slider__arrow-right:before
 {
     font-size: 2rem;
     color: inherit;
 }
-.vtex-shelf .vtex-shelf__arrow-left
+.vtex-shelf .vtex-slick-slider__arrow-left
 {
     z-index: 1;
 }
-.vtex-shelf .vtex-shelf__arrow-right
+.vtex-shelf .vtex-slick-slider__arrow-right
 {
     right: -1rem;
 }
-.vtex-shelf .vtex-shelf__dots li button
+.vtex-shelf .vtex-slick-slider__dots li button
 {
     color: black;
 }
-.vtex-shelf .vtex-shelf__dots li button:before
+.vtex-shelf .vtex-slick-slider__dots li button:before
 {
     font-size: 1rem;
     color: inherit;
 }
-.vtex-shelf .vtex-shelf__dots li.slick-active button:before
+.vtex-shelf .vtex-slick-slider__dots li.slick-active button:before
 {
     color: inherit;
 }
-.vtex-shelf .vtex-shelf__item-edit-mode {
-    width: 395px;
-    height: 428px;
-}
-
 .vtex-shelf .slick-slide {
     display: flex;
     justify-content: center;
