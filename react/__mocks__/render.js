@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
 /**
- * ExtensionPoint Mocked Component.
+ * NoSSR Mocked Component.
  */
-export class ExtensionPoint extends Component {
+export class NoSSR extends Component {
   render() {
     return (
-      <div>Extension Point</div>
+      <div>{this.props.children}</div>
     )
   }
 }

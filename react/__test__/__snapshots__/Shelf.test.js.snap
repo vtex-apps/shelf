@@ -15,51 +15,10 @@ exports[`Shelf component should match snapshot 1`] = `
         Default Title
       </h1>
     </div>
-    <div
-      class="regular slider slick-initialized slick-slider"
-    >
-      
-      <div
-        class="slick-list"
-      >
-        <div
-          class="slick-track"
-          style="opacity: 1;"
-        >
-          <div
-            class="slick-slide slick-active slick-current vtex-shelf__slide pa4"
-            data-index="0"
-            style="outline: none; width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-          <div
-            class="slick-slide slick-active vtex-shelf__slide pa4"
-            data-index="1"
-            style="outline: none; width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-          <div
-            class="slick-slide slick-active vtex-shelf__slide pa4"
-            data-index="2"
-            style="outline: none; width: 0px;"
-            tabindex="-1"
-          >
-            <div>
-              Extension Point
-            </div>
-          </div>
-        </div>
+    <div>
+      <div>
+        SlickSlider
       </div>
-      
-      
     </div>
   </div>
 </div>
