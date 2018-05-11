@@ -18,6 +18,7 @@ export default class ShelfItem extends Component {
       linkText: PropTypes.string.isRequired,
       brand: PropTypes.string.isRequired,
       items: PropTypes.arrayOf(PropTypes.shape({
+        itemId: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         referenceId: PropTypes.arrayOf(PropTypes.shape({
           Value: PropTypes.string.isRequired,
