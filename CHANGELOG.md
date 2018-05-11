@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- **shelfitem** Add attribute itemId
+- **shelfitem** Add propType itemId
 
 ## [0.13.0] - 2018-05-11
 ### Added
