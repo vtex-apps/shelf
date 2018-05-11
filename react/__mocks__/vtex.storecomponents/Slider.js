@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 /**
  * SlickSlider Mocked Component.
  */
-export default class SlickSlider extends Component {
+export default class Slider extends Component {
   render() {
     return (
-      <div>SlickSlider</div>
+      <div>Slider</div>
     )
   }
 }
