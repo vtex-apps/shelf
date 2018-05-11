@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { NoSSR } from 'render'
 
 import ShelfItem from './ShelfItem'
-// import VtexSlider from './SlickSlider'
-import VtexSlider from 'vtex.storecomponents/SlickSlider'
+import Slider from 'vtex.storecomponents/Slider'
 
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
@@ -101,14 +100,14 @@ class ShelfContent extends Component {
     const sliderSettings = this.getSliderSettings()
     return (
       <NoSSR onSSR={this.ssrFallback()}>
-        <VtexSlider
+        <Slider
           ref={function(c) { this._slick = c }.bind(this)}
           sliderSettings={sliderSettings}
           adaptToScreen
           scrollByPage={isScrollByPage}
           defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
           {products.slice(0, maxItems).map(item => this.slideFallback(item, item.productId))}
-        </VtexSlider>
+        </Slider>
       </NoSSR>
     )
   }
