@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.13.1] - 2018-05-11
 ### Fixed
 - **shelfitem** Add propType itemId
+- **bug** Fix bug of OneByOne
 
 ## [0.13.0] - 2018-05-11
 ### Added
