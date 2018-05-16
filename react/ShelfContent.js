@@ -10,6 +10,7 @@ import ScrollTypes from './ScrollTypes'
 
 const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
+const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 
 const BREAKPOINT_MOBILE_VIEWPORT = 600
 const SLIDER_CENTER_MODE_MOBILE = true
@@ -31,6 +32,7 @@ class ShelfContent extends Component {
     const { arrows, itemsPerPage } = this.props
     return {
       slidesToShow: itemsPerPage,
+      slidesToScroll: SLIDES_TO_SCROLL_LARGE_VIEWPORT,
       dots: DOTS_LARGE_VIEWPORT,
       arrows,
       responsive: [
