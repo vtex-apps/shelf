@@ -22,6 +22,13 @@
         "host": "{{account}}.vtexcommercestable.com.br",
         "path": "/api/catalog_system/*"
       }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/checkout/pub/*"
+      }
     }
   ],
   "dependencies": {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { graphql } from 'react-apollo'
 import { NoSSR } from 'render'
 
 import ShelfItem from './ShelfItem'
@@ -7,6 +8,8 @@ import Slider from 'vtex.storecomponents/Slider'
 
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
+
+import orderFormQuery from './graphql/orderFormQuery.gql'
 
 const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
@@ -70,10 +73,11 @@ class ShelfContent extends Component {
   }
 
   slideFallback = (item, key) => {
-    const { summary } = this.props
+    const { summary, data: { orderForm } } = this.props
+    const orderFormId = orderForm && orderForm.orderFormId
     return (
       <div key={key} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-        <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
+        <ShelfItem extensionId="shelfitem" item={item} summary={summary} orderFormId={orderFormId} />
       </div>
     )
   }
@@ -114,6 +118,11 @@ class ShelfContent extends Component {
 }
 
 ShelfContent.propTypes = {
+  data: PropTypes.shape({
+    orderForm: PropTypes.shape({
+      orderFormId: PropTypes.string,
+    }),
+  }),
   products: PropTypes.arrayOf(ShelfItem.propTypes.item),
   itemsPerPage: PropTypes.number.isRequired,
   maxItems: PropTypes.number.isRequired,
@@ -122,4 +131,11 @@ ShelfContent.propTypes = {
   summary: PropTypes.any,
 }
 
-export default ShelfContent
+const options = {
+  options: () => ({
+    ssr: false,
+  }),
+}
+const ShelfContentWithQuery = graphql(orderFormQuery, options)(ShelfContent)
+ShelfContentWithQuery.propTypes = ShelfContent.propTypes
+export default ShelfContentWithQuery
