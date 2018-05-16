@@ -154,7 +154,7 @@ const options = {
       orderBy,
       from: 0,
       to: maxItems - 1,
-    }
+    },
   }),
 }
 
