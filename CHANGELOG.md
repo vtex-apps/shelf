@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Fixed
 - **className** Fix slider classNames
+- Fix Product Summary width on mobile mode
 
 ## [0.13.1] - 2018-05-11
 ### Fixed
