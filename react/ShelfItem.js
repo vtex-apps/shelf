@@ -37,6 +37,7 @@ export default class ShelfItem extends Component {
     }),
     extensionId: PropTypes.string.isRequired,
     summary: PropTypes.any,
+    orderFormId: PropTypes.string,
   }
 
   normalizeProduct(product) {
@@ -69,9 +70,9 @@ export default class ShelfItem extends Component {
   }
 
   render() {
-    const { item, summary } = this.props
+    const { item, summary, orderFormId } = this.props
     return (
-      <ProductSummary product={this.normalizeProduct(item)} {...summary}>
+      <ProductSummary product={this.normalizeProduct(item)} {...summary} orderFormId={orderFormId}>
       </ProductSummary>
     )
   }

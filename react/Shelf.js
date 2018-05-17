@@ -9,7 +9,7 @@ import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
 import VTEXClasses from './CustomClasses'
 
-import productsQuery from './queries/productsQuery.gql'
+import productsQuery from './graphql/productsQuery.gql'
 
 import './global.css'
 

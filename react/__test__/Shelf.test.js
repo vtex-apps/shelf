@@ -4,7 +4,7 @@ import { render } from 'react-testing-library'
 import { MockedProvider } from 'react-apollo/test-utils'
 
 import Shelf from '../Shelf'
-import productsQuery from '../queries/productsQuery.gql'
+import productsQuery from '../graphql/productsQuery.gql'
 
 describe('Shelf component', () => {
   let wrapper
