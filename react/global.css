@@ -1,3 +1,14 @@
+@media only screen and (max-width: 22em) {
+    .vtex-shelf .slick-slide .vtex-product-summary {
+       width: 270px;
+   }
+}
+@media only screen and (min-width: 22em) and (max-width: 25em) {
+    .vtex-shelf .slick-slide .vtex-product-summary {
+       width: 196px;
+   }
+}
+
 .vtex-shelf .vtex-slider__arrow-left,
 .vtex-shelf .vtex-slider__arrow-right {
     color: black;
