@@ -1,96 +1,69 @@
 # Shelf
 
-A Shelf Component. Shows a collection of products.
+## Description
 
-## Continuous Integrations 
+React Component that shows a collection of products.
 
-### Travis CI 
+## Continuous Integrations
+
+### Travis CI
+
 [![Build Status](https://travis-ci.org/vtex-apps/shelf.svg?branch=master)](https://travis-ci.org/vtex-apps/shelf)
 
 ## Usage
 
-Add "vtex.shelf" as your app dependency.
+> Add the dependency in your `manifest.json`
 
-## ExtensionPoint
-
-Shelf Component was built to support extensions with the following props:
-```javascript
-product: {
-  productId: PropTypes.string.isRequired,
-  productName: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired,
-  link: PropTypes.string.isRequired,
-  linkText: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  sku: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    referenceId: PropTypes.shape({
-      Value: PropTypes.string.isRequired,
-    }),
-    image: PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      imageTag: PropTypes.string.isRequired,
-    }).isRequired,
-    seller: PropTypes.shape({
-      commertialOffer: PropTypes.shape({
-        Price: PropTypes.number.isRequired,
-        ListPrice: PropTypes.number.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }),
+```json
+"dependencies": {
+  "vtex.shelf": "0.x"
 }
 ```
+
+> On your react component that contains the Shelf
+```javascript 
+import { ExtensionPoint } from 'render'
+...
+render() {
+  return (
+    <ExtensionPoint id="myshelf" />
+  )
+}
+...
+```
+
+> To run your Shelf APP you should run on your workspace:
+
+```sh
+vtex link
+```
+
 
 ## Schema Properties (Used By Editor)
 
 ``` javascript
-/**
- * Category ID of the listed items in the shelf.
- */
-- category
+- category // Category ID of the listed items in the shelf
   - Type: Number
-/**
- * Collection ID of the listed items in the shelf.
- */
-- collection
+- collection // Collection ID of the listed items in the shelf.
   - Type: Number
-/**
- * Ordenation type of the items in the shelf.
- */
-- orderBy
+- orderBy // Ordenation type of the items in the shelf.
   - Type: String
   - Default: 'OrderByTopSaleDESC'
   - Enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC']
-/**
- * Maximum number of items in the shelf.
- */
-- maxItems
+- maxItems // Maximum number of items in the shelf.
   - Type: Number
-  - Default: 7
-/**
- * Maximum number of items on the page.
- */
-- itemsPerPage
+  - Default: 10
+- itemsPerPage // Maximum number of items on the page.
   - Type: Number
   - Default: 5
-/**
- * Scroll type of slide transiction.
- */
-- scroll
+- scroll // Scroll type of slide transiction.
   - Type: String
   - Default: 'BY_PAGE'
   - Enum: ['BY_PAGE', 'ONE_BY_ONE']
-/**
- * If the arrows are showable or not.
- */
-- arrows
+- arrows // If the arrows are showable or not.
   - Type: Boolean
   - Default: true
-/**
- * Title of the shelf.
- */
-- titleText
+- titleText // Title of the shelf.
   - Type: String
   - Default: 'Default Title'
 ```
@@ -103,14 +76,11 @@ vtex-shelf
 vtex-shelf__title-text
 vtex-shelf__title-content
 vtex-shelf__slide
-vtex-shelf__arrow-right
-vtex-shelf__arrow-left
-vtex-shelf__dots
 ```
 
 ## Tests
 
 Run the tests with the command
 ```
-cd react && npm t
+cd react && yarn test
 ```
