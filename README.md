@@ -2,7 +2,7 @@
 
 ## Description
 
-VTEX App that that shows a collection of products.
+VTEX App that shows a collection of products.
 
 ## Continuous Integrations
 
