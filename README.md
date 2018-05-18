@@ -78,6 +78,30 @@ $ vtex link
 - titleText // Title of the shelf.
   - Type: String
   - Default: 'Default Title'
+- summary // Product Summary schema properties
+  - Type: Object
+  - Properties
+    - showListPrice
+      -type: Boolean
+      -Default: true
+    - showLabels // Show product's prices' labels
+      -type: Boolean
+      -Default: true
+    - showInstallments // Show product's payment installments
+      -type: Boolean
+      -Default: true
+    - showBadge // Show the discount badge
+      -type: Boolean
+      -Default: true
+    - badgeText // Badge's text
+      -type: String
+    - buyButtonText // Custom buy button's text
+      -type: String
+    - hideBuyButton // Hides the buy button completely
+      -type: Boolean
+      -Default: false
+    - showButtonOnHover // Show the buy button only on hover
+      -type: Boolean
 ```
 
 ## CSS Classes
@@ -88,18 +112,6 @@ vtex-shelf
 vtex-shelf__title-text
 vtex-shelf__title-content
 vtex-shelf__slide
-vtex-product-summary
-vtex-product-summary__image-container
-vtex-product-summary__image
-vtex-product-summary__name-container
-vtex-product-summary__buy-button-container
-vtex-product-summary__buy-button
-vtex-price
-vtex-price-container
-vtex-product-name
-vtex-product-name__brand
-vtex-product-name__sku
-vtex-discount-badge
 ```
 
 ## Tests
