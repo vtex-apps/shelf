@@ -2,7 +2,7 @@
 
 ## Description
 
-React Component that shows a collection of products.
+VTEX App that that shows a collection of products.
 
 ## Continuous Integrations
 
@@ -12,7 +12,7 @@ React Component that shows a collection of products.
 
 ## Usage
 
-> Add the dependency in your `manifest.json`
+> 1- Add the dependency in your `manifest.json`
 
 ```json
 "dependencies": {
@@ -20,7 +20,19 @@ React Component that shows a collection of products.
 }
 ```
 
-> On your react component that contains the Shelf
+> 2- Add the route in your pages.json
+
+```json
+{
+  "extensions": {
+    "<page_path>/myshelf": {
+      "component": "vtex.shelf/Shelf"
+    },
+  }
+}
+```
+
+> 3- On your react component that contains the Shelf
 ```javascript 
 import { ExtensionPoint } from 'render'
 ...
@@ -32,10 +44,10 @@ render() {
 ...
 ```
 
-> To run your Shelf APP you should run on your workspace:
+> 4- To run your Shelf App you should run on your workspace the command:
 
 ```sh
-vtex link
+$ vtex link
 ```
 
 
@@ -76,6 +88,18 @@ vtex-shelf
 vtex-shelf__title-text
 vtex-shelf__title-content
 vtex-shelf__slide
+vtex-product-summary
+vtex-product-summary__image-container
+vtex-product-summary__image
+vtex-product-summary__name-container
+vtex-product-summary__buy-button-container
+vtex-product-summary__buy-button
+vtex-price
+vtex-price-container
+vtex-product-name
+vtex-product-name__brand
+vtex-product-name__sku
+vtex-discount-badge
 ```
 
 ## Tests
