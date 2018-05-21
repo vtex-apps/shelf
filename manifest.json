@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "vtex.store-graphql": "2.x",
-    "vtex.storecomponents": "0.x",
+    "vtex.storecomponents": "1.x",
     "vtex.product-summary": "0.x"
   }
 }
