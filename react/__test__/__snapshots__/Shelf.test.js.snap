@@ -3,7 +3,7 @@
 exports[`Shelf component should match snapshot 1`] = `
 <div>
   <div
-    class="vtex-shelf ml7 mr7 pv4"
+    class="vtex-shelf ml7 mr7 pv4 pb7"
   >
     <div
       class="vtex-shelf__title-content w-100 flex justify-center"
