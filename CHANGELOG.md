@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Update vtex.storecomponents version to 1.x
+- Update `vtex.storecomponents` version to 1.x
 
 ## [0.13.2] - 2018-05-18
 ### Fixed
