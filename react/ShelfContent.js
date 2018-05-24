@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NoSSR } from 'render'
 
 import ShelfItem from './ShelfItem'
-import Slider from 'vtex.storecomponents/Slider'
+import Slider from 'vtex.store-components/Slider'
 
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
