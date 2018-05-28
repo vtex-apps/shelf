@@ -17,23 +17,46 @@ export default class ShelfItem extends Component {
       link: PropTypes.string.isRequired,
       linkText: PropTypes.string.isRequired,
       brand: PropTypes.string.isRequired,
-      items: PropTypes.arrayOf(PropTypes.shape({
-        itemId: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        referenceId: PropTypes.arrayOf(PropTypes.shape({
-          Value: PropTypes.string.isRequired,
-        })),
-        images: PropTypes.arrayOf(PropTypes.shape({
-          imageUrl: PropTypes.string.isRequired,
-          imageTag: PropTypes.string.isRequired,
-        })).isRequired,
-        sellers: PropTypes.arrayOf(PropTypes.shape({
-          commertialOffer: PropTypes.shape({
-            Price: PropTypes.number.isRequired,
-            ListPrice: PropTypes.number.isRequired,
-          }).isRequired,
-        })).isRequired,
-      })).isRequired,
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          itemId: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          referenceId: PropTypes.arrayOf(
+            PropTypes.shape({
+              Value: PropTypes.string.isRequired,
+            })
+          ),
+          images: PropTypes.arrayOf(
+            PropTypes.shape({
+              imageUrl: PropTypes.string.isRequired,
+              imageTag: PropTypes.string.isRequired,
+            })
+          ).isRequired,
+          sellers: PropTypes.arrayOf(
+            PropTypes.shape({
+              commertialOffer: PropTypes.shape({
+                /** SKU installments */
+                Installments: PropTypes.arrayOf(
+                  PropTypes.shape({
+                    /** Installment value */
+                    Value: PropTypes.number.isRequired,
+                    /** Interest rate (zero if interest-free) */
+                    InterestRate: PropTypes.number.isRequired,
+                    /** Calculated total value */
+                    TotalValuePlusInterestRate: PropTypes.number,
+                    /** Number of installments */
+                    NumberOfInstallments: PropTypes.number.isRequired,
+                    /** Installments offer name */
+                    Name: PropTypes.string,
+                  })
+                ),
+                Price: PropTypes.number.isRequired,
+                ListPrice: PropTypes.number.isRequired,
+              }).isRequired,
+            })
+          ).isRequired,
+        })
+      ).isRequired,
     }),
     extensionId: PropTypes.string.isRequired,
     summary: PropTypes.any,
@@ -56,9 +79,12 @@ export default class ShelfItem extends Component {
       }
       if (newProduct.sku.images && newProduct.sku.images.length) {
         newProduct.sku.image = { ...newProduct.sku.images[0] }
-        newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl.replace('http:', '').replace('https:', '')
+        newProduct.sku.image.imageUrl = newProduct.sku.image.imageUrl
+          .replace('http:', '')
+          .replace('https:', '')
       }
-      newProduct.sku.referenceId = (newProduct.sku.referenceId && newProduct.sku.referenceId[0]) || {
+      newProduct.sku.referenceId = (newProduct.sku.referenceId &&
+        newProduct.sku.referenceId[0]) || {
         Value: '',
       }
       delete newProduct.sku.sellers
@@ -70,9 +96,6 @@ export default class ShelfItem extends Component {
 
   render() {
     const { item, summary } = this.props
-    return (
-      <ProductSummary product={this.normalizeProduct(item)} {...summary}>
-      </ProductSummary>
-    )
+    return <ProductSummary product={this.normalizeProduct(item)} {...summary} />
   }
 }
