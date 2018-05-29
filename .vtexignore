@@ -1,0 +1,4 @@
+**/node_modules/**
+react/__test__
+react/__mocks__
+react/setupTests.js
