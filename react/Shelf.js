@@ -6,7 +6,10 @@ import ProductSummary from 'vtex.product-summary/ProductSummary'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import ShelfContent from './ShelfContent'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
-import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
+import OrdenationTypes, {
+  getOrdenationNames,
+  getOrdenationValues,
+} from './OrdenationTypes'
 import VTEXClasses from './CustomClasses'
 
 import productsQuery from './queries/productsQuery.gql'
@@ -21,30 +24,40 @@ const DEFAULT_ITEMS_PER_PAGE = 5
  */
 class Shelf extends Component {
   render() {
-    const { data, maxItems, titleText, arrows, scroll, itemsPerPage, summary } = this.props
+    const {
+      data,
+      maxItems,
+      titleText,
+      arrows,
+      scroll,
+      itemsPerPage,
+      summary,
+    } = this.props
     const products = !data || data['error'] ? [] : data.products
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
-        <div className={`${VTEXClasses.TITLE_CONTENT_CLASS} w-100 flex justify-center`}>
+        <div
+          className={`${
+            VTEXClasses.TITLE_CONTENT_CLASS
+          } w-100 flex justify-center`}>
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
-        {
-          data.loading ? (
-            <div className="w-100 flex justify-center">
-              <div className="w3 ma0">
-                <Spinner />
-              </div>
+        {data.loading ? (
+          <div className="w-100 flex justify-center">
+            <div className="w3 ma0">
+              <Spinner />
             </div>
-          ) : (
-            <ShelfContent
-              products={products}
-              maxItems={maxItems}
-              arrows={arrows}
-              scroll={scroll}
-              itemsPerPage={itemsPerPage}
-              summary={summary} />
-          )
-        }
+          </div>
+        ) : (
+          <ShelfContent
+            products={products}
+            maxItems={maxItems}
+            arrows={arrows}
+            scroll={scroll}
+            itemsPerPage={itemsPerPage}
+            summary={summary}
+          />
+        )}
       </div>
     )
   }
@@ -58,7 +71,7 @@ Shelf.defaultProps = {
   titleText: 'Default Title',
 }
 
-Shelf.getSchema = (props) => {
+Shelf.getSchema = props => {
   return {
     title: 'Shelf',
     description: 'A product shelf featuring a collection',
