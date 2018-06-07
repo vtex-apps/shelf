@@ -1,14 +1,14 @@
 const ordenationTypes = {
   ORDER_BY_TOP_SALE_DESC: {
-    name: 'Sales',
+    name: 'editor.shelf.orderType.sales',
     value: 'OrderByTopSaleDESC',
   },
   ORDER_BY_PRICE_DESC: {
-    name: 'Price, descending',
+    name: 'editor.shelf.orderType.priceDesc',
     value: 'OrderByPriceDESC',
   },
   ORDER_BY_PRICE_ASC: {
-    name: 'Price, ascending',
+    name: 'editor.shelf.orderType.priceAsc',
     value: 'OrderByPriceASC',
   },
 }

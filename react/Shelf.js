@@ -73,55 +73,55 @@ Shelf.defaultProps = {
 
 Shelf.getSchema = props => {
   return {
-    title: 'Shelf',
-    description: 'A product shelf featuring a collection',
+    title: 'editor.shelf.title',
+    description: 'editor.shelf.description',
     type: 'object',
     properties: {
       category: {
-        title: 'Category',
+        title: 'editor.shelf.category.title',
         type: 'number',
       },
       collection: {
-        title: 'Collection',
+        title: 'editor.shelf.collection.title',
         type: 'number',
       },
       orderBy: {
-        title: 'List Ordenation',
+        title: 'editor.shelf.orderBy.title',
         type: 'string',
         enum: getOrdenationValues(),
         enumNames: getOrdenationNames(),
         default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
       },
       maxItems: {
-        title: 'Max Items',
+        title: 'editor.shelf.maxItems.title',
         type: 'number',
         default: Shelf.defaultProps.maxItems,
       },
       itemsPerPage: {
-        title: 'Items Per Page',
+        title: 'editor.shelf.itemsPerPage.title',
         type: 'number',
         enum: [3, 4, 5],
         default: Shelf.defaultProps.itemsPerPage,
       },
       scroll: {
-        title: 'Scroll Type',
+        title: 'editor.shelf.scrollType.title',
         type: 'string',
         enum: getScrollValues(),
         enumNames: getScrollNames(),
         default: ScrollTypes.BY_PAGE.value,
       },
       arrows: {
-        title: 'Arrows',
+        title: 'editor.shelf.arrows.title',
         type: 'boolean',
         default: Shelf.defaultProps.arrows,
       },
       titleText: {
-        title: 'Title Text',
+        title: 'editor.shelf.titleText.title',
         type: 'string',
         default: 'Default Title',
       },
       summary: {
-        title: 'Product Summary',
+        title: 'editor.shelf.summary.title',
         type: 'object',
         properties: ProductSummary.getSchema(props).properties,
       },
