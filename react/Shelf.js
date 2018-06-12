@@ -1,31 +1,24 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'react-apollo'
-
-import ProductSummary from 'vtex.product-summary/ProductSummary'
-import Spinner from '@vtex/styleguide/lib/Spinner'
-import ShelfContent from './ShelfContent'
-import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
-import OrdenationTypes, {
-  getOrdenationNames,
-  getOrdenationValues,
-} from './OrdenationTypes'
-import VTEXClasses from './CustomClasses'
-
-import productsQuery from './queries/productsQuery.gql'
-
 import './global.css'
+
+import Spinner from '@vtex/styleguide/lib/Spinner'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+
+import VTEXClasses from './CustomClasses'
+import ScrollTypes, { getScrollValues } from './ScrollTypes'
+import ShelfContent from './ShelfContent'
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 
 /**
- * Shelf Component. Shows a collection of products.
+ * Shelf (UI) Component. Shows a collection of products.
  */
-class Shelf extends Component {
+export default class Shelf extends Component {
   render() {
     const {
-      data,
+      products,
+      loading,
       maxItems,
       titleText,
       arrows,
@@ -33,7 +26,6 @@ class Shelf extends Component {
       itemsPerPage,
       summary,
     } = this.props
-    const products = !data || data['error'] ? [] : data.products
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
         <div
@@ -42,7 +34,7 @@ class Shelf extends Component {
           } w-100 flex justify-center`}>
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
-        {data.loading ? (
+        {loading ? (
           <div className="w-100 flex justify-center">
             <div className="w3 ma0">
               <Spinner />
@@ -71,75 +63,11 @@ Shelf.defaultProps = {
   titleText: 'Default Title',
 }
 
-Shelf.getSchema = props => {
-  return {
-    title: 'editor.shelf.title',
-    description: 'editor.shelf.description',
-    type: 'object',
-    properties: {
-      category: {
-        title: 'editor.shelf.category.title',
-        type: 'number',
-      },
-      collection: {
-        title: 'editor.shelf.collection.title',
-        type: 'number',
-      },
-      orderBy: {
-        title: 'editor.shelf.orderBy.title',
-        type: 'string',
-        enum: getOrdenationValues(),
-        enumNames: getOrdenationNames(),
-        default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-      },
-      maxItems: {
-        title: 'editor.shelf.maxItems.title',
-        type: 'number',
-        default: Shelf.defaultProps.maxItems,
-      },
-      itemsPerPage: {
-        title: 'editor.shelf.itemsPerPage.title',
-        type: 'number',
-        enum: [3, 4, 5],
-        default: Shelf.defaultProps.itemsPerPage,
-      },
-      scroll: {
-        title: 'editor.shelf.scrollType.title',
-        type: 'string',
-        enum: getScrollValues(),
-        enumNames: getScrollNames(),
-        default: ScrollTypes.BY_PAGE.value,
-      },
-      arrows: {
-        title: 'editor.shelf.arrows.title',
-        type: 'boolean',
-        default: Shelf.defaultProps.arrows,
-      },
-      titleText: {
-        title: 'editor.shelf.titleText.title',
-        type: 'string',
-        default: 'Default Title',
-      },
-      summary: {
-        title: 'editor.shelf.summary.title',
-        type: 'object',
-        properties: ProductSummary.getSchema(props).properties,
-      },
-    },
-  }
-}
-
 Shelf.propTypes = {
+  /** Loading status */
+  loading: PropTypes.bool,
   /** Graphql data response. */
-  data: PropTypes.shape({
-    products: ShelfContent.propTypes.products,
-  }),
-  /** Category Id. */
-  category: PropTypes.number,
-  /** Collection Id. */
-  collection: PropTypes.number,
-  /** Ordenation Type. */
-  orderBy: PropTypes.oneOf(getOrdenationValues()),
+  products: ShelfContent.propTypes.products,
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** Maximum number of items in a page. */
@@ -150,25 +78,6 @@ Shelf.propTypes = {
   arrows: PropTypes.bool.isRequired,
   /** Text value of the title. */
   titleText: PropTypes.string,
+  /** Product Summary schema props */
   summary: PropTypes.any,
 }
-
-const options = {
-  options: ({
-    category,
-    collection,
-    orderBy,
-    maxItems = Shelf.defaultProps.maxItems,
-  }) => ({
-    variables: {
-      category,
-      collection,
-      specificationFilters: [],
-      orderBy,
-      from: 0,
-      to: maxItems - 1,
-    },
-  }),
-}
-
-export default graphql(productsQuery, options)(Shelf)
