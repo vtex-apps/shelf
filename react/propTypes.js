@@ -56,7 +56,7 @@ export const shelfItemPropTypes = {
   summary: PropTypes.any,
 }
 
-export const shelfSchemaPropTypes = {
+export const productListSchemaPropTypes = {
   /** Maximum number of items in the shelf. */
   maxItems: PropTypes.number.isRequired,
   /** Maximum number of items in a page. */

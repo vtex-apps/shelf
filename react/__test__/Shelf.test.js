@@ -4,9 +4,9 @@ import React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 
 import productsQuery from '../queries/productsQuery.gql'
-import ShelfContainer from '../ShelfContainer'
+import Shelf from '../Shelf'
 
-describe('ShelfContainer component', () => {
+describe('Shelf component', () => {
   let wrapper
 
   beforeEach(done => {
@@ -133,7 +133,7 @@ describe('ShelfContainer component', () => {
             result: { data: { products: mockedProducts } },
           },
         ]}>
-        <ShelfContainer />
+        <Shelf />
       </MockedProvider>
     )
 
