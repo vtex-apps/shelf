@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Add the _RelatedProducts_ Component and a _ShelfContainer_ to divide the responsibilities.
+- Add the _RelatedProducts_ Component and a _ProductList_ to divide the responsibilities.
 
 ## [0.14.0] - 2018-6-11
 ### Added
