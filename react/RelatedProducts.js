@@ -26,7 +26,7 @@ class RelatedProducts extends Component {
       loading: data.loading,
       ...shelf,
     }
-    return products && <Shelf {...shelfProps} />
+    return <Shelf {...shelfProps} />
   }
 }
 
