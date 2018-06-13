@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
-import { shelfSchemaPropTypes } from './propTypes'
+import ProductList from './ProductList'
+import { productListSchemaPropTypes } from './propTypes'
 import relatedProductsQuery from './queries/relatedProductsQuery.gql'
-import Shelf from './Shelf'
 import ShelfItem from './ShelfItem'
 
 /**
@@ -14,40 +14,41 @@ import ShelfItem from './ShelfItem'
  */
 class RelatedProducts extends Component {
   render() {
-    const { data, shelf } = this.props
+    const { data, productList } = this.props
     const products =
-      !data || data['error']
-        ? []
-        : data.product &&
-          data.product.recommendations &&
-          data.product.recommendations.view
-    const shelfProps = {
+      (data &&
+        !data['error'] &&
+        data.product &&
+        data.product.recommendations &&
+        data.product.recommendations.view) ||
+      []
+    const productListProps = {
       products,
       loading: data.loading,
-      ...shelf,
+      ...productList,
     }
-    return <Shelf {...shelfProps} />
+    return <ProductList {...productListProps} />
   }
 }
 
 RelatedProducts.defaultProps = {
-  shelf: {
-    ...Shelf.defaultProps,
+  productList: {
+    ...ProductList.defaultProps,
     titleText: 'Related Products',
   },
 }
 
 RelatedProducts.getSchema = props => {
-  const shelfSchema = Shelf.getSchema(props)
-  shelfSchema.properties.titleText.default =
-    RelatedProducts.defaultProps.shelf.titleText
+  const productListSchema = ProductList.getSchema(props)
+  productListSchema.properties.titleText.default =
+    RelatedProducts.defaultProps.productList.titleText
 
   return {
     title: 'editor.relatedProducts.title',
     description: 'editor.relatedProducts.description',
     type: 'object',
     properties: {
-      shelf: shelfSchema,
+      productList: productListSchema,
     },
   }
 }
@@ -66,8 +67,8 @@ RelatedProducts.propTypes = {
       }),
     }),
   }),
-  /** Shelf schema configuration */
-  shelf: PropTypes.shape(shelfSchemaPropTypes),
+  /** ProductList schema configuration */
+  productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
 const options = {
