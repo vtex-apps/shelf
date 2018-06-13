@@ -3,9 +3,11 @@ import './global.css'
 import Spinner from '@vtex/styleguide/lib/Spinner'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import ProductSummary from 'vtex.product-summary/ProductSummary'
 
 import VTEXClasses from './CustomClasses'
-import ScrollTypes, { getScrollValues } from './ScrollTypes'
+import { shelfSchemaPropTypes } from './propTypes'
+import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
 
 const DEFAULT_MAX_ITEMS = 10
@@ -55,6 +57,49 @@ export default class Shelf extends Component {
   }
 }
 
+Shelf.getSchema = props => {
+  return {
+    title: 'editor.shelf.title',
+    description: 'editor.shelf.description',
+    type: 'object',
+    properties: {
+      maxItems: {
+        title: 'editor.shelf.maxItems.title',
+        type: 'number',
+        default: Shelf.defaultProps.maxItems,
+      },
+      itemsPerPage: {
+        title: 'editor.shelf.itemsPerPage.title',
+        type: 'number',
+        enum: [3, 4, 5],
+        default: Shelf.defaultProps.itemsPerPage,
+      },
+      scroll: {
+        title: 'editor.shelf.scrollType.title',
+        type: 'string',
+        enum: getScrollValues(),
+        enumNames: getScrollNames(),
+        default: ScrollTypes.BY_PAGE.value,
+      },
+      arrows: {
+        title: 'editor.shelf.arrows.title',
+        type: 'boolean',
+        default: Shelf.defaultProps.arrows,
+      },
+      titleText: {
+        title: 'editor.shelf.titleText.title',
+        type: 'string',
+        default: 'Default Title',
+      },
+      summary: {
+        title: 'editor.shelf.summary.title',
+        type: 'object',
+        properties: ProductSummary.getSchema(props).properties,
+      },
+    },
+  }
+}
+
 Shelf.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
@@ -68,16 +113,5 @@ Shelf.propTypes = {
   loading: PropTypes.bool,
   /** Graphql data response. */
   products: ShelfContent.propTypes.products,
-  /** Maximum number of items in the shelf. */
-  maxItems: PropTypes.number.isRequired,
-  /** Maximum number of items in a page. */
-  itemsPerPage: PropTypes.number.isRequired,
-  /** Scroll options. */
-  scroll: PropTypes.oneOf(getScrollValues()),
-  /** If the arrows are showable or not. */
-  arrows: PropTypes.bool.isRequired,
-  /** Text value of the title. */
-  titleText: PropTypes.string,
-  /** Product Summary schema props */
-  summary: PropTypes.any,
+  ...shelfSchemaPropTypes,
 }

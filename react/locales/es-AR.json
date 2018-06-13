@@ -15,5 +15,7 @@
   "editor.shelf.orderType.priceAsc": "Precio, ascendente",
   "editor.shelf.scrollType.byPage": "Por Página",
   "editor.shelf.scrollType.oneByOne": "Uno a Uno",
-  "editor.relatedProducts.titleText.default": "Productos relacionados"
+  "editor.relatedProducts.title": "Productos Relacionados",
+  "editor.relatedProducts.description":
+    "Una vitrina de productos relacionados para mostrar recomendaciones de vista"
 }
