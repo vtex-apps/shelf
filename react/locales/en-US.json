@@ -15,5 +15,7 @@
   "editor.shelf.orderType.priceAsc": "Price, ascending",
   "editor.shelf.scrollType.byPage": "By Page",
   "editor.shelf.scrollType.oneByOne": "One by One",
-  "editor.relatedProducts.titleText.default": "Related Products"
+  "editor.relatedProducts.title": "Related Products",
+  "editor.relatedProducts.description":
+    "A related products shelf to show view recommendations"
 }

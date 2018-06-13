@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+import { getScrollValues } from './ScrollTypes'
+
 export const shelfItemPropTypes = {
   item: PropTypes.shape({
     productId: PropTypes.string.isRequired,
@@ -51,5 +53,20 @@ export const shelfItemPropTypes = {
     ).isRequired,
   }),
   extensionId: PropTypes.string.isRequired,
+  summary: PropTypes.any,
+}
+
+export const shelfSchemaPropTypes = {
+  /** Maximum number of items in the shelf. */
+  maxItems: PropTypes.number.isRequired,
+  /** Maximum number of items in a page. */
+  itemsPerPage: PropTypes.number.isRequired,
+  /** Scroll options. */
+  scroll: PropTypes.oneOf(getScrollValues()),
+  /** If the arrows are showable or not. */
+  arrows: PropTypes.bool.isRequired,
+  /** Text value of the title. */
+  titleText: PropTypes.string,
+  /** Product Summary schema props */
   summary: PropTypes.any,
 }
