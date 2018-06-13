@@ -1,12 +1,12 @@
 /* eslint-env jest */
-import React from 'react'
 import { mount } from 'enzyme'
+import React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
 
-import Shelf from '../Shelf'
 import productsQuery from '../queries/productsQuery.gql'
+import ShelfContainer from '../ShelfContainer'
 
-describe('Shelf component', () => {
+describe('ShelfContainer component', () => {
   let wrapper
 
   beforeEach(done => {
@@ -133,7 +133,7 @@ describe('Shelf component', () => {
             result: { data: { products: mockedProducts } },
           },
         ]}>
-        <Shelf />
+        <ShelfContainer />
       </MockedProvider>
     )
 
