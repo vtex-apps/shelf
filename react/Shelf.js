@@ -39,10 +39,12 @@ Shelf.getSchema = props => {
       category: {
         title: 'editor.shelf.category.title',
         type: 'number',
+        isLayout: false,
       },
       collection: {
         title: 'editor.shelf.collection.title',
         type: 'number',
+        isLayout: false,
       },
       orderBy: {
         title: 'editor.shelf.orderBy.title',
@@ -50,6 +52,7 @@ Shelf.getSchema = props => {
         enum: getOrdenationValues(),
         enumNames: getOrdenationNames(),
         default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+        isLayout: false,
       },
       productList: ProductList.getSchema(props),
     },

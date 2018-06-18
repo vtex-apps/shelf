@@ -67,12 +67,14 @@ ProductList.getSchema = props => {
         title: 'editor.shelf.maxItems.title',
         type: 'number',
         default: ProductList.defaultProps.maxItems,
+        isLayout: true,
       },
       itemsPerPage: {
         title: 'editor.shelf.itemsPerPage.title',
         type: 'number',
         enum: [3, 4, 5],
         default: ProductList.defaultProps.itemsPerPage,
+        isLayout: true,
       },
       scroll: {
         title: 'editor.shelf.scrollType.title',
@@ -80,16 +82,19 @@ ProductList.getSchema = props => {
         enum: getScrollValues(),
         enumNames: getScrollNames(),
         default: ScrollTypes.BY_PAGE.value,
+        isLayout: true,
       },
       arrows: {
         title: 'editor.shelf.arrows.title',
         type: 'boolean',
         default: ProductList.defaultProps.arrows,
+        isLayout: true,
       },
       titleText: {
         title: 'editor.shelf.titleText.title',
         type: 'string',
         default: 'Default Title',
+        isLayout: false,
       },
       summary: {
         title: 'editor.shelf.summary.title',
