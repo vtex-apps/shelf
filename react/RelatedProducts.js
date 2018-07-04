@@ -15,13 +15,14 @@ import ShelfItem from './ShelfItem'
 class RelatedProducts extends Component {
   render() {
     const { data, productList } = this.props
-    const products =
+    let products =
       (data &&
         !data['error'] &&
         data.product &&
         data.product.recommendations &&
         data.product.recommendations.view) ||
       []
+    products = products.filter(product => product.linkText !== this.props.slug)
     const productListProps = {
       products,
       loading: data.loading,
