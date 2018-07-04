@@ -15,14 +15,13 @@ import ShelfItem from './ShelfItem'
 class RelatedProducts extends Component {
   render() {
     const { data, productList, slug } = this.props
-    let products =
+    const products =
       (data &&
         !data['error'] &&
         data.product &&
         data.product.recommendations &&
         data.product.recommendations.view) ||
       []
-    products = products.filter(product => product.linkText !== slug)
     const productListProps = {
       products,
       loading: data.loading,
@@ -76,6 +75,7 @@ const options = {
   options: ({ slug }) => ({
     variables: {
       slug,
+      distinctRecomendations: true
     },
   }),
 }
