@@ -14,7 +14,7 @@ import ShelfItem from './ShelfItem'
  */
 class RelatedProducts extends Component {
   render() {
-    const { data, productList, slug } = this.props
+    const { data, productList } = this.props
     const products =
       (data &&
         !data['error'] &&
