@@ -75,6 +75,7 @@ const options = {
   options: ({ slug }) => ({
     variables: {
       slug,
+      distinctRecomendations: true
     },
   }),
 }
