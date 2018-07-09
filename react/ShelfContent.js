@@ -103,7 +103,6 @@ class ShelfContent extends Component {
     return (
       <NoSSR onSSR={this.ssrFallback()}>
         <Slider
-          ref={function(c) { this._slick = c }.bind(this)}
           sliderSettings={sliderSettings}
           adaptToScreen
           scrollByPage={isScrollByPage}
