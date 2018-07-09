@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.17.2] - 2018-7-9
+### Fixed
+- Prevent rerender on first edit because of lacking default prop.
+
 ## [0.17.1] - 2018-7-9
 ### Fixed
 - `ShelfContent` ref warning.
