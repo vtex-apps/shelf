@@ -148,9 +148,4 @@ describe('Shelf component', () => {
   it('should be rendered', () => {
     expect(wrapper).toBeDefined()
   })
-
-  it('should render 3 slide items', () => {
-    expect(wrapper.find('.vtex-shelf').length).toBe(1)
-    expect(wrapper.find('.vtex-shelf div div')).toBeDefined()
-  })
 })
