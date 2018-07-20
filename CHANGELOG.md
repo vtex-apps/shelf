@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 - title of Related Products List when there's no products.
 
+### Added
+- Stale cache for product preview
+
 ## [0.17.2] - 2018-7-9
 ### Fixed
 - Prevent rerender on first edit because of lacking default prop.
