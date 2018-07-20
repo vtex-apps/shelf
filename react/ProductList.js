@@ -29,7 +29,7 @@ export default class ProductList extends Component {
       summary,
     } = this.props
     
-    if (!products.length) return null
+    // if (!products || !products.length) return null
 
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
