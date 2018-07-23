@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.17.5] - 2018-07-23
+
+## [0.17.4] - 2018-07-23
+
 ## [0.17.3] - 2018-07-23
 ### Removed
 - title of Related Products List when there's no products.
