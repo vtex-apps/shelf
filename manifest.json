@@ -1,7 +1,7 @@
 {
   "name": "shelf",
   "vendor": "vtex",
-  "version": "0.17.4",
+  "version": "0.17.5",
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
