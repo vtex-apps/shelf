@@ -1,7 +1,9 @@
 query RelatedProducts($slug: String) {
   product(slug: $slug) {
+    cacheId
     recommendations {
       view {
+        cacheId
         productId
         productName
         description

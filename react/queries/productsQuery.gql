@@ -14,6 +14,7 @@ query Products(
     from: $from
     to: $to
   ) {
+    cacheId
     productId
     productName
     description
