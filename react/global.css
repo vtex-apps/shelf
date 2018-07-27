@@ -49,3 +49,12 @@
     display: flex;
     justify-content: center;
 }
+
+.vtex-categories {
+    top: -90px;
+    position: relative;
+}
+
+.vtex-categories__container {
+    width: 55%;
+}
