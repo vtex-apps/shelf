@@ -5,36 +5,25 @@ import { Slider, CategoryCard } from 'vtex.store-components'
 
 import './global.css'
 
+const DEFAULT_QUANTITY_ITENS = 4
+
 class Categories extends Component {
   static propTypes = {
-    /** Name of the Department */
-    departmentName: PropTypes.string.isRequired,
+    categories: PropTypes.arrayOf(
+      PropTypes.shape({
+        categoryName: PropTypes.string.isRequired,
+        categoryImageUrl: PropTypes.string,
+      })
+    ).isRequired,
   }
 
   static defaultProps = {
-    departmentName: 'Department Name',
-    categories: [
-      {
-        categoryName: 'Smartphones',
-      },
-      {
-        categoryName: 'Computadores',
-      },
-      {
-        categoryName: 'Videogames',
-      },
-      {
-        categoryName: 'TVs',
-      },
-      {
-        categoryName: 'Outros',
-      }
-    ]
+    categories: []
   }
 
   getSliderSettings = () => {
     return {
-      slidesToShow: 4
+      slidesToShow: DEFAULT_QUANTITY_ITENS
     }
   }
 
