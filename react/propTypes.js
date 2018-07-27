@@ -52,7 +52,6 @@ export const shelfItemPropTypes = {
       })
     ).isRequired,
   }),
-  extensionId: PropTypes.string.isRequired,
   summary: PropTypes.any,
 }
 
