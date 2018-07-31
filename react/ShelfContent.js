@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NoSSR } from 'render'
 
 import ShelfItem from './ShelfItem'
 import Slider from 'vtex.store-components/Slider'
@@ -75,7 +74,7 @@ class ShelfContent extends Component {
     const { summary } = this.props
     return (
       <div key={key} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
-        <ShelfItem extensionId="shelfitem" item={item} summary={summary} />
+        <ShelfItem item={item} summary={summary} />
       </div>
     )
   }
@@ -101,15 +100,14 @@ class ShelfContent extends Component {
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
     const sliderSettings = this.getSliderSettings()
     return (
-      <NoSSR onSSR={this.ssrFallback()}>
-        <Slider
-          sliderSettings={sliderSettings}
-          adaptToScreen
-          scrollByPage={isScrollByPage}
-          defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
-          {products.slice(0, maxItems).map(item => this.slideFallback(item, item.productId))}
-        </Slider>
-      </NoSSR>
+      <Slider
+        ssrFallback={this.ssrFallback()}
+        sliderSettings={sliderSettings}
+        adaptToScreen
+        scrollByPage={isScrollByPage}
+        defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
+        {products.slice(0, maxItems).map(item => this.slideFallback(item, item.productId))}
+      </Slider>
     )
   }
 }
