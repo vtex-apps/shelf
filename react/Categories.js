@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Slider, CategoryCard } from 'vtex.store-components'
+import { Slider } from 'vtex.store-components'
+import CategoryCard from './components/CategoryCard'
 
 import './global.css'
 
@@ -32,7 +33,7 @@ class Categories extends Component {
     
     return (
       <div className="vtex-shelf vtex-categories flex items-center justify-center">
-        <div className="vtex-categories__container">
+        <div className="vtex-categories__container dn db-ns">
           <Slider 
             sliderSettings={this.getSliderSettings()}>
             {
