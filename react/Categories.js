@@ -22,28 +22,7 @@ class Categories extends Component {
   }
 
   static defaultProps = {
-    categories: [
-      {
-        categoryName: 'Sample 1',
-        categoryImageUrl: 'https://li0.rightinthebox.com/images/384x384/201506/ycdgdd1433506208409.jpg'
-      },
-      {
-        categoryName: 'Sample 2',
-        categoryImageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY-zF_22MQJt7VAFSH-5g35BiBo8i5ak4uqoCfQAC2PAQvcJU9mg'
-      },
-      {
-        categoryName: 'Sample 3',
-        categoryImageUrl: 'http://d26lpennugtm8s.cloudfront.net/stores/650/612/products/bone-volkswagen-gti-11-8d3565cb88be35b7b315238341270417-640-0.jpg'
-      },
-      {
-        categoryName: 'Sample 4',
-        categoryImageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj__Hxl13SZkMM3P0UMLDdi1iddQ_K32LZlO7mG5UYsXfHma_x'
-      },
-      {
-        categoryName: 'Sample 5',
-        categoryImageUrl: 'http://4.bp.blogspot.com/-ItLr46C9rPk/UPk_LUgCvmI/AAAAAAAABmE/crjw9MtL7Ok/s1600/xbox1.jpg'
-      }
-    ]
+    categories: []
   }
 
   getSliderSettings = () => {
