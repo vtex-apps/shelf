@@ -1,6 +1,5 @@
 import './global.css'
 
-import Spinner from '@vtex/styleguide/lib/Spinner'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import ProductSummary from 'vtex.product-summary/ProductSummary'
@@ -20,7 +19,6 @@ export default class ProductList extends Component {
   render() {
     const {
       products,
-      loading,
       maxItems,
       titleText,
       arrows,
@@ -28,8 +26,6 @@ export default class ProductList extends Component {
       itemsPerPage,
       summary,
     } = this.props
-    
-    if (!products || !products.length) return null
 
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
@@ -39,22 +35,14 @@ export default class ProductList extends Component {
           } w-100 flex justify-center`}>
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
-        {loading ? (
-          <div className="w-100 flex justify-center">
-            <div className="w3 ma0">
-              <Spinner />
-            </div>
-          </div>
-        ) : (
-          <ShelfContent
-            products={products}
-            maxItems={maxItems}
-            arrows={arrows}
-            scroll={scroll}
-            itemsPerPage={itemsPerPage}
-            summary={summary}
-          />
-        )}
+        <ShelfContent
+          products={products}
+          maxItems={maxItems}
+          arrows={arrows}
+          scroll={scroll}
+          itemsPerPage={itemsPerPage}
+          summary={summary}
+        />
       </div>
     )
   }
