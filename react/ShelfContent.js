@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
-import ShelfItem from './ShelfItem'
+import { path } from 'ramda'
+import React, { Component } from 'react'
 import Slider from 'vtex.store-components/Slider'
 
 import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
+import ShelfItem from './ShelfItem'
 
 const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
@@ -70,7 +70,7 @@ class ShelfContent extends Component {
     }
   }
 
-  slideFallback = (item, key) => {
+  slideFallback = (item = {}, key) => {
     const { summary } = this.props
     return (
       <div key={key} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
@@ -86,7 +86,9 @@ class ShelfContent extends Component {
       <div className="flex justify-center">
         {products.slice(0, itemsPerPage).map(item => {
           return (
-            <div key={item.productId} className={`${className} flex justify-center`}>
+            <div
+              key={item.productId}
+              className={`${className} flex justify-center`}>
               {this.slideFallback(item)}
             </div>
           )
@@ -99,6 +101,8 @@ class ShelfContent extends Component {
     const { products, maxItems, scroll } = this.props
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
     const sliderSettings = this.getSliderSettings()
+    const productList =
+      !products || !products.length ? Array(maxItems).fill(null) : products
     return (
       <Slider
         ssrFallback={this.ssrFallback()}
@@ -106,7 +110,9 @@ class ShelfContent extends Component {
         adaptToScreen
         scrollByPage={isScrollByPage}
         defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
-        {products.slice(0, maxItems).map(item => this.slideFallback(item, item.productId))}
+        {productList
+          .slice(0, maxItems)
+          .map(item => this.slideFallback(item, path(['productId'], item)))}
       </Slider>
     )
   }
