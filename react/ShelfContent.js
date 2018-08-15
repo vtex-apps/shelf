@@ -84,15 +84,16 @@ class ShelfContent extends Component {
     const className = this.getClassByItemsPerPage(itemsPerPage)
     return (
       <div className="flex justify-center">
-        {products.slice(0, itemsPerPage).map(item => {
-          return (
-            <div
-              key={item.productId}
-              className={`${className} flex justify-center`}>
-              {this.slideFallback(item)}
-            </div>
-          )
-        })}
+        {products &&
+          products.slice(0, itemsPerPage).map(item => {
+            return (
+              <div
+                key={item.productId}
+                className={`${className} flex justify-center`}>
+                {this.slideFallback(item)}
+              </div>
+            )
+          })}
       </div>
     )
   }
@@ -112,7 +113,9 @@ class ShelfContent extends Component {
         defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
         {productList
           .slice(0, maxItems)
-          .map(item => this.slideFallback(item, path(['productId'], item)))}
+          .map((item, index) =>
+            this.slideFallback(item, path(['productId'], item) || index)
+          )}
       </Slider>
     )
   }

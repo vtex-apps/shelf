@@ -8,7 +8,8 @@
   "author": "VTEX",
   "license": "ISC",
   "dependencies": {
-    "@vtex/slick-components": "1.0.3"
+    "@vtex/slick-components": "1.0.3",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "apollo-client-preset": "^1.0.8",
