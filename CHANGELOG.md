@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `Shelf` content loader.
 
+### Fixed
+- destructuring of undefined in `ShelfItem`.
+
 ## [0.17.6] - 2018-08-08
 ### Changed
 - Refactor ShelfItem.

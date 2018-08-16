@@ -15,9 +15,9 @@ export default class ShelfItem extends Component {
     const normalizedProduct = { ...product }
     const [sku] = normalizedProduct.items
     if (sku) {
-      const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] = sku.sellers
-      const [referenceId = { Value: '' }] = sku.referenceId
-      const [image = { imageUrl: '' }] = sku.images
+      const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] = sku.sellers || []
+      const [referenceId = { Value: '' }] = sku.referenceId || []
+      const [image = { imageUrl: '' }] = sku.images || []
       const unmixedImage = { ...image, imageUrl: image.imageUrl.replace(/^https?:/, '') }
       normalizedProduct.sku = { ...sku, seller, referenceId, image: unmixedImage}
     }
