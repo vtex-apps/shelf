@@ -2,81 +2,86 @@ import './global.css'
 
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
 
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
-import relatedProductsQuery from './queries/relatedProductsQuery.gql'
 import ShelfItem from './ShelfItem'
 
 /**
  * Related Products Component. Queries and shows the related products
  */
-class RelatedProducts extends Component {
+export default class RelatedProducts extends Component {
+  static propTypes = {
+    /** Main product to have related products queried */
+    slug: PropTypes.string,
+    /** Graphql productQuery response. */
+    productQuery: PropTypes.shape({
+      /** Product to have related products queried */
+      product: PropTypes.shape({
+        /** Recommendations property */
+        recommendations: PropTypes.shape({
+          /** View recommendations (who saw this product, also saw...) */
+          view: PropTypes.arrayOf(ShelfItem.propTypes.item),
+          /** Buy recommendations (who bought this product, also bought...) */
+          buy: PropTypes.arrayOf(ShelfItem.propTypes.item),
+          /** Similar products */
+          similars: PropTypes.arrayOf(ShelfItem.propTypes.item),
+        }),
+      }),
+    }),
+    /** ProductList schema configuration */
+    productList: PropTypes.shape(productListSchemaPropTypes),
+  }
+
+  static defaultProps = {
+    recommendation: 'editor.relatedProducts.similars',
+    productList: {
+      ...ProductList.defaultProps,
+      titleText: 'Related Products',
+    },
+  }
+
+  static getSchema = props => {
+    const productListSchema = ProductList.getSchema(props)
+    productListSchema.properties.titleText.default =
+      RelatedProducts.defaultProps.productList.titleText
+
+    return {
+      title: 'editor.relatedProducts.title',
+      description: 'editor.relatedProducts.description',
+      type: 'object',
+      properties: {
+        recommendation: {
+          title: 'editor.relatedProducts.recommendation',
+          description: 'editor.relatedProducts.recommendation.description',
+          type: 'string',
+          default: RelatedProducts.defaultProps.recommendation,
+          enum: [
+            'editor.relatedProducts.similars',
+            'editor.relatedProducts.view',
+            'editor.relatedProducts.buy',
+          ],
+        },
+        productList: productListSchema,
+      },
+    }
+  }
+
   render() {
-    const { data, productList } = this.props
+    const { productQuery, productList } = this.props
+    const recommendation = this.props.recommendation.split('.').pop()
     const products =
-      (data &&
-        !data['error'] &&
-        data.product &&
-        data.product.recommendations &&
-        data.product.recommendations.view) ||
+      (productQuery &&
+        !productQuery['error'] &&
+        productQuery.product &&
+        productQuery.product.recommendations &&
+        productQuery.product.recommendations[recommendation]) ||
       []
     const productListProps = {
       products,
-      loading: data.loading,
+      loading: productQuery.loading,
       ...productList,
     }
     return <ProductList {...productListProps} />
   }
 }
-
-RelatedProducts.defaultProps = {
-  productList: {
-    ...ProductList.defaultProps,
-    titleText: 'Related Products',
-  },
-}
-
-RelatedProducts.getSchema = props => {
-  const productListSchema = ProductList.getSchema(props)
-  productListSchema.properties.titleText.default =
-    RelatedProducts.defaultProps.productList.titleText
-
-  return {
-    title: 'editor.relatedProducts.title',
-    description: 'editor.relatedProducts.description',
-    type: 'object',
-    properties: {
-      productList: productListSchema,
-    },
-  }
-}
-
-RelatedProducts.propTypes = {
-  /** Main product to have related products queried */
-  slug: PropTypes.string,
-  /** Graphql data response. */
-  data: PropTypes.shape({
-    /** Product to have related products queried */
-    product: PropTypes.shape({
-      /** Recommendations property */
-      recommendations: PropTypes.shape({
-        /** View recommendations (who saw this product, also saw...) */
-        view: PropTypes.arrayOf(ShelfItem.propTypes.item),
-      }),
-    }),
-  }),
-  /** ProductList schema configuration */
-  productList: PropTypes.shape(productListSchemaPropTypes),
-}
-
-const options = {
-  options: ({ slug }) => ({
-    variables: {
-      slug,
-    },
-  }),
-}
-
-export default graphql(relatedProductsQuery, options)(RelatedProducts)

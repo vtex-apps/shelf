@@ -16,6 +16,10 @@
   "editor.shelf.scrollType.byPage": "Por Página",
   "editor.shelf.scrollType.oneByOne": "Uno a Uno",
   "editor.relatedProducts.title": "Productos Relacionados",
-  "editor.relatedProducts.description":
-    "Una vitrina de productos relacionados para mostrar recomendaciones de vista"
+  "editor.relatedProducts.description": "Una vitrina de productos relacionados para mostrar recomendaciones de vista",
+  "editor.relatedProducts.recommendation": "Recomendaciones",
+  "editor.relatedProducts.recommendation.description": "Qué recomendaciones se mostrará",
+  "editor.relatedProducts.similars": "Productos similares",
+  "editor.relatedProducts.view": "Quién vio esto, también vio...",
+  "editor.relatedProducts.buy": "Quién compró esto, también compró..."
 }
