@@ -1,6 +1,7 @@
 import './global.css'
 
 import PropTypes from 'prop-types'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 
 import ProductList from './ProductList'
@@ -71,11 +72,8 @@ export default class RelatedProducts extends Component {
     const { productQuery, productList } = this.props
     const recommendation = this.props.recommendation.split('.').pop()
     const products =
-      (productQuery &&
-        !productQuery['error'] &&
-        productQuery.product &&
-        productQuery.product.recommendations &&
-        productQuery.product.recommendations[recommendation]) ||
+      (!path(['error'], productQuery) &&
+        path(['product', 'recommendations', recommendation], productQuery)) ||
       []
     const productListProps = {
       products,
