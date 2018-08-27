@@ -16,6 +16,10 @@
   "editor.shelf.scrollType.byPage": "By Page",
   "editor.shelf.scrollType.oneByOne": "One by One",
   "editor.relatedProducts.title": "Related Products",
-  "editor.relatedProducts.description":
-    "A related products shelf to show view recommendations"
+  "editor.relatedProducts.description": "A related products shelf to show view recommendations",
+  "editor.relatedProducts.recommendation": "Recommendations",
+  "editor.relatedProducts.recommendation.description": "Which recommendations will be shown",
+  "editor.relatedProducts.similars": "Similar products",
+  "editor.relatedProducts.view": "Who saw this, also saw...",
+  "editor.relatedProducts.buy": "Who bought this, also bought..."
 }
