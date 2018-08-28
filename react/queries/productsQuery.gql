@@ -41,6 +41,7 @@ query Products(
             NumberOfInstallments
             Name
           }
+          AvailableQuantity
           Price
           ListPrice
         }

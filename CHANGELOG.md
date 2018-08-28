@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.18.1] - 2018-08-28
+### Fixed
+- Show only buyable products.
+
 ## [0.18.0] - 2018-08-27
 ### Added
 - Different types of recommendation in `RelatedProducts` schema.

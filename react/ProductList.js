@@ -1,6 +1,7 @@
 import './global.css'
 
 import PropTypes from 'prop-types'
+import { identity, path } from 'ramda'
 import React, { Component } from 'react'
 import ProductSummary from 'vtex.product-summary/ProductSummary'
 
@@ -11,6 +12,36 @@ import ShelfContent from './ShelfContent'
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
+
+function normalizeBuyable(product) {
+  const items = path(['items'], product)
+  const buyableItems =
+    path(['length'], items) &&
+    items
+      .map(item => ({
+        ...item,
+        sellers: getBuyableSellers(item.sellers),
+      }))
+      .filter(item => path(['sellers', 'length'], item))
+
+  return buyableItems
+    ? {
+        ...product,
+        items: buyableItems,
+      }
+    : null
+}
+
+function getBuyableSellers(sellers) {
+  return (
+    path(['length'], sellers) &&
+    sellers.filter(
+      seller =>
+        path(['commertialOffer', 'Price'], seller) &&
+        path(['commertialOffer', 'AvailableQuantity'], seller)
+    )
+  )
+}
 
 /**
  * Product List Component. Shows a collection of products.
@@ -27,6 +58,9 @@ export default class ProductList extends Component {
       summary,
     } = this.props
 
+    const filteredProducts =
+      products && products.map(normalizeBuyable).filter(identity)
+
     return (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
         <div
@@ -36,7 +70,7 @@ export default class ProductList extends Component {
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
         <ShelfContent
-          products={products}
+          products={filteredProducts}
           maxItems={maxItems}
           arrows={arrows}
           scroll={scroll}
