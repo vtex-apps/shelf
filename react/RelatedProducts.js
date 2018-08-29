@@ -71,13 +71,16 @@ export default class RelatedProducts extends Component {
   render() {
     const { productQuery, productList } = this.props
     const recommendation = this.props.recommendation.split('.').pop()
-    const products =
-      path(['product', 'recommendations', recommendation], productQuery) || []
+    const products = path(
+      ['product', 'recommendations', recommendation],
+      productQuery
+    )
     const productListProps = {
       products,
       loading: productQuery.loading,
       ...productList,
     }
+
     return <ProductList {...productListProps} />
   }
 }

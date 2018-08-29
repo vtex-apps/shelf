@@ -61,7 +61,7 @@ export default class ProductList extends Component {
     const filteredProducts =
       products && products.map(normalizeBuyable).filter(identity)
 
-    return (
+    return products && !products.length ? null : (
       <div className={`${VTEXClasses.MAIN_CLASS} ml7 mr7 pv4 pb7`}>
         <div
           className={`${

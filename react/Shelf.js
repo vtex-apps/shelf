@@ -1,6 +1,7 @@
 import './global.css'
 
 import PropTypes from 'prop-types'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 
@@ -16,7 +17,7 @@ import ShelfContent from './ShelfContent'
 class Shelf extends Component {
   render() {
     const { data, productList } = this.props
-    const products = !data || data['error'] ? [] : data.products
+    const products = path(['products'], data)
     const productListProps = {
       products,
       loading: data.loading,
