@@ -3,7 +3,7 @@ import './global.css'
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component } from 'react'
-import ProductSummary from 'vtex.product-summary/ProductSummary'
+import ProductSummary from 'vtex.product-summary/index'
 
 import VTEXClasses from './CustomClasses'
 import { productListSchemaPropTypes } from './propTypes'

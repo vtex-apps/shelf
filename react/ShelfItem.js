@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProductSummary from 'vtex.product-summary/ProductSummary'
+import ProductSummary from 'vtex.product-summary/index'
 import { path } from 'ramda'
 
 import { shelfItemPropTypes } from './propTypes'
