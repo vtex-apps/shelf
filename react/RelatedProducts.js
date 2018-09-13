@@ -81,6 +81,10 @@ export default class RelatedProducts extends Component {
       ...productList,
     }
 
-    return <ProductList {...productListProps} />
+    return (
+      <div className="vtex-related-products">
+        <ProductList {...productListProps} />
+      </div>
+    )
   }
 }

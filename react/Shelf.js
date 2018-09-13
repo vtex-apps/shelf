@@ -23,7 +23,11 @@ class Shelf extends Component {
       loading: data.loading,
       ...productList,
     }
-    return <ProductList {...productListProps} />
+    return (
+      <div className="vtex-shelf">
+        <ProductList {...productListProps} />
+      </div>
+    )
   }
 }
 
