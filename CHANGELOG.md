@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.1] - 2018-09-13
+### Changed
+- Update the `vtex.product-summary` version.
+
 ## [0.19.0] - 2018-08-31
 ### Changed
-- Update the `store-components` version.
+- Update the `vtex.store-components` version.
 
 ## [0.18.2] - 2018-08-29
 ### Fixed
