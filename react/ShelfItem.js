@@ -20,7 +20,7 @@ export default class ShelfItem extends Component {
       const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
       const [image = { imageUrl: '' }] = path(['images'], sku) || []
       const unmixedImage = { ...image, imageUrl: image.imageUrl.replace(/^https?:/, '') }
-      normalizedProduct.sku = { ...sku, seller, referenceId, image: unmixedImage}
+      normalizedProduct.sku = { ...sku, seller, referenceId, image: unmixedImage }
     }
     return normalizedProduct
   }

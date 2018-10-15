@@ -12,11 +12,13 @@ const DOTS_LARGE_VIEWPORT = true
 const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 
 const BREAKPOINT_MOBILE_VIEWPORT = 600
-const SLIDER_CENTER_MODE_MOBILE = true
+const SLIDER_CENTER_MOBILE_MODE = true
 const ARROWS_MOBILE_VIEWPORT = false
 const DOTS_MOBILE_VIEWPORT = false
 const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
 const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 1
+
+const VARIABLE_WIDTH_MOBILE_MODE = true
 
 const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 350
 const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
@@ -42,7 +44,8 @@ class ShelfContent extends Component {
             slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
             arrows: ARROWS_MOBILE_VIEWPORT,
             dots: DOTS_MOBILE_VIEWPORT,
-            centerMode: SLIDER_CENTER_MODE_MOBILE,
+            centerMode: SLIDER_CENTER_MOBILE_MODE,
+            variableWidth: VARIABLE_WIDTH_MOBILE_MODE,
           },
         },
         {
@@ -53,6 +56,7 @@ class ShelfContent extends Component {
             arrows: ARROWS_MOBILE_VIEWPORT,
             dots: DOTS_EXTRA_SMALL_MOBILE_VIEWPORT,
             centerMode: SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE,
+            variableWidth: VARIABLE_WIDTH_MOBILE_MODE,
           },
         },
       ],
