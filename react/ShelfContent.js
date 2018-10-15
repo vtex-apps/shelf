@@ -77,7 +77,7 @@ class ShelfContent extends Component {
   slideFallback = (item = {}, key) => {
     const { summary } = this.props
     return (
-      <div key={key} className={`${VTEXClasses.SLIDE_CLASS} ph6`}>
+      <div key={key} className={`${VTEXClasses.SLIDE_CLASS} ph4`}>
         <ShelfItem item={item} summary={summary} />
       </div>
     )
