@@ -49,3 +49,10 @@
     display: flex;
     justify-content: center;
 }
+
+.vtex-shelf .slick-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
