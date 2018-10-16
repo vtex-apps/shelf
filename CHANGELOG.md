@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fix product spacing in Iphone 5 and SE.
+- Fix product spacing in smaller screens.
 
 ## [0.19.4] - 2018-10-19
 ### Fixed
