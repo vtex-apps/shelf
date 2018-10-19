@@ -33,6 +33,7 @@ query Products(
         imageTag
       }
       sellers {
+        sellerId
         commertialOffer {
           Installments {
             Value
