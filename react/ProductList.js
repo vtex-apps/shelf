@@ -37,8 +37,7 @@ function getBuyableSellers(sellers) {
     path(['length'], sellers) &&
     sellers.filter(
       seller =>
-        path(['commertialOffer', 'Price'], seller) &&
-        path(['commertialOffer', 'AvailableQuantity'], seller)
+        path(['sellerId'], seller)
     )
   )
 }
@@ -66,7 +65,7 @@ export default class ProductList extends Component {
         <div
           className={`${
             VTEXClasses.TITLE_CONTENT_CLASS
-          } w-100 flex justify-center`}>
+            } w-100 flex justify-center`}>
           <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
         </div>
         <ShelfContent
