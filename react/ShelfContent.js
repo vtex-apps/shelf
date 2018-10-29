@@ -15,6 +15,7 @@ const BREAKPOINT_MOBILE_VIEWPORT = 600
 const SLIDER_CENTER_MOBILE_MODE = true
 const ARROWS_MOBILE_VIEWPORT = false
 const DOTS_MOBILE_VIEWPORT = false
+const DEFAULT_ITEMS_MOBILE = 3
 const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
 const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 1
 
@@ -84,17 +85,18 @@ class ShelfContent extends Component {
   }
 
   ssrFallback() {
-    const { products, itemsPerPage } = this.props
-    const className = this.getClassByItemsPerPage(itemsPerPage)
+    const { products, itemsPerPage, isMobile } = this.props
+    const items = isMobile ? DEFAULT_ITEMS_MOBILE : itemsPerPage
+    const className = this.getClassByItemsPerPage(items)
     return (
       <div className="flex justify-center">
         {products &&
-          products.slice(0, itemsPerPage).map(item => {
+          products.slice(0, items).map((item, index) => {
             return (
               <div
                 key={item.productId}
                 className={`${className} flex justify-center`}>
-                {this.slideFallback(item)}
+                {this.slideFallback(item, path(['productId'], item) || index)}
               </div>
             )
           })}
@@ -132,6 +134,7 @@ ShelfContent.propTypes = {
   arrows: PropTypes.bool.isRequired,
   scroll: PropTypes.string.isRequired,
   summary: PropTypes.any,
+  isMobile: PropTypes.bool,
 }
 
 export default ShelfContent

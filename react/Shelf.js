@@ -17,15 +17,11 @@ import ShelfContent from './ShelfContent'
 class Shelf extends Component {
   render() {
     const { data, productList, runtime } = this.props
-    console.log("data", data);
-    console.log("productList", productList);
-    console.log("runtime", runtime);
-    // productList.itemsPerPage = runtime.hints.mobile ? 3 : productList.itemsPerPage;
-
     const products = path(['products'], data)
     const productListProps = {
       products,
       loading: data.loading,
+      isMobile: runtime.hints.mobile,
       ...productList,
     }
     return (
