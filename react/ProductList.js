@@ -58,7 +58,6 @@ export default class ProductList extends Component {
       isMobile,
     } = this.props
 
-
     const filteredProducts =
       products && products.map(normalizeBuyable).filter(identity)
 
