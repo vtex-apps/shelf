@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-
+import { withRuntimeContext } from 'render'
 import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
@@ -16,7 +16,12 @@ import ShelfContent from './ShelfContent'
  */
 class Shelf extends Component {
   render() {
-    const { data, productList } = this.props
+    const { data, productList, runtime } = this.props
+    console.log("data", data);
+    console.log("productList", productList);
+    console.log("runtime", runtime);
+    // productList.itemsPerPage = runtime.hints.mobile ? 3 : productList.itemsPerPage;
+
     const products = path(['products'], data)
     const productListProps = {
       products,
@@ -97,4 +102,4 @@ const options = {
   }),
 }
 
-export default graphql(productsQuery, options)(Shelf)
+export default graphql(productsQuery, options)(withRuntimeContext(Shelf))
