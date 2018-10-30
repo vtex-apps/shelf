@@ -133,7 +133,7 @@ describe('Shelf component', () => {
             result: { data: { products: mockedProducts } },
           },
         ]}>
-        <Shelf />
+        <Shelf runtime={{ hints: { mobile: false, desktop: true } }} />
       </MockedProvider>
     )
 
@@ -142,6 +142,7 @@ describe('Shelf component', () => {
     process.nextTick(() => {
       wrapper.update()
       done()
+      return wrapper
     })
   })
 

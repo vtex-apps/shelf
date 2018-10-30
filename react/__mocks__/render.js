@@ -1,12 +1,31 @@
 import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 
 /**
- * NoSSR Mocked Component.
+ * Link Mocked Component.
  */
-export class NoSSR extends Component {
+export class Link extends Component {
+  static propTypes = {
+    children: PropTypes.element,
+  }
+
   render() {
     return (
-      <div>{this.props.children}</div>
+      <a href="#">{this.props.children}</a>
     )
   }
+}
+
+export class NoSSR extends Component {
+  static propTypes = {
+    children: PropTypes.element,
+  }
+
+  render() {
+    return this.props.children
+  }
+}
+
+export function withRuntimeContext(Comp) {
+  return Comp
 }
