@@ -3,7 +3,6 @@ import { path } from 'ramda'
 import React, { Component } from 'react'
 import Slider from 'vtex.store-components/Slider'
 
-import VTEXClasses from './CustomClasses'
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
 
@@ -79,7 +78,7 @@ class ShelfContent extends Component {
   slideFallback = (item = {}, key) => {
     const { summary } = this.props
     return (
-      <div key={key} className={`${VTEXClasses.SLIDE_CLASS} pa4`}>
+      <div key={key} className="vtex-shelf__slide pa4">
         <ShelfItem item={item} summary={summary} />
       </div>
     )

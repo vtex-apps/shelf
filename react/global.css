@@ -3,6 +3,7 @@
        width: 270px;
    }
 }
+
 @media only screen and (min-width: 22em) and (max-width: 25em) {
     .vtex-shelf .slick-slide .vtex-product-summary {
        width: 196px;
@@ -13,38 +14,39 @@
 .vtex-shelf .vtex-slider__arrow-right {
     color: black;
 }
+
 .vtex-shelf .vtex-slider__arrow-left.slick-disabled:before,
-.vtex-shelf .vtex-slider__arrow-right.slick-disabled:before
-{
+.vtex-shelf .vtex-slider__arrow-right.slick-disabled:before {
     color: inherit;
 }
+
 .vtex-shelf .vtex-slider__arrow-left:before,
-.vtex-shelf .vtex-slider__arrow-right:before
-{
+.vtex-shelf .vtex-slider__arrow-right:before {
     font-size: 2rem;
     color: inherit;
 }
-.vtex-shelf .vtex-slider__arrow-left
-{
+
+.vtex-shelf .vtex-slider__arrow-left {
     z-index: 1;
 }
-.vtex-shelf .vtex-slider__arrow-right
-{
+
+.vtex-shelf .vtex-slider__arrow-right {
     right: 0.2rem;
 }
-.vtex-shelf .vtex-slider__dots li button
-{
+
+.vtex-shelf .vtex-slider__dots li button {
     color: black;
 }
-.vtex-shelf .vtex-slider__dots li button:before
-{
+
+.vtex-shelf .vtex-slider__dots li button:before {
     font-size: 1rem;
     color: inherit;
 }
-.vtex-shelf .vtex-slider__dots li.slick-active button:before
-{
+
+.vtex-shelf .vtex-slider__dots li.slick-active button:before {
     color: inherit;
 }
+
 .vtex-shelf .slick-slide {
     display: flex;
     justify-content: center;

@@ -5,7 +5,6 @@ import { identity, path } from 'ramda'
 import React, { Component } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
 
-import VTEXClasses from './CustomClasses'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
@@ -63,11 +62,8 @@ export default class ProductList extends Component {
 
     return products && !products.length ? null : (
       <div className="vtex-page-padding mh7-ns pv4 pb7">
-        <div
-          className={`${
-            VTEXClasses.TITLE_CONTENT_CLASS
-            } w-100 flex justify-center`}>
-          <h1 className={VTEXClasses.TITLE_TEXT_CLASS}> {titleText}</h1>
+        <div className="vtex-shelf__title t-heading-2 w-100 flex justify-center">
+          {titleText}
         </div>
         <ShelfContent
           products={filteredProducts}
