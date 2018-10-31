@@ -86,12 +86,12 @@ class ShelfContent extends Component {
 
   ssrFallback() {
     const { products, itemsPerPage, isMobile } = this.props
-    const items = isMobile ? DEFAULT_ITEMS_MOBILE : itemsPerPage
-    const className = this.getClassByItemsPerPage(items)
+    const numberOfItems  = isMobile ? DEFAULT_ITEMS_MOBILE : itemsPerPage
+    const className = this.getClassByItemsPerPage(numberOfItems )
     return (
       <div className="flex justify-center">
         {products &&
-          products.slice(0, items).map((item, index) => {
+          products.slice(0, numberOfItems ).map((item, index) => {
             return (
               <div
                 key={item.productId}
