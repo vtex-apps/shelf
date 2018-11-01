@@ -61,7 +61,7 @@ export default class ProductList extends Component {
       products && products.map(normalizeBuyable).filter(identity)
 
     return products && !products.length ? null : (
-      <div className="vtex-page-padding mh7-ns pv4 pb7">
+      <div className="pv4 pb7">
         <div
           className={`${
             VTEXClasses.TITLE_CONTENT_CLASS

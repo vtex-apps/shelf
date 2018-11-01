@@ -24,7 +24,7 @@ class Shelf extends Component {
       ...productList,
     }
     return (
-      <div className="vtex-shelf">
+      <div className="vtex-shelf vtex-page-padding center">
         <ProductList {...productListProps} />
       </div>
     )
