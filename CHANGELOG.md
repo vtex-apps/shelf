@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Include center tachyon.
+- Center using vtex-page-padding class instead of tachyons.
 
 ## [0.19.4] - 2018-10-19
 ### Fixed
