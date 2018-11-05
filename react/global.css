@@ -27,6 +27,7 @@
 .vtex-shelf .vtex-slider__arrow-left
 {
     z-index: 1;
+    left: 0.2rem;
 }
 .vtex-shelf .vtex-slider__arrow-right
 {
