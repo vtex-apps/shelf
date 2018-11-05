@@ -22,7 +22,7 @@ const VARIABLE_WIDTH_MOBILE_MODE = true
 
 const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 350
 const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
-const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
+const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = true
 
 /**
  * ShelfContent Component. Executes the interaction with react-slick

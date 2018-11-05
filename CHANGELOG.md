@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.5] - 2018-11-05
+### Fixed
+- Fix product spacing in smaller screens.
+
 ## [0.19.4] - 2018-10-19
 ### Fixed
 - Show unavailable products on shelf.
