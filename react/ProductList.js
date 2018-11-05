@@ -55,6 +55,7 @@ export default class ProductList extends Component {
       scroll,
       itemsPerPage,
       summary,
+      isMobile,
     } = this.props
 
     const filteredProducts =
@@ -75,6 +76,7 @@ export default class ProductList extends Component {
           scroll={scroll}
           itemsPerPage={itemsPerPage}
           summary={summary}
+          isMobile={isMobile}
         />
       </div>
     )
@@ -124,7 +126,7 @@ ProductList.getSchema = props => {
         title: 'editor.shelf.summary.title',
         type: 'object',
         properties: ProductSummary.getSchema(props).properties,
-      },
+      }
     },
   }
 }
@@ -135,6 +137,7 @@ ProductList.defaultProps = {
   scroll: ScrollTypes.BY_PAGE.value,
   arrows: true,
   titleText: 'Default Title',
+  isMobile: false,
 }
 
 ProductList.propTypes = {
@@ -142,5 +145,7 @@ ProductList.propTypes = {
   loading: PropTypes.bool,
   /** Graphql data response. */
   products: ShelfContent.propTypes.products,
+  /** Verifies if is a mobile device. */
+  isMobile: PropTypes.bool,
   ...productListSchemaPropTypes,
 }

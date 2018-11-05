@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.6] - 2018-11-05
+### Fixed
+- Limits quantity of items in mobile devices while onSSR.
+
 ## [0.19.5] - 2018-11-05
 ### Fixed
 - Fix product spacing in smaller screens.
