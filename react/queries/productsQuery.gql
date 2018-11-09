@@ -47,6 +47,11 @@ query Products(
           ListPrice
         }
       }
+      attachments {
+        id
+        name
+        required
+      }
     }
     productClusters {
       id
