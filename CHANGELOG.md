@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fix slider dots to same size on different components
+- Fix slider dots to same size on different components.
 
 ## [1.0.0] - 2018-11-08
 ### Fixed

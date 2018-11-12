@@ -10,13 +10,13 @@
    }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 30em) {
     .vtex-product-image .vtex-slider__dots li button:before, .vtex-shelf .vtex-slider__dots li button:before, .vtex-carousel .vtex-slider__dots li button:before {
         font-size: 4vw !important;
     }
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 30em) {
     .vtex-shelf .vtex-slider__dots li button:before, .vtex-carousel .vtex-slider__dots li button:before {
         font-size: 1vw !important;
     }
