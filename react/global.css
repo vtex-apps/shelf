@@ -10,6 +10,18 @@
    }
 }
 
+@media only screen and (max-width: 480px) {
+    .vtex-product-image .vtex-slider__dots li button:before, .vtex-shelf .vtex-slider__dots li button:before, .vtex-carousel .vtex-slider__dots li button:before {
+        font-size: 4vw !important;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .vtex-shelf .vtex-slider__dots li button:before, .vtex-carousel .vtex-slider__dots li button:before {
+        font-size: 1vw !important;
+    }
+}
+
 .vtex-shelf .vtex-slider__arrow-left,
 .vtex-shelf .vtex-slider__arrow-right {
     color: black;
