@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
-
+import { FormattedMessage } from 'react-intl'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
@@ -63,7 +63,7 @@ export default class ProductList extends Component {
     return products && !products.length ? null : (
       <div className="vtex-page-padding mh7-ns pv4 pb7">
         <div className="vtex-shelf__title t-heading-2 w-100 flex justify-center">
-          {titleText}
+          {titleText || <FormattedMessage id="shelf.title" />}
         </div>
         <ShelfContent
           products={filteredProducts}
@@ -115,7 +115,7 @@ ProductList.getSchema = props => {
       titleText: {
         title: 'editor.shelf.titleText.title',
         type: 'string',
-        default: 'Default Title',
+        default: ProductList.defaultProps.titleText,
         isLayout: false,
       },
       summary: {
@@ -132,7 +132,7 @@ ProductList.defaultProps = {
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
   arrows: true,
-  titleText: 'Default Title',
+  titleText: null,
   isMobile: false,
 }
 

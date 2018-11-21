@@ -21,5 +21,6 @@
   "editor.relatedProducts.recommendation.description": "Which recommendations will be shown",
   "editor.relatedProducts.similars": "Similar products",
   "editor.relatedProducts.view": "Who saw this, also saw...",
-  "editor.relatedProducts.buy": "Who bought this, also bought..."
+  "editor.relatedProducts.buy": "Who bought this, also bought...",
+  "shelf.title": "Best Products"
 }
