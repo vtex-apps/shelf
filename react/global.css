@@ -28,7 +28,12 @@
 }
 
 .vtex-shelf .vtex-slider__arrow-left {
+    left: 0 !important;
     z-index: 1;
+}
+
+.vtex-shelf .vtex-slider__arrow-right {
+    right: 0 !important;
 }
 
 .vtex-shelf .vtex-slider__dots li button {
