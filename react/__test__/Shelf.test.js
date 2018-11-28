@@ -2,7 +2,7 @@
 import { mount } from 'enzyme'
 import React from 'react'
 import { MockedProvider } from 'react-apollo/test-utils'
-
+import { IntlProvider } from 'react-intl'
 import productsQuery from '../queries/productsQuery.gql'
 import Shelf from '../Shelf'
 
@@ -133,7 +133,13 @@ describe('Shelf component', () => {
             result: { data: { products: mockedProducts } },
           },
         ]}>
-        <Shelf runtime={{ hints: { mobile: false, desktop: true } }} />
+        <IntlProvider messages={
+          {
+            "shelf.title": "Melhores Produtos"
+          }
+        } locale="en">
+          <Shelf runtime={{ hints: { mobile: false, desktop: true } }} />
+        </IntlProvider>
       </MockedProvider>
     )
 
