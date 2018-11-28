@@ -77,7 +77,7 @@ $ vtex link
   - Default: true
 - titleText // Title of the shelf.
   - Type: String
-  - Default: 'Default Title'
+  - Default: ''
 - summary // Product Summary schema properties
   - Type: Object
   - Properties
