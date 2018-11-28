@@ -1,6 +1,4 @@
 .vtex-shelf {
-    --arrow-color: #000000;
-    --arrow-size: 2rem;
     
     --dots-color: #000000;
     --dots-size: 1rem;
@@ -11,11 +9,6 @@
     --prod-size-s: 196px;
 }
 
-.vtex-shelf .vtex-slider__arrow-left,
-.vtex-shelf .vtex-slider__arrow-right {
-    color: var(--arrow-color);
-}
-
 .vtex-shelf .vtex-slider__arrow-left.slick-disabled:before,
 .vtex-shelf .vtex-slider__arrow-right.slick-disabled:before {
     color: inherit;
@@ -23,17 +16,11 @@
 
 .vtex-shelf .vtex-slider__arrow-left:before,
 .vtex-shelf .vtex-slider__arrow-right:before {
-    font-size: var(--arrow-size);
     color: inherit;
 }
 
 .vtex-shelf .vtex-slider__arrow-left {
-    left: 0 !important;
     z-index: 1;
-}
-
-.vtex-shelf .vtex-slider__arrow-right {
-    right: 0 !important;
 }
 
 .vtex-shelf .vtex-slider__dots li button {
