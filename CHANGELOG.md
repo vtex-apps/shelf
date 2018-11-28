@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.1] - 2018-11-28
+
+## [1.0.2] - 2018-11-28
+### Changed
+- CSS refactoring.
+### Fixed
+- Right arrow placement.
+
 ## [1.1.0] - 2018-11-28
 ### Added
 - Now, shelf title has intl.
