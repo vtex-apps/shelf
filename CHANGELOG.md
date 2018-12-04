@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.3] - 2018-12-04
+### Changed
+- Improve font weights and paddings
+
 ## [1.1.2] - 2018-12-02
 ### Changed
 - Update major version of `storecomponents` and `product-summary`

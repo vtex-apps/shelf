@@ -61,8 +61,8 @@ export default class ProductList extends Component {
       products && products.map(normalizeBuyable).filter(identity)
 
     return products && !products.length ? null : (
-      <div className="vtex-page-padding pv4 pb7">
-        <div className="vtex-shelf__title t-heading-2 w-100 flex justify-center">
+      <div className="vtex-page-padding pv4 pb9">
+        <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1">
           {titleText || <FormattedMessage id="shelf.title" />}
         </div>
         <ShelfContent
