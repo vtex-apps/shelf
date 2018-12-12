@@ -30,7 +30,7 @@ class Shelf extends Component {
       ...productList,
     }
     
-    if (data.error) {
+    if (data.error || data.loading) {
       return null
     }
 
