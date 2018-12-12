@@ -24,6 +24,11 @@ class Shelf extends Component {
       isMobile: runtime.hints.mobile,
       ...productList,
     }
+    
+    if (data.error) {
+      return null
+    }
+
     return (
       <div className="vtex-shelf">
         <ProductList {...productListProps} />
