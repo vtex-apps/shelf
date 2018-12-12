@@ -15,6 +15,11 @@ import ShelfContent from './ShelfContent'
  * Shelf Component. Queries a list of products and shows them.
  */
 class Shelf extends Component {
+
+  shouldComponentUpdate(nextProps) {
+    return !Boolean(this.props.data.error && nextProps.data.error)
+  }
+
   render() {
     const { data, productList, runtime } = this.props
     const products = path(['products'], data)
