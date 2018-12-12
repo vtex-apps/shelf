@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.4] - 2018-12-12
+### Fixed
+- Shelf keep loading when a query error happened.
+
 ## [1.1.3] - 2018-12-04
 ### Changed
 - Improve font weights and paddings
