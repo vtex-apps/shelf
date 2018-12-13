@@ -14,7 +14,7 @@
   "builders": {
     "react": "2.x",
     "messages": "0.x",
-    "pages": "0.x"
+    "store": "0.x"
   },
   "dependencies": {
     "vtex.store-graphql": "2.x",
