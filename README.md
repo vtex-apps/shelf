@@ -97,11 +97,10 @@ $ vtex link
       -type: String
     - buyButtonText // Custom buy button's text
       -type: String
-    - hideBuyButton // Hides the buy button completely
-      -type: Boolean
-      -Default: false
-    - showButtonOnHover // Show the buy button only on hover
-      -type: Boolean
+    - displayBuyButton // Buy button display types.
+      - Type: String
+      - Default: 'DISPLAY_ALWAYS'
+      - Enum: ['DISPLAY_ALWAYS', 'DISPLAY_ON_HOVER', 'DISPLAY_NONE']
 ```
 
 ## CSS Classes
