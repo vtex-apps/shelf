@@ -1,6 +1,6 @@
 {
   "shelf": {
     "blocks": [],
-    "component": "Shelf"
+    "inheritComponent": true
   }
 }
