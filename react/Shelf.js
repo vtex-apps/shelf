@@ -13,8 +13,7 @@ import { productListSchemaPropTypes } from './propTypes'
 import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './ShelfContent'
 
-//import './global.css'
- import  shelf  from './shelf.css'
+import  shelf  from './shelf.css'
 
 
 /**

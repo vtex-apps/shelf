@@ -7,7 +7,13 @@ import { getGapPaddingValues } from './paddingEnum'
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
 
+<<<<<<< HEAD
 const DEFAULT_SHELF_ITEM_WIDTH = 260
+=======
+import shelf from './shelf.css'
+
+const DEFAULT_SHELF_ITEM_WIDTH = 281
+>>>>>>> Support css modules in ShelfContent'
 const DOTS_LARGE_VIEWPORT = true
 const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 
@@ -101,7 +107,7 @@ class ShelfContent extends Component {
       width: fullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
     }
     return (
-      <div key={key} className="vtex-shelf__slide h-100">
+      <div key={key} className={`${shelf.slide} pa4`}>
         <div style={style} className={`${gap} h-100`}>
           <ShelfItem item={item} summary={summary} />
         </div>
