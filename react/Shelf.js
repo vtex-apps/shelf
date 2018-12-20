@@ -37,7 +37,7 @@ class Shelf extends Component {
     if (data.error || data.loading) {
       return null
     }
-
+    aaa
     return (
       <div className={shelf.container}>
         <ProductList {...productListProps} />
