@@ -1,5 +1,3 @@
-import './global.css'
-
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
@@ -7,6 +5,8 @@ import React, { Component } from 'react'
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
 import ShelfItem from './ShelfItem'
+import shelf from './shelf.css'
+
 
 /**
  * Related Products Component. Queries and shows the related products
@@ -82,7 +82,7 @@ export default class RelatedProducts extends Component {
     }
 
     return (
-      <div className="vtex-related-products">
+      <div className={`${shelf.relatedProducts}`}>
         <ProductList {...productListProps} />
       </div>
     )
