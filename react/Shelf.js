@@ -15,7 +15,6 @@ import ShelfContent from './ShelfContent'
 
 import  shelf  from './shelf.css'
 
-
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
