@@ -82,7 +82,7 @@ export default class RelatedProducts extends Component {
     }
 
     return (
-      <div className={`${shelf.relatedProducts}`}>
+      <div className={shelf.relatedProducts}>
         <ProductList {...productListProps} />
       </div>
     )

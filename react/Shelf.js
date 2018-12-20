@@ -13,7 +13,7 @@ import { productListSchemaPropTypes } from './propTypes'
 import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './ShelfContent'
 
-import  shelf  from './shelf.css'
+import shelf from './shelf.css'
 
 /**
  * Shelf Component. Queries a list of products and shows them.
@@ -39,15 +39,8 @@ class Shelf extends Component {
     }
 
     return (
-<<<<<<< HEAD
-      <div className="vtex-shelf pv4 pb9">
-        <Container>
-          <ProductList {...productListProps} />
-        </Container>
-=======
-      <div className={`${shelf.container}`}>
+      <div className={shelf.container}>
         <ProductList {...productListProps} />
->>>>>>> Add shelf css modules
       </div>
     )
   }
