@@ -64,6 +64,10 @@
     .vtex-product-image .vtex-slider__dots li button:before, .vtex-shelf .vtex-slider__dots li button:before, .vtex-carousel .vtex-slider__dots li button:before {
         font-size: var(--dots-size-sm) !important;
     }
+
+    .vtex-related-products .slick-track {
+        width: 18.9rem !important
+    }
 }
 
 @media only screen and (min-width: 30em) {
