@@ -3,5 +3,10 @@
     "allowed": [],
     "required": [],
     "component": "Shelf"
+  },
+  "related-products": {
+    "allowed": [],
+    "required": [],
+    "component": "RelatedProducts"
   }
 }
