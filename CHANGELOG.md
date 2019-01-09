@@ -8,10 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - Add padding on shelf through `Container` component.
-
-## [1.2.1-beta] - 2019-01-03
-### Changed
- - Bye `pages.json`! Welcome `store-builder`.
+- Bye `pages.json`! Welcome `store-builder`.
 
 ## [1.2.0] - 2018-12-20
 ### Added
