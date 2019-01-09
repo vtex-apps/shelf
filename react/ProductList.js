@@ -2,7 +2,7 @@ import './global.css'
 
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
 import { FormattedMessage } from 'react-intl'
 import { productListSchemaPropTypes } from './propTypes'
@@ -61,8 +61,8 @@ export default class ProductList extends Component {
       products && products.map(normalizeBuyable).filter(identity)
 
     return products && !products.length ? null : (
-      <div className="vtex-page-padding pv4 pb9">
-        <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1">
+      <Fragment>
+        <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt6 pb6 c-muted-1">
           {titleText || <FormattedMessage id="shelf.title" />}
         </div>
         <ShelfContent
@@ -74,7 +74,7 @@ export default class ProductList extends Component {
           summary={summary}
           isMobile={isMobile}
         />
-      </div>
+      </Fragment>
     )
   }
 }

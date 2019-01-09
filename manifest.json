@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "vtex.store-graphql": "2.x",
-    "vtex.store-components": "3.3.2-beta",
+    "vtex.store-components": "3.4.1-beta",
     "vtex.product-summary": "2.3.3-beta"
   }
 }
