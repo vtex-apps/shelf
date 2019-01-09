@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
-import Slider from 'vtex.store-components/Slider'
+import { Slider } from 'vtex.store-components'
 
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
@@ -85,13 +85,13 @@ class ShelfContent extends Component {
   }
 
   ssrFallback() {
-    const { products, itemsPerPage, isMobile } = this.props
-    const numberOfItems  = isMobile ? DEFAULT_ITEMS_MOBILE : DEFAULT_ITEMS_DESKTOP
-    const className = this.getClassByItemsPerPage(numberOfItems )
+    const { products, isMobile } = this.props
+    const numberOfItems = isMobile ? DEFAULT_ITEMS_MOBILE : DEFAULT_ITEMS_DESKTOP
+    const className = this.getClassByItemsPerPage(numberOfItems)
     return (
       <div className="flex justify-center">
         {products &&
-          products.slice(0, numberOfItems ).map((item, index) => {
+          products.slice(0, numberOfItems).map((item, index) => {
             return (
               <div
                 key={item.productId}

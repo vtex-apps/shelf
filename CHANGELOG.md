@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2019-01-09
+### Changed
+- Add padding on shelf through `Container` component.
+- Bye `pages.json`! Welcome `store-builder`.
+
 ## [1.2.0] - 2018-12-20
 ### Added
 - Support to messages builder.

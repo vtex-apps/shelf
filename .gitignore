@@ -29,6 +29,7 @@ $RECYCLE.BIN/
 node_modules/
 docs/_book/
 .tmp
+*.orig
 .idea
 npm-debug.log
 .build/
