@@ -112,19 +112,21 @@ class ShelfContent extends Component {
       !products || !products.length ? Array(maxItems).fill(null) : products
     return (
       <div className="vtex-shelf__content flex justify-center">
-        <Slider
-          ssrFallback={this.ssrFallback()}
-          sliderSettings={sliderSettings}
-          adaptToScreen
-          className="w-100 mw9"
-          scrollByPage={isScrollByPage}
-          defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
-          {productList
-            .slice(0, maxItems)
-            .map((item, index) =>
-              this.slideFallback(item, path(['productId'], item) || index)
-            )}
-        </Slider>
+        <div className="w-100 mw9">
+          <Slider
+            ssrFallback={this.ssrFallback()}
+            sliderSettings={sliderSettings}
+            adaptToScreen
+            scrollByPage={isScrollByPage}
+            defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
+            {productList
+              .slice(0, maxItems)
+              .map((item, index) =>
+                this.slideFallback(item, path(['productId'], item) || index)
+              )}
+          </Slider>
+        </div>
+
       </div>
     )
   }
