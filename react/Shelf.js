@@ -38,7 +38,7 @@ class Shelf extends Component {
       return null
     }
     return (
-      <div className={shelf.container}>
+      <div className={`${shelf.container} pv4 pb9`}>
         <ProductList {...productListProps} />
       </div>
     )
