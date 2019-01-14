@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { withRuntimeContext } from 'render'
 
-import { Container } from 'vtex.store-components'
+import Container from 'vtex.store-components/Container'
 
 import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
 import ProductList from './ProductList'
