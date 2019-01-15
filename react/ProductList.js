@@ -1,3 +1,5 @@
+import './global.css'
+
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
@@ -11,6 +13,7 @@ import ShelfContent from './ShelfContent'
 import ShelfItem from './ShelfItem'
 
 import shelf from './shelf.css'
+
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
