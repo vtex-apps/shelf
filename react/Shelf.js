@@ -43,7 +43,7 @@ class Shelf extends Component {
       </div>
     )
   }
-} a
+}
 
 Shelf.defaultProps = {
   productList: ProductList.defaultProps,
