@@ -14,7 +14,6 @@ import ShelfItem from './ShelfItem'
 
 import shelf from './shelf.css'
 
-
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 

@@ -9,8 +9,6 @@ import { productListSchemaPropTypes } from './propTypes'
 import ShelfItem from './ShelfItem'
 import shelf from './shelf.css'
 
-
-
 /**
  * Related Products Component. Queries and shows the related products
  */
