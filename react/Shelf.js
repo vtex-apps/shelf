@@ -8,7 +8,7 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 import Container from 'vtex.store-components/Container'
 
 import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
-import ProductList from './ProductList'
+import ProductList, { defaultProps } from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
 import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './ShelfContent'
@@ -100,7 +100,7 @@ const options = {
     category,
     collection,
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-    maxItems = ProductList.defaultProps.maxItems,
+    maxItems = defaultProps.maxItems,
   }) => ({
     variables: {
       category,

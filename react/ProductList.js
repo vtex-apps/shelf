@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
-import { FormattedMessage } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
@@ -44,7 +44,7 @@ function getBuyableSellers(sellers) {
 /**
  * Product List Component. Shows a collection of products.
  */
-export default class ProductList extends Component {
+class ProductList extends Component {
   render() {
     const {
       products,
@@ -55,6 +55,7 @@ export default class ProductList extends Component {
       itemsPerPage,
       summary,
       isMobile,
+      intl,
     } = this.props
 
     const filteredProducts =
@@ -62,9 +63,9 @@ export default class ProductList extends Component {
 
     return products && !products.length ? null : (
       <Fragment>
-        <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt6 pb6 c-muted-1">
-          {titleText || <FormattedMessage id="shelf.title" />}
-        </div>
+        <h1 className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt6 pb6 c-muted-1 mv0">
+          {titleText || intl.formatMessage({ id: 'shelf.title' })}
+        </h1>
         <ShelfContent
           products={filteredProducts}
           maxItems={maxItems}
@@ -143,5 +144,10 @@ ProductList.propTypes = {
   products: ShelfContent.propTypes.products,
   /** Verifies if is a mobile device. */
   isMobile: PropTypes.bool,
+  /** Internacionalization */
+  intl: intlShape.isRequired,
   ...productListSchemaPropTypes,
 }
+
+export const defaultProps = ProductList.defaultProps
+export default injectIntl(ProductList)
