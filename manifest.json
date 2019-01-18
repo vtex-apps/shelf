@@ -12,7 +12,7 @@
     "postreleasy": "vtex publish --verbose"
   },
   "builders": {
-    "react": "2.x",
+    "react": "3.x",
     "messages": "0.x",
     "store": "0.x"
   },
