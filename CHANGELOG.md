@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.1] - 2019-01-23
+
+## [1.5.0] - 2019-01-23
+
 ## [1.4.0] - 2019-01-18
 ### Changed
 - Update React builder to 3.x.
