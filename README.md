@@ -34,7 +34,7 @@ VTEX App that shows a collection of products.
 
 > 3- On your react component that contains the Shelf
 ```javascript 
-import { ExtensionPoint } from 'render'
+import { ExtensionPoint } from 'vtex.render-runtime'
 ...
 render() {
   return (
