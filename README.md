@@ -4,6 +4,13 @@
 
 VTEX App that shows a collection of products.
 
+## Release schedule
+| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
+| :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
+| [0.x]    | **Maintenance LTS** |  2018-04-19     | 2018-11-08            | March 2019  | 1.x
+| [1.x]    | **Current Release** |  2018-11-08     |                       |             | 2.x
+
+
 ## Continuous Integrations
 
 ### Travis CI
