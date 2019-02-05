@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.3] - 2019-02-05
+
 ## [1.5.2] - 2019-01-29
 ### Fixed
 - Remove `inheritComponent` from blocks.
