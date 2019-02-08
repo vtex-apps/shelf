@@ -173,7 +173,7 @@ ShelfContent.propTypes = {
   summary: PropTypes.any,
   /** Is mobile */
   isMobile: PropTypes.bool,
-  /** Gap between Shelf Items */
+  /** Gap in Px between Shelf Items */
   gap: PropTypes.number,
 }
 
