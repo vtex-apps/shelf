@@ -84,7 +84,7 @@ Also, you can configure the product summary that is defined on shelf. See [here]
 ### Tests
 :construction: :construction: :construction:
 
-####Running Tests
+#### Running Tests
 To run the test suit, type the following in the terminal, inside the folder `react`
 
 ```sh
