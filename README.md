@@ -78,13 +78,13 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 
 Also, you can configure the product summary that is defined on shelf. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
 
-### Styles API
+## Styles API
 :construction: :construction: :construction:
 
-### Tests
+## Tests
 :construction: :construction: :construction:
 
-#### Running Tests
+### Running Tests
 To run the test suit, type the following in the terminal, inside the folder `react`
 
 ```sh
