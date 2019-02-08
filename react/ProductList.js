@@ -5,7 +5,7 @@ import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
 import { FormattedMessage } from 'react-intl'
-import ReactResizeDetector  from 'react-resize-detector'
+import ReactResizeDetector from 'react-resize-detector'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
@@ -57,7 +57,6 @@ class ProductList extends Component {
       itemsPerPage,
       summary,
       isMobile,
-      width,
     } = this.props
 
     const filteredProducts =
@@ -132,7 +131,7 @@ ProductList.getSchema = props => {
         title: 'editor.shelf.summary.title',
         type: 'object',
         properties: ProductSummary.getSchema(props).properties,
-      }
+      },
     },
   }
 }

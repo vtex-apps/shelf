@@ -77,7 +77,7 @@ class ShelfContent extends Component {
 
   get itemsToShow() {
     const { itemsPerPage, width, gap } = this.props
-    const maxItems = Math.floor(width/(DEFAULT_SHELF_ITEM_WIDTH + gap))
+    const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH + gap))
     return maxItems <= itemsPerPage ? maxItems : itemsPerPage
   }
 
@@ -85,14 +85,14 @@ class ShelfContent extends Component {
     const { width, gap } = this.props
     const slider = this.itemsToShow * (DEFAULT_SHELF_ITEM_WIDTH + gap)
     return width >= slider ? slider : width
- }
+  }
 
   slideFallback = (item = {}, key) => {
     const { summary, gap } = this.props
     const style = {
       width: DEFAULT_SHELF_ITEM_WIDTH,
-      marginRight: gap/2,
-      marginLeft: gap/2,
+      marginRight: gap / 2,
+      marginLeft: gap / 2,
     }
     return (
       <div key={key} className="vtex-shelf__slide">
@@ -169,6 +169,8 @@ ShelfContent.propTypes = {
   arrows: PropTypes.bool.isRequired,
   /** Scroll type */
   scroll: PropTypes.string.isRequired,
+  /** Container width */
+  width: PropTypes.number.isRequired,
   /** Props to ProductsSummary */
   summary: PropTypes.any,
   /** Is mobile */
