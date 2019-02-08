@@ -64,6 +64,7 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 | `summary`                   | `Object`   | Product Summary schema properties.                        |
 
 `OrderEnum`:
+
 | Value | Type      | Description |
 | ----- | --------- | ----------- |
 | `OrderByTopSaleDESC`   | `String`  | Order by the top items sales            |
@@ -71,6 +72,7 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 | `OrderByPriceASC`      | `String`  | Order by the items price *(ascendant)*  |
 
 `ScrollEnum`:
+
 | Value | Type      | Description |
 | ----- | --------- | ----------- |
 | `BY_PAGE`      | `String`  | Scroll item, page by page |
