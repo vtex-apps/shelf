@@ -75,19 +75,17 @@ class ShelfContent extends Component {
     }
   }
 
-  getItemsToShow = () => {
+  get itemsToShow() {
     const { itemsPerPage, width, gap } = this.props
-    console.log(width)
-    let sliderWidth = (DEFAULT_SHELF_ITEM_WIDTH + gap) * itemsPerPage
-    let maxItemsPerPage = itemsPerPage
-    while (sliderWidth >= width) {
-      console.log(sliderWidth, width, maxItemsPerPage)
-      --maxItemsPerPage
-      sliderWidth = (DEFAULT_SHELF_ITEM_WIDTH + gap) * maxItemsPerPage
-    }
-
-    return { sliderWidth, maxItemsPerPage }
+    const maxItems = Math.floor(width/(DEFAULT_SHELF_ITEM_WIDTH + gap))
+    return maxItems <= itemsPerPage ? maxItems : itemsPerPage
   }
+
+  get sliderWidth() {
+    const { width, gap } = this.props
+    const slider = this.itemsToShow * (DEFAULT_SHELF_ITEM_WIDTH + gap)
+    return width >= slider ? slider : width
+ }
 
   slideFallback = (item = {}, key) => {
     const { summary, gap } = this.props
@@ -127,10 +125,9 @@ class ShelfContent extends Component {
 
   render() {
     const { products, maxItems, scroll, gap, isMobile, width } = this.props
-    const sliderProps = this.getItemsToShow()
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
-    const sliderSettings = this.getSliderSettings(sliderProps.maxItemsPerPage)
-    const sliderWidth = (isMobile || width <= BREAKPOINT_MOBILE_VIEWPORT) ? '100%' : sliderProps.sliderWidth
+    const sliderSettings = this.getSliderSettings(this.itemsToShow)
+    const sliderWidth = (isMobile || width <= BREAKPOINT_MOBILE_VIEWPORT) ? width : this.sliderWidth
     const styles = {
       width: sliderWidth,
     }
