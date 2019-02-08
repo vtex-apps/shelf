@@ -83,6 +83,9 @@ Also, you can configure the product summary that is defined on shelf. See [here]
 ## Styles API
 :construction: :construction: :construction:
 
+## Troubleshooting
+You can check if others are passing through similar issues [here](https://github.com/vtex-apps/shelf/issues). Also feel free to [open issues](https://github.com/vtex-apps/shelf/issues/new) or contribute with pull requests.
+
 ## Tests
 :construction: :construction: :construction:
 
@@ -100,6 +103,3 @@ To update the tests snapshots use
 $ npm t -- -u  # like this
 $ yarn test -u # or this
 ```
-
-## Troubleshooting
-You can check if others are passing through similar issues [here](https://github.com/vtex-apps/shelf/issues). Also feel free to [open issues](https://github.com/vtex-apps/shelf/issues/new) or contribute with pull requests.
