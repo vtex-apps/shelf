@@ -126,12 +126,13 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll, gap } = this.props
+    const { products, maxItems, scroll, gap, isMobile, width } = this.props
     const sliderProps = this.getItemsToShow()
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
     const sliderSettings = this.getSliderSettings(sliderProps.maxItemsPerPage)
+    const sliderWidth = (isMobile || width <= BREAKPOINT_MOBILE_VIEWPORT) ? '100%' : sliderProps.sliderWidth
     const styles = {
-      width: sliderProps.sliderWidth,
+      width: sliderWidth,
     }
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
