@@ -53,15 +53,15 @@ This app have an interface that describes what are the rules that the blocks mus
 Through the Storefront you can change the behavior and interface of shelf. But, you also can make adjusts in your theme app, like Dreamstore does.
 
 | Prop name          | Type       | Description                                                                                 |
-| ------------------ | ---------- | ------------------------------------------------------------------------------------------- |
-| `category`                  | `Number`   | Category ID of the listed items in the shelf                                       |
-| `collection`                | `Number`   | Shows the remove button in each item                                               |
-| `orderBy`                   | `String`   | Ordenation type of the items in the shelf. `See OrderEnum`                         |
-| `maxItems`                  | `Number`   | Maximum number of items in the shelf.                                              |
-| `scroll`                    | `String`   | Scroll type of slide transiction. `See ScrollEnum`                                 |
-| `arrows`                    | `Boolean`  | If the arrows are showable or not.                                                 |
-| `titleText`                 | `String`   | Title of the shelf.                                                                |
-| `summary`                   | `Object`   | Product Summary schema properties.                      |
+| ------------------ | ---------- | ------------------------------------------------------------------ |
+| `category`                  | `Number`   | Category ID of the listed items in the shelf              |
+| `collection`                | `Number`   | Shows the remove button in each item                      |
+| `orderBy`                   | `String`   | Ordenation type of the items in the shelf. `See OrderEnum`|
+| `maxItems`                  | `Number`   | Maximum number of items in the shelf.                     |
+| `scroll`                    | `String`   | Scroll type of slide transiction. `See ScrollEnum`        |
+| `arrows`                    | `Boolean`  | If the arrows are showable or not.                        |
+| `titleText`                 | `String`   | Title of the shelf.                                       |
+| `summary`                   | `Object`   | Product Summary schema properties.                        |
 
 `OrderEnum`:
 | Value | Type      | Description |
