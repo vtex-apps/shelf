@@ -61,7 +61,7 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 | `scroll`                    | `String`   | Scroll type of slide transiction. `See ScrollEnum`                                 |
 | `arrows`                    | `Boolean`  | If the arrows are showable or not.                                                 |
 | `titleText`                 | `String`   | Title of the shelf.                                                                |
-| `summary`                   | `Object`   | [Product Summary](https://github.com/vtex-apps/product-summary/blob/master/README.md) schema properties. |
+| `summary`                   | `Object`   | Product Summary schema properties.                      |
 
 `OrderEnum`:
 | Value | Type      | Description |
@@ -76,7 +76,7 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 | `BY_PAGE`      | `String`  | Scroll item page by page |
 | `ONE_BY_ONE`   | `String`  | Scroll item one by one   |
 
-Also, you can configure the product summary that is used in minicart. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
+Also, you can configure the product summary that is defined on shelf. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
 
 ### Styles API
 :construction: :construction: :construction:
