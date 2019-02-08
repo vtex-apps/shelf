@@ -16,10 +16,9 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 
 ## Table of Contents
 - [Usage](#usage)
-- [API](#api)
-  - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-  - [Styles API](#styles-api)
+- [Blocks API](#blocks-api)
+  - [Configuration](#configuration)
+- [Styles API](#styles-api)
 - [Troubleshooting](#troubleshooting)
 
 
@@ -36,7 +35,7 @@ To use this app you need to import in your dependencies on `manifest.json`.
 
 Then, add `shelf` block into our app theme, like we do in our [Dreamstore app](https://github.com/vtex-apps/dreamstore/blob/master/store/blocks.json). 
 
-### Blocks API
+## Blocks API
 :construction: :construction: :construction:
 
 This app have an interface that describes what are the rules that the blocks must implement when you want to use the shelf block. 
@@ -49,7 +48,7 @@ This app have an interface that describes what are the rules that the blocks mus
     "component": "RelatedProducts"
   }
 ```
-#### Configuration 
+### Configuration 
 Through the Storefront you can change the behavior and interface of shelf. But, you also can make adjusts in your theme app, like Dreamstore does.
 
 | Prop name          | Type       | Description                                                                                 |
