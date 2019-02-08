@@ -19,13 +19,14 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 - [Blocks API](#blocks-api)
   - [Configuration](#configuration)
 - [Styles API](#styles-api)
+- [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
 
 
 ## Usage
 This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-To use this app you need to import in your dependencies on `manifest.json`.
+To use this app you need to import it in your dependencies on the `manifest.json`.
 
 ```json
   dependencies: {
@@ -38,7 +39,7 @@ Then, add `shelf` block into our app theme, like we do in our [Dreamstore app](h
 ## Blocks API
 :construction: :construction: :construction:
 
-This app have an interface that describes what are the rules that the blocks must implement when you want to use the shelf block. 
+This app has an interface that describes what are the rules that the blocks must implement when you want to use the shelf block. 
 
 ```json
   "shelf": {
@@ -49,7 +50,7 @@ This app have an interface that describes what are the rules that the blocks mus
   }
 ```
 ### Configuration 
-Through the Storefront you can change the behavior and interface of shelf. But, you also can make adjusts in your theme app, like Dreamstore does.
+Through the Storefront you can change the behavior and interface of shelf. But, you also can make adjustments in your theme app, like Dreamstore does.
 
 | Prop name          | Type       | Description                                                                                 |
 | ------------------ | ---------- | ------------------------------------------------------------------ |
@@ -72,12 +73,15 @@ Through the Storefront you can change the behavior and interface of shelf. But, 
 `ScrollEnum`:
 | Value | Type      | Description |
 | ----- | --------- | ----------- |
-| `BY_PAGE`      | `String`  | Scroll item page by page |
-| `ONE_BY_ONE`   | `String`  | Scroll item one by one   |
+| `BY_PAGE`      | `String`  | Scroll item, page by page |
+| `ONE_BY_ONE`   | `String`  | Scroll item, one by one   |
 
 Also, you can configure the product summary that is defined on shelf. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
 
 ### Styles API
+:construction: :construction: :construction:
+
+### Tests
 :construction: :construction: :construction:
 
 ## Troubleshooting
