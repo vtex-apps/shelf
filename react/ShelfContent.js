@@ -159,13 +159,21 @@ ShelfContent.defaultProps = {
 }
 
 ShelfContent.propTypes = {
+  /** List of products */
   products: PropTypes.arrayOf(ShelfItem.propTypes.item),
+  /** Max Items per page */
   itemsPerPage: PropTypes.number.isRequired,
+  /** Max items in shelf */
   maxItems: PropTypes.number.isRequired,
+  /** Show Arrows */
   arrows: PropTypes.bool.isRequired,
+  /** Scroll type */
   scroll: PropTypes.string.isRequired,
+  /** Props to ProductsSummary */
   summary: PropTypes.any,
+  /** Is mobile */
   isMobile: PropTypes.bool,
+  /** Gap between Shelf Items */
   gap: PropTypes.number,
 }
 
