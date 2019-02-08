@@ -84,5 +84,20 @@ Also, you can configure the product summary that is defined on shelf. See [here]
 ### Tests
 :construction: :construction: :construction:
 
+####Running Tests
+To run the test suit, type the following in the terminal, inside the folder `react`
+
+```sh
+$ npm t     # this
+$ yarn test # or this one
+```
+
+To update the tests snapshots use
+
+```sh
+$ npm t -- -u  # like this
+$ yarn test -u # or this
+```
+
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/shelf/issues). Also feel free to [open issues](https://github.com/vtex-apps/shelf/issues/new) or contribute with pull requests.
