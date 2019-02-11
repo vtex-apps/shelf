@@ -2,7 +2,7 @@
 
 ## Description
 
-VTEX App that shows a collection of products. This is a VTEX app that is used by Dreamstore product.
+VTEX App that shows a shelf of products. This is a VTEX app that is used by Dreamstore product.
 
 :loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request.
 
@@ -37,7 +37,6 @@ To use this app you need to import it in your dependencies on the `manifest.json
 Then, add `shelf` block into our app theme, like we do in our [Dreamstore app](https://github.com/vtex-apps/dreamstore/blob/master/store/blocks.json). 
 
 ## Blocks API
-:construction: :construction: :construction:
 
 This app has an interface that describes what are the rules that the blocks must implement when you want to use the shelf block. 
 
@@ -50,7 +49,7 @@ This app has an interface that describes what are the rules that the blocks must
   }
 ```
 ### Configuration 
-Through the Storefront you can change the behavior and interface of shelf. But, you also can make adjustments in your theme app, like Dreamstore does.
+Through the Storefront, you can change the shelf's behavior and interface. However, you also can make in your theme app, as Dreamstore does.
 
 | Prop name          | Type       | Description                                                                                 |
 | ------------------ | ---------- | ------------------------------------------------------------------ |
