@@ -5,9 +5,11 @@ import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
 import { FormattedMessage } from 'react-intl'
+import ReactResizeDetector from 'react-resize-detector'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import ShelfContent from './ShelfContent'
+import ShelfItem from './ShelfItem'
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
@@ -44,7 +46,7 @@ function getBuyableSellers(sellers) {
 /**
  * Product List Component. Shows a collection of products.
  */
-export default class ProductList extends Component {
+class ProductList extends Component {
   render() {
     const {
       products,
@@ -65,15 +67,22 @@ export default class ProductList extends Component {
         <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt6 pb6 c-muted-1">
           {titleText || <FormattedMessage id="shelf.title" />}
         </div>
-        <ShelfContent
-          products={filteredProducts}
-          maxItems={maxItems}
-          arrows={arrows}
-          scroll={scroll}
-          itemsPerPage={itemsPerPage}
-          summary={summary}
-          isMobile={isMobile}
-        />
+        <ReactResizeDetector handleWidth handleHeight>
+          {
+            width => (
+              <ShelfContent
+                products={filteredProducts}
+                maxItems={maxItems}
+                arrows={arrows}
+                scroll={scroll}
+                itemsPerPage={itemsPerPage}
+                summary={summary}
+                isMobile={isMobile}
+                width={width}
+              />
+            )
+          }
+        </ReactResizeDetector>
       </Fragment>
     )
   }
@@ -122,7 +131,7 @@ ProductList.getSchema = props => {
         title: 'editor.shelf.summary.title',
         type: 'object',
         properties: ProductSummary.getSchema(props).properties,
-      }
+      },
     },
   }
 }
@@ -140,8 +149,10 @@ ProductList.propTypes = {
   /** Loading status */
   loading: PropTypes.bool,
   /** Graphql data response. */
-  products: ShelfContent.propTypes.products,
+  products: PropTypes.arrayOf(ShelfItem.propTypes.item),
   /** Verifies if is a mobile device. */
   isMobile: PropTypes.bool,
   ...productListSchemaPropTypes,
 }
+
+export default ProductList

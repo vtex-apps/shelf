@@ -30,8 +30,8 @@ const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = true
  * and render the properly content of the Shelf depending of edit mode state.
  */
 class ShelfContent extends Component {
-  getSliderSettings = () => {
-    const { arrows, itemsPerPage } = this.props
+  getSliderSettings = itemsPerPage => {
+    const { arrows } = this.props
     return {
       slidesToShow: itemsPerPage,
       slidesToScroll: SLIDES_TO_SCROLL_LARGE_VIEWPORT,
@@ -75,11 +75,30 @@ class ShelfContent extends Component {
     }
   }
 
+  get itemsToShow() {
+    const { itemsPerPage, width, gap } = this.props
+    const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH + gap))
+    return maxItems <= itemsPerPage ? maxItems : itemsPerPage
+  }
+
+  get sliderWidth() {
+    const { width, gap } = this.props
+    const slider = this.itemsToShow * (DEFAULT_SHELF_ITEM_WIDTH + gap)
+    return width >= slider ? slider : width
+  }
+
   slideFallback = (item = {}, key) => {
-    const { summary } = this.props
+    const { summary, gap } = this.props
+    const style = {
+      width: DEFAULT_SHELF_ITEM_WIDTH,
+      marginRight: gap / 2,
+      marginLeft: gap / 2,
+    }
     return (
-      <div key={key} className="vtex-shelf__slide pa4">
-        <ShelfItem item={item} summary={summary} />
+      <div key={key} className="vtex-shelf__slide">
+        <div style={style}>
+          <ShelfItem item={item} summary={summary} />
+        </div>
       </div>
     )
   }
@@ -105,20 +124,23 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll } = this.props
+    const { products, maxItems, scroll, gap, isMobile, width } = this.props
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
-    const sliderSettings = this.getSliderSettings()
+    const sliderSettings = this.getSliderSettings(this.itemsToShow)
+    const sliderWidth = (isMobile || width <= BREAKPOINT_MOBILE_VIEWPORT) ? width : this.sliderWidth
+    const styles = {
+      width: sliderWidth,
+    }
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
     return (
       <div className="vtex-shelf__content flex justify-center">
-        <div className="w-100 mw9">
+        <div style={styles}>
           <Slider
             ssrFallback={this.ssrFallback()}
             sliderSettings={sliderSettings}
-            adaptToScreen
             scrollByPage={isScrollByPage}
-            defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}>
+            defaultItemWidth={(DEFAULT_SHELF_ITEM_WIDTH + gap)}>
             {productList
               .slice(0, maxItems)
               .map((item, index) =>
@@ -132,14 +154,29 @@ class ShelfContent extends Component {
   }
 }
 
+ShelfContent.defaultProps = {
+  gap: 16,
+}
+
 ShelfContent.propTypes = {
+  /** List of products */
   products: PropTypes.arrayOf(ShelfItem.propTypes.item),
+  /** Max Items per page */
   itemsPerPage: PropTypes.number.isRequired,
+  /** Max items in shelf */
   maxItems: PropTypes.number.isRequired,
+  /** Show Arrows */
   arrows: PropTypes.bool.isRequired,
+  /** Scroll type */
   scroll: PropTypes.string.isRequired,
+  /** Container width */
+  width: PropTypes.number.isRequired,
+  /** Props to ProductsSummary */
   summary: PropTypes.any,
+  /** Is mobile */
   isMobile: PropTypes.bool,
+  /** Gap in Px between Shelf Items */
+  gap: PropTypes.number,
 }
 
 export default ShelfContent

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.4] - 2019-02-11
+### Changed
+- Change Responsiveness implementation and add fixed gap between item.
+
 ## [1.5.3] - 2019-02-05
 ### Changed
 - Bumping version to use new messages 1.x builder
