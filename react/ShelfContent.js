@@ -95,8 +95,8 @@ class ShelfContent extends Component {
       marginLeft: gap / 2,
     }
     return (
-      <div key={key} className="vtex-shelf__slide">
-        <div style={style}>
+      <div key={key} className="vtex-shelf__slide h-100">
+        <div style={style} className="h-100">
           <ShelfItem item={item} summary={summary} />
         </div>
       </div>
