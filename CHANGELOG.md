@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.5] - 2019-02-11
+### Fixed
+- Align `ShelfItems` height.
+
 ## [1.5.4] - 2019-02-11
 ### Changed
 - Change Responsiveness implementation and add fixed gap between item.
