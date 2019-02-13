@@ -6,6 +6,7 @@
   "editor.shelf.orderBy.title": "Ordenación de la Lista",
   "editor.shelf.maxItems.title": "Cantidad máxima de Elementos",
   "editor.shelf.itemsPerPage.title": "Productos por Página",
+  "editor.shelf.gap.title": "Brecha entre los elementos",
   "editor.shelf.scrollType.title": "Tipo de Desplazamiento",
   "editor.shelf.arrows.title": "Dardos",
   "editor.shelf.titleText.title": "Texto del Título",

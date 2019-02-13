@@ -57,6 +57,7 @@ class ProductList extends Component {
       itemsPerPage,
       summary,
       isMobile,
+      gap,
     } = this.props
 
     const filteredProducts =
@@ -79,6 +80,7 @@ class ProductList extends Component {
                 summary={summary}
                 isMobile={isMobile}
                 width={width}
+                gap={gap}
               />
             )
           }
@@ -98,6 +100,13 @@ ProductList.getSchema = props => {
         title: 'editor.shelf.maxItems.title',
         type: 'number',
         default: ProductList.defaultProps.maxItems,
+        isLayout: true,
+      },
+      gap: {
+        title: 'editor.shelf.gap.title',
+        type: 'string',
+        enum: ['0x', '1x', '2x', '3x'],
+        default: ProductList.defaultProps.gap,
         isLayout: true,
       },
       itemsPerPage: {
@@ -140,6 +149,7 @@ ProductList.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
+  gap: '1x',
   arrows: true,
   titleText: null,
   isMobile: false,

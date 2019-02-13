@@ -6,6 +6,7 @@
   "editor.shelf.orderBy.title": "Ordenação da Lista",
   "editor.shelf.maxItems.title": "Quantidade máxima de itens",
   "editor.shelf.itemsPerPage.title": "Itens por Página",
+  "editor.shelf.gap.title": "Espaço entre os itens",
   "editor.shelf.scrollType.title": "Tipo de Rolagem",
   "editor.shelf.arrows.title": "Setas",
   "editor.shelf.titleText.title": "Texto do Título",

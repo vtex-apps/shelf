@@ -6,7 +6,7 @@ import Slider from 'vtex.store-components/Slider'
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
 
-const DEFAULT_SHELF_ITEM_WIDTH = 281
+const DEFAULT_SHELF_ITEM_WIDTH = 260
 const DOTS_LARGE_VIEWPORT = true
 const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 
@@ -24,6 +24,8 @@ const VARIABLE_WIDTH_MOBILE_MODE = true
 const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 350
 const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
 const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = true
+
+const ITEMS_TO_FULL_WIDTH = 5
 
 /**
  * ShelfContent Component. Executes the interaction with react-slick
@@ -77,26 +79,36 @@ class ShelfContent extends Component {
 
   get itemsToShow() {
     const { itemsPerPage, width, gap } = this.props
-    const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH + gap))
+    console.log(itemsPerPage, width, gap)
+    const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH))
     return maxItems <= itemsPerPage ? maxItems : itemsPerPage
   }
 
   get sliderWidth() {
-    const { width, gap } = this.props
-    const slider = this.itemsToShow * (DEFAULT_SHELF_ITEM_WIDTH + gap)
-    return width >= slider ? slider : width
+    const { width } = this.props
+
+    const items = this.itemsToShow
+    const slider = items * (DEFAULT_SHELF_ITEM_WIDTH )
+
+    if (items >= ITEMS_TO_FULL_WIDTH || width <= slider) return width
+
+    return slider
   }
 
-  slideFallback = (item = {}, key) => {
-    const { summary, gap } = this.props
+  get paddingForItem() {
+    const { gap } = this.props
+    return GAP_TYPES[gap] || 'ph0'
+  }
+
+  slideFallback = (item = {}, key, fullWidth) => {
+    console.log(fullWidth)
+    const { summary } = this.props
     const style = {
-      width: DEFAULT_SHELF_ITEM_WIDTH,
-      marginRight: gap / 2,
-      marginLeft: gap / 2,
+      width: fullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
     }
     return (
       <div key={key} className="vtex-shelf__slide h-100">
-        <div style={style} className="h-100">
+        <div style={style} className={`${this.paddingForItem} h-100`}>
           <ShelfItem item={item} summary={summary} />
         </div>
       </div>
@@ -131,6 +143,8 @@ class ShelfContent extends Component {
     const styles = {
       width: sliderWidth,
     }
+    const isFullWidth = width === this.sliderWidth
+    console.log(isFullWidth, 'aaa')
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
     return (
@@ -144,7 +158,7 @@ class ShelfContent extends Component {
             {productList
               .slice(0, maxItems)
               .map((item, index) =>
-                this.slideFallback(item, path(['productId'], item) || index)
+                this.slideFallback(item, path(['productId'], item) || index, isFullWidth)
               )}
           </Slider>
         </div>
@@ -156,6 +170,13 @@ class ShelfContent extends Component {
 
 ShelfContent.defaultProps = {
   gap: 16,
+  itemsPerPage: 5,
+}
+
+const GAP_TYPES = {
+  '1x': 'ph3',
+  '2x': 'ph5',
+  '3x': 'ph7',
 }
 
 ShelfContent.propTypes = {
@@ -175,8 +196,8 @@ ShelfContent.propTypes = {
   summary: PropTypes.any,
   /** Is mobile */
   isMobile: PropTypes.bool,
-  /** Gap in Px between Shelf Items */
-  gap: PropTypes.number,
+  /** Gap between Shelf Items */
+  gap: PropTypes.oneOf(['0x', '1x', '2x', '3x']),
 }
 
 export default ShelfContent
