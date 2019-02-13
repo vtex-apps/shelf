@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.6] - 2019-02-13
+### Changed
+- Set `ProductName` tag as H2 element.
+
 ## [1.5.5] - 2019-02-11
 ### Fixed
 - Align `ShelfItems` height.
