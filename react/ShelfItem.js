@@ -27,7 +27,9 @@ export default class ShelfItem extends Component {
 
   render() {
     const { item, summary } = this.props
-    summary.name.tag = 'h2'
+    if (summary && summary.name) {
+      summary.name.tag = 'h2'
+    }
     return <ProductSummary product={this.normalizeProduct(item)} {...summary} />
   }
 }
