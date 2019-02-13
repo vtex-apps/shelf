@@ -1,3 +1,5 @@
+import { pluck } from 'ramda'
+
 const gapPaddingTypes = {
   NONE: {
     name: 'editor.shelf.gapType.none',
@@ -17,16 +19,8 @@ const gapPaddingTypes = {
   },
 }
 
-export const getGapPaddingNames = () => {
-  const names = []
-  for (const key in gapPaddingTypes) names.push(gapPaddingTypes[key].name)
-  return names
-}
+export const getGapPaddingNames = () => pluck('name', gapPaddingTypes)
 
-export const getGapPaddingValues = () => {
-  const values = []
-  for (const key in gapPaddingTypes) values.push(gapPaddingTypes[key].value)
-  return values
-}
+export const getGapPaddingValues = () => pluck('value', gapPaddingTypes)
 
 export default gapPaddingTypes
