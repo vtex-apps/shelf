@@ -79,7 +79,6 @@ class ShelfContent extends Component {
 
   get itemsToShow() {
     const { itemsPerPage, width, gap } = this.props
-    console.log(itemsPerPage, width, gap)
     const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH))
     return maxItems <= itemsPerPage ? maxItems : itemsPerPage
   }
@@ -101,7 +100,6 @@ class ShelfContent extends Component {
   }
 
   slideFallback = (item = {}, key, fullWidth) => {
-    console.log(fullWidth)
     const { summary } = this.props
     const style = {
       width: fullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
@@ -144,7 +142,6 @@ class ShelfContent extends Component {
       width: sliderWidth,
     }
     const isFullWidth = width === this.sliderWidth
-    console.log(isFullWidth, 'aaa')
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
     return (
