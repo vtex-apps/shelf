@@ -1,4 +1,4 @@
-import { pluck } from 'ramda'
+import { pluck, values } from 'ramda'
 
 const gapPaddingTypes = {
   NONE: {
@@ -19,8 +19,8 @@ const gapPaddingTypes = {
   },
 }
 
-export const getGapPaddingNames = () => pluck('name', gapPaddingTypes)
+export const getGapPaddingNames = () => values(pluck('name', gapPaddingTypes))
 
-export const getGapPaddingValues = () => pluck('value', gapPaddingTypes)
+export const getGapPaddingValues = () => values(pluck('value', gapPaddingTypes))
 
 export default gapPaddingTypes
