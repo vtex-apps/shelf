@@ -149,7 +149,7 @@ class ShelfContent extends Component {
       !products || !products.length ? Array(maxItems).fill(null) : products
     return (
       <div className="vtex-shelf__content flex justify-center">
-        <div style={styles}>
+        <div className="mw9" style={styles}>
           <Slider
             ssrFallback={this.ssrFallback()}
             sliderSettings={sliderSettings}
