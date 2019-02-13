@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- To five items slider use full width and padding between is set using tachyons.
 
 ## [1.5.7] - 2019-02-14
 ### Fixed
