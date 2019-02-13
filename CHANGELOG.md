@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- `Shelf` use full width when `itemsPerPage` are five or more and padding between is set using tachyons.
+- `Shelf` use full width when `itemsPerPage` are five or more and padding between items is set using tachyons.
 
 ## [1.5.7] - 2019-02-14
 ### Fixed
