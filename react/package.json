@@ -37,6 +37,7 @@
   },
   "jest": {
     "verbose": true,
+    "testURL": "http://localhost/",
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"

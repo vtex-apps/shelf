@@ -78,7 +78,7 @@ class ShelfContent extends Component {
   }
 
   get itemsToShow() {
-    const { itemsPerPage, width, gap } = this.props
+    const { itemsPerPage, width } = this.props
     const maxItems = Math.floor(width / (DEFAULT_SHELF_ITEM_WIDTH))
     return maxItems <= itemsPerPage ? maxItems : itemsPerPage
   }
