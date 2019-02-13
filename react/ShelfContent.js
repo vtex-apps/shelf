@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import Slider from 'vtex.store-components/Slider'
+import { getGapPaddingValues } from './paddingEnum'
 
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
@@ -94,19 +95,14 @@ class ShelfContent extends Component {
     return slider
   }
 
-  get paddingForItem() {
-    const { gap } = this.props
-    return GAP_TYPES[gap] || 'ph0'
-  }
-
   slideFallback = (item = {}, key, fullWidth) => {
-    const { summary } = this.props
+    const { summary, gap } = this.props
     const style = {
       width: fullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
     }
     return (
       <div key={key} className="vtex-shelf__slide h-100">
-        <div style={style} className={`${this.paddingForItem} h-100`}>
+        <div style={style} className={`${gap} h-100`}>
           <ShelfItem item={item} summary={summary} />
         </div>
       </div>
@@ -166,14 +162,7 @@ class ShelfContent extends Component {
 }
 
 ShelfContent.defaultProps = {
-  gap: 16,
   itemsPerPage: 5,
-}
-
-const GAP_TYPES = {
-  '1x': 'ph3',
-  '2x': 'ph5',
-  '3x': 'ph7',
 }
 
 ShelfContent.propTypes = {
@@ -194,7 +183,7 @@ ShelfContent.propTypes = {
   /** Is mobile */
   isMobile: PropTypes.bool,
   /** Gap between Shelf Items */
-  gap: PropTypes.oneOf(['0x', '1x', '2x', '3x']),
+  gap: PropTypes.oneOf(getGapPaddingValues()),
 }
 
 export default ShelfContent

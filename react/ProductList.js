@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl'
 import ReactResizeDetector from 'react-resize-detector'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
+import GapPaddingTypes, { getGapPaddingNames, getGapPaddingValues } from './paddingEnum'
 import ShelfContent from './ShelfContent'
 import ShelfItem from './ShelfItem'
 
@@ -105,8 +106,9 @@ ProductList.getSchema = props => {
       gap: {
         title: 'editor.shelf.gap.title',
         type: 'string',
-        enum: ['0x', '1x', '2x', '3x'],
-        default: ProductList.defaultProps.gap,
+        enum: getGapPaddingValues(),
+        enumNames: getGapPaddingNames(),
+        default: GapPaddingTypes.SMALL.value,
         isLayout: true,
       },
       itemsPerPage: {
@@ -149,7 +151,7 @@ ProductList.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
-  gap: '1x',
+  gap: GapPaddingTypes.SMALL.value,
   arrows: true,
   titleText: null,
   isMobile: false,
