@@ -27,7 +27,7 @@ export default class ShelfItem extends Component {
 
   render() {
     const { item, summary } = this.props
-    assocPath(['name', 'tag'], 'h2', summary)
+    const newSummary = assocPath(['name', 'tag'], 'h2', summary)
     return <ProductSummary product={this.normalizeProduct(item)} {...summary} />
   }
 }
