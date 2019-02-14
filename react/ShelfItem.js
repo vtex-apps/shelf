@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ProductSummary from 'vtex.product-summary/index'
-import { path } from 'ramda'
+import { path, assocPath } from 'ramda'
 
 import { shelfItemPropTypes } from './propTypes'
 
@@ -27,7 +27,7 @@ export default class ShelfItem extends Component {
 
   render() {
     const { item, summary } = this.props
-    summary.name.tag = 'h2'
-    return <ProductSummary product={this.normalizeProduct(item)} {...summary} />
+    const newSummary = assocPath(['name', 'tag'], 'h2', summary)
+    return <ProductSummary product={this.normalizeProduct(item)} {...newSummary} />
   }
 }
