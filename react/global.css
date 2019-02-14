@@ -42,6 +42,10 @@
     justify-content: center;
 }
 
+.vtex-shelf .slick-slide > div {
+    width: 100%
+}
+
 .vtex-shelf .slick-track {
     display: flex;
     flex-direction: row;

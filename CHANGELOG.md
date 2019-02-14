@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.8] - 2019-02-14
+### Changed
+- `Shelf` use full width when `itemsPerPage` are five or more and padding between items is set using tachyons.
+
 ## [1.5.7] - 2019-02-14
 ### Fixed
 - Fix summary.name prop undefined when setting name tag. 
