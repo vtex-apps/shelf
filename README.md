@@ -1,128 +1,158 @@
-# Shelf
+VTEX Shelf
+=====
 
 ## Description
 
-VTEX App that shows a collection of products.
+The VTEX shelf app is a store component that shows a collection of products, and this app is used by store theme.
+
+:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
+| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
 | :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
-| [0.x]    | **Maintenance LTS** |  2018-04-19     | 2018-11-08            | March 2019  | 1.x
 | [1.x]    | **Current Release** |  2018-11-08     |                       |             | 2.x
+| [0.x]    | **Maintenance LTS** |  2018-04-19     | 2018-11-08            | March 2019  | 1.x
 
+See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
-## Continuous Integrations
+## Table of Contents
+- [Usage](#usage)
+  - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+  - [Styles API](#styles-api)
+    - [CSS namespaces](#css-namespaces)
+- [Troubleshooting](#troubleshooting)
+- [Tests](#tests)
 
-### Travis CI
-
-[![Build Status](https://travis-ci.org/vtex-apps/shelf.svg?branch=master)](https://travis-ci.org/vtex-apps/shelf)
 
 ## Usage
+This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-> 1- Add the dependency in your `manifest.json`
+We add the shelf as a block in our [Store](https://github.com/vtex-apps/store/blob/master/store/interfaces.json).
+
+To use this app you need to import it in your dependencies on the `manifest.json`.
 
 ```json
-"dependencies": {
-  "vtex.shelf": "0.x"
-}
+  dependencies: {
+    "vtex.shelf": "1.x"
+  }
 ```
 
-> 2- Add the route in your pages.json
+Then, add `shelf` block into your app theme as we do in our [Store theme app](https://github.com/vtex-apps/store-theme/blob/master/store/blocks.json). 
 
+Shelf Component queries a list of products and shows them. `RelatedProducts` is subtype of shelf component who queries and shows the related products.
+
+Now, you can change the behavior of the shelf block that is in the store home. See an example of how to configure: 
 ```json
-{
-  "extensions": {
-    "<page_path>/myshelf": {
-      "component": "vtex.shelf/Shelf"
-    },
+"shelf": {
+  "props": {
+    "orderBy": "OrderByTopSaleDESC",
+    "productList": {
+      "maxItems": 10,
+      "itemsPerPage": 4,
+      "scroll": "BY_PAGE",
+      "arrows": true,
+      "titleText": "New collection",
+      "summary": {
+        "isOneClickBuy": false,
+        "showBadge": true,
+        "badgeText": "OFF",
+        "buyButtonText": "Comprar",
+        "displayBuyButton": "displayButtonHover",
+        "showCollections": false,
+        "showListPrice": true,
+        "showLabels": false,
+        "showInstallments": true,
+        "showSavings": true,
+        "name": {
+          "showBrandName": false,
+          "showSku": false,
+          "showProductReference": false
+        }
+      }
+    }
   }
 }
 ```
 
-> 3- On your react component that contains the Shelf
-```javascript 
-import { ExtensionPoint } from 'vtex.render-runtime'
-...
-render() {
-  return (
-    <ExtensionPoint id="myshelf" />
-  )
-}
-...
+## Blocks API
+
+When implementing this app as a block, various inner blocks may be available. The following interface lists the available blocks within `shelf` and `related-products` and describes if they are required or optional.
+
+```json
+  "shelf": {
+    "component": "Shelf"
+  },
+  "related-products": {
+    "component": "RelatedProducts"
+  }
+```
+### Configuration 
+Through the Storefront, you can change the shelf's behavior and interface. However, you also can make in your theme app, as Store theme does.
+
+For `Shelf`:
+
+| Prop name          | Type       | Description  | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------ | ---------------- |
+| `category`                  | `Number`   | Category ID of the listed items in the shelf              |         -
+| `collection`                | `Number`   | Shows the remove button in each item                      |         -
+| `orderBy`                   | `Enum`   | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByPriceDESC`, `OrderByPriceASC` |`OrderByTopSaleDESC`
+| `productList`               | `ProductListSchema` | Product list schema.  `See ProductListSchema`    |         -
+
+For `RelatedProducts`:
+
+| Prop name          | Type       | Description   | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `recommendation`            | `Enum`   | Type of recommendations that is shown. Possible values: `editor.relatedProducts.similars`, `editor.relatedProducts.view`, `editor.relatedProducts.buy` | `editor.relatedProducts.similars`
+| `productList`               | `ProductListSchema` | Product list schema.  `See ProductListSchema`          | -
+
+`ProductListSchema`:
+
+| Prop name          | Type       | Description   | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `maxItems`                  | `Number`   | Maximum number of items in the shelf.                     | 10
+| `scroll`                    | `Enum`   | Scroll type of slide transiction.  Possible values: `BY_PAGE`, `ONE_BY_ONE` | `BY_PAGE`
+| `arrows`                    | `Boolean`  | If the arrows are showable or not.                        | `true`
+| `titleText`                 | `String`   | Title of the shelf.                                       | `null`
+| `summary`                   | `Object`   | Product Summary schema properties.                        | -
+| `gap`                       | `Enum`   | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`| `ph3`
+
+
+Also, you can configure the product summary that is defined on shelf. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
+
+### Styles API
+
+This app provides some CSS classes as an API for style customization.
+
+To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+
+1. Add the `styles` builder to your `manifest.json`:
+
+```json
+  "builders": {
+    "styles": "1.x"
+  }
 ```
 
-> 4- To run your Shelf App you should run on your workspace the command:
-
-```sh
-$ vtex link
-```
-
-
-## Schema Properties (Used By Editor)
-
-``` javascript
-- category // Category ID of the listed items in the shelf
-  - Type: Number
-- collection // Collection ID of the listed items in the shelf.
-  - Type: Number
-- orderBy // Ordenation type of the items in the shelf.
-  - Type: String
-  - Default: 'OrderByTopSaleDESC'
-  - Enum: ['OrderByTopSaleDESC', 'OrderByPriceDESC', 'OrderByPriceASC']
-- maxItems // Maximum number of items in the shelf.
-  - Type: Number
-  - Default: 10
-- itemsPerPage // Maximum number of items on the page.
-  - Type: Number
-  - Default: 5
-- scroll // Scroll type of slide transiction.
-  - Type: String
-  - Default: 'BY_PAGE'
-  - Enum: ['BY_PAGE', 'ONE_BY_ONE']
-- arrows // If the arrows are showable or not.
-  - Type: Boolean
-  - Default: true
-- titleText // Title of the shelf.
-  - Type: String
-  - Default: ''
-- summary // Product Summary schema properties
-  - Type: Object
-  - Properties
-    - showListPrice
-      -type: Boolean
-      -Default: true
-    - showLabels // Show product's prices' labels
-      -type: Boolean
-      -Default: true
-    - showInstallments // Show product's payment installments
-      -type: Boolean
-      -Default: true
-    - showBadge // Show the discount badge
-      -type: Boolean
-      -Default: true
-    - badgeText // Badge's text
-      -type: String
-    - buyButtonText // Custom buy button's text
-      -type: String
-    - displayBuyButton // Buy button display types.
-      - Type: String
-      - Default: 'DISPLAY_ALWAYS'
-      - Enum: ['DISPLAY_ALWAYS', 'DISPLAY_ON_HOVER', 'DISPLAY_NONE']
-```
-
-## CSS Classes
-
+2. Create a file called `vtex.shelf.css` inside the `styles/css` folder. Add your custom styles:
 ```css
-/* ==== '/react/CustomClasses.js' ==== */
-vtex-shelf
-vtex-shelf__title-text
-vtex-shelf__title-content
-vtex-shelf__slide
+.container {
+  margin-top: 10px;
+}
 ```
+#### CSS namespaces
+Below, we describe the namespaces that are defined in the `Shelf` and `RelatedProducts`.
+
+Class name        | Description                    | Component Source        
+----------------- | ------------------------------ | ------------------------
+`container`       | The main container of `Shelf` | [index](/react/Shelf.js)
+`title`           | Shelf title label | [index](/react/ProductList.js)
+`relatedProducts` | The main container of `RelatedProducts` | [index](/react/index.js)
+`slide`           | Slider in Shelf | [Popup](/react/ShelfContent.js)
+
+## Troubleshooting
+You can check if others are passing through similar issues [here](https://github.com/vtex-apps/shelf/issues). Also feel free to [open issues](https://github.com/vtex-apps/shelf/issues/new) or contribute with pull requests.
 
 ## Tests
 
-Run the tests with the command
-```
-cd react && yarn test
-```
+To execute our tests go to `react/` folder and run `yarn test` 
