@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.6.0] - 2019-02-15
+### Added 
+- Support to CSS Modules.
+
 ## [1.5.8] - 2019-02-14
 ### Changed
 - `Shelf` use full width when `itemsPerPage` are five or more and padding between items is set using tachyons.

@@ -12,6 +12,8 @@ import GapPaddingTypes, { getGapPaddingNames, getGapPaddingValues } from './padd
 import ShelfContent from './ShelfContent'
 import ShelfItem from './ShelfItem'
 
+import shelf from './shelf.css'
+
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 
@@ -66,7 +68,7 @@ class ProductList extends Component {
 
     return products && !products.length ? null : (
       <Fragment>
-        <div className="vtex-shelf__title t-heading-2 fw3 w-100 flex justify-center pt6 pb6 c-muted-1">
+        <div className={`${shelf.title} t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>
           {titleText || <FormattedMessage id="shelf.title" />}
         </div>
         <ReactResizeDetector handleWidth handleHeight>
