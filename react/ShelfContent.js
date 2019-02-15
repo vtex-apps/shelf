@@ -103,7 +103,7 @@ class ShelfContent extends Component {
       width: fullWidth ? "100%" : DEFAULT_SHELF_ITEM_WIDTH
     };
     return (
-      <div key={key} className={`${shelf.slide} pa4`}>
+      <div key={key} className={`${shelf.slide} h-100`}>
         <div style={style} className={`${gap} h-100`}>
           <ShelfItem item={item} summary={summary} />
         </div>
