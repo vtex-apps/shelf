@@ -1,8 +1,9 @@
-# Shelf
+VTEX Shelf
+=====
 
 ## Description
 
-VTEX App that shows a shelf of products, and this app is used by store theme.
+The VTEX shelf app is a store component that shows a collection of products, and this app is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
