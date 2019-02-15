@@ -9,7 +9,7 @@ import ShelfItem from "./ShelfItem";
 
 import shelf from "./shelf.css";
 
-const DEFAULT_SHELF_ITEM_WIDTH = 281;
+const DEFAULT_SHELF_ITEM_WIDTH = 260;
 const DOTS_LARGE_VIEWPORT = true;
 const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1;
 
