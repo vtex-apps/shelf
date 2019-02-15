@@ -2,12 +2,12 @@
 
 ## Description
 
-VTEX App that shows a shelf of products. This is a VTEX app that is used by Dreamstore product.
+VTEX App that shows a shelf of products, and this app is used by store theme.
 
-:loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request.
+:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
+| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
 | :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
 | [1.x]    | **Current Release** |  2018-11-08     |                       |             | 2.x
 | [0.x]    | **Maintenance LTS** |  2018-04-19     | 2018-11-08            | March 2019  | 1.x
