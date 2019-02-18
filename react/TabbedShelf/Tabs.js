@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
-import { isMobileOnly } from 'react-device-detect'
-
 import tabbedShelf from './tabbedShelf.css'
 
 class Tabs extends Component {
@@ -10,10 +8,6 @@ class Tabs extends Component {
   state = {
     selectedIndex: 0
   }
-
-  getTabMenuSize = () => isMobileOnly ? 100 : 15
-
-  getShelfSize = () => isMobileOnly ? 100 : 85
 
   handleClick = (index) => this.setState({ selectedIndex: index })
 
@@ -25,8 +19,8 @@ class Tabs extends Component {
     }
 
     return (
-      <div className={`${tabbedShelf.tabsContainer} flex-ns pa6-ns`}>
-        <div className={`${tabbedShelf.tabsNamesContainer} flex flex-column`} style={{ width: `${this.getTabMenuSize()}%` }}>
+      <div className={`${tabbedShelf.tabsContainer} flex-ns pa6-ns justify-center-ns`}>
+        <div className={`${tabbedShelf.tabsNamesContainer} flex flex-column`}>
           {panes.map((pane, index) => {
             const isSelected = index === selectedIndex
             const isLast = index === panes.length - 1
@@ -46,10 +40,7 @@ class Tabs extends Component {
             )
           })}
         </div>
-        <div
-          className={`${tabbedShelf.shelfContainer} ml5-ns`} 
-          style={{ width: `${this.getShelfSize()}%` }}
-        >
+        <div className={`${tabbedShelf.shelfContainer} ml5-ns`}>
           {panes[selectedIndex].render()}
         </div>
       </div>
