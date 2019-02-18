@@ -9,6 +9,7 @@
   "editor.shelf.gap.title": "Gap between Items",
   "editor.shelf.scrollType.title": "Scroll Type",
   "editor.shelf.arrows.title": "Arrows",
+  "editor.shelf.titleText.showTitle": "Show title of the shelf",
   "editor.shelf.titleText.title": "Title Text",
   "editor.shelf.summary.title": "Product Summary",
   "editor.shelf.orderType.sales": "Sales",

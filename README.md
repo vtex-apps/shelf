@@ -113,6 +113,7 @@ For `RelatedProducts`:
 | `maxItems`                  | `Number`   | Maximum number of items in the shelf.                     | 10
 | `scroll`                    | `Enum`   | Scroll type of slide transiction.  Possible values: `BY_PAGE`, `ONE_BY_ONE` | `BY_PAGE`
 | `arrows`                    | `Boolean`  | If the arrows are showable or not.                        | `true`
+| `showTitle`                 | `Boolean`   | Show title of the shelf.                                 | `true`
 | `titleText`                 | `String`   | Title of the shelf.                                       | `null`
 | `summary`                   | `Object`   | Product Summary schema properties.                        | -
 | `gap`                       | `Enum`   | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`| `ph3`

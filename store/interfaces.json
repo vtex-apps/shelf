@@ -1,8 +1,14 @@
 {
   "shelf": {
+    "required": [
+      "product-summary"
+    ],
     "component": "Shelf"
   },
-  "related-products": {
+  "shelf.relatedProducts": {
+    "required": [
+      "product-summary"
+    ],
     "component": "RelatedProducts"
   }
 }

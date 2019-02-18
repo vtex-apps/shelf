@@ -64,6 +64,8 @@ export const productListSchemaPropTypes = {
   scroll: PropTypes.oneOf(getScrollValues()),
   /** If the arrows are showable or not. */
   arrows: PropTypes.bool.isRequired,
+  /** Show value of the title. */
+  showTitle: PropTypes.bool,
   /** Text value of the title. */
   titleText: PropTypes.string,
   /** Product Summary schema props */

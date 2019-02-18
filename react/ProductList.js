@@ -61,6 +61,7 @@ class ProductList extends Component {
       summary,
       isMobile,
       gap,
+      showTitle,
     } = this.props
 
     const filteredProducts =
@@ -68,9 +69,9 @@ class ProductList extends Component {
 
     return products && !products.length ? null : (
       <Fragment>
-        <div className={`${shelf.title} t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>
+        {showTitle && <div className={`${shelf.title} t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>
           {titleText || <FormattedMessage id="shelf.title" />}
-        </div>
+        </div>}
         <ReactResizeDetector handleWidth handleHeight>
           {
             width => (
@@ -134,6 +135,12 @@ ProductList.getSchema = props => {
         default: ProductList.defaultProps.arrows,
         isLayout: true,
       },
+      showTitle: {
+        title: 'editor.shelf.titleText.showTitle',
+        type: 'boolean',
+        default: ProductList.defaultProps.showTitle,
+        isLayout: true,
+      },
       titleText: {
         title: 'editor.shelf.titleText.title',
         type: 'string',
@@ -155,6 +162,7 @@ ProductList.defaultProps = {
   scroll: ScrollTypes.BY_PAGE.value,
   gap: GapPaddingTypes.SMALL.value,
   arrows: true,
+  showTitle: true,
   titleText: null,
   isMobile: false,
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import ProductSummary from 'vtex.product-summary/index'
 import { path, assocPath } from 'ramda'
+
+import { ExtensionPoint } from 'vtex.render-runtime'
 
 import { shelfItemPropTypes } from './propTypes'
 
@@ -28,6 +29,6 @@ export default class ShelfItem extends Component {
   render() {
     const { item, summary } = this.props
     const newSummary = assocPath(['name', 'tag'], 'h2', summary)
-    return <ProductSummary product={this.normalizeProduct(item)} {...newSummary} />
+    return <ExtensionPoint id="product-summary" product={this.normalizeProduct(item)} {...newSummary} />
   }
 }
