@@ -118,6 +118,82 @@ For `RelatedProducts`:
 | `summary`                   | `Object`   | Product Summary schema properties.                        | -
 | `gap`                       | `Enum`   | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`| `ph3`
 
+For `TabbedShelf`:
+
+| Prop name          | Type       | Description   | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `isEnabled`            | `Boolean`   | True if component should appear | `false`
+| `headline`            | `String`   | Text shown on top of component (leave empty to not display) | `''`
+| `bottomText`            | `String`   | Text shown on bottom of component (leave empty to not display) | `''`
+| `buttonText`            | `String`   | Text shown on button underneath the component (leave empty to not display the button) | `''`
+| `buttonUrl`            | `String`   | Url to redirect user when button is pressed | `''`
+| `tabs`               | `TabsSchema` | Tabs configuration to be displayed.  `See TabsSchema`          | -
+| `shelf`               | `Shelf` | Props for the shelf displayed, same type as `Shelf`.  `See Shelf`          | -
+
+For `TabsSchema`:
+| Prop name          | Type       | Description   | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `children`            | `[TabsChildrenSchema]`   | Array of children to be displayed. Maximum number of items is 6. Items should be of `TabsChildrenSchema`  | `-`
+
+For `TabsChildrenSchema`:
+| Prop name          | Type       | Description   | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `id`            | `Number`   | id of category to be displayed  | `-`
+
+Example of Usage of `TabbedShelf`:
+```json
+"shelf.tabbed": {
+    "blocks": [
+      "product-summary"
+    ],
+    "props": {
+      "isEnabled": true,
+      "tabs": {
+        "children": [
+          { 
+            "id": 1,
+            "__editorItemTitle": "Balls"
+          },
+          { 
+            "id": 2,
+            "__editorItemTitle": "Clothes"
+          },
+          { 
+            "id": 3,
+            "__editorItemTitle": "Underwear"
+          }
+        ]
+      },
+      "shelf": {
+        "orderBy": "OrderByTopSaleDESC",
+        "productList": {
+          "maxItems": 4,
+          "itemsPerPage": 4,
+          "scroll": "BY_PAGE",
+          "arrows": false,
+          "showTitle": false,
+          "summary": {
+            "displayBuyButton": "displayButtonAlways",
+            "isOneClickBuy": true,
+            "showBadge": true,
+            "badgeText": "OFF",
+            "buyButtonText": "Add to cart",
+            "showCollections": false,
+            "showListPrice": true,
+            "showLabels": false,
+            "showInstallments": false,
+            "showSavings": false,
+            "name": {
+              "showBrandName": false,
+              "showSku": false,
+              "showProductReference": false
+            }
+          }
+        }
+      }
+    }
+  }
+  ```
 
 Also, you can configure the product summary that is defined on shelf. See [here](https://github.com/vtex-apps/product-summary/blob/master/README.md#configuration) the Product Summary API.
 

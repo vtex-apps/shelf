@@ -22,7 +22,7 @@ class TabbedShelf extends Component {
     static propTypes = {
         isEnabled: PropTypes.bool,
         headline: PropTypes.string,
-        copy: PropTypes.string,
+        bottomText: PropTypes.string,
         tabs: PropTypes.shape({
           children: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number,
@@ -38,7 +38,7 @@ class TabbedShelf extends Component {
     static defaultProps = {
         isEnabled: false,
         headline: '',
-        copy: '',
+        bottomText: '',
         tabs: { children: [] },
         shelf: {},
     };
@@ -61,7 +61,7 @@ class TabbedShelf extends Component {
         const {
             isEnabled,
             headline,
-            copy,
+            bottomText,
             buttunUrl,
             buttonText,
             tabs
@@ -84,7 +84,7 @@ class TabbedShelf extends Component {
                         <h3 className={`${tabbedShelf.headline}`}>{headline}</h3>
                           <Tabs panes={panes} />
                         <div className={`${tabbedShelf.blockContainer}`}>
-                            <p className={`${tabbedShelf.blockText}`}>{copy}</p>
+                            <p className={`${tabbedShelf.blockText}`}>{bottomText}</p>
                             {buttonText ? (
                                 <div className={`${tabbedShelf.buttonContainer}`}>
                                   <Button onClick={() => this.handleButtonClick({buttunUrl})}>{buttonText}</Button>
@@ -116,8 +116,8 @@ TabbedShelf.getSchema = props => ({
             title: 'editor.tabbed-shelf.headline',
             type: 'string',
         },
-        copy: {
-            title: 'editor.tabbed-shelf.copy',
+        bottomText: {
+            title: 'editor.tabbed-shelf.bottomText',
             type: 'string',
             widget: {
                 'ui:widget': 'textarea',

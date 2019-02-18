@@ -33,7 +33,7 @@
   "editor.tabbed-shelf.description":"Component description",
   "editor.tabbed-shelf.isEnabled.title":"True if component is enabled",
   "editor.tabbed-shelf.headline":"Text to be showed as headline",
-  "editor.tabbed-shelf.copy":"Copy",
+  "editor.tabbed-shelf.bottomText":"Bottom Text",
   "editor.tabbed-shelf.tabs":"Category Tabs",
   "editor.tabbed-shelf.buttonText":"Text to be displayed inside button",
   "editor.tabbed-shelf.buttonUrl":"Button URL (absolute)",

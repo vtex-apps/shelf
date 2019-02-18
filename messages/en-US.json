@@ -29,7 +29,7 @@
   "editor.tabbed-shelf.description":"Tabbed Shelf featured product module",
   "editor.tabbed-shelf.isEnabled.title":"Enabled",
   "editor.tabbed-shelf.headline":"Headline",
-  "editor.tabbed-shelf.copy":"Copy",
+  "editor.tabbed-shelf.bottomText":"Bottom Text",
   "editor.tabbed-shelf.buttonText":"Button Text",
   "editor.tabbed-shelf.buttonUrl":"Button URL (absolute)",
   "editor.tabbed-shelf.tabs.children":"Categories",
