@@ -23,12 +23,10 @@ class TabbedShelf extends Component {
         isEnabled: PropTypes.bool,
         headline: PropTypes.string,
         bottomText: PropTypes.string,
-        tabs: PropTypes.shape({
-          children: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.number,
-            __editorItemTitle: PropTypes.string,
-          }))
-        }),
+        tabs: PropTypes.PropTypes.arrayOf(PropTypes.shape({
+          id: PropTypes.number,
+          __editorItemTitle: PropTypes.string,
+        })),
         shelf: PropTypes.object,
     };
 
@@ -39,7 +37,7 @@ class TabbedShelf extends Component {
         isEnabled: false,
         headline: '',
         bottomText: '',
-        tabs: { children: [] },
+        tabs: [],
         shelf: {},
     };
 
@@ -67,7 +65,7 @@ class TabbedShelf extends Component {
             tabs
         } = this.props
 
-        const panes = (tabs.children.length > 0 ? tabs.children.map(tab => (
+        const panes = (tabs.length > 0 ? tabs.map(tab => (
             { menuItem: tab.__editorItemTitle, render: () => (
               <Shelf
                 {...{ ...this.props.shelf }}
@@ -133,25 +131,19 @@ TabbedShelf.getSchema = props => ({
         },
         tabs: {
             title:'editor.tabbed-shelf.tabs',
-            type: 'object',
-            properties: {
-                children: {
-                    title: 'editor.tabbed-shelf.tabs.children',
-                    type: 'array',
-                    minItems: 0,
-                    maxItems: MAX_NUMBER_OF_MENUS,
-                    items: {
-                        title: 'editor.tabbed-shelf.tabs.children.items',
-                        type: 'object',
-                        properties: {
-                            id: {
-                                title: 'editor.tabbed-shelf.tabs.children.id',
-                                type: 'number',
-                            },
-                        },
+            type: 'array',
+            minItems: 0,
+            maxItems: MAX_NUMBER_OF_MENUS,
+            items: {
+                title: 'editor.tabbed-shelf.tabs.items',
+                type: 'object',
+                properties: {
+                    id: {
+                        title: 'editor.tabbed-shelf.tabs.items.id',
+                        type: 'number',
                     },
-                }
-            }
+                },
+            },
         },
         shelf: {
           title: 'editor.tabbed-shelf.shelf.title',

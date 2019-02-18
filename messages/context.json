@@ -37,8 +37,7 @@
   "editor.tabbed-shelf.tabs":"Category Tabs",
   "editor.tabbed-shelf.buttonText":"Text to be displayed inside button",
   "editor.tabbed-shelf.buttonUrl":"Button URL (absolute)",
-  "editor.tabbed-shelf.tabs.children":"Categories",
-  "editor.tabbed-shelf.tabs.children.items":"Category Item",
-  "editor.tabbed-shelf.tabs.children.id":"Category Id",
+  "editor.tabbed-shelf.tabs.items":"Category Item",
+  "editor.tabbed-shelf.tabs.items.id":"Category Id",
   "editor.tabbed-shelf.shelf.title": "Shelf properties"
 }

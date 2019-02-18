@@ -127,15 +127,10 @@ For `TabbedShelf`:
 | `bottomText`            | `String`   | Text shown on bottom of component (leave empty to not display) | `''`
 | `buttonText`            | `String`   | Text shown on button underneath the component (leave empty to not display the button) | `''`
 | `buttonUrl`            | `String`   | Url to redirect user when button is pressed | `''`
-| `tabs`               | `TabsSchema` | Tabs configuration to be displayed.  `See TabsSchema`          | -
+| `tabs`               | `[TabsSchemaItem]` | Tabs should be an array of items of type `TabsSchemaItem`.          | -
 | `shelf`               | `Shelf` | Props for the shelf displayed, same type as `Shelf`.  `See Shelf`          | -
 
-For `TabsSchema`:
-| Prop name          | Type       | Description   | Default value |
-| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
-| `children`            | `[TabsChildrenSchema]`   | Array of children to be displayed. Maximum number of items is 6. Items should be of `TabsChildrenSchema`  | `-`
-
-For `TabsChildrenSchema`:
+For `TabsSchemaItem`:
 | Prop name          | Type       | Description   | Default value |
 | ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
 | `id`            | `Number`   | id of category to be displayed  | `-`
@@ -148,8 +143,7 @@ Example of Usage of `TabbedShelf`:
     ],
     "props": {
       "isEnabled": true,
-      "tabs": {
-        "children": [
+      "tabs": [
           { 
             "id": 1,
             "__editorItemTitle": "Balls"
@@ -162,8 +156,7 @@ Example of Usage of `TabbedShelf`:
             "id": 3,
             "__editorItemTitle": "Underwear"
           }
-        ]
-      },
+        ],
       "shelf": {
         "orderBy": "OrderByTopSaleDESC",
         "productList": {
