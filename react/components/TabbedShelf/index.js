@@ -90,7 +90,7 @@ class TabbedShelf extends Component {
                             ) : ('')}
                         </div>
                     </div>
-                ) : ('')
+                ) : null
                 }
             </Fragment>
         );
