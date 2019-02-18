@@ -28,5 +28,17 @@
   "editor.relatedProducts.similars": "editor.relatedProducts.similars",
   "editor.relatedProducts.view": "editor.relatedProducts.view",
   "editor.relatedProducts.buy": "editor.relatedProducts.buy",
-  "shelf.title": "shelf.title"
+  "shelf.title": "shelf.title",
+  "editor.tabbed-shelf.title":"Component title",
+  "editor.tabbed-shelf.description":"Component description",
+  "editor.tabbed-shelf.isEnabled.title":"True if component is enabled",
+  "editor.tabbed-shelf.headline":"Text to be showed as headline",
+  "editor.tabbed-shelf.copy":"Copy",
+  "editor.tabbed-shelf.tabs":"Category Tabs",
+  "editor.tabbed-shelf.buttonText":"Text to be displayed inside button",
+  "editor.tabbed-shelf.buttonUrl":"Button URL (absolute)",
+  "editor.tabbed-shelf.tabs.children":"Categories",
+  "editor.tabbed-shelf.tabs.children.items":"Category Item",
+  "editor.tabbed-shelf.tabs.children.id":"Category Id",
+  "editor.tabbed-shelf.shelf.title": "Shelf properties"
 }

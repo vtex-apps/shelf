@@ -24,5 +24,17 @@
   "editor.relatedProducts.similars": "Similar products",
   "editor.relatedProducts.view": "Who saw this, also saw...",
   "editor.relatedProducts.buy": "Who bought this, also bought...",
-  "shelf.title": "Best Products"
+  "shelf.title": "Best Products",
+  "editor.tabbed-shelf.title":"Tabbed Shelf",
+  "editor.tabbed-shelf.description":"Tabbed Shelf featured product module",
+  "editor.tabbed-shelf.isEnabled.title":"Enabled",
+  "editor.tabbed-shelf.headline":"Headline",
+  "editor.tabbed-shelf.copy":"Copy",
+  "editor.tabbed-shelf.buttonText":"Button Text",
+  "editor.tabbed-shelf.buttonUrl":"Button URL (absolute)",
+  "editor.tabbed-shelf.tabs.children":"Categories",
+  "editor.tabbed-shelf.tabs.children.items":"Category Item",
+  "editor.tabbed-shelf.tabs.children.id":"Category Id",
+  "editor.tabbed-shelf.tabs":"Tabs",
+  "editor.tabbed-shelf.shelf.title": "Shelf"
 }
