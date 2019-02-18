@@ -1,3 +1,3 @@
-import TabbedShelf from './TabbedShelf/index'
+import TabbedShelf from './components/TabbedShelf/index'
 
 export default TabbedShelf

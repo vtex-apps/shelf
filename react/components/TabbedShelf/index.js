@@ -4,7 +4,7 @@ import React, { Fragment, Component } from 'react'
 import { Button } from 'vtex.styleguide'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import Tabs from './Tabs'
-import Shelf from '../Shelf'
+import Shelf from '../../Shelf'
 
 const MAX_NUMBER_OF_MENUS = 6
 
