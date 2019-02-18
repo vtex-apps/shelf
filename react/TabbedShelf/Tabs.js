@@ -19,13 +19,14 @@ class Tabs extends Component {
     }
 
     return (
-      <div className={`${tabbedShelf.tabsContainer} flex-ns pa6-ns justify-center-ns`}>
-        <div className={`${tabbedShelf.tabsNamesContainer} flex flex-column`}>
+      <div className="flex justify-center items-center">
+      <div className={`${tabbedShelf.tabsContainer} flex-ns pa6-ns justify-between-ns w-100-s`}>
+        <div className={`${tabbedShelf.tabsNamesContainer} flex flex-column mh6`}>
           {panes.map((pane, index) => {
             const isSelected = index === selectedIndex
             const isLast = index === panes.length - 1
-            const itemContainer = classNames(`t-body pv4 ph3 tl bb b--action-primary ${tabbedShelf.itemContainer}`, {
-              [`bg-action-primary c-on-muted-1 ${tabbedShelf.itemContainerSelected}`]: isSelected,
+            const itemContainer = classNames(`t-body pa4 tl bb b--muted-4 ${tabbedShelf.itemContainer}`, {
+              [`bg-base--inverted c-on-muted-1 ${tabbedShelf.itemContainerSelected}`]: isSelected,
               [tabbedShelf.itemContainerUnselected]: !isSelected,
               'bw0': isLast,
             })
@@ -40,9 +41,10 @@ class Tabs extends Component {
             )
           })}
         </div>
-        <div className={`${tabbedShelf.shelfContainer} ml5-ns`}>
+        <div className={`${tabbedShelf.shelfContainer} mh6-s mw-100 overflow-hidden`}>
           {panes[selectedIndex].render()}
         </div>
+      </div>
       </div>
     )
   }
