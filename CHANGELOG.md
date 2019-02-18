@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.0] - 2019-02-18
+### Added
+- Add configuration to show the shelf title.
+
+### Changed
+- Add `product-summary` as a block in `interfaces.json`.
+
 ## [1.6.0] - 2019-02-15
 ### Added 
 - Support to CSS Modules.
