@@ -1,7 +1,7 @@
 {
   "name": "shelf",
   "vendor": "vtex",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
@@ -19,6 +19,7 @@
   "dependencies": {
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "3.x",
-    "vtex.product-summary": "2.x"
+    "vtex.product-summary": "2.x",
+    "vtex.styleguide": "9.x"
   }
 }

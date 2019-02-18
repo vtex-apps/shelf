@@ -10,5 +10,11 @@
       "product-summary"
     ],
     "component": "RelatedProducts"
+  },
+  "shelf.tabbed": {
+    "required": [
+      "product-summary"
+    ],
+    "component": "TabbedShelf"
   }
 }

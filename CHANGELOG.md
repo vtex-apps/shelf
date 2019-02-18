@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.8.0] - 2019-02-18
+### Added
+- Create `TabbedShelf` component, add to interfaces
+
 ## [1.7.0] - 2019-02-18
 ### Added
 - Add configuration to show the shelf title.

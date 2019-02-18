@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-client": "^2.4.7",
+    "classnames": "^2.2.6",
     "ramda": "^0.25.0",
     "react": "^16.5.1",
     "react-apollo": "^2.1.3",
