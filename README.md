@@ -135,7 +135,7 @@ For `TabsSchemaItem`:
 | ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
 | `id`            | `Number`   | id of category to be displayed  | `-`
 
-Example of Usage of `TabbedShelf`:
+"Since `TabbedShelf` props have a different structure, we add an example of usage below: "
 ```json
 "shelf.tabbed": {
     "blocks": [
