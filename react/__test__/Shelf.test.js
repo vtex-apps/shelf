@@ -1,8 +1,6 @@
 /* eslint-env jest */
 import React from 'react'
-import { MockedProvider } from 'react-apollo/test-utils'
 import { render } from 'test-utils'
-import productsQuery from '../queries/productsQuery.gql'
 import ProductList from '../ProductList'
 
 describe('Shelf component', () => {
