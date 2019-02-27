@@ -4,17 +4,7 @@ import { PropTypes } from 'prop-types'
 /**
  * Link Mocked Component.
  */
-export class Link extends Component {
-  static propTypes = {
-    children: PropTypes.element,
-  }
-
-  render() {
-    return (
-      <a href="#">{this.props.children}</a>
-    )
-  }
-}
+export const Link = ({ page, children }) => <a href={page}>{children}</a>
 
 export class NoSSR extends Component {
   static propTypes = {
@@ -22,10 +12,6 @@ export class NoSSR extends Component {
   }
 
   render() {
-    return this.props.children
+    return <div className="nossr-mock">{this.props.children}</div>
   }
-}
-
-export function withRuntimeContext(Comp) {
-  return Comp
 }

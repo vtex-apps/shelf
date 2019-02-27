@@ -1,12 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 /**
  * Container Mocked Component.
  */
-export default class Container extends Component {
-  render() {
-    return (
-      <div>Container</div>
-    )
-  }
-}
+export const Container = ({ children }) => (
+  <section className="container-mock">{children}</section>
+)

@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
@@ -7,7 +6,10 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 
 import Container from 'vtex.store-components/Container'
 
-import OrdenationTypes, { getOrdenationNames, getOrdenationValues } from './OrdenationTypes'
+import OrdenationTypes, {
+  getOrdenationNames,
+  getOrdenationValues,
+} from './OrdenationTypes'
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
 import productsQuery from './queries/productsQuery.gql'
@@ -20,7 +22,6 @@ import './global.css'
  * Shelf Component. Queries a list of products and shows them.
  */
 class Shelf extends Component {
-
   shouldComponentUpdate(nextProps) {
     return !Boolean(this.props.data.error && nextProps.data.error)
   }
