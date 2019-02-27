@@ -37,8 +37,7 @@
   "jest": {
     "verbose": true,
     "modulePaths": [
-      "<rootDir>/testUtils",
-      "<rootDir>/__mocks__"
+      "<rootDir>/testUtils"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/testUtils/setupTests.js"

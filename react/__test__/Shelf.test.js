@@ -4,7 +4,7 @@ import { render } from 'test-utils'
 import ProductList from '../ProductList'
 
 describe('Shelf component', () => {
-  const renderComponent = (customProps = {}) => {
+  const renderComponent = () => {
     const props = {
       maxItems: 1,
       itemsPerPage: 1,
