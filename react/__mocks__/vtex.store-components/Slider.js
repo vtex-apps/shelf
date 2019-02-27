@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 /**
  * SlickSlider Mocked Component.
  */
-export default class Slider extends Component {
-  render() {
-    return (
-      <div>Slider</div>
-    )
-  }
+const Slider = ({ children }) => {
+  return <div className="slider-mock">{children}</div>
 }
+
+export default Slider

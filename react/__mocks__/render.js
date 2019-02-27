@@ -10,9 +10,7 @@ export class Link extends Component {
   }
 
   render() {
-    return (
-      <a href="#">{this.props.children}</a>
-    )
+    return <a href="#">{this.props.children}</a>
   }
 }
 
@@ -22,10 +20,6 @@ export class NoSSR extends Component {
   }
 
   render() {
-    return this.props.children
+    return <div className="nossr-mock">{this.props.children}</div>
   }
-}
-
-export function withRuntimeContext(Comp) {
-  return Comp
 }

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shelf component should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="title t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1"
+  >
+    <span>
+      Best Products
+    </span>
+  </div>
+  <div>
+    <div
+      class="vtex-shelf__content flex justify-center"
+    >
+      <div
+        class="mw9"
+        style="width: 200px;"
+      >
+        <div
+          class="slider-mock"
+        >
+          <div
+            class="slide h-100"
+          >
+            <div
+              class="ph3 h-100"
+              style="width: 260px;"
+            >
+              <div
+                class="extension-point-mock"
+              >
+                Product Summary extension point
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
