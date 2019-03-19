@@ -21,7 +21,7 @@ export default class ShelfItem extends Component {
       const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] = path(['sellers'], sku) || []
       const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
       const [image = { imageUrl: '' }] = path(['images'], sku) || []
-      const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 400)
+      const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
       const normalizedImage = { ...image, imageUrl: resizedImage }
       normalizedProduct.sku = { ...sku, seller, referenceId, image: normalizedImage }
     }
