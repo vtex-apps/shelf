@@ -10,9 +10,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added image resize for 400px.
-
-### Added
-
 - Snapshot tests.
 
 ## [1.8.0] - 2019-02-18
