@@ -11,3 +11,5 @@ install:
   - yarn
 script: 
   - yarn test
+after_success:
+  - yarn gen:coveralls
