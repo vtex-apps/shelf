@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.8.1] - 2019-03-19
+
 ### Added
 
+- Added image resize for 500px.
 - Snapshot tests.
 
 ## [1.8.0] - 2019-02-18

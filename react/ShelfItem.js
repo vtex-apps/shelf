@@ -4,6 +4,7 @@ import { path, assocPath } from 'ramda'
 import { ExtensionPoint } from 'vtex.render-runtime'
 
 import { shelfItemPropTypes } from './propTypes'
+import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
 
 /**
  * ShelfItem Component. Normalizes the item received in the props
@@ -20,8 +21,9 @@ export default class ShelfItem extends Component {
       const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] = path(['sellers'], sku) || []
       const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
       const [image = { imageUrl: '' }] = path(['images'], sku) || []
-      const unmixedImage = { ...image, imageUrl: image.imageUrl.replace(/^https?:/, '') }
-      normalizedProduct.sku = { ...sku, seller, referenceId, image: unmixedImage }
+      const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
+      const normalizedImage = { ...image, imageUrl: resizedImage }
+      normalizedProduct.sku = { ...sku, seller, referenceId, image: normalizedImage }
     }
     return normalizedProduct
   }
