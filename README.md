@@ -239,3 +239,4 @@ To execute our tests go to `react/` folder and run `yarn test`
 ### Travis CI
 
 [![Build Status](https://travis-ci.org/vtex-apps/shelf.svg?branch=master)](https://travis-ci.org/vtex-apps/shelf)
+[![Coverage Status](https://coveralls.io/repos/github/vtex-apps/shelf/badge.svg?branch=master)](https://coveralls.io/github/vtex-apps/shelf?branch=master)
