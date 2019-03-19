@@ -29,7 +29,6 @@ class Shelf extends Component {
   render() {
     const { data, productList, runtime } = this.props
     const products = path(['products'], data)
-    console.log("products", products)
     const productListProps = {
       products,
       loading: data.loading,
