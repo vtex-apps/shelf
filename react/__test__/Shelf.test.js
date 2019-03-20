@@ -5,13 +5,12 @@ import ProductList from '../ProductList'
 import { productMock } from '../__mocks__/productMock'
 
 describe('Shelf component', () => {
-
   const renderComponent = customProps => {
     const props = {
       maxItems: 1,
       itemsPerPage: 1,
       arrows: true,
-      showTitle: true
+      showTitle: true,
     }
 
     const wrapper = render(<ProductList {...props} {...customProps} />)

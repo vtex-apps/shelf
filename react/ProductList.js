@@ -8,7 +8,10 @@ import { FormattedMessage } from 'react-intl'
 import ReactResizeDetector from 'react-resize-detector'
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
-import GapPaddingTypes, { getGapPaddingNames, getGapPaddingValues } from './paddingEnum'
+import GapPaddingTypes, {
+  getGapPaddingNames,
+  getGapPaddingValues,
+} from './paddingEnum'
 import ShelfContent from './ShelfContent'
 import ShelfItem from './ShelfItem'
 
@@ -30,19 +33,16 @@ function normalizeBuyable(product) {
 
   return buyableItems
     ? {
-      ...product,
-      items: buyableItems,
-    }
+        ...product,
+        items: buyableItems,
+      }
     : null
 }
 
 function getBuyableSellers(sellers) {
   return (
     path(['length'], sellers) &&
-    sellers.filter(
-      seller =>
-        path(['sellerId'], seller)
-    )
+    sellers.filter(seller => path(['sellerId'], seller))
   )
 }
 
@@ -69,25 +69,29 @@ class ProductList extends Component {
 
     return products && !products.length ? null : (
       <Fragment>
-        {showTitle && <div className={`${shelf.title} t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>
-          {titleText || <FormattedMessage id="shelf.title" />}
-        </div>}
+        {showTitle && (
+          <div
+            className={`${
+              shelf.title
+            } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
+          >
+            {titleText || <FormattedMessage id="shelf.title" />}
+          </div>
+        )}
         <ReactResizeDetector handleWidth handleHeight>
-          {
-            width => (
-              <ShelfContent
-                products={filteredProducts}
-                maxItems={maxItems}
-                arrows={arrows}
-                scroll={scroll}
-                itemsPerPage={itemsPerPage}
-                summary={summary}
-                isMobile={isMobile}
-                width={width}
-                gap={gap}
-              />
-            )
-          }
+          {width => (
+            <ShelfContent
+              products={filteredProducts}
+              maxItems={maxItems}
+              arrows={arrows}
+              scroll={scroll}
+              itemsPerPage={itemsPerPage}
+              summary={summary}
+              isMobile={isMobile}
+              width={width}
+              gap={gap}
+            />
+          )}
         </ReactResizeDetector>
       </Fragment>
     )

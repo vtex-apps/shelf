@@ -18,12 +18,18 @@ export default class ShelfItem extends Component {
     const normalizedProduct = { ...product }
     const [sku] = normalizedProduct.items
     if (sku) {
-      const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] = path(['sellers'], sku) || []
+      const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] =
+        path(['sellers'], sku) || []
       const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
       const [image = { imageUrl: '' }] = path(['images'], sku) || []
       const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
       const normalizedImage = { ...image, imageUrl: resizedImage }
-      normalizedProduct.sku = { ...sku, seller, referenceId, image: normalizedImage }
+      normalizedProduct.sku = {
+        ...sku,
+        seller,
+        referenceId,
+        image: normalizedImage,
+      }
     }
     return normalizedProduct
   }
@@ -31,6 +37,12 @@ export default class ShelfItem extends Component {
   render() {
     const { item, summary } = this.props
     const newSummary = assocPath(['name', 'tag'], 'h2', summary)
-    return <ExtensionPoint id="product-summary" product={this.normalizeProduct(item)} {...newSummary} />
+    return (
+      <ExtensionPoint
+        id="product-summary"
+        product={this.normalizeProduct(item)}
+        {...newSummary}
+      />
+    )
   }
 }
