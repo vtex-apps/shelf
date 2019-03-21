@@ -3,7 +3,10 @@
     "required": [
       "product-summary"
     ],
-    "component": "Shelf"
+    "component": "Shelf",
+    "track": [
+      "click"
+    ]
   },
   "shelf.relatedProducts": {
     "required": [
