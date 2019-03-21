@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.8.2] - 2019-03-21
+### Changed
+- Use most generic language files.
+
 ## [1.8.1] - 2019-03-19
 
 ### Added
