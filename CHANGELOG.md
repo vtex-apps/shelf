@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.8.3] - 2019-03-21
+### Fixed
+- Search for first available item on sku list.
+
 ## [1.8.2] - 2019-03-21
 ### Changed
 - Use most generic language files.
