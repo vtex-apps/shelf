@@ -135,7 +135,7 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll, gap, isMobile, width } = this.props
+    const { products, maxItems, scroll, isMobile, width } = this.props
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
     const sliderSettings = this.getSliderSettings(this.itemsToShow)
     const sliderWidth =
