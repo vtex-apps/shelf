@@ -7,16 +7,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.9.1] - 2019-03-25
+
+### Fixed
+
+- Fix proptypes warnings.
+
 ## [1.9.0] - 2019-03-21
+
 ### Added
+
 - Track click events
 
 ## [1.8.3] - 2019-03-21
+
 ### Fixed
+
 - Search for first available item on sku list.
 
 ## [1.8.2] - 2019-03-21
+
 ### Changed
+
 - Use most generic language files.
 
 ## [1.8.1] - 2019-03-19
