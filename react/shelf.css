@@ -1,16 +1,45 @@
 .container {
-    --dots-color: #000000;
-    --dots-size: 1rem;
-    --dots-size-sm: 4vw;
-    --dots-size-m: 1vw;
+  --dots-color: #000000;
+  --dots-size: 1rem;
+  --dots-size-sm: 4vw;
+  --dots-size-m: 1vw;
 
-    --prod-size-ss: 270px;
-    --prod-size-s: 196px;
+  --prod-size-ss: 270px;
+  --prod-size-s: 196px;
 }
 
-.title { }
+.title {
+}
 
-.relatedProducts { }
+.relatedProducts {
+}
 
-.slide { } 
+.slide {
+}
 
+.arrow {
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.arrowLeft {
+  left: 0;
+}
+
+.arrowRight {
+  right: 0;
+}
+
+.arrowsContainerWrapper {
+}
+
+.arrowsContainer {
+}
+
+.slide {
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+}

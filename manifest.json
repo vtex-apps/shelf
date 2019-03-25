@@ -5,9 +5,7 @@
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
@@ -20,6 +18,8 @@
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "3.x",
     "vtex.product-summary": "2.x",
-    "vtex.styleguide": "9.x"
+    "vtex.styleguide": "9.x",
+    "vtex.slider": "0.x",
+    "vtex.store-icons": "0.x"
   }
 }
