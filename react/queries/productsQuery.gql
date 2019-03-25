@@ -46,6 +46,12 @@ query Products(
           Price
           ListPrice
         }
+        fixedPrices {
+          taggedPrice
+          price
+          listPrice
+          quantity
+        }
       }
     }
     productClusters {
