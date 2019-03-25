@@ -30,19 +30,6 @@ class ShelfContent extends Component {
     this.setState({ currentSlide: i })
   }
 
-  handleNextSlide = () => {
-    this.setState(({ currentSlide }) => {
-      const bannersLength = this.props.banners.filter(
-        banner => banner && (banner.mobileImage || banner.image)
-      ).length
-      const nextSlide = (currentSlide + 1) % bannersLength
-
-      return {
-        currentSlide: nextSlide,
-      }
-    })
-  }
-
   arrowRender = ({ orientation, onClick }) => {
     const containerClasses = classNames(
       shelf.arrow,
@@ -76,18 +63,6 @@ class ShelfContent extends Component {
     )
   }
 
-  slideFallback = (item = {}, key, fullWidth) => {
-    const { summary } = this.props
-    const style = {
-      width: fullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
-    }
-    return (
-      <div key={key} style={style} className="h-100">
-        <ShelfItem item={item} summary={summary} />
-      </div>
-    )
-  }
-
   render() {
     const {
       products,
@@ -97,11 +72,16 @@ class ShelfContent extends Component {
       width,
       itemsPerPage,
       arrows,
+      summary,
     } = this.props
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
 
     const isFullWidth = width === this.sliderWidth
+
+    const style = {
+      width: isFullWidth ? '100%' : DEFAULT_SHELF_ITEM_WIDTH,
+    }
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
 
@@ -131,11 +111,13 @@ class ShelfContent extends Component {
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
-                {this.slideFallback(
-                  item,
-                  path(['productId'], item) || index,
-                  isFullWidth
-                )}
+                <div
+                  key={path(['productId'], item) || index}
+                  style={style}
+                  className="h-100"
+                >
+                  <ShelfItem item={item} summary={summary} />
+                </div>
               </Slide>
             ))}
           </Slider>
