@@ -1,6 +1,4 @@
 .container {
-  --prod-size-ss: 270px;
-  --prod-size-s: 196px;
 }
 
 .title {
@@ -23,15 +21,6 @@
 
 .arrowRight {
   right: 0;
-}
-
-.arrowsContainerWrapper {
-}
-
-.arrowsContainer {
-}
-
-.slide {
 }
 
 .dot {
