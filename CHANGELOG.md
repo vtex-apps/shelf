@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- FIx proptypes warnings.
+- Fix proptypes warnings.
 
 ## [1.9.0] - 2019-03-21
 
