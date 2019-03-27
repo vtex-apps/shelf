@@ -49,8 +49,8 @@ class ShelfContent extends Component {
 
   calcItemsPerPage = () => {
     const { itemsPerPage } = this.props
-    for (var key in this.perPage) {
-      this.perPage[key] > itemsPerPage && delete this.perPage[key]
+    for (let key in this.perPage) {
+      if (this.perPage[key] > itemsPerPage) delete this.perPage[key]
     }
   }
 
