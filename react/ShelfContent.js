@@ -90,23 +90,6 @@ class ShelfContent extends Component {
     )
   }
 
-  ArrowContainerRender = ({ children }) => {
-    const wrapperClasses = classNames(
-      shelf.arrowsContainerWrapper,
-      'w-100 h-100 absolute left-0 top-0 flex justify-center'
-    )
-    const containerClasses = classNames(
-      shelf.arrowsContainer,
-      'w-100 h-100 mw9 flex-ns justify-between items-center dn-s'
-    )
-
-    return (
-      <div className={wrapperClasses}>
-        <Container className={containerClasses}>{children}</Container>
-      </div>
-    )
-  }
-
   render() {
     const { products, maxItems, scroll, gap, arrows, summary } = this.props
 
