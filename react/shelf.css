@@ -1,16 +1,30 @@
 .container {
-    --dots-color: #000000;
-    --dots-size: 1rem;
-    --dots-size-sm: 4vw;
-    --dots-size-m: 1vw;
-
-    --prod-size-ss: 270px;
-    --prod-size-s: 196px;
 }
 
-.title { }
+.slider-container {
+}
 
-.relatedProducts { }
+.title {
+}
 
-.slide { } 
+.relatedProducts {
+}
 
+.slide {
+}
+
+.arrow {
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.arrowLeft {
+}
+
+.arrowRight {
+}
+
+.dot {
+  height: 0.625rem;
+  width: 0.625rem;
+}
