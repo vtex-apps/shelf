@@ -11,29 +11,30 @@ exports[`Shelf component should match the snapshot 1`] = `
   </div>
   <div>
     <div
-      class="vtex-shelf__content flex justify-center"
+      class="flex justify-center"
     >
       <div
-        class="mw9"
-        style="width: 200px;"
+        class="slider-container-mock"
       >
         <div
           class="slider-mock"
         >
           <div
-            class="slide h-100"
+            class="slide-mock"
           >
             <div
-              class="ph3 h-100"
-              style="width: 260px;"
+              class="extension-point-mock"
             >
-              <div
-                class="extension-point-mock"
-              >
-                Product Summary extension point
-              </div>
+              Product Summary extension point
             </div>
           </div>
+        </div>
+        <div
+          class="nossr-mock"
+        >
+          <div
+            class="dots-mock"
+          />
         </div>
       </div>
     </div>

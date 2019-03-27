@@ -108,19 +108,12 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const {
-      products,
-      maxItems,
-      scroll,
-      gap,
-      width,
-      arrows,
-      summary,
-    } = this.props
+    const { products, maxItems, scroll, gap, arrows, summary } = this.props
 
     const { firstRender } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
+    const style = !firstRender ? { width: this.sliderWidth } : {}
 
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
@@ -128,11 +121,8 @@ class ShelfContent extends Component {
     const { currentSlide } = this.state
 
     return (
-      <div className="vtex-shelf__content flex justify-center">
-        <SliderContainer
-          style={!firstRender ? { width: this.sliderWidth } : {}}
-          className="mw9"
-        >
+      <div className="flex justify-center">
+        <SliderContainer style={style} className="mw9">
           <Slider
             perPage={this.perPage}
             onChangeSlide={this.handleChangeSlide}
@@ -160,7 +150,7 @@ class ShelfContent extends Component {
               showDotsPerPage
               perPage={this.perPage}
               currentSlide={currentSlide}
-              totalSlides={products.length}
+              totalSlides={productList.slice(0, maxItems).length}
               onChangeSlide={this.handleChangeSlide}
               classes={{
                 root: 'pt4',

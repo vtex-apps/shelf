@@ -1,5 +1,3 @@
-import './global.css'
-
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
