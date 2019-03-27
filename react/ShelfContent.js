@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
-import { path, range } from 'ramda'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
+import { NoSSR } from 'vtex.render-runtime'
 import {
   Slider,
   Slide,
@@ -16,7 +17,6 @@ import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
 
 import shelf from './shelf.css'
-import { forEach } from 'iterall'
 
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
@@ -40,18 +40,19 @@ class ShelfContent extends Component {
       [SLIDER_WIDTH_TWO_ELEMENTS]: 2,
       [SLIDER_WIDTH_ONE_ELEMENT]: 1,
     }
+    this.calcItemsPerPage()
     this.state = {
       currentSlide: 0,
       firstRender: true,
     }
   }
 
-  // calcPerPage = () => {
-  //   const { itemsPerPage } = this.props
-  //   range(1, itemsPerPage + 1).forEach(index => {
-  //     this.perPage[index] = index
-  //   })
-  // }
+  calcItemsPerPage = () => {
+    const { itemsPerPage } = this.props
+    for (var key in this.perPage) {
+      this.perPage[key] > itemsPerPage && delete this.perPage[key]
+    }
+  }
 
   handleChangeSlide = i => {
     this.setState({ currentSlide: i })
@@ -73,17 +74,18 @@ class ShelfContent extends Component {
   }
 
   arrowRender = ({ orientation, onClick }) => {
+    const { gap } = this.props
     const containerClasses = classNames(
       shelf.arrow,
       'pointer z-1 flex absolute',
       {
-        [`${shelf.arrowLeft} left-0`]: orientation === 'left',
-        [`${shelf.arrowRight} right-0`]: orientation === 'right',
+        [`${shelf.arrowLeft} left-0 ${gap}`]: orientation === 'left',
+        [`${shelf.arrowRight} right-0 ${gap}`]: orientation === 'right',
       }
     )
     return (
       <div className={containerClasses} onClick={onClick}>
-        <IconCaret orientation={orientation} thin size={25} />
+        <IconCaret orientation={orientation} thin size={20} />
       </div>
     )
   }
@@ -120,11 +122,6 @@ class ShelfContent extends Component {
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
 
-    const isFullWidth = width === this.sliderWidth
-
-    const style = {
-      width: '100%',
-    }
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
 
@@ -142,12 +139,13 @@ class ShelfContent extends Component {
             currentSlide={currentSlide}
             arrowRender={arrows && this.arrowRender}
             scrollByPage={isScrollByPage}
-            duration={400}
+            duration={500}
             loop
+            easing="ease"
           >
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide
-                sliderTransitionDuration={400}
+                sliderTransitionDuration={500}
                 className={classNames('justify-center h-100', gap)}
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
@@ -156,20 +154,22 @@ class ShelfContent extends Component {
               </Slide>
             ))}
           </Slider>
-          <Dots
-            loop
-            showDotsPerPage
-            perPage={this.perPage}
-            currentSlide={currentSlide}
-            totalSlides={products.length}
-            onChangeSlide={this.handleChangeSlide}
-            classes={{
-              root: 'pt4',
-              notActiveDot: 'bg-muted-3',
-              dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
-              activeDot: 'bg-emphasis',
-            }}
-          />
+          <NoSSR>
+            <Dots
+              loop
+              showDotsPerPage
+              perPage={this.perPage}
+              currentSlide={currentSlide}
+              totalSlides={products.length}
+              onChangeSlide={this.handleChangeSlide}
+              classes={{
+                root: 'pt4',
+                notActiveDot: 'bg-muted-3',
+                dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
+                activeDot: 'bg-emphasis',
+              }}
+            />
+          </NoSSR>
         </SliderContainer>
       </div>
     )
