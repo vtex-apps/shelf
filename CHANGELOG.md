@@ -7,13 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.10.3] - 2019-03-29
+
+### Fixed
+
+- Remove Product Summary schema.
+
 ## [1.10.2] - 2019-03-28
+
 ### Changed
+
 - Storefront label names when option is only for web devices.
 
 ## [1.10.1] - 2019-03-27
 
 ## [1.10.0] - 2019-03-27
+
 ### Changed
 
 - Replace `slick-slider` to `vtex-slider`.

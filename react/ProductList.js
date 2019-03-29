@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
-import ProductSummary from 'vtex.product-summary/index'
 import { FormattedMessage } from 'react-intl'
 import ReactResizeDetector from 'react-resize-detector'
 import { productListSchemaPropTypes } from './propTypes'
@@ -148,11 +147,6 @@ ProductList.getSchema = props => {
         type: 'string',
         default: ProductList.defaultProps.titleText,
         isLayout: false,
-      },
-      summary: {
-        title: 'editor.shelf.summary.title',
-        type: 'object',
-        properties: ProductSummary.getSchema(props).properties,
       },
     },
   }
