@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.10.4] - 2019-03-29
+
+### Fixed
+
+- Add gap types names in `en.json`.
+
 ## [1.10.3] - 2019-03-29
 
 ### Fixed
