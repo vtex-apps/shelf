@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add slide per page option on slider.
+
 ## [1.10.4] - 2019-03-29
 
 ### Fixed
