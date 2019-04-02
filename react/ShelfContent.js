@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
+import { path, min } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
@@ -59,9 +59,12 @@ class ShelfContent extends Component {
   }
 
   get sliderWidth() {
-    const { width } = this.props
+    const { width, products } = this.props
 
-    const items = resolveSlidesNumber(this.perPage)
+    const items = min(
+      resolveSlidesNumber(this.perPage),
+      products && products.length
+    )
     const slider = items * DEFAULT_SHELF_ITEM_WIDTH
 
     if (items >= ITEMS_TO_FULL_WIDTH || width <= slider) return width
