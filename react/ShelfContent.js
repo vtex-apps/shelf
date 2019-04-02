@@ -130,7 +130,7 @@ class ShelfContent extends Component {
           <NoSSR>
             <Dots
               loop
-              showDotsPerPage
+              showDotsPerPage={isScrollByPage}
               perPage={this.perPage}
               currentSlide={currentSlide}
               totalSlides={productList.slice(0, maxItems).length}
