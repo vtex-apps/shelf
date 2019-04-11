@@ -13,13 +13,16 @@ import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
 export default class ShelfItem extends Component {
   static propTypes = shelfItemPropTypes
 
-  findAvailableProduct = item => item.sellers.find(({ commertialOffer = {}}) => commertialOffer.AvailableQuantity > 0)
+  findAvailableProduct = item =>
+    item.sellers.find(
+      ({ commertialOffer = {} }) => commertialOffer.AvailableQuantity > 0
+    )
 
   normalizeProduct(product) {
     if (!product) return null
     const normalizedProduct = { ...product }
     const items = normalizedProduct.items || []
-    const sku = items.find(this.findAvailableProduct)
+    const sku = items.find(this.findAvailableProduct) || items[0]
     if (sku) {
       const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] =
         path(['sellers'], sku) || []
