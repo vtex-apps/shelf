@@ -50,22 +50,22 @@ Shelf.defaultProps = {
 
 Shelf.getSchema = props => {
   return {
-    title: 'editor.shelf.title',
-    description: 'editor.shelf.description',
+    title: 'admin/editor.shelf.title',
+    description: 'admin/editor.shelf.description',
     type: 'object',
     properties: {
       category: {
-        title: 'editor.shelf.category.title',
+        title: 'admin/editor.shelf.category.title',
         type: 'number',
         isLayout: false,
       },
       collection: {
-        title: 'editor.shelf.collection.title',
+        title: 'admin/editor.shelf.collection.title',
         type: 'number',
         isLayout: false,
       },
       orderBy: {
-        title: 'editor.shelf.orderBy.title',
+        title: 'admin/editor.shelf.orderBy.title',
         type: 'string',
         enum: getOrdenationValues(),
         enumNames: getOrdenationNames(),

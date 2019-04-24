@@ -34,7 +34,7 @@ export default class RelatedProducts extends Component {
   }
 
   static defaultProps = {
-    recommendation: 'editor.relatedProducts.similars',
+    recommendation: 'admin/editor.relatedProducts.similars',
     productList: {
       ...ProductList.defaultProps,
       titleText: 'Related Products',
@@ -47,19 +47,19 @@ export default class RelatedProducts extends Component {
       RelatedProducts.defaultProps.productList.titleText
 
     return {
-      title: 'editor.relatedProducts.title',
-      description: 'editor.relatedProducts.description',
+      title: 'admin/editor.relatedProducts.title',
+      description: 'admin/editor.relatedProducts.description',
       type: 'object',
       properties: {
         recommendation: {
-          title: 'editor.relatedProducts.recommendation',
-          description: 'editor.relatedProducts.recommendation.description',
+          title: 'admin/editor.relatedProducts.recommendation',
+          description: 'admin/editor.relatedProducts.recommendation.description',
           type: 'string',
           default: RelatedProducts.defaultProps.recommendation,
           enum: [
-            'editor.relatedProducts.similars',
-            'editor.relatedProducts.view',
-            'editor.relatedProducts.buy',
+            'admin/editor.relatedProducts.similars',
+            'admin/editor.relatedProducts.view',
+            'admin/editor.relatedProducts.buy',
           ],
         },
         productList: productListSchema,

@@ -2,19 +2,19 @@ import { pluck, values } from 'ramda'
 
 const gapPaddingTypes = {
   NONE: {
-    name: 'editor.shelf.gapType.none',
+    name: 'admin/editor.shelf.gapType.none',
     value:'ph0',
   },
   SMALL: {
-    name: 'editor.shelf.gapType.small',
+    name: 'admin/editor.shelf.gapType.small',
     value:'ph3',
   },
   MEDIUM: {
-    name: 'editor.shelf.gapType.medium',
+    name: 'admin/editor.shelf.gapType.medium',
     value:'ph5',
   },
   LARGE: {
-    name: 'editor.shelf.gapType.large',
+    name: 'admin/editor.shelf.gapType.large',
     value:'ph7',
   },
 }
