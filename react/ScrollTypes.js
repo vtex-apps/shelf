@@ -1,10 +1,10 @@
 const scrollTypes = {
   BY_PAGE: {
-    name: 'editor.shelf.scrollType.byPage',
+    name: 'admin/editor.shelf.scrollType.byPage',
     value: 'BY_PAGE',
   },
   ONE_BY_ONE: {
-    name: 'editor.shelf.scrollType.oneByOne',
+    name: 'admin/editor.shelf.scrollType.oneByOne',
     value: 'ONE_BY_ONE',
   },
 }

@@ -101,52 +101,52 @@ class TabbedShelf extends Component {
  * Schema for component to allow configuration of props from admin configuration
  */
 TabbedShelf.getSchema = props => ({
-    title: 'editor.tabbed-shelf.title',
-    description: 'editor.tabbed-shelf.description',
+    title: 'admin/editor.tabbed-shelf.title',
+    description: 'admin/editor.tabbed-shelf.description',
     type: 'object',
     properties: {
         isEnabled: {
-            title: 'editor.tabbed-shelf.isEnabled.title',
+            title: 'admin/editor.tabbed-shelf.isEnabled.title',
             type: 'boolean',
             default: false,
         },
         headline: {
-            title: 'editor.tabbed-shelf.headline',
+            title: 'admin/editor.tabbed-shelf.headline',
             type: 'string',
         },
         bottomText: {
-            title: 'editor.tabbed-shelf.bottomText',
+            title: 'admin/editor.tabbed-shelf.bottomText',
             type: 'string',
             widget: {
                 'ui:widget': 'textarea',
             },
         },
         buttonText: {
-            title: 'editor.tabbed-shelf.buttonText',
+            title: 'admin/editor.tabbed-shelf.buttonText',
             type: 'string',
         },
         buttunUrl: {
-            title: 'editor.tabbed-shelf.buttonUrl',
+            title: 'admin/editor.tabbed-shelf.buttonUrl',
             type: 'string',
         },
         tabs: {
-            title:'editor.tabbed-shelf.tabs',
+            title:'admin/editor.tabbed-shelf.tabs',
             type: 'array',
             minItems: 0,
             maxItems: MAX_NUMBER_OF_MENUS,
             items: {
-                title: 'editor.tabbed-shelf.tabs.items',
+                title: 'admin/editor.tabbed-shelf.tabs.items',
                 type: 'object',
                 properties: {
                     id: {
-                        title: 'editor.tabbed-shelf.tabs.items.id',
+                        title: 'admin/editor.tabbed-shelf.tabs.items.id',
                         type: 'number',
                     },
                 },
             },
         },
         shelf: {
-          title: 'editor.tabbed-shelf.shelf.title',
+          title: 'admin/editor.tabbed-shelf.shelf.title',
           type: 'object',
           properties: Shelf.getSchema(props).properties,
         },

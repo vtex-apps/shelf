@@ -72,7 +72,7 @@ class ProductList extends Component {
               shelf.title
             } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
           >
-            {titleText || <FormattedMessage id="shelf.title" />}
+            {titleText || <FormattedMessage id="store/shelf.title" />}
           </div>
         )}
         <ReactResizeDetector handleWidth handleHeight>
@@ -97,18 +97,18 @@ class ProductList extends Component {
 
 ProductList.getSchema = props => {
   return {
-    title: 'editor.shelf.title',
-    description: 'editor.shelf.description',
+    title: 'admin/editor.shelf.title',
+    description: 'admin/editor.shelf.description',
     type: 'object',
     properties: {
       maxItems: {
-        title: 'editor.shelf.maxItems.title',
+        title: 'admin/editor.shelf.maxItems.title',
         type: 'number',
         default: ProductList.defaultProps.maxItems,
         isLayout: true,
       },
       gap: {
-        title: 'editor.shelf.gap.title',
+        title: 'admin/editor.shelf.gap.title',
         type: 'string',
         enum: getGapPaddingValues(),
         enumNames: getGapPaddingNames(),
@@ -116,14 +116,14 @@ ProductList.getSchema = props => {
         isLayout: true,
       },
       itemsPerPage: {
-        title: 'editor.shelf.itemsPerPage.title',
+        title: 'admin/editor.shelf.itemsPerPage.title',
         type: 'number',
         enum: [3, 4, 5],
         default: ProductList.defaultProps.itemsPerPage,
         isLayout: true,
       },
       scroll: {
-        title: 'editor.shelf.scrollType.title',
+        title: 'admin/editor.shelf.scrollType.title',
         type: 'string',
         enum: getScrollValues(),
         enumNames: getScrollNames(),
@@ -131,19 +131,19 @@ ProductList.getSchema = props => {
         isLayout: true,
       },
       arrows: {
-        title: 'editor.shelf.arrows.title',
+        title: 'admin/editor.shelf.arrows.title',
         type: 'boolean',
         default: ProductList.defaultProps.arrows,
         isLayout: true,
       },
       showTitle: {
-        title: 'editor.shelf.titleText.showTitle',
+        title: 'admin/editor.shelf.titleText.showTitle',
         type: 'boolean',
         default: ProductList.defaultProps.showTitle,
         isLayout: true,
       },
       titleText: {
-        title: 'editor.shelf.titleText.title',
+        title: 'admin/editor.shelf.titleText.title',
         type: 'string',
         default: ProductList.defaultProps.titleText,
         isLayout: false,
