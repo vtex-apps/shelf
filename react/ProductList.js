@@ -72,7 +72,7 @@ class ProductList extends Component {
               shelf.title
             } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
           >
-            {titleText || <FormattedMessage id="store/shelf.title" />}
+            <FormattedMessage id={titleText || 'store/shelf.title'}/>
           </div>
         )}
         <ReactResizeDetector handleWidth>
@@ -140,13 +140,14 @@ ProductList.getSchema = props => {
         title: 'admin/editor.shelf.titleText.showTitle',
         type: 'boolean',
         default: ProductList.defaultProps.showTitle,
-        isLayout: true,
+        isLayout: true
       },
       titleText: {
         title: 'admin/editor.shelf.titleText.title',
         type: 'string',
         default: ProductList.defaultProps.titleText,
         isLayout: false,
+        format: 'IOMessage'
       },
     },
   }

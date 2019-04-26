@@ -1,0 +1,13 @@
+{
+  "title": "Content meta-schema",
+  "definitions": {
+    "ProductList": {
+      "properties": {
+        "titleText": { "$ref": "#/definitions/Text" }
+      }    
+    },
+    "Text": {
+      "format": "IOMessage"
+    }
+  }
+}
