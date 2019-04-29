@@ -110,14 +110,23 @@ class ShelfContent extends Component {
       <div className="flex justify-center">
         <SliderContainer style={style} className="mw9">
           <Slider
+            loop
             perPage={this.perPage}
             onChangeSlide={this.handleChangeSlide}
             currentSlide={currentSlide}
             arrowRender={arrows && this.arrowRender}
             scrollByPage={isScrollByPage}
             duration={500}
-            loop
             easing="ease"
+            dots={{
+              show: true,
+              classes: {
+                root: 'pt4',
+                notActiveDot: 'bg-muted-3',
+                dot: classNames(shelf.dot, 'mh2 h1 w1 mv0 pointer br-100'),
+                activeDot: 'bg-emphasis',
+              },
+            }}
           >
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide
@@ -130,22 +139,6 @@ class ShelfContent extends Component {
               </Slide>
             ))}
           </Slider>
-          <NoSSR>
-            <Dots
-              loop
-              showDotsPerPage={isScrollByPage}
-              perPage={this.perPage}
-              currentSlide={currentSlide}
-              totalSlides={productList.slice(0, maxItems).length}
-              onChangeSlide={this.handleChangeSlide}
-              classes={{
-                root: 'pt4',
-                notActiveDot: 'bg-muted-3',
-                dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
-                activeDot: 'bg-emphasis',
-              }}
-            />
-          </NoSSR>
         </SliderContainer>
       </div>
     )
