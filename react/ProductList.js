@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { identity, path } from 'ramda'
 import React, { Component, Fragment } from 'react'
-import { FormattedMessage } from 'react-intl'
 import ReactResizeDetector from 'react-resize-detector'
+import { IOMessage } from 'vtex.native-types'
+
 import { productListSchemaPropTypes } from './propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
 import GapPaddingTypes, {
@@ -72,7 +73,7 @@ class ProductList extends Component {
               shelf.title
             } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
           >
-            <FormattedMessage id={titleText || 'store/shelf.title'}/>
+            <IOMessage defaultId="store/shelf.title" id={titleText} />
           </div>
         )}
         <ReactResizeDetector handleWidth>
@@ -140,7 +141,7 @@ ProductList.getSchema = props => {
         title: 'admin/editor.shelf.titleText.showTitle',
         type: 'boolean',
         default: ProductList.defaultProps.showTitle,
-        isLayout: true
+        isLayout: true,
       },
       titleText: {
         title: 'admin/editor.shelf.titleText.title',
