@@ -15,6 +15,7 @@ import {
 import { getGapPaddingValues } from './paddingEnum'
 import ScrollTypes from './ScrollTypes'
 import ShelfItem from './ShelfItem'
+import { shelfItemPropTypes } from './propTypes'
 
 import shelf from './shelf.css'
 
@@ -158,7 +159,7 @@ ShelfContent.defaultProps = {
 
 ShelfContent.propTypes = {
   /** List of products */
-  products: PropTypes.arrayOf(ShelfItem.propTypes.item),
+  products: PropTypes.arrayOf(shelfItemPropTypes.item),
   /** Max Items per page */
   itemsPerPage: PropTypes.number.isRequired,
   /** Max items in shelf */

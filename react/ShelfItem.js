@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { path, assocPath } from 'ramda'
 
 import { ExtensionPoint } from 'vtex.render-runtime'
+import { Pixel } from 'vtex.pixel-manager/PixelContext'
 
 import { shelfItemPropTypes } from './propTypes'
 import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
@@ -10,8 +11,15 @@ import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
  * ShelfItem Component. Normalizes the item received in the props
  * to adapt to the extension point prop.
  */
-export default class ShelfItem extends Component {
+export class ShelfItem extends Component {
   static propTypes = shelfItemPropTypes
+
+  sendProductClickEvent = product => {
+    this.props.push({
+      event: 'productClick',
+      product: product,
+    })
+  }
 
   findAvailableProduct = item =>
     item.sellers.find(
@@ -47,8 +55,11 @@ export default class ShelfItem extends Component {
       <ExtensionPoint
         id="product-summary"
         product={this.normalizeProduct(item)}
+        actionOnClick={() => this.sendProductClickEvent(item)}
         {...newSummary}
       />
     )
   }
 }
+
+export default Pixel(ShelfItem)

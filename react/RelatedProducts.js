@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
-import ShelfItem from './ShelfItem'
+import { ShelfItem } from './ShelfItem'
 import shelf from './shelf.css'
 
 /**

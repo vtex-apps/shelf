@@ -10,7 +10,7 @@ import GapPaddingTypes, {
   getGapPaddingValues,
 } from './paddingEnum'
 import ShelfContent from './ShelfContent'
-import ShelfItem from './ShelfItem'
+import { ShelfItem } from './ShelfItem'
 
 import shelf from './shelf.css'
 
