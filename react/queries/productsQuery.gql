@@ -19,6 +19,10 @@ query Products(
     productName
     description
     categories
+    categoryTree {
+      name
+      href
+    }
     link
     linkText
     brand
