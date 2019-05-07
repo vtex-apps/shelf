@@ -73,7 +73,7 @@ class ProductList extends Component {
               shelf.title
             } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
           >
-            <IOMessage defaultId="store/shelf.title" id={titleText} />
+            <IOMessage id={titleText} />
           </div>
         )}
         <ReactResizeDetector handleWidth>
