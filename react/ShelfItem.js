@@ -11,7 +11,7 @@ import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
  * ShelfItem Component. Normalizes the item received in the props
  * to adapt to the extension point prop.
  */
-export class ShelfItem extends Component {
+class ShelfItem extends Component {
   static propTypes = shelfItemPropTypes
 
   sendProductClickEvent = product => {

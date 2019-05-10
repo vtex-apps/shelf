@@ -10,7 +10,7 @@ import GapPaddingTypes, {
   getGapPaddingValues,
 } from './paddingEnum'
 import ShelfContent from './ShelfContent'
-import { ShelfItem } from './ShelfItem'
+import { shelfItemPropTypes } from './propTypes'
 
 import shelf from './shelf.css'
 
@@ -167,7 +167,7 @@ ProductList.propTypes = {
   /** Loading status */
   loading: PropTypes.bool,
   /** Graphql data response. */
-  products: PropTypes.arrayOf(ShelfItem.propTypes.item),
+  products: PropTypes.arrayOf(shelfItemPropTypes.item),
   /** Verifies if is a mobile device. */
   isMobile: PropTypes.bool,
   ...productListSchemaPropTypes,

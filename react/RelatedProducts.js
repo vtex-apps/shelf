@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
-import { ShelfItem } from './ShelfItem'
+import { shelfItemPropTypes } from './propTypes'
 import shelf from './shelf.css'
 
 /**
@@ -21,11 +21,11 @@ export default class RelatedProducts extends Component {
         /** Recommendations property */
         recommendations: PropTypes.shape({
           /** View recommendations (who saw this product, also saw...) */
-          view: PropTypes.arrayOf(ShelfItem.propTypes.item),
+          view: PropTypes.arrayOf(shelfItemPropTypes.item),
           /** Buy recommendations (who bought this product, also bought...) */
-          buy: PropTypes.arrayOf(ShelfItem.propTypes.item),
+          buy: PropTypes.arrayOf(shelfItemPropTypes.item),
           /** Similar products */
-          similars: PropTypes.arrayOf(ShelfItem.propTypes.item),
+          similars: PropTypes.arrayOf(shelfItemPropTypes.item),
         }),
       }),
     }),
