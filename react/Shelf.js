@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-import { withRuntimeContext } from 'vtex.render-runtime'
+import { compose, branch, renderComponent } from 'recompose'
+import { withRuntimeContext, Loading } from 'vtex.render-runtime'
 
 import OrdenationTypes, {
   getOrdenationNames,
@@ -99,6 +100,7 @@ const options = {
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
+    ssr: false,
     variables: {
       category,
       collection,
@@ -110,4 +112,10 @@ const options = {
   }),
 }
 
-export default graphql(productsQuery, options)(withRuntimeContext(Shelf))
+export default compose(
+  graphql(productsQuery, options),
+  branch(
+    props => props.data && props.data.loading,
+    renderComponent(Loading)
+  )
+)(withRuntimeContext(Shelf))

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.13.1] - 2019-05-13
+### Added
+- Adds loading preview to the shelf interfaces.
+
+### Changed
+- Disabled SSR on graphql query. Intended to be a temporary change.
+
 ## [1.13.0] - 2019-05-07
 
 ## [1.12.0] - 2019-04-24
