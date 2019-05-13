@@ -6,18 +6,30 @@
     "component": "Shelf",
     "track": [
       "click"
-    ]
+    ],
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   },
   "shelf.relatedProducts": {
     "required": [
       "product-summary"
     ],
-    "component": "RelatedProducts"
+    "component": "RelatedProducts",
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   },
   "shelf.tabbed": {
     "required": [
       "product-summary"
     ],
-    "component": "TabbedShelf"
+    "component": "TabbedShelf",
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   }
 }
