@@ -49,35 +49,6 @@ Shelf.defaultProps = {
   productList: ProductList.defaultProps,
 }
 
-Shelf.getSchema = props => {
-  return {
-    title: 'admin/editor.shelf.title',
-    description: 'admin/editor.shelf.description',
-    type: 'object',
-    properties: {
-      category: {
-        title: 'admin/editor.shelf.category.title',
-        type: 'number',
-        isLayout: false,
-      },
-      collection: {
-        title: 'admin/editor.shelf.collection.title',
-        type: 'number',
-        isLayout: false,
-      },
-      orderBy: {
-        title: 'admin/editor.shelf.orderBy.title',
-        type: 'string',
-        enum: getOrdenationValues(),
-        enumNames: getOrdenationNames(),
-        default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-        isLayout: false,
-      },
-      productList: ProductList.getSchema(props),
-    },
-  }
-}
-
 Shelf.propTypes = {
   /** Graphql data response. */
   data: PropTypes.shape({
@@ -112,10 +83,41 @@ const options = {
   }),
 }
 
-export default compose(
+const EnhancedShelf = compose(
   graphql(productsQuery, options),
   branch(
     props => props.data && props.data.loading,
     renderComponent(Loading)
   )
 )(withRuntimeContext(Shelf))
+
+EnhancedShelf.getSchema = props => {
+  return {
+    title: 'admin/editor.shelf.title',
+    description: 'admin/editor.shelf.description',
+    type: 'object',
+    properties: {
+      category: {
+        title: 'admin/editor.shelf.category.title',
+        type: 'number',
+        isLayout: false,
+      },
+      collection: {
+        title: 'admin/editor.shelf.collection.title',
+        type: 'number',
+        isLayout: false,
+      },
+      orderBy: {
+        title: 'admin/editor.shelf.orderBy.title',
+        type: 'string',
+        enum: getOrdenationValues(),
+        enumNames: getOrdenationNames(),
+        default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+        isLayout: false,
+      },
+      productList: ProductList.getSchema(props),
+    },
+  }
+}
+
+export default EnhancedShelf
