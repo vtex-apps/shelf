@@ -3,6 +3,7 @@ import React from 'react'
 import { render } from '@vtex/test-tools/react'
 import ProductList from '../ProductList'
 import { productMock } from '../__mocks__/productMock'
+import Shelf from '../Shelf'
 
 describe('Shelf component', () => {
   const renderComponent = customProps => {
@@ -31,5 +32,11 @@ describe('Shelf component', () => {
   it('should match the snapshot', () => {
     const component = renderComponent({ products: productMock })
     expect(component.asFragment()).toMatchSnapshot()
+  })
+
+  it('should show in Site Editor', () => {
+    const schema = Shelf.schema || Shelf.getSchema({})
+    expect(schema).toBeDefined()
+    expect(typeof schema.title).toBe('string')
   })
 })

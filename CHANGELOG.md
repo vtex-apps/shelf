@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.14.1] - 2019-05-16
+
+### Fixed
+- Export `getSchema` on `Shelf`.
+
 ## [1.14.0] - 2019-05-15
 ### Added
 - Send productClick events to Pixel Manager.
