@@ -14,7 +14,7 @@ import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
 class ShelfItem extends Component {
   static propTypes = shelfItemPropTypes
 
-  sendProductClickEvent = product => {
+  pushPixelProductClick = product => {
     this.props.push({
       event: 'productClick',
       product: product,
@@ -48,6 +48,22 @@ class ShelfItem extends Component {
     return normalizedProduct
   }
 
+  pushPixelProductImpression = (product, position) => {
+    if (!product) return
+    this.props.push({
+      event: 'productImpression',
+      list: 'Shelf',
+      position,
+      product,
+    })
+  }
+
+  componentDidMount() {
+    const { item, position } = this.props
+    const product = this.normalizeProduct(item)
+    this.pushPixelProductImpression(product, position)
+  }
+
   render() {
     const { item, summary } = this.props
     const newSummary = assocPath(['name', 'tag'], 'h2', summary)
@@ -56,7 +72,7 @@ class ShelfItem extends Component {
       <ExtensionPoint
         id="product-summary"
         product={product}
-        actionOnClick={() => this.sendProductClickEvent(product)}
+        actionOnClick={() => this.pushPixelProductClick(product)}
         {...newSummary}
       />
     )

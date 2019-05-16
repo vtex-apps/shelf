@@ -11,7 +11,6 @@ import {
   SliderContainer,
   resolveSlidesNumber,
 } from 'vtex.slider'
-import { Pixel } from 'vtex.pixel-manager/PixelContext'
 
 import { getGapPaddingValues } from './paddingEnum'
 import ScrollTypes from './ScrollTypes'
@@ -76,7 +75,6 @@ class ShelfContent extends Component {
 
   componentDidMount() {
     this.setState({ firstRender: false })
-    this.pushPixelProductsImpressions()
   }
 
   arrowRender = ({ orientation, onClick }) => {
@@ -94,19 +92,6 @@ class ShelfContent extends Component {
         <IconCaret orientation={orientation} thin size={20} />
       </div>
     )
-  }
-
-  pushPixelProductsImpressions = () => {
-    const { products } = this.props
-    if (products)
-      products.forEach((product, index) => {
-        this.props.push({
-          event: 'productImpression',
-          list: 'Home Page Shelf',
-          position: index + 1,
-          product,
-        })
-      })
   }
 
   render() {
@@ -142,7 +127,7 @@ class ShelfContent extends Component {
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
-                <ShelfItem item={item} summary={summary} />
+                <ShelfItem item={item} summary={summary} position={index + 1} />
               </Slide>
             ))}
           </Slider>
@@ -168,7 +153,11 @@ class ShelfContent extends Component {
   }
 }
 
-export const propTypes = {
+ShelfContent.defaultProps = {
+  itemsPerPage: 5,
+}
+
+ShelfContent.propTypes = {
   /** List of products */
   products: PropTypes.arrayOf(shelfItemPropTypes.item),
   /** Max Items per page */
@@ -189,10 +178,4 @@ export const propTypes = {
   gap: PropTypes.oneOf(getGapPaddingValues()),
 }
 
-ShelfContent.defaultProps = {
-  itemsPerPage: 5,
-}
-
-ShelfContent.propTypes = propTypes
-
-export default Pixel(ShelfContent)
+export default ShelfContent

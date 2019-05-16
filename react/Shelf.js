@@ -12,9 +12,7 @@ import OrdenationTypes, {
 import ProductList from './ProductList'
 import { productListSchemaPropTypes } from './propTypes'
 import productsQuery from './queries/productsQuery.gql'
-import ShelfContent, {
-  propTypes as ShelfContentPropTypes,
-} from './ShelfContent'
+import ShelfContent from './ShelfContent'
 
 import shelf from './shelf.css'
 
@@ -54,7 +52,7 @@ Shelf.defaultProps = {
 Shelf.propTypes = {
   /** Graphql data response. */
   data: PropTypes.shape({
-    products: ShelfContentPropTypes.products,
+    products: ShelfContent.propTypes.products,
   }),
   /** Category Id. */
   category: PropTypes.number,

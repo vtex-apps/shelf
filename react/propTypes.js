@@ -53,6 +53,7 @@ export const shelfItemPropTypes = {
     ).isRequired,
   }),
   summary: PropTypes.any,
+  position: PropTypes.number,
 }
 
 export const productListSchemaPropTypes = {
