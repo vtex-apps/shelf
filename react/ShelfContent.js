@@ -16,7 +16,7 @@ const ShelfContent = ({ products, maxItems, summary, itemsPerPage }) => {
   const productList =
     !products || !products.length ? Array(maxItems).fill(null) : products
 
-  const ssr = {
+  const visibleElements = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
@@ -34,13 +34,15 @@ const ShelfContent = ({ products, maxItems, summary, itemsPerPage }) => {
   return (
     <div className="flex justify-center">
       <SliderNext
-        ssr={ssr}
-        infinite
-        showDots
-        itemClass="pa2"
-        sliderClass="mb7"
-        slideVisibleSlides
-        containerClass="w-90"
+        elements={{
+          visible: visibleElements,
+          toPass: 'visible',
+        }}
+        classNames={{
+          slider: "mb7", 
+          container: "w-90",
+          item: "pa2",
+        }}
       >
         {productList.slice(0, maxItems).map((item, index) => (
           <ShelfItem
