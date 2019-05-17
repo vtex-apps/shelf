@@ -51,11 +51,12 @@ class ShelfItem extends Component {
   render() {
     const { item, summary } = this.props
     const newSummary = assocPath(['name', 'tag'], 'h2', summary)
+    const product = this.normalizeProduct(item)
     return (
       <ExtensionPoint
         id="product-summary"
-        product={this.normalizeProduct(item)}
-        actionOnClick={() => this.sendProductClickEvent(item)}
+        product={product}
+        actionOnClick={() => this.sendProductClickEvent(product)}
         {...newSummary}
       />
     )
