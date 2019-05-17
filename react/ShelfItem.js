@@ -48,8 +48,15 @@ class ShelfItem extends Component {
     return normalizedProduct
   }
 
-  pushPixelProductImpression = (product, position) => {
-    if (!product) return
+  pushPixelProductImpression = () => {
+    const { item, position } = this.props
+    const { sku, ...otherFields } = this.normalizeProduct(item)
+
+    const product = {
+      ...otherFields,
+      selectedSku: sku.itemId,
+    }
+
     this.props.push({
       event: 'productImpression',
       list: 'Shelf',
@@ -59,9 +66,7 @@ class ShelfItem extends Component {
   }
 
   componentDidMount() {
-    const { item, position } = this.props
-    const product = this.normalizeProduct(item)
-    this.pushPixelProductImpression(product, position)
+    this.pushPixelProductImpression()
   }
 
   render() {

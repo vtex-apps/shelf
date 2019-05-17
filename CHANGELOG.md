@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Make product object more similar to `productView` product object.
+
 ## [1.15.0] - 2019-05-17
 
 ### Added
