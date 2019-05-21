@@ -3,7 +3,7 @@
     "ProductList": {
       "properties": {
         "titleText": {
-          "title": "admin/editor.shelf.title",
+          "title": "admin/editor.shelf.titleText.title",
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": "store/shelf.title"
         }
