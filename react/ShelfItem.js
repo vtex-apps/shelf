@@ -49,6 +49,8 @@ class ShelfItem extends Component {
   }
 
   pushPixelProductImpression = () => {
+    if (!this.props.item) { return }
+
     const { item, position } = this.props
     const { sku, ...otherFields } = this.normalizeProduct(item)
 
