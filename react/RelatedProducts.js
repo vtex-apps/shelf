@@ -82,10 +82,8 @@ RelatedProducts.defaultProps = {
   },
 }
 
-RelatedProducts.getSchema = props => {
+static RelatedProducts.getSchema = props => {
   const productListSchema = ProductList.getSchema(props)
-  productListSchema.properties.titleText.default =
-    RelatedProducts.defaultProps.productList.titleText
 
   return {
     title: 'admin/editor.relatedProducts.title',
