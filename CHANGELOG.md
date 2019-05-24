@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.15.2] - 2019-05-24
+
 ## [1.15.1] - 2019-05-24
 ### Fixed
 - Fixed blinking/infinite loop when height was resized, due to images not loading and whatnot.
