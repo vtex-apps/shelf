@@ -1,0 +1,56 @@
+query ProductRecommendations(
+  $identifier: ProductUniqueIdentifier
+  $type: CrossSelingInputEnum
+) {
+  productRecommendations(identifier: $identifier, type: $type) {
+    cacheId
+    productId
+    productName
+    description
+    categories
+    categoryTree {
+      name
+      href
+    }
+    link
+    linkText
+    brand
+    items {
+      name
+      itemId
+      referenceId {
+        Value
+      }
+      images {
+        imageId
+        imageLabel
+        imageTag
+        imageUrl
+        imageText
+      }
+      sellers {
+        sellerId
+        sellerName
+        addToCartLink
+        sellerDefault
+        commertialOffer {
+          Price
+          ListPrice
+          PriceWithoutDiscount
+          RewardValue
+          PriceValidUntil
+          AvailableQuantity
+          Tax
+          CacheVersionUsedToCallCheckout
+          Installments {
+              Value
+              InterestRate
+              TotalValuePlusInterestRate
+              NumberOfInstallments
+              Name
+          }
+        }
+      }
+    }
+  }
+}

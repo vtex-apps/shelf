@@ -27,5 +27,8 @@
   "admin/editor.relatedProducts.similars": "Produtos similares",
   "admin/editor.relatedProducts.view": "Quem viu isto, também viu...",
   "admin/editor.relatedProducts.buy": "Quem comprou isto, também comprou...",
+  "admin/editor.relatedProducts.accessories": "Produtos de acessórios",
+  "admin/editor.relatedProducts.viewAndBought": "Quem viu isto, comprou também...",
+  "admin/editor.relatedProducts.suggestions": "Sugestões",
   "store/shelf.title": "Melhores Produtos"
 }
