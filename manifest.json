@@ -1,7 +1,7 @@
 {
   "name": "shelf",
   "vendor": "vtex",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
@@ -24,5 +24,6 @@
     "vtex.slider": "0.x",
     "vtex.store-icons": "0.x",
     "vtex.pixel-manager": "0.x"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

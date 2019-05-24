@@ -75,7 +75,7 @@ class ProductList extends Component {
             {titleText || <FormattedMessage id="store/shelf.title" />}
           </div>
         )}
-        <ReactResizeDetector handleWidth handleHeight>
+        <ReactResizeDetector handleWidth>
           {width => (
             <ShelfContent
               products={filteredProducts}
