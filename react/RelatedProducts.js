@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
@@ -21,21 +21,27 @@ const fixRecommendation = recommendation => {
 /**
  * Related Products Component. Queries and shows the related products
  */
-
 const RelatedProducts = ({ productQuery, productList, recommendation: cmsRecommendation }) => {
   const productId = path(['product', 'productId'], productQuery)
   if (!productId) {
     return null
   }
   const recommendation = fixRecommendation(cmsRecommendation)
-  const variables = { identifier: { field: 'id', value: productId }, type: recommendation }
+  const variables = useMemo(
+    () => ({
+      identifier: { field: 'id', value: productId },
+      type: recommendation,
+    }),
+    [productId, recommendation]
+  )
+
   return (
-    <Query 
+    <Query
       query={productRecommendations}
       variables={variables}
       partialRefetch
       ssr={false}
-    > 
+    >
     {({data, loading}) => {
       const { productRecommendations } = data
       const productListProps = {
@@ -68,7 +74,7 @@ RelatedProducts.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
-RelatedProducts.defaultProps = { 
+RelatedProducts.defaultProps = {
   recommendation: 'similars',
   productList: {
     ...ProductList.defaultProps,
