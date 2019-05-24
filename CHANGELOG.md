@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed blinking/infinite loop when height was resized, due to images not loading and whatnot.
 
 ## [1.15.0] - 2019-05-17
 
