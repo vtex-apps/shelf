@@ -4,96 +4,62 @@ import React, { Component, Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
 
-import { productListSchemaPropTypes } from './propTypes'
-import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
+import { productListSchemaPropTypes, shelfItemPropTypes } from '../utils/propTypes'
+import ScrollTypes, { getScrollNames, getScrollValues } from '../utils/ScrollTypes'
 import GapPaddingTypes, {
   getGapPaddingNames,
   getGapPaddingValues,
-} from './paddingEnum'
+} from '../utils/paddingEnum'
 import ShelfContent from './ShelfContent'
-import { shelfItemPropTypes } from './propTypes'
 
 import shelf from './shelf.css'
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 
-function normalizeBuyable(product) {
-  const items = path(['items'], product)
-  const buyableItems =
-    path(['length'], items) &&
-    items
-      .map(item => ({
-        ...item,
-        sellers: getBuyableSellers(item.sellers),
-      }))
-      .filter(item => path(['sellers', 'length'], item))
-
-  return buyableItems
-    ? {
-        ...product,
-        items: buyableItems,
-      }
-    : null
-}
-
-function getBuyableSellers(sellers) {
-  return (
-    path(['length'], sellers) &&
-    sellers.filter(seller => path(['sellerId'], seller))
-  )
-}
-
 /**
  * Product List Component. Shows a collection of products.
  */
-class ProductList extends Component {
-  render() {
-    const {
-      products,
-      maxItems,
-      titleText,
-      arrows,
-      scroll,
-      itemsPerPage,
-      summary,
-      isMobile,
-      gap,
-      showTitle,
-    } = this.props
-
-    const filteredProducts =
-      products && products.map(normalizeBuyable).filter(identity)
-
-    return products && !products.length ? null : (
-      <Fragment>
-        {showTitle && (
-          <div
-            className={`${
-              shelf.title
-            } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
-          >
-            <IOMessage id={titleText} />
-          </div>
+const ProductList = ({
+  products,
+  maxItems,
+  titleText,
+  arrows,
+  scroll,
+  itemsPerPage,
+  summary,
+  isMobile,
+  gap,
+  showTitle,
+}) => {
+  return products && !products.length ? null : (
+    <Fragment>
+      {showTitle && (
+        <div
+          className={`${
+            shelf.title
+          } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
+        >
+          <IOMessage id={titleText} />
+        </div>
+      )}
+      <ReactResizeDetector handleWidth>
+        {width => (
+          <ShelfContent
+            products={products}
+            maxItems={maxItems}
+            arrows={arrows}
+            scroll={scroll}
+            itemsPerPage={itemsPerPage}
+            summary={summary}
+            isMobile={isMobile}
+            width={width}
+            gap={gap}
+          />
         )}
-        <ReactResizeDetector handleWidth>
-          {width => (
-            <ShelfContent
-              products={filteredProducts}
-              maxItems={maxItems}
-              arrows={arrows}
-              scroll={scroll}
-              itemsPerPage={itemsPerPage}
-              summary={summary}
-              isMobile={isMobile}
-              width={width}
-              gap={gap}
-            />
-          )}
-        </ReactResizeDetector>
-      </Fragment>
-    )
-  }
+      </ReactResizeDetector>
+    </Fragment>
+  )
 }
 
 ProductList.getSchema = props => {

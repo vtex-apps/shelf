@@ -7,13 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Improve performance by removing dependencies and using function components.
+- productImpression event being called more than once for each product.
+
 ## [1.16.0] - 2019-05-25
+
 ### Added
 
 - Add `contentSchemas.json` for definition of content properties
 - i18n content edition support through CMS
 
 ## [1.15.3] - 2019-05-24
+
 ### Changed
 
 - Make Related products shelf fetch its items.
@@ -21,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.15.2] - 2019-05-24
 
 ## [1.15.1] - 2019-05-24
+
 ### Fixed
 - Fixed blinking/infinite loop when height was resized, due to images not loading and whatnot.
 

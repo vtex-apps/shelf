@@ -12,10 +12,10 @@ import {
   resolveSlidesNumber,
 } from 'vtex.slider'
 
-import { getGapPaddingValues } from './paddingEnum'
-import ScrollTypes from './ScrollTypes'
+import { getGapPaddingValues } from '../utils/paddingEnum'
+import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
-import { shelfItemPropTypes } from './propTypes'
+import { shelfItemPropTypes } from '../utils/propTypes'
 
 import shelf from './shelf.css'
 
@@ -96,16 +96,13 @@ class ShelfContent extends Component {
 
   render() {
     const { products, maxItems, scroll, gap, arrows, summary } = this.props
-
-    const { firstRender } = this.state
+    const { firstRender, currentSlide } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
     const style = !firstRender ? { width: this.sliderWidth } : {}
 
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
-
-    const { currentSlide } = this.state
 
     return (
       <div className="flex justify-center">

@@ -15,8 +15,7 @@
     "classnames": "^2.2.6",
     "ramda": "^0.25.0",
     "react-intl": "^2.7.2",
-    "react-resize-detector": "^3.4.0",
-    "recompose": "^0.30.0"
+    "react-resize-detector": "^3.4.0"
   },
   "devDependencies": {
     "@vtex/test-tools": "^0.1.3",
