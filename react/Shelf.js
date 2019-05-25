@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
-import React, { Component } from 'react'
+import React, { Component, memo, useMemo } from 'react'
 import { graphql } from 'react-apollo'
-import { compose, branch, renderComponent } from 'recompose'
-import { withRuntimeContext, Loading } from 'vtex.render-runtime'
+import { withRuntimeContext, Loading, useRuntime } from 'vtex.render-runtime'
 
 import OrdenationTypes, {
   getOrdenationNames,
@@ -19,34 +18,30 @@ import shelf from './components/shelf.css'
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-class Shelf extends Component {
-  shouldComponentUpdate(nextProps) {
-    return !Boolean(this.props.data.error && nextProps.data.error)
+const Shelf = ({ data, productList = ProductList.defaultProps }) => {
+  const { hints: { mobile }} = useRuntime()
+  const { loading, error, products } = data || {}
+
+  const productListProps = useMemo(() => ({
+    products,
+    loading: loading,
+    isMobile: mobile,
+    ...productList,
+  }), [products, loading, mobile, productList])
+
+  if (loading) {
+    return <Loading />
   }
 
-  render() {
-    const { data, productList, runtime } = this.props
-    const products = path(['products'], data)
-    const productListProps = {
-      products,
-      loading: data.loading,
-      isMobile: runtime.hints.mobile,
-      ...productList,
-    }
-
-    if (data.error || data.loading) {
-      return null
-    }
-    return (
-      <div className={`${shelf.container} pv4 pb9`}>
-        <ProductList {...productListProps} />
-      </div>
-    )
+  if (error) {
+    return null
   }
-}
 
-Shelf.defaultProps = {
-  productList: ProductList.defaultProps,
+  return (
+    <div className={`${shelf.container} pv4 pb9`}>
+      <ProductList {...productListProps} />
+    </div>
+  )
 }
 
 Shelf.propTypes = {
@@ -83,13 +78,7 @@ const options = {
   }),
 }
 
-const EnhancedShelf = compose(
-  graphql(productsQuery, options),
-  branch(
-    props => props.data && props.data.loading,
-    renderComponent(Loading)
-  )
-)(withRuntimeContext(Shelf))
+const EnhancedShelf = graphql(productsQuery, options)(Shelf)
 
 EnhancedShelf.getSchema = props => {
   return {

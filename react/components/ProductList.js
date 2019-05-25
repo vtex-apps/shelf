@@ -46,53 +46,49 @@ function getBuyableSellers(sellers) {
 /**
  * Product List Component. Shows a collection of products.
  */
-class ProductList extends Component {
-  render() {
-    const {
-      products,
-      maxItems,
-      titleText,
-      arrows,
-      scroll,
-      itemsPerPage,
-      summary,
-      isMobile,
-      gap,
-      showTitle,
-    } = this.props
+const ProductList = ({
+  products,
+  maxItems,
+  titleText,
+  arrows,
+  scroll,
+  itemsPerPage,
+  summary,
+  isMobile,
+  gap,
+  showTitle,
+}) => {
+  const filteredProducts =
+    products && products.map(normalizeBuyable).filter(identity)
 
-    const filteredProducts =
-      products && products.map(normalizeBuyable).filter(identity)
-
-    return products && !products.length ? null : (
-      <Fragment>
-        {showTitle && (
-          <div
-            className={`${
-              shelf.title
-            } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
-          >
-            <IOMessage id={titleText} />
-          </div>
+  return products && !products.length ? null : (
+    <Fragment>
+      {showTitle && (
+        <div
+          className={`${
+            shelf.title
+          } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
+        >
+          <IOMessage id={titleText} />
+        </div>
+      )}
+      <ReactResizeDetector handleWidth>
+        {width => (
+          <ShelfContent
+            products={filteredProducts}
+            maxItems={maxItems}
+            arrows={arrows}
+            scroll={scroll}
+            itemsPerPage={itemsPerPage}
+            summary={summary}
+            isMobile={isMobile}
+            width={width}
+            gap={gap}
+          />
         )}
-        <ReactResizeDetector handleWidth>
-          {width => (
-            <ShelfContent
-              products={filteredProducts}
-              maxItems={maxItems}
-              arrows={arrows}
-              scroll={scroll}
-              itemsPerPage={itemsPerPage}
-              summary={summary}
-              isMobile={isMobile}
-              width={width}
-              gap={gap}
-            />
-          )}
-        </ReactResizeDetector>
-      </Fragment>
-    )
-  }
+      </ReactResizeDetector>
+    </Fragment>
+  )
 }
 
 ProductList.getSchema = props => {
