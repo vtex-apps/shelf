@@ -5,7 +5,6 @@
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
-  "registries": ["smartcheckout"],
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
