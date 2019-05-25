@@ -1,13 +1,10 @@
 {
   "name": "shelf",
   "vendor": "vtex",
-  "version": "1.15.3",
+  "version": "1.16.0",
   "title": "VTEX Shelf",
   "description": "A shelf component",
   "mustUpdateAt": "2019-04-03",
-  "registries": [
-    "smartcheckout"
-  ],
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
@@ -17,6 +14,7 @@
     "store": "0.x"
   },
   "dependencies": {
+    "vtex.native-types": "0.x",
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "3.x",
     "vtex.product-summary": "2.x",

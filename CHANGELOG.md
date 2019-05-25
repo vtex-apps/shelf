@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.16.0] - 2019-05-25
+### Added
+
+- Add `contentSchemas.json` for definition of content properties
+- i18n content edition support through CMS
+
 ## [1.15.3] - 2019-05-24
 ### Changed
 

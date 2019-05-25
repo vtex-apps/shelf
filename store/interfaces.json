@@ -10,6 +10,11 @@
     "preview": {
       "type": "grid",
       "height": 550
+    },
+    "content": {
+      "properties": {
+        "productList": { "$ref": "#/definitions/ProductList"}
+      }
     }
   },
   "shelf.relatedProducts": {
