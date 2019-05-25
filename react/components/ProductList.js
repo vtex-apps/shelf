@@ -17,32 +17,6 @@ import shelf from './shelf.css'
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
 
-function normalizeBuyable(product) {
-  const items = path(['items'], product)
-  const buyableItems =
-    path(['length'], items) &&
-    items
-      .map(item => ({
-        ...item,
-        sellers: getBuyableSellers(item.sellers),
-      }))
-      .filter(item => path(['sellers', 'length'], item))
-
-  return buyableItems
-    ? {
-        ...product,
-        items: buyableItems,
-      }
-    : null
-}
-
-function getBuyableSellers(sellers) {
-  return (
-    path(['length'], sellers) &&
-    sellers.filter(seller => path(['sellerId'], seller))
-  )
-}
-
 /**
  * Product List Component. Shows a collection of products.
  */
@@ -58,9 +32,6 @@ const ProductList = ({
   gap,
   showTitle,
 }) => {
-  const filteredProducts =
-    products && products.map(normalizeBuyable).filter(identity)
-
   return products && !products.length ? null : (
     <Fragment>
       {showTitle && (
@@ -75,7 +46,7 @@ const ProductList = ({
       <ReactResizeDetector handleWidth>
         {width => (
           <ShelfContent
-            products={filteredProducts}
+            products={products}
             maxItems={maxItems}
             arrows={arrows}
             scroll={scroll}

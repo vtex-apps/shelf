@@ -5,7 +5,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 
 import { shelfItemPropTypes } from '../utils/propTypes'
-import normalizeProduct from '../utils/normalizeProduct'
+import { normalizeProduct } from '../utils/normalize'
 
 /**
  * ShelfItem Component. Normalizes the item received in the props

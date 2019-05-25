@@ -1,7 +1,7 @@
 import { path } from 'ramda'
 import { changeImageUrlSize, toHttps } from './urlHelpers'
 
-export default function normalizeProduct(product) {
+export function normalizeProduct(product) {
   if (!product) return null
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
@@ -27,4 +27,26 @@ function findAvailableProduct(item) {
   return item.sellers.find(
     ({ commertialOffer = {} }) => commertialOffer.AvailableQuantity > 0
   )
+}
+
+export function normalizeBuyable(product) {
+  if (!product || !product.items || product.items.length === 0) {
+    return product
+  }
+
+  const buyableItems = product.items.map(item => ({
+      ...item,
+      sellers: getBuyableSellers(item.sellers),
+    }))
+    .filter(item => item && item.sellers && item.sellers.length > 0)
+
+  return buyableItems
+    ? { ...product, items: buyableItems }
+    : null
+}
+
+function getBuyableSellers(sellers) {
+  return sellers && sellers.length > 0
+    ? sellers.filter(seller => seller.sellerId)
+    : sellers
 }

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
+import { path, identity } from 'ramda'
 import React, { Component, useMemo, useEffect } from 'react'
 import { graphql } from 'react-apollo'
 import { withRuntimeContext, Loading, useRuntime } from 'vtex.render-runtime'
@@ -15,7 +15,7 @@ import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './components/ShelfContent'
 
 import shelf from './components/shelf.css'
-import normalizeProduct from './utils/normalizeProduct'
+import { normalizeProduct, normalizeBuyable } from './utils/normalize'
 
 const useProductImpression = (products) => {
   const { push } = usePixel()
@@ -32,7 +32,7 @@ const useProductImpression = (products) => {
         event: 'productImpression',
         list: 'Shelf',
         position: index + 1,
-        product,
+        product: normalizedProduct,
       })
     });
   }, [push, products])
@@ -45,14 +45,18 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
   const { hints: { mobile }} = useRuntime()
   const { loading, error, products } = data || {}
 
+
+  const filteredProducts =
+    products && products.map(normalizeBuyable).filter(identity)
+
   const productListProps = useMemo(() => ({
-    products,
+    products: filteredProducts,
     loading: loading,
     isMobile: mobile,
     ...productList,
-  }), [products, loading, mobile, productList])
+  }), [filteredProducts, loading, mobile, productList])
 
-  useProductImpression(products)
+  useProductImpression(filteredProducts)
 
   if (loading) {
     return <Loading />
