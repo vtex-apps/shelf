@@ -82,7 +82,7 @@ RelatedProducts.defaultProps = {
   },
 }
 
-static RelatedProducts.getSchema = props => {
+RelatedProducts.getSchema = props => {
   const productListSchema = ProductList.getSchema(props)
 
   return {
