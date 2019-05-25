@@ -12,10 +12,10 @@ import {
   resolveSlidesNumber,
 } from 'vtex.slider'
 
-import { getGapPaddingValues } from './paddingEnum'
-import ScrollTypes from './ScrollTypes'
+import { getGapPaddingValues } from '../utils/paddingEnum'
+import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
-import { shelfItemPropTypes } from './propTypes'
+import { shelfItemPropTypes } from '../utils/propTypes'
 
 import shelf from './shelf.css'
 

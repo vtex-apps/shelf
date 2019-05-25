@@ -8,13 +8,13 @@ import { withRuntimeContext, Loading } from 'vtex.render-runtime'
 import OrdenationTypes, {
   getOrdenationNames,
   getOrdenationValues,
-} from './OrdenationTypes'
-import ProductList from './ProductList'
-import { productListSchemaPropTypes } from './propTypes'
+} from './utils/OrdenationTypes'
+import ProductList from './components/ProductList'
+import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
-import ShelfContent from './ShelfContent'
+import ShelfContent from './components/ShelfContent'
 
-import shelf from './shelf.css'
+import shelf from './components/shelf.css'
 
 /**
  * Shelf Component. Queries a list of products and shows them.

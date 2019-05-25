@@ -4,8 +4,8 @@ import { path, assocPath } from 'ramda'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'
 
-import { shelfItemPropTypes } from './propTypes'
-import { changeImageUrlSize, toHttps } from './utils/urlHelpers'
+import { shelfItemPropTypes } from '../utils/propTypes'
+import { changeImageUrlSize, toHttps } from '../utils/urlHelpers'
 
 /**
  * ShelfItem Component. Normalizes the item received in the props

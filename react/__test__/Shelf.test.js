@@ -1,11 +1,10 @@
 /* eslint-env jest */
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
-import ProductList from '../ProductList'
+import ProductList from '../components/ProductList'
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
 const fs = require('fs')
-
 
 describe('Shelf component', () => {
   const renderComponent = customProps => {
@@ -15,7 +14,7 @@ describe('Shelf component', () => {
       arrows: true,
       showTitle: true,
     }
-    
+
     // TODO: Remove this later when we have a better way to resolve contentSchemas.json at test-tools
     const rawData = fs.readFileSync('../store/contentSchemas.json')
     const contentSchema = JSON.parse(rawData)

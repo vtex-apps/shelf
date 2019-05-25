@@ -4,14 +4,13 @@ import React, { Component, Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
 
-import { productListSchemaPropTypes } from './propTypes'
-import ScrollTypes, { getScrollNames, getScrollValues } from './ScrollTypes'
+import { productListSchemaPropTypes, shelfItemPropTypes } from '../utils/propTypes'
+import ScrollTypes, { getScrollNames, getScrollValues } from '../utils/ScrollTypes'
 import GapPaddingTypes, {
   getGapPaddingNames,
   getGapPaddingValues,
-} from './paddingEnum'
+} from '../utils/paddingEnum'
 import ShelfContent from './ShelfContent'
-import { shelfItemPropTypes } from './propTypes'
 
 import shelf from './shelf.css'
 
