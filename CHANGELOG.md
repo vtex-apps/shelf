@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Improve performance by removing dependencies and using function components.
+- productImpression event being called more than once for each product.
 
 ## [1.16.0] - 2019-05-25
 

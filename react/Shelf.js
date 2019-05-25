@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
-import React, { Component, memo, useMemo } from 'react'
+import React, { Component, useMemo, useEffect } from 'react'
 import { graphql } from 'react-apollo'
 import { withRuntimeContext, Loading, useRuntime } from 'vtex.render-runtime'
+import { usePixel } from 'vtex.pixel-manager/PixelContext'
 
 import OrdenationTypes, {
   getOrdenationNames,
@@ -14,6 +15,28 @@ import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './components/ShelfContent'
 
 import shelf from './components/shelf.css'
+import normalizeProduct from './utils/normalizeProduct'
+
+const useProductImpression = (products) => {
+  const { push } = usePixel()
+
+  useEffect(() => {
+    if (!products) {
+      return
+    }
+
+    products.forEach((product, index) => {
+      const normalizedProduct = normalizeProduct(product)
+
+      push({
+        event: 'productImpression',
+        list: 'Shelf',
+        position: index + 1,
+        product,
+      })
+    });
+  }, [push, products])
+}
 
 /**
  * Shelf Component. Queries a list of products and shows them.
@@ -28,6 +51,8 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
     isMobile: mobile,
     ...productList,
   }), [products, loading, mobile, productList])
+
+  useProductImpression(products)
 
   if (loading) {
     return <Loading />

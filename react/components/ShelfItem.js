@@ -5,34 +5,7 @@ import { ExtensionPoint } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 
 import { shelfItemPropTypes } from '../utils/propTypes'
-import { changeImageUrlSize, toHttps } from '../utils/urlHelpers'
-
-const findAvailableProduct = item =>
-  item.sellers.find(
-    ({ commertialOffer = {} }) => commertialOffer.AvailableQuantity > 0
-  )
-
-const normalizeProduct = (product) => {
-  if (!product) return null
-  const normalizedProduct = { ...product }
-  const items = normalizedProduct.items || []
-  const sku = items.find(findAvailableProduct) || items[0]
-  if (sku) {
-    const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] =
-      path(['sellers'], sku) || []
-    const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
-    const [image = { imageUrl: '' }] = path(['images'], sku) || []
-    const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
-    const normalizedImage = { ...image, imageUrl: resizedImage }
-    normalizedProduct.sku = {
-      ...sku,
-      seller,
-      referenceId,
-      image: normalizedImage,
-    }
-  }
-  return normalizedProduct
-}
+import normalizeProduct from '../utils/normalizeProduct'
 
 /**
  * ShelfItem Component. Normalizes the item received in the props
@@ -52,15 +25,6 @@ const ShelfItem = ({ item, position, summary }) => {
       product: product,
     })
   }, [product, push])
-
-  useEffect(() => {
-    push({
-      event: 'productImpression',
-      list: 'Shelf',
-      position,
-      product,
-    })
-  }, [position, product, push])
 
   return (
     <ExtensionPoint
