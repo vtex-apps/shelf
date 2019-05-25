@@ -5,10 +5,9 @@ import { Query } from 'react-apollo'
 
 import productRecommendations from './queries/productRecommendations.gql'
 
-import ProductList from './ProductList'
-import { productListSchemaPropTypes } from './propTypes'
-import shelf from './shelf.css'
-
+import ProductList from './components/ProductList'
+import { productListSchemaPropTypes } from './utils/propTypes'
+import shelf from './components/shelf.css'
 
 // Previous values were in a wrong format with the message string in the enum value.
 const fixRecommendation = recommendation => {
