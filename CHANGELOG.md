@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.16.3] - 2019-05-26
+### Fixed
+- Correctly parse old recommendation prop on RelatedProduct shelf.
+
 ## [1.16.2] - 2019-05-26
 ### Fixed
 - Prevent RelatedProducts from crashing if there's no data
