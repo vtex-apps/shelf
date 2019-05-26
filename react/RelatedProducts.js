@@ -11,7 +11,7 @@ import shelf from './components/shelf.css'
 
 // Previous values were in a wrong format with the message string in the enum value.
 const fixRecommendation = recommendation => {
-  if (recommendation.includes('admin/editor.relatedProducts.')) {
+  if (recommendation.includes('editor.relatedProducts.')) {
     return last(recommendation.split('.'))
   }
   return recommendation
