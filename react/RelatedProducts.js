@@ -42,6 +42,9 @@ const RelatedProducts = ({ productQuery, productList, recommendation: cmsRecomme
       ssr={false}
     >
     {({data, loading}) => {
+      if (!data) {
+        return null
+      }
       const { productRecommendations } = data
       const productListProps = {
         products: productRecommendations || [],
