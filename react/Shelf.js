@@ -95,7 +95,7 @@ const options = {
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
-    ssr: false,
+    ssr: true,
     variables: {
       category,
       collection,
