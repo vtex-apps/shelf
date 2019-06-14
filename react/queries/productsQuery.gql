@@ -17,6 +17,7 @@ query Products(
     cacheId
     productId
     productName
+    productReference
     description
     categories
     categoryTree {
