@@ -117,7 +117,8 @@ EnhancedShelf.getSchema = props => {
     properties: {
       category: {
         title: 'admin/editor.shelf.category.title',
-        type: 'number',
+        description: 'admin/editor.shelf.category.description',
+        type: 'string',
         isLayout: false,
       },
       collection: {

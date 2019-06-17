@@ -1,7 +1,8 @@
 {
   "admin/editor.shelf.title": "Shelf",
   "admin/editor.shelf.description": "A product shelf featuring a collection",
-  "admin/editor.shelf.category.title": "Category",
+  "admin/editor.shelf.category.title": "Category Id",
+  "admin/editor.shelf.category.description": "For sub-categories, use \"/\" (e.g. 1/2/3)",
   "admin/editor.shelf.collection.title": "Collection",
   "admin/editor.shelf.orderBy.title": "List Ordenation",
   "admin/editor.shelf.maxItems.title": "Max Items",

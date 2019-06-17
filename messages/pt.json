@@ -1,7 +1,8 @@
 {
   "admin/editor.shelf.title": "Vitrine",
   "admin/editor.shelf.description": "Uma vitrine com uma coleção de produtos",
-  "admin/editor.shelf.category.title": "Categoria",
+  "admin/editor.shelf.category.title": "Id da Categoria",
+  "admin/editor.shelf.category.description": "Para sub-categorias, use \"/\" (por exemplo: 1/2/3)",
   "admin/editor.shelf.collection.title": "Coleção",
   "admin/editor.shelf.orderBy.title": "Ordenação da Lista",
   "admin/editor.shelf.maxItems.title": "Quantidade máxima de itens",
