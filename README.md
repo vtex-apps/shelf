@@ -99,7 +99,7 @@ For `Shelf`:
 
 | Prop name     | Type                | Description                                                                                                             | Default value        |
 | ------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `category`    | `Number`            | Category ID of the listed items in the shelf                                                                            | -                    |
+| `category`    | `String`            | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                | -                    |
 | `collection`  | `Number`            | Shows the remove button in each item                                                                                    | -                    |
 | `orderBy`     | `Enum`              | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByPriceDESC`, `OrderByPriceASC` | `OrderByTopSaleDESC` |
 | `productList` | `ProductListSchema` | Product list schema. `See ProductListSchema`                                                                            | -                    |
@@ -138,7 +138,7 @@ For `TabbedShelf`:
 For `TabsSchemaItem`:
 | Prop name | Type | Description | Default value |
 | ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
-| `id` | `Number` | id of category to be displayed | `-`
+| `id` | `String` | id of category to be displayed | `-`
 
 "Since `TabbedShelf` props have a different structure, we add an example of usage below: "
 
@@ -235,7 +235,7 @@ You can check if others are passing through similar issues [here](https://github
 
 ## Contributing
 
-Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project. 
+Check it out [how to contribute](https://github.com/vtex-apps/awesome-io#contributing) with this project.
 
 ## Tests
 

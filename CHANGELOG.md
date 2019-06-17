@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Change type of category prop on schema to "String", to allow the query and display of subcategories.
+
 ## [1.18.0] - 2019-06-14
 
 ### Added
@@ -56,6 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.15.1] - 2019-05-24
 
 ### Fixed
+
 - Fixed blinking/infinite loop when height was resized, due to images not loading and whatnot.
 
 ## [1.15.0] - 2019-05-17

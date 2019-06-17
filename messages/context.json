@@ -2,6 +2,7 @@
   "admin/editor.shelf.title": "admin/editor.shelf.title",
   "admin/editor.shelf.description": "admin/editor.shelf.description",
   "admin/editor.shelf.category.title": "admin/editor.shelf.category.title",
+  "admin/editor.shelf.category.description": "admin/editor.shelf.category.description",
   "admin/editor.shelf.collection.title": "admin/editor.shelf.collection.title",
   "admin/editor.shelf.orderBy.title": "admin/editor.shelf.orderBy.title",
   "admin/editor.shelf.maxItems.title": "admin/editor.shelf.maxItems.title",
