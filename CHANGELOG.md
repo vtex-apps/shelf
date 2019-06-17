@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.18.1] - 2019-06-17
+
 ### Changed
 
 - Change type of category prop on schema to "String", to allow the query and display of subcategories.
