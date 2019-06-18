@@ -12,6 +12,8 @@
   "admin/editor.shelf.arrows.title": "Dardos (web)",
   "admin/editor.shelf.titleText.title": "Texto del Título",
   "admin/editor.shelf.titleText.showTitle": "Exibir título del vitrina",
+  "admin/editor.shelf.specificationFilters.title": "Filtros de especificación",
+  "admin/editor.shelf.specificationFilters.description": "Para más de uno, separe los filtros con // (por ejemplo: specificationFilter_1:value//specificationFilter_2:value2)",
   "admin/editor.shelf.gapType.none": "Ninguno",
   "admin/editor.shelf.gapType.small": "Pequeño",
   "admin/editor.shelf.gapType.medium": "Medio",

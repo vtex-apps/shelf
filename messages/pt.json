@@ -12,6 +12,8 @@
   "admin/editor.shelf.arrows.title": "Setas (web)",
   "admin/editor.shelf.titleText.showTitle": "Exibir título da vitrine",
   "admin/editor.shelf.titleText.title": "Texto do Título",
+  "admin/editor.shelf.specificationFilters.title": "Filtros de Especificação",
+  "admin/editor.shelf.specificationFilters.description": "Para mais de um, separe filtros com // (por exemplo: specificationFilter_1:value//specificationFilter_2:value2)",
   "admin/editor.shelf.gapType.none": "Nenhum",
   "admin/editor.shelf.gapType.small": "Pequeno",
   "admin/editor.shelf.gapType.medium": "Médio",

@@ -34,7 +34,7 @@ const useProductImpression = (products) => {
         position: index + 1,
         product: normalizedProduct,
       })
-    });
+    })
   }, [push, products])
 }
 
@@ -93,13 +93,14 @@ const options = {
     category,
     collection,
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+    specificationFilters = "",
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
     ssr: false,
     variables: {
       category,
       collection,
-      specificationFilters: [],
+      specificationFilters: specificationFilters.split('//'),
       orderBy,
       from: 0,
       to: maxItems - 1,
@@ -120,6 +121,11 @@ EnhancedShelf.getSchema = props => {
         description: 'admin/editor.shelf.category.description',
         type: 'string',
         isLayout: false,
+      },
+      specificationFilters: {
+        title: 'admin/editor.shelf.specificationFilters.title',
+        description: 'admin/editor.shelf.specificationFilters.description',
+        type: 'string',
       },
       collection: {
         title: 'admin/editor.shelf.collection.title',

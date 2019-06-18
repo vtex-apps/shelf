@@ -12,6 +12,8 @@
   "admin/editor.shelf.arrows.title": "admin/editor.shelf.arrows.title",
   "admin/editor.shelf.titleText.showTitle": "admin/editor.shelf.titleText.showTitle",
   "admin/editor.shelf.titleText.title": "admin/editor.shelf.titleText.title",
+  "admin/editor.shelf.specificationFilters.title": "admin/editor.shelf.specificationFilters.title",
+  "admin/editor.shelf.specificationFilters.description": "admin/editor.shelf.specificationFilters.description",
   "admin/editor.shelf.gapType.none": "admin/editor.shelf.gapType.none",
   "admin/editor.shelf.gapType.small": "admin/editor.shelf.gapType.small",
   "admin/editor.shelf.gapType.medium": "admin/editor.shelf.gapType.medium",
