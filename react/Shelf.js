@@ -88,19 +88,21 @@ Shelf.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
+const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
+
 const options = {
   options: ({
     category,
     collection,
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-    specificationFilters = "",
+    specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
     ssr: false,
     variables: {
       category,
       collection,
-      specificationFilters: specificationFilters.split('//'),
+      specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
       from: 0,
       to: maxItems - 1,
@@ -124,8 +126,21 @@ EnhancedShelf.getSchema = props => {
       },
       specificationFilters: {
         title: 'admin/editor.shelf.specificationFilters.title',
-        description: 'admin/editor.shelf.specificationFilters.description',
-        type: 'string',
+        type: 'array',
+        items: {
+          title: 'admin/editor.shelf.specificationFilters.item.title',
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              title: 'admin/editor.shelf.specificationFilters.item.id.title',
+            },
+            value: {
+              type: 'string',
+              title: 'admin/editor.shelf.specificationFilters.item.value.title',
+            },
+          },
+        },
       },
       collection: {
         title: 'admin/editor.shelf.collection.title',
