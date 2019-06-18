@@ -97,12 +97,19 @@ Through the Storefront, you can change the shelf's behavior and interface. Howev
 
 For `Shelf`:
 
-| Prop name     | Type                | Description                                                                                                             | Default value        |
-| ------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `category`    | `String`            | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                | -                    |
-| `collection`  | `Number`            | Shows the remove button in each item                                                                                    | -                    |
-| `orderBy`     | `Enum`              | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByPriceDESC`, `OrderByPriceASC` | `OrderByTopSaleDESC` |
-| `productList` | `ProductListSchema` | Product list schema. `See ProductListSchema`                                                                            | -                    |
+| Prop name              | Type                             | Description                                                                                                             | Default value        |
+| ---------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| `category`             | `String`                         | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                | -                    |
+| `specificationFilters` | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                               | []                   |
+| `collection`           | `Number`                         | Shows the remove button in each item                                                                                    | -                    |
+| `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByPriceDESC`, `OrderByPriceASC` | `OrderByTopSaleDESC` |
+| `productList`          | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                            | -                    |
+
+For `SpecificationFilterItem`:
+| Prop name | Type | Description | Default value |
+| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
+| `id` | `String` | id of Specification Filter to be searched for | "" |
+| `value` | `String` | value of Specification Filter to be searched for | "" |
 
 For `RelatedProducts`:
 

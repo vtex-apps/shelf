@@ -34,7 +34,7 @@ const useProductImpression = (products) => {
         position: index + 1,
         product: normalizedProduct,
       })
-    });
+    })
   }, [push, products])
 }
 
@@ -88,18 +88,21 @@ Shelf.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
+const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
+
 const options = {
   options: ({
     category,
     collection,
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+    specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
     ssr: false,
     variables: {
       category,
       collection,
-      specificationFilters: [],
+      specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
       from: 0,
       to: maxItems - 1,
@@ -120,6 +123,24 @@ EnhancedShelf.getSchema = props => {
         description: 'admin/editor.shelf.category.description',
         type: 'string',
         isLayout: false,
+      },
+      specificationFilters: {
+        title: 'admin/editor.shelf.specificationFilters.title',
+        type: 'array',
+        items: {
+          title: 'admin/editor.shelf.specificationFilters.item.title',
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              title: 'admin/editor.shelf.specificationFilters.item.id.title',
+            },
+            value: {
+              type: 'string',
+              title: 'admin/editor.shelf.specificationFilters.item.value.title',
+            },
+          },
+        },
       },
       collection: {
         title: 'admin/editor.shelf.collection.title',
