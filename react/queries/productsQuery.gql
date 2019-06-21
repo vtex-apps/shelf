@@ -27,6 +27,7 @@ query Products(
     link
     linkText
     brand
+    brandId
     items {
       name
       itemId
