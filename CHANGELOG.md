@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Build assets with new builder hub.
+
 ## [1.20.0] - 2019-06-24
 ### Added
 - `brandId` on `productsQuery`.
