@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import { path, identity } from 'ramda'
-import React, { Component, useMemo, useEffect } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import { graphql } from 'react-apollo'
-import { withRuntimeContext, Loading, useRuntime } from 'vtex.render-runtime'
+import { Loading, useRuntime } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
+import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
   getOrdenationNames,
@@ -17,25 +17,30 @@ import ShelfContent from './components/ShelfContent'
 import shelf from './components/shelf.css'
 import { normalizeProduct, normalizeBuyable } from './utils/normalize'
 
-const useProductImpression = (products) => {
+const useProductImpression = (products, inView) => {
+  const viewed = useRef(false)
   const { push } = usePixel()
 
+  // This hook checks if the products changes, we need to send a new event
   useEffect(() => {
-    if (!products) {
+    if (products) {
+      viewed.current = false
+    }
+  }, [products])
+
+  useEffect(() => {
+    if (!products || viewed.current || !inView) {
       return
     }
-
-    products.forEach((product, index) => {
-      const normalizedProduct = normalizeProduct(product)
-
-      push({
-        event: 'productImpression',
-        list: 'Shelf',
-        position: index + 1,
-        product: normalizedProduct,
-      })
+    const normalizedProducts = products.map(normalizeProduct)
+    const impressions = normalizedProducts.map((product, index) => ({ product, position: index }))
+    push({
+      event: 'productImpression',
+      list: 'Shelf',
+      impressions,
     })
-  }, [push, products])
+    viewed.current = true
+  }, [viewed, push, products, inView])
 }
 
 /**
@@ -45,9 +50,9 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
   const { hints: { mobile }} = useRuntime()
   const { loading, error, products } = data || {}
 
-
-  const filteredProducts =
-    products && products.map(normalizeBuyable).filter(identity)
+  const filteredProducts = useMemo(() => {
+    return products && products.map(normalizeBuyable).filter(Boolean)
+  }, [products])
 
   const productListProps = useMemo(() => ({
     products: filteredProducts,
@@ -55,8 +60,10 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
     isMobile: mobile,
     ...productList,
   }), [filteredProducts, loading, mobile, productList])
-
-  useProductImpression(filteredProducts)
+  const [ref, inView] = useInView({
+    threshold: 0.75,
+  })
+  useProductImpression(filteredProducts, inView)
 
   if (loading) {
     return <Loading />
@@ -67,7 +74,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
   }
 
   return (
-    <div className={`${shelf.container} pv4 pb9`}>
+    <div ref={ref} className={`${shelf.container} pv4 pb9`}>
       <ProductList {...productListProps} />
     </div>
   )
