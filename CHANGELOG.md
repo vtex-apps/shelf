@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Stop disabling SSR on graphql query. It was introduced on v1.13.1 as a temporary change.
 
 ## [1.20.1] - 2019-06-27
 
