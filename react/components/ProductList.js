@@ -108,7 +108,12 @@ ProductList.getSchema = props => {
         type: 'boolean',
         default: ProductList.defaultProps.showTitle,
         isLayout: true,
-      }
+      },
+      titleText: {
+        title: "admin/editor.shelf.titleText.title",
+        type: 'string',
+        default: "store/shelf.title"
+      },
     },
   }
 }
