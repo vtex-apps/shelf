@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.20.3] - 2019-07-03
 ### Fixed
 - Hotfix for issue with title schema, which was saving the ID instead of the value. Should be undone once the root issue is fixed.
 
