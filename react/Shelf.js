@@ -101,7 +101,9 @@ const options = {
     ssr: false,
     variables: {
       category,
-      collection,
+      ...(collection != null ? {
+        collection,
+      } : {}),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
       from: 0,
