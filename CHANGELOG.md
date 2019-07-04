@@ -8,8 +8,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ## [1.20.3] - 2019-07-03
-### Fixed
-- Hotfix for issue with title schema, which was saving the ID instead of the value. Should be undone once the root issue is fixed.
 
 ## [1.20.2] - 2019-07-03
 ### Fixed 
