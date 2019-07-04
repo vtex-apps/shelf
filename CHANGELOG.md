@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Enables SSR
+- Re-enables SSR, which was disabled temporarily onE 
 
 ### Fixed
 - Prevents the size from shifting when the transition between SSR to CSR happens.
