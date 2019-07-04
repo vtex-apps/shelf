@@ -25,7 +25,6 @@ const SLIDER_WIDTH_THREE_ELEMENTS = 750
 const SLIDER_WIDTH_FOUR_ELEMENTS = 1000
 const SLIDER_WIDTH_FIVE_ELEMENTS = 1290
 const DEFAULT_SHELF_ITEM_WIDTH = 260
-const ITEMS_TO_FULL_WIDTH = 5
 
 /**
  * ShelfContent Component. Executes the interaction with react-slick
@@ -59,20 +58,6 @@ class ShelfContent extends Component {
     this.setState({ currentSlide: i })
   }
 
-  get sliderWidth() {
-    const { width, products } = this.props
-
-    const items = min(
-      resolveSlidesNumber(this.perPage),
-      products && products.length
-    )
-    const slider = items * DEFAULT_SHELF_ITEM_WIDTH
-
-    if (items >= ITEMS_TO_FULL_WIDTH || width <= slider) return width
-
-    return slider
-  }
-
   componentDidMount() {
     this.setState({ firstRender: false })
   }
@@ -96,17 +81,16 @@ class ShelfContent extends Component {
 
   render() {
     const { products, maxItems, scroll, gap, arrows, summary } = this.props
-    const { firstRender, currentSlide } = this.state
+    const { currentSlide } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
-    const style = !firstRender ? { width: this.sliderWidth } : {}
 
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
 
     return (
       <div className="flex justify-center">
-        <SliderContainer style={style} className="mw9">
+        <SliderContainer className="w-100 mw9">
           <Slider
             perPage={this.perPage}
             onChangeSlide={this.handleChangeSlide}
