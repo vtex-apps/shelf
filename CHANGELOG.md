@@ -7,12 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Re-enables SSR, which was disabled temporarily onE 
+- Re-enables SSR, which was disabled temporarily on 1.13.1.
+- Revert title text schema hotfix made on 1.20.3.
 
 ### Fixed
 - Prevents the size from shifting when the transition between SSR to CSR happens.
 
-## [1.20.3] - 2019-07-03
+## [1.20.3] - 2019-07-03 [YANKED]
 ### Fixed
 - Hotfix for issue with title schema, which was saving the ID instead of the value. Should be undone once the root issue is fixed.
 
