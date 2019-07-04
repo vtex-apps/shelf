@@ -98,7 +98,7 @@ const options = {
     specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
   }) => ({
-    ssr: false,
+    ssr: true,
     variables: {
       category,
       ...(collection != null ? {
