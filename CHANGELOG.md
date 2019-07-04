@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.20.4] - 2019-07-04
 ### Changed
 - Re-enables SSR, which was disabled temporarily on 1.13.1.
 - Revert title text schema hotfix made on 1.20.3.
