@@ -33,7 +33,7 @@ const useProductImpression = (products, inView) => {
       return
     }
     const normalizedProducts = products.map(normalizeProduct)
-    const impressions = normalizedProducts.map((product, index) => ({ product, position: index }))
+    const impressions = normalizedProducts.map((product, index) => ({ product, position: index+1 }))
     push({
       event: 'productImpression',
       list: 'Shelf',
