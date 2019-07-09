@@ -33,7 +33,7 @@ const useProductImpression = (products, inView) => {
       return
     }
     const normalizedProducts = products.map(normalizeProduct)
-    const impressions = normalizedProducts.map((product, index) => ({ product, position: index+1 }))
+    const impressions = normalizedProducts.map((product, index) => ({ product, position: index + 1 }))
     push({
       event: 'productImpression',
       list: 'Shelf',
@@ -61,6 +61,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps }) => {
     ...productList,
   }), [filteredProducts, loading, mobile, productList])
   const [ref, inView] = useInView({
+    // Triggers the event when the element is 75% visible
     threshold: 0.75,
   })
   useProductImpression(filteredProducts, inView)
