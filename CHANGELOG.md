@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Send impressions as list and only send them when Shelf is viewed by user.
 
+### Added
+- Make ProductList component importable in other apps
+
 ## [1.20.4] - 2019-07-04
 ### Changed
 - Re-enables SSR, which was disabled temporarily on 1.13.1.
