@@ -1,4 +1,8 @@
 const ordenationTypes = {
+  ORDER_BY_RELEVANCE: {
+    name: 'admin/editor.shelf.orderType.relevance',
+    value: '',
+  },
   ORDER_BY_TOP_SALE_DESC: {
     name: 'admin/editor.shelf.orderType.sales',
     value: 'OrderByTopSaleDESC',
@@ -26,10 +30,6 @@ const ordenationTypes = {
   ORDER_BY_BEST_DISCOUNT_DESC: {
     name: 'admin/editor.shelf.orderType.discount',
     value: 'OrderByBestDiscountDESC',
-  },
-  ORDER_BY_RELEVANCE: {
-    name: 'admin/editor.shelf.orderType.relevance',
-    value: '',
   },
 }
 
