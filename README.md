@@ -102,7 +102,7 @@ For `Shelf`:
 | `category`             | `String`                         | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                | -                    |
 | `specificationFilters` | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                               | []                   |
 | `collection`           | `Number`                         | Shows the remove button in each item                                                                                    | -                    |
-| `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC` or `OrderByNameDESC`  | N/A |
+| `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''` |
 | `productList`          | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                            | -                    |
 
 For `SpecificationFilterItem`:
