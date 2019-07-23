@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Shelf sorting through the store-front now supports every type of sort available from the API
+- The default `orderBy`is now by relevance 
 
 ## [1.21.0] - 2019-07-15
 ### Changed

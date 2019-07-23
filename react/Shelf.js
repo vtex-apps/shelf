@@ -162,7 +162,7 @@ EnhancedShelf.getSchema = props => {
         type: 'string',
         enum: getOrdenationValues(),
         enumNames: getOrdenationNames(),
-        default: OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+        default: OrdenationTypes.ORDER_BY_RELEVANCE.value,
         isLayout: false,
       },
       productList: ProductList.getSchema(props),
