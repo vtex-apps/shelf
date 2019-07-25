@@ -92,6 +92,8 @@ Shelf.propTypes = {
   collection: PropTypes.number,
   /** Ordenation Type. */
   orderBy: PropTypes.oneOf(getOrdenationValues()),
+  /** Hide unavailable items */
+  hideUnavailableItems: PropTypes.bool,
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
@@ -102,6 +104,7 @@ const options = {
   options: ({
     category,
     collection,
+    hideUnavailableItems,
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
@@ -116,6 +119,7 @@ const options = {
       orderBy,
       from: 0,
       to: maxItems - 1,
+      hideUnavailableItems,
     },
   }),
 }
@@ -166,6 +170,12 @@ EnhancedShelf.getSchema = props => {
         isLayout: false,
       },
       productList: ProductList.getSchema(props),
+      hideUnavailableItems: {
+        title: 'admin/editor.shelf.hideUnavailableItems',
+        type: 'boolean',
+        default: false,
+        isLayout: false,
+      },
     },
   }
 }
