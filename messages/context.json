@@ -5,6 +5,7 @@
   "admin/editor.shelf.category.description": "admin/editor.shelf.category.description",
   "admin/editor.shelf.collection.title": "admin/editor.shelf.collection.title",
   "admin/editor.shelf.orderBy.title": "admin/editor.shelf.orderBy.title",
+  "admin/editor.shelf.hideUnavailableItems": "admin/editor.shelf.hideUnavailableItems",
   "admin/editor.shelf.maxItems.title": "admin/editor.shelf.maxItems.title",
   "admin/editor.shelf.itemsPerPage.title": "admin/editor.shelf.itemsPerPage.title",
   "admin/editor.shelf.gap.title": "admin/editor.shelf.gap.title",

@@ -5,6 +5,7 @@
   "admin/editor.shelf.category.description": "Para sub-categorias, use \"/\" (por exemplo: 1/2/3)",
   "admin/editor.shelf.collection.title": "Coleção",
   "admin/editor.shelf.orderBy.title": "Ordenação da Lista",
+  "admin/editor.shelf.hideUnavailableItems": "Esconder itens não disponíveis",
   "admin/editor.shelf.maxItems.title": "Quantidade máxima de itens",
   "admin/editor.shelf.itemsPerPage.title": "Itens por Página (web)",
   "admin/editor.shelf.gap.title": "Espaço entre os itens",
