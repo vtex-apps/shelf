@@ -5,6 +5,7 @@ query Products(
   $orderBy: String
   $from: Int
   $to: Int
+  $hideUnavailableItems: Boolean = false
 ) {
   products(
     category: $category
@@ -13,6 +14,7 @@ query Products(
     orderBy: $orderBy
     from: $from
     to: $to
+    hideUnavailableItems: $hideUnavailableItems
   ) {
     cacheId
     productId
