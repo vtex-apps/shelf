@@ -27,7 +27,7 @@
   "admin/editor.shelf.orderType.nameDesc": "Nome, decrescente",
   "admin/editor.shelf.orderType.releaseDate": "Data de lançamento",
   "admin/editor.shelf.orderType.discount": "Desconto",
-  "admin/editor.shelf.orderType.relevance": "Relevância (Padrão)",
+  "admin/editor.shelf.orderType.relevance": "Relevância",
   "admin/editor.shelf.scrollType.byPage": "Por Página",
   "admin/editor.shelf.scrollType.oneByOne": "Um por Um",
   "admin/editor.relatedProducts.title": "Produtos Relacionados",
