@@ -56,6 +56,7 @@ Now, you can change the behavior of the shelf block that is in the store home. S
       "scroll": "BY_PAGE",
       "arrows": true,
       "titleText": "New collection",
+      "hideUnavailableItems": true,
       "summary": {
         "isOneClickBuy": false,
         "showBadge": true,
@@ -103,6 +104,7 @@ For `Shelf`:
 | `specificationFilters` | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                               | []                   |
 | `collection`           | `Number`                         | Shows the remove button in each item                                                                                    | -                    |
 | `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''` |
+| `hideUnavailableItems`              | `Boolean`                           | Hides items that are unavailable. | `false` |
 | `productList`          | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                            | -                    |
 
 For `SpecificationFilterItem`:
