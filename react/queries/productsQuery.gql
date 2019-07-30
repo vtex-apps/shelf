@@ -61,7 +61,7 @@ query Products(
       name
     }
     properties {
-      name,
+      name
       values
     }
   }
