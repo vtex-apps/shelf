@@ -60,5 +60,9 @@ query Products(
       id
       name
     }
+    properties {
+      name
+      values
+    }
   }
 }
