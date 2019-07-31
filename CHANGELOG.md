@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.22.2] - 2019-07-31
 ### Removed
 - cateogryTree resolver from product queries to improve performance, data was unnecessary at that moment.
 
