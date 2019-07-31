@@ -8,10 +8,6 @@ query ProductRecommendations(
     productName
     description
     categories
-    categoryTree {
-      name
-      href
-    }
     link
     linkText
     brand
@@ -43,11 +39,11 @@ query ProductRecommendations(
           Tax
           CacheVersionUsedToCallCheckout
           Installments {
-              Value
-              InterestRate
-              TotalValuePlusInterestRate
-              NumberOfInstallments
-              Name
+            Value
+            InterestRate
+            TotalValuePlusInterestRate
+            NumberOfInstallments
+            Name
           }
         }
       }

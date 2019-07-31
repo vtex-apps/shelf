@@ -22,10 +22,6 @@ query Products(
     productReference
     description
     categories
-    categoryTree {
-      name
-      href
-    }
     link
     linkText
     brand
