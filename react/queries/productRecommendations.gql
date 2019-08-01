@@ -38,7 +38,7 @@ query ProductRecommendations(
           AvailableQuantity
           Tax
           CacheVersionUsedToCallCheckout
-          Installments {
+          Installments (criteria: MAX) {
             Value
             InterestRate
             TotalValuePlusInterestRate

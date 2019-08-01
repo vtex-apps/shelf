@@ -39,7 +39,7 @@ query Products(
       sellers {
         sellerId
         commertialOffer {
-          Installments {
+          Installments (criteria: MAX) {
             Value
             InterestRate
             TotalValuePlusInterestRate
