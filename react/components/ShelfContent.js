@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { path, min } from 'ramda'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
@@ -9,7 +9,6 @@ import {
   Slide,
   Dots,
   SliderContainer,
-  resolveSlidesNumber,
 } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
@@ -80,7 +79,7 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll, gap, arrows, summary } = this.props
+    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage } = this.props
     const { currentSlide } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
@@ -92,6 +91,7 @@ class ShelfContent extends Component {
       <div className="flex justify-center">
         <SliderContainer className="w-100 mw9">
           <Slider
+            minPerPage={minItemsPerPage}
             perPage={this.perPage}
             onChangeSlide={this.handleChangeSlide}
             currentSlide={currentSlide}
@@ -116,6 +116,7 @@ class ShelfContent extends Component {
             <Dots
               loop
               showDotsPerPage={isScrollByPage}
+              minPerPage={minItemsPerPage}
               perPage={this.perPage}
               currentSlide={currentSlide}
               totalSlides={productList.slice(0, maxItems).length}
@@ -143,6 +144,8 @@ ShelfContent.propTypes = {
   products: PropTypes.arrayOf(shelfItemPropTypes.item),
   /** Max Items per page */
   itemsPerPage: PropTypes.number.isRequired,
+  /** Minimum Items per page */
+  minItemsPerPage: PropTypes.number.isRequired,
   /** Max items in shelf */
   maxItems: PropTypes.number.isRequired,
   /** Show Arrows */
