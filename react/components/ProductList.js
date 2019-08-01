@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import { identity, path } from 'ramda'
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
 
@@ -16,6 +15,7 @@ import shelf from './shelf.css'
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
+const DEFAULT_MIN_ITEMS_PER_PAGE = 1
 
 /**
  * Product List Component. Shows a collection of products.
@@ -26,6 +26,7 @@ const ProductList = ({
   titleText,
   arrows,
   scroll,
+  minItemsPerPage,
   itemsPerPage,
   summary,
   isMobile,
@@ -50,6 +51,7 @@ const ProductList = ({
             maxItems={maxItems}
             arrows={arrows}
             scroll={scroll}
+            minItemsPerPage={minItemsPerPage}
             itemsPerPage={itemsPerPage}
             summary={summary}
             isMobile={isMobile}
@@ -62,7 +64,7 @@ const ProductList = ({
   )
 }
 
-ProductList.getSchema = props => {
+ProductList.getSchema = () => {
   return {
     title: 'admin/editor.shelf.title',
     description: 'admin/editor.shelf.description',
@@ -115,6 +117,7 @@ ProductList.getSchema = props => {
 
 ProductList.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
+  minItemsPerPage: DEFAULT_MIN_ITEMS_PER_PAGE,
   itemsPerPage: DEFAULT_ITEMS_PER_PAGE,
   scroll: ScrollTypes.BY_PAGE.value,
   gap: GapPaddingTypes.SMALL.value,
