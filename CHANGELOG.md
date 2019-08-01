@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Query only one installment option per product, using MAX criteria.
+- Limit installments query, using MAX criteria.
 
 ## [1.23.0] - 2019-08-02
 
