@@ -61,6 +61,8 @@ export const productListSchemaPropTypes = {
   maxItems: PropTypes.number.isRequired,
   /** Maximum number of items in a page. */
   itemsPerPage: PropTypes.number.isRequired,
+  /** Minimum number of items in a page. */
+  minItemsPerPage: PropTypes.number,
   /** Scroll options. */
   scroll: PropTypes.oneOf(getScrollValues()),
   /** If the arrows are showable or not. */
