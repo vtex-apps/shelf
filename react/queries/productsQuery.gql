@@ -35,6 +35,7 @@ query Products(
       images {
         imageUrl
         imageTag
+        imageLabel
       }
       sellers {
         sellerId
