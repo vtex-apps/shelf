@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New `minPerPage` prop to control the minimum number of items displayed in the Shelf.
+
 ## [1.22.3] - 2019-07-31
 ### Fixed
 - Issue with IntersectionObserver on Safari 12.0, making the whole page crash. A polyfill has been added for the time being, while the fix for the issue is not published on polyfill.io.
