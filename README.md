@@ -98,14 +98,14 @@ Through the Storefront, you can change the shelf's behavior and interface. Howev
 
 For `Shelf`:
 
-| Prop name              | Type                             | Description                                                                                                             | Default value        |
-| ---------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `category`             | `String`                         | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                | -                    |
-| `specificationFilters` | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                               | []                   |
-| `collection`           | `Number`                         | Shows the remove button in each item                                                                                    | -                    |
-| `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''` |
-| `hideUnavailableItems`              | `Boolean`                           | Hides items that are unavailable. | `false` |
-| `productList`          | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                            | -                    |
+| Prop name              | Type                             | Description                                                                                                                                                                                                                                            | Default value |
+| ---------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+| `category`             | `String`                         | Category ID of the listed items in the shelf. For sub-categories, use "/" (e.g. "1/2/3")                                                                                                                                                               | -             |
+| `specificationFilters` | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                                                                                                                                                              | []            |
+| `collection`           | `Number`                         | Shows the remove button in each item                                                                                                                                                                                                                   | -             |
+| `orderBy`              | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''`          |
+| `hideUnavailableItems` | `Boolean`                        | Hides items that are unavailable.                                                                                                                                                                                                                      | `false`       |
+| `productList`          | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                                                                                                                                                           | -             |
 
 For `SpecificationFilterItem`:
 | Prop name | Type | Description | Default value |
@@ -122,15 +122,17 @@ For `RelatedProducts`:
 
 `ProductListSchema`:
 
-| Prop name   | Type      | Description                                                                | Default value |
-| ----------- | --------- | -------------------------------------------------------------------------- | ------------- |
-| `maxItems`  | `Number`  | Maximum number of items in the shelf.                                      | 10            |
-| `scroll`    | `Enum`    | Scroll type of slide transiction. Possible values: `BY_PAGE`, `ONE_BY_ONE` | `BY_PAGE`     |
-| `arrows`    | `Boolean` | If the arrows are showable or not.                                         | `true`        |
-| `showTitle` | `Boolean` | Show title of the shelf.                                                   | `true`        |
-| `titleText` | `String`  | Title of the shelf.                                                        | `null`        |
-| `summary`   | `Object`  | Product Summary schema properties.                                         | -             |
-| `gap`       | `Enum`    | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`              | `ph3`         |
+| Prop name      | Type      | Description                                                                                                                       | Default value |
+| -------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `maxItems`     | `Number`  | Maximum number of items in the shelf.                                                                                             | 10            |
+| `scroll`       | `Enum`    | Scroll type of slide transiction. Possible values: `BY_PAGE`, `ONE_BY_ONE`                                                        | `BY_PAGE`     |
+| `arrows`       | `Boolean` | If the arrows are showable or not.                                                                                                | `true`        |
+| `showTitle`    | `Boolean` | Show title of the shelf.                                                                                                          | `true`        |
+| `titleText`    | `String`  | Title of the shelf.                                                                                                               | `null`        |
+| `summary`      | `Object`  | Product Summary schema properties.                                                                                                | -             |
+| `gap`          | `Enum`    | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`                                                                     | `ph3`         |
+| `minPerPage`   | `number`  | Minimum amount of slides to be on the screen, can be used to control how many itens will be displayed in the smallest screen size | `1`           |
+| `itemsPerPage` | `number`  | Maximum amount of slides to be on the screen. Can be used to control how many items will be displayed in the biggest screen size  | `5`           |
 
 For `TabbedShelf`:
 
