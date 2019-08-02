@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.23.0] - 2019-08-02
+
 ### Added
 
 - New `minItemsPerPage` prop to control the minimum number of items displayed in the Shelf.
