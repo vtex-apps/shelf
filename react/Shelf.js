@@ -50,7 +50,7 @@ const useProductImpression = (products, inView) => {
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({ data, productList = ProductList.defaultProps, showNavigationDots = true }) => {
+const Shelf = ({ data, productList = ProductList.defaultProps, showPaginationDots = true }) => {
   const { hints: { mobile }} = useRuntime()
   const { loading, error, products } = data || {}
 
@@ -62,7 +62,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps, showNavigationDot
     products: filteredProducts,
     loading: loading,
     isMobile: mobile,
-    showNavigationDots,
+    showPaginationDots,
     ...productList,
   }), [filteredProducts, loading, mobile, productList])
   const [ref, inView] = useInView({
@@ -100,7 +100,7 @@ Shelf.propTypes = {
   /** Hide unavailable items */
   hideUnavailableItems: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  showNavigationDots: PropTypes.bool,
+  showPaginationDots: PropTypes.bool,
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
 }

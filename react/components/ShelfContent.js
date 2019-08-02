@@ -79,7 +79,7 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage, showNavigationDots } = this.props
+    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage, showPaginationDots } = this.props
     const { currentSlide } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
@@ -112,7 +112,7 @@ class ShelfContent extends Component {
               </Slide>
             ))}
           </Slider>
-          {showNavigationDots && (
+          {showPaginationDots && (
             <NoSSR>
               <Dots
                 loop
@@ -140,7 +140,7 @@ class ShelfContent extends Component {
 ShelfContent.defaultProps = {
   itemsPerPage: 5,
   minItemsPerPage: 1,
-  showNavigationDots: true
+  showPaginationDots: true
 }
 
 ShelfContent.propTypes = {
@@ -157,7 +157,7 @@ ShelfContent.propTypes = {
   /** Scroll type */
   scroll: PropTypes.string.isRequired,
   /** Should display navigation dots below the Shelf */
-  showNavigationDots: PropTypes.bool,
+  showPaginationDots: PropTypes.bool,
   /** Container width */
   width: PropTypes.number,
   /** Props to ProductsSummary */
