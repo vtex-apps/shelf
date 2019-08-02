@@ -79,7 +79,7 @@ class ShelfContent extends Component {
   }
 
   render() {
-    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage } = this.props
+    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage, showNavigationDots } = this.props
     const { currentSlide } = this.state
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
@@ -112,23 +112,25 @@ class ShelfContent extends Component {
               </Slide>
             ))}
           </Slider>
-          <NoSSR>
-            <Dots
-              loop
-              showDotsPerPage={isScrollByPage}
-              minPerPage={minItemsPerPage}
-              perPage={this.perPage}
-              currentSlide={currentSlide}
-              totalSlides={productList.slice(0, maxItems).length}
-              onChangeSlide={this.handleChangeSlide}
-              classes={{
-                root: 'pt4',
-                notActiveDot: 'bg-muted-3',
-                dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
-                activeDot: 'bg-emphasis',
-              }}
-            />
-          </NoSSR>
+          {showNavigationDots && (
+            <NoSSR>
+              <Dots
+                loop
+                showDotsPerPage={isScrollByPage}
+                minPerPage={minItemsPerPage}
+                perPage={this.perPage}
+                currentSlide={currentSlide}
+                totalSlides={productList.slice(0, maxItems).length}
+                onChangeSlide={this.handleChangeSlide}
+                classes={{
+                  root: 'pt4',
+                  notActiveDot: 'bg-muted-3',
+                  dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
+                  activeDot: 'bg-emphasis',
+                }}
+              />
+            </NoSSR>
+          )}
         </SliderContainer>
       </div>
     )
@@ -137,6 +139,8 @@ class ShelfContent extends Component {
 
 ShelfContent.defaultProps = {
   itemsPerPage: 5,
+  minItemsPerPage: 1,
+  showNavigationDots: true
 }
 
 ShelfContent.propTypes = {
@@ -152,6 +156,8 @@ ShelfContent.propTypes = {
   arrows: PropTypes.bool.isRequired,
   /** Scroll type */
   scroll: PropTypes.string.isRequired,
+  /** Should display navigation dots below the Shelf */
+  showNavigationDots: PropTypes.bool,
   /** Container width */
   width: PropTypes.number,
   /** Props to ProductsSummary */
