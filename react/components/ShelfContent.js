@@ -7,6 +7,7 @@ import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
+import { resolvePaginationDots } from '../utils/resolvePaginationDots'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
 import { shelfItemPropTypes } from '../utils/propTypes'
@@ -75,13 +76,6 @@ class ShelfContent extends Component {
     )
   }
 
-  resolvePaginationDots = (visibility, isMobile) =>
-    !!(
-      visibility === 'visible' ||
-      (visibility === 'mobileOnly' && isMobile) ||
-      (visibility === 'desktopOnly' && !isMobile)
-    )
-
   render() {
     const {
       products,
@@ -94,8 +88,9 @@ class ShelfContent extends Component {
       paginationDotsVisibility,
       isMobile,
     } = this.props
+
     const { currentSlide } = this.state
-    const showPaginationDots = this.resolvePaginationDots(
+    const showPaginationDots = resolvePaginationDots(
       paginationDotsVisibility,
       isMobile
     )
