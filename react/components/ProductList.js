@@ -32,7 +32,7 @@ const ProductList = ({
   isMobile,
   gap,
   showTitle,
-  showPaginationDots,
+  paginationDotsVisibility,
 }) => {
   return products && !products.length ? null : (
     <Fragment>
@@ -52,7 +52,7 @@ const ProductList = ({
             maxItems={maxItems}
             arrows={arrows}
             scroll={scroll}
-            showPaginationDots={showPaginationDots}
+            paginationDotsVisibility={paginationDotsVisibility}
             minItemsPerPage={minItemsPerPage}
             itemsPerPage={itemsPerPage}
             summary={summary}
@@ -137,7 +137,7 @@ ProductList.propTypes = {
   /** Verifies if is a mobile device. */
   isMobile: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  showPaginationDots: PropTypes.bool,
+  paginationDotsVisibility: PropTypes.oneOf(['visible', 'hidden', 'desktopOnly', 'mobileOnly']),
   ...productListSchemaPropTypes,
 }
 
