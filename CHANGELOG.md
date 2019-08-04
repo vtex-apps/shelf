@@ -7,11 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New `paginationDotsVisibility` prop to control whether the pagination dots indication is displayed or not.
+
 ## [1.24.0] - 2019-08-05
 ### Added
 - Add imageLabel to productsQuery and pass it to product-summary.
 
 ## [1.23.1] - 2019-08-05
+
 ### Changed
 - Limit installments query, using MAX criteria.
 
