@@ -21,7 +21,8 @@
     "vtex.styleguide": "9.x",
     "vtex.slider": "0.x",
     "vtex.store-icons": "0.x",
-    "vtex.pixel-manager": "1.x"
+    "vtex.pixel-manager": "1.x",
+    "vtex.device-detector": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
