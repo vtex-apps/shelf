@@ -15,7 +15,8 @@
       "properties": {
         "productList": { "$ref": "#/definitions/ProductList"}
       }
-    }
+    },
+    "render": "lazy"
   },
   "shelf.relatedProducts": {
     "required": [
