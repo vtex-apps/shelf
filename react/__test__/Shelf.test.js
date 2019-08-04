@@ -4,6 +4,7 @@ import { render } from '@vtex/test-tools/react'
 import ProductList from '../components/ProductList'
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
+import { resolvePaginationDots } from '../utils/resolvePaginationDots'
 const fs = require('fs')
 
 describe('Shelf component', () => {
@@ -44,5 +45,27 @@ describe('Shelf component', () => {
     const schema = Shelf.schema || Shelf.getSchema({})
     expect(schema).toBeDefined()
     expect(typeof schema.title).toBe('string')
+  })
+})
+
+describe('Util functions', () => {
+  it('should return the correct value for pagination dots visibility', () => {
+    const MOBILE_ONLY = 'mobileOnly'
+    const DESKTOP_ONLY = 'desktopOnly'
+    const VISIBLE = 'visible'
+    const HIDDEN = 'hidden'
+
+    /** resolvePaginationDots(visibility: string, isMobile: boolean) */
+    expect(resolvePaginationDots(MOBILE_ONLY, false)).toBeFalsy()
+    expect(resolvePaginationDots(MOBILE_ONLY, true)).toBeTruthy()
+
+    expect(resolvePaginationDots(DESKTOP_ONLY, false)).toBeTruthy()
+    expect(resolvePaginationDots(DESKTOP_ONLY, true)).toBeFalsy()
+
+    expect(resolvePaginationDots(VISIBLE, false)).toBeTruthy()
+    expect(resolvePaginationDots(VISIBLE, true)).toBeTruthy()
+
+    expect(resolvePaginationDots(HIDDEN, false)).toBeFalsy()
+    expect(resolvePaginationDots(HIDDEN, true)).toBeFalsy()
   })
 })
