@@ -4,12 +4,7 @@ import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
-import {
-  Slider,
-  Slide,
-  Dots,
-  SliderContainer,
-} from 'vtex.slider'
+import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
 import ScrollTypes from '../utils/ScrollTypes'
@@ -58,7 +53,9 @@ class ShelfContent extends Component {
   }
 
   componentDidMount() {
-    this.setState({ firstRender: false })
+    this.setState({
+      firstRender: false,
+    })
   }
 
   arrowRender = ({ orientation, onClick }) => {
@@ -78,9 +75,30 @@ class ShelfContent extends Component {
     )
   }
 
+  resolvePaginationDots = (visibility, isMobile) =>
+    !!(
+      visibility === 'visible' ||
+      (visibility === 'mobileOnly' && isMobile) ||
+      (visibility === 'desktopOnly' && !isMobile)
+    )
+
   render() {
-    const { products, maxItems, scroll, gap, arrows, summary, minItemsPerPage, showPaginationDots } = this.props
+    const {
+      products,
+      maxItems,
+      scroll,
+      gap,
+      arrows,
+      summary,
+      minItemsPerPage,
+      paginationDotsVisibility,
+      isMobile,
+    } = this.props
     const { currentSlide } = this.state
+    const showPaginationDots = this.resolvePaginationDots(
+      paginationDotsVisibility,
+      isMobile
+    )
 
     const isScrollByPage = scroll === ScrollTypes.BY_PAGE.value
 
@@ -140,7 +158,7 @@ class ShelfContent extends Component {
 ShelfContent.defaultProps = {
   itemsPerPage: 5,
   minItemsPerPage: 1,
-  showPaginationDots: true
+  paginationDotsVisibility: 'visible',
 }
 
 ShelfContent.propTypes = {
@@ -157,7 +175,12 @@ ShelfContent.propTypes = {
   /** Scroll type */
   scroll: PropTypes.string.isRequired,
   /** Should display navigation dots below the Shelf */
-  showPaginationDots: PropTypes.bool,
+  paginationDotsVisibility: PropTypes.oneOf([
+    'visible',
+    'hidden',
+    'desktopOnly',
+    'mobileOnly',
+  ]),
   /** Container width */
   width: PropTypes.number,
   /** Props to ProductsSummary */
