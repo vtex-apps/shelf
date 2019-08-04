@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { graphql } from 'react-apollo'
-import { Loading, useRuntime } from 'vtex.render-runtime'
+import { Loading } from 'vtex.render-runtime'
+import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 /* The IntersectionObserver polyfill from polyfill.io is incorrectly ignoring
  * Safari 12.0 at the time of writing. This polyfill here should be removed
@@ -50,8 +51,8 @@ const useProductImpression = (products, inView) => {
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({ data, productList = ProductList.defaultProps, showPaginationDots = true }) => {
-  const { hints: { mobile }} = useRuntime()
+const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVisibility = 'visible' }) => {
+  const { isMobile }  = useDevice()
   const { loading, error, products } = data || {}
 
   const filteredProducts = useMemo(() => {
@@ -61,10 +62,10 @@ const Shelf = ({ data, productList = ProductList.defaultProps, showPaginationDot
   const productListProps = useMemo(() => ({
     products: filteredProducts,
     loading: loading,
-    isMobile: mobile,
-    showPaginationDots,
+    isMobile,
+    paginationDotsVisibility,
     ...productList,
-  }), [filteredProducts, loading, mobile, productList])
+  }), [filteredProducts, loading, isMobile, productList])
   const [ref, inView] = useInView({
     // Triggers the event when the element is 75% visible
     threshold: 0.75,
@@ -100,7 +101,7 @@ Shelf.propTypes = {
   /** Hide unavailable items */
   hideUnavailableItems: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  showPaginationDots: PropTypes.bool,
+  paginationDotsVisibility: PropTypes.oneOf(['visible', 'hidden', 'mobileOnly', 'desktopOnly']),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
