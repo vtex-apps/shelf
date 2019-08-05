@@ -1,5 +1,9 @@
-import { path } from 'ramda'
+import { pathOr } from 'ramda'
 import { changeImageUrlSize, toHttps } from './urlHelpers'
+
+const defaultImage = { imageUrl: '', imageLabel: '' }
+const defaultReference = { Value: '' }
+const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 
 export function normalizeProduct(product) {
   if (!product) return null
@@ -7,12 +11,12 @@ export function normalizeProduct(product) {
   const items = normalizedProduct.items || []
   const sku = items.find(findAvailableProduct) || items[0]
   if (sku) {
-    const [seller = { commertialOffer: { Price: 0, ListPrice: 0 } }] =
-      path(['sellers'], sku) || []
-    const [referenceId = { Value: '' }] = path(['referenceId'], sku) || []
-    const [image = { imageUrl: '' }] = path(['images'], sku) || []
+    const [seller] = pathOr([defaultSeller], ['sellers'], sku)
+    const [referenceId] = pathOr([defaultReference], ['referenceId'], sku)
+    const [image] = pathOr([defaultImage], ['images'], sku)
     const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
-    const normalizedImage = { ...image, imageUrl: resizedImage }
+    const resizedImageLabel = image.imageLabel && changeImageUrlSize(toHttps(image.imageLabel), 500)
+    const normalizedImage = { ...image, imageUrl: resizedImage, imageLabel: resizedImageLabel }
     normalizedProduct.sku = {
       ...sku,
       seller,
