@@ -1,4 +1,4 @@
-export function resolvePaginationDots(visibility, isMobile) {
+export function resolvePaginationDotsVisibility(visibility, isMobile) {
   return !!(
     visibility === 'visible' ||
     (visibility === 'mobileOnly' && isMobile) ||

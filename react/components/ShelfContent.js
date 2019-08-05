@@ -7,7 +7,7 @@ import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
-import { resolvePaginationDots } from '../utils/resolvePaginationDots'
+import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDotsVisibility'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
 import { shelfItemPropTypes } from '../utils/propTypes'
@@ -90,7 +90,7 @@ class ShelfContent extends Component {
     } = this.props
 
     const { currentSlide } = this.state
-    const showPaginationDots = resolvePaginationDots(
+    const showPaginationDots = resolvePaginationDotsVisibility(
       paginationDotsVisibility,
       isMobile
     )
