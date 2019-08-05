@@ -121,7 +121,7 @@ class ShelfContent extends Component {
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
-                <ShelfItem item={item} summary={summary} position={index + 1} />
+                <ShelfItem item={item} summary={summary} />
               </Slide>
             ))}
           </Slider>

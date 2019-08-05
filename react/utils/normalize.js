@@ -15,8 +15,7 @@ export function normalizeProduct(product) {
     const [referenceId] = pathOr([defaultReference], ['referenceId'], sku)
     const [image] = pathOr([defaultImage], ['images'], sku)
     const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
-    const resizedImageLabel = image.imageLabel && changeImageUrlSize(toHttps(image.imageLabel), 500)
-    const normalizedImage = { ...image, imageUrl: resizedImage, imageLabel: resizedImageLabel }
+    const normalizedImage = { ...image, imageUrl: resizedImage }
     normalizedProduct.sku = {
       ...sku,
       seller,

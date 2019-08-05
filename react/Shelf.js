@@ -4,10 +4,6 @@ import { graphql } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
-/* The IntersectionObserver polyfill from polyfill.io is incorrectly ignoring
- * Safari 12.0 at the time of writing. This polyfill here should be removed
- * once that issue is fixed. */
-import 'intersection-observer'
 import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
