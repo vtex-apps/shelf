@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.25.0] - 2019-08-05
+
 ### Added
 
 - New `paginationDotsVisibility` prop to control whether the pagination dots indication is displayed or not.
