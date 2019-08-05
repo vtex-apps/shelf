@@ -4,7 +4,7 @@ import { render } from '@vtex/test-tools/react'
 import ProductList from '../components/ProductList'
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
-import { resolvePaginationDots } from '../utils/resolvePaginationDots'
+import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDotsVisibility'
 const fs = require('fs')
 
 describe('Shelf component', () => {
@@ -55,17 +55,17 @@ describe('Util functions', () => {
     const VISIBLE = 'visible'
     const HIDDEN = 'hidden'
 
-    /** resolvePaginationDots(visibility: string, isMobile: boolean) */
-    expect(resolvePaginationDots(MOBILE_ONLY, false)).toBeFalsy()
-    expect(resolvePaginationDots(MOBILE_ONLY, true)).toBeTruthy()
+    /** resolvePaginationDotsVisibility(visibility: string, isMobile: boolean) */
+    expect(resolvePaginationDotsVisibility(MOBILE_ONLY, false)).toBeFalsy()
+    expect(resolvePaginationDotsVisibility(MOBILE_ONLY, true)).toBeTruthy()
 
-    expect(resolvePaginationDots(DESKTOP_ONLY, false)).toBeTruthy()
-    expect(resolvePaginationDots(DESKTOP_ONLY, true)).toBeFalsy()
+    expect(resolvePaginationDotsVisibility(DESKTOP_ONLY, false)).toBeTruthy()
+    expect(resolvePaginationDotsVisibility(DESKTOP_ONLY, true)).toBeFalsy()
 
-    expect(resolvePaginationDots(VISIBLE, false)).toBeTruthy()
-    expect(resolvePaginationDots(VISIBLE, true)).toBeTruthy()
+    expect(resolvePaginationDotsVisibility(VISIBLE, false)).toBeTruthy()
+    expect(resolvePaginationDotsVisibility(VISIBLE, true)).toBeTruthy()
 
-    expect(resolvePaginationDots(HIDDEN, false)).toBeFalsy()
-    expect(resolvePaginationDots(HIDDEN, true)).toBeFalsy()
+    expect(resolvePaginationDotsVisibility(HIDDEN, false)).toBeFalsy()
+    expect(resolvePaginationDotsVisibility(HIDDEN, true)).toBeFalsy()
   })
 })
