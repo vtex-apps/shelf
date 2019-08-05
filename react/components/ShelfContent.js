@@ -7,7 +7,7 @@ import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
-import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDotsVisibility'
+import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
 import { shelfItemPropTypes } from '../utils/propTypes'

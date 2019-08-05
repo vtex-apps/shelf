@@ -4,7 +4,7 @@ import { render } from '@vtex/test-tools/react'
 import ProductList from '../components/ProductList'
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
-import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDotsVisibility'
+import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 const fs = require('fs')
 
 describe('Shelf component', () => {
