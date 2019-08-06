@@ -16,7 +16,7 @@ import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './components/ShelfContent'
 
 import shelf from './components/shelf.css'
-import { normalizeProduct, normalizeBuyable } from './utils/normalize'
+import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
 const useProductImpression = (products, inView) => {
   const viewed = useRef(false)
@@ -33,7 +33,7 @@ const useProductImpression = (products, inView) => {
     if (!products || viewed.current || !inView) {
       return
     }
-    const normalizedProducts = products.map(normalizeProduct)
+    const normalizedProducts = products.map(parseToProductImpression)
     const impressions = normalizedProducts.map((product, index) => ({ product, position: index + 1 }))
     push({
       event: 'productImpression',

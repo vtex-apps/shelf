@@ -5,7 +5,7 @@ const defaultImage = { imageUrl: '', imageLabel: '' }
 const defaultReference = { Value: '' }
 const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 
-export function normalizeProduct(product) {
+export function parseToProductImpression(product) {
   if (!product) return null
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
