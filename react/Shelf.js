@@ -4,10 +4,6 @@ import { graphql } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
-/* The IntersectionObserver polyfill from polyfill.io is incorrectly ignoring
- * Safari 12.0 at the time of writing. This polyfill here should be removed
- * once that issue is fixed. */
-import 'intersection-observer'
 import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
@@ -20,7 +16,7 @@ import productsQuery from './queries/productsQuery.gql'
 import ShelfContent from './components/ShelfContent'
 
 import shelf from './components/shelf.css'
-import { normalizeProduct, normalizeBuyable } from './utils/normalize'
+import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
 const useProductImpression = (products, inView) => {
   const viewed = useRef(false)
@@ -37,7 +33,7 @@ const useProductImpression = (products, inView) => {
     if (!products || viewed.current || !inView) {
       return
     }
-    const normalizedProducts = products.map(normalizeProduct)
+    const normalizedProducts = products.map(parseToProductImpression)
     const impressions = normalizedProducts.map((product, index) => ({ product, position: index + 1 }))
     push({
       event: 'productImpression',

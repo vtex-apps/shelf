@@ -5,7 +5,7 @@ const defaultImage = { imageUrl: '', imageLabel: '' }
 const defaultReference = { Value: '' }
 const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 
-export function normalizeProduct(product) {
+export function parseToProductImpression(product) {
   if (!product) return null
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
@@ -15,8 +15,7 @@ export function normalizeProduct(product) {
     const [referenceId] = pathOr([defaultReference], ['referenceId'], sku)
     const [image] = pathOr([defaultImage], ['images'], sku)
     const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
-    const resizedImageLabel = image.imageLabel && changeImageUrlSize(toHttps(image.imageLabel), 500)
-    const normalizedImage = { ...image, imageUrl: resizedImage, imageLabel: resizedImageLabel }
+    const normalizedImage = { ...image, imageUrl: resizedImage }
     normalizedProduct.sku = {
       ...sku,
       seller,
