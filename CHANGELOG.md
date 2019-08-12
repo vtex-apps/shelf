@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Make shelf render strategy `lazy`, i.e. component is only fetched client-side.
+
 ## [1.25.1] - 2019-08-06
 ### Changed
 - Use product parsing logic from product-summary.
