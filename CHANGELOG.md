@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for partially showing the next item in the Shelf on mobile.
+
 ## [1.26.0] - 2019-08-13
 
 ### Changed
