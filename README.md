@@ -149,9 +149,10 @@ For `TabbedShelf`:
 | `shelf`      | `Shelf`            | Props for the shelf displayed, same type as `Shelf`. `See Shelf`                      | -             |
 
 For `TabsSchemaItem`:
-| Prop name | Type | Description | Default value |
-| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
-| `id` | `String` | id of category to be displayed | `-`
+
+| Prop name | Type     | Description                    | Default value |
+| --------- | -------- | ------------------------------ | ------------- |
+| `id`      | `String` | id of category to be displayed | `-`           |
 
 "Since `TabbedShelf` props have a different structure, we add an example of usage below: "
 
