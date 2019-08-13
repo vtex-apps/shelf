@@ -109,10 +109,11 @@ For `Shelf`:
 | `productList`              | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                                                                                                                                                           | -             |
 
 For `SpecificationFilterItem`:
-| Prop name | Type | Description | Default value |
-| ------------------ | ---------- | ------------------------------------------------------------------------ | ---------------- |
-| `id` | `String` | id of Specification Filter to be searched for | "" |
-| `value` | `String` | value of Specification Filter to be searched for | "" |
+
+| Prop name | Type     | Description                                      | Default value |
+| --------- | -------- | ------------------------------------------------ | ------------- |
+| `id`      | `String` | id of Specification Filter to be searched for    | ""            |
+| `value`   | `String` | value of Specification Filter to be searched for | ""            |
 
 For `RelatedProducts`:
 
