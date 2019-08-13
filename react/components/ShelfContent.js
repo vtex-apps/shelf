@@ -76,6 +76,8 @@ class ShelfContent extends Component {
     )
   }
 
+  roundHalf = num => Math.round(num * 2) / 2
+
   render() {
     const {
       products,
@@ -100,14 +102,16 @@ class ShelfContent extends Component {
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
 
+    const roundedMinItems = this.roundHalf(minItemsPerPage)
+
     return (
       <div className="flex justify-center">
         <SliderContainer className="w-100 mw9">
           <Slider
-            minPerPage={minItemsPerPage}
+            minPerPage={roundedMinItems}
             perPage={this.perPage}
             onChangeSlide={this.handleChangeSlide}
-            currentSlide={currentSlide}
+            currentSlide={Math.ceil(currentSlide)}
             arrowRender={arrows && this.arrowRender}
             scrollByPage={isScrollByPage}
             duration={500}
@@ -130,9 +134,9 @@ class ShelfContent extends Component {
               <Dots
                 loop
                 showDotsPerPage={isScrollByPage}
-                minPerPage={minItemsPerPage}
+                minPerPage={roundedMinItems}
                 perPage={this.perPage}
-                currentSlide={currentSlide}
+                currentSlide={Math.ceil(currentSlide)}
                 totalSlides={productList.slice(0, maxItems).length}
                 onChangeSlide={this.handleChangeSlide}
                 classes={{
