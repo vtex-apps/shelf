@@ -89,9 +89,9 @@ Shelf.propTypes = {
     products: ShelfContent.propTypes.products,
   }),
   /** Category Id. */
-  category: PropTypes.number,
+  category: PropTypes.string,
   /** Collection Id. */
-  collection: PropTypes.number,
+  collection: PropTypes.string,
   /** Ordenation Type. */
   orderBy: PropTypes.oneOf(getOrdenationValues()),
   /** Hide unavailable items */
