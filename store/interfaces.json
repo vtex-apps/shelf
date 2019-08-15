@@ -16,7 +16,7 @@
         "productList": { "$ref": "#/definitions/ProductList"}
       }
     },
-    "render": "lazy"
+    "render": "client"
   },
   "shelf.relatedProducts": {
     "required": [

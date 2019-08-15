@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Make shelf render strategy `client`, i.e. component assets are included in HTML server-side but rendering is only client-side.
+
 ## [1.26.0] - 2019-08-13
 
 ### Changed
