@@ -14,6 +14,8 @@ query ProductRecommendations(
     items {
       name
       itemId
+      measurementUnit
+      unitMultiplier
       referenceId {
         Value
       }
@@ -47,6 +49,10 @@ query ProductRecommendations(
           }
         }
       }
+    }
+    properties {
+      name
+      values
     }
   }
 }
