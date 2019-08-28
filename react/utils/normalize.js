@@ -11,9 +11,10 @@ export function parseToProductImpression(product) {
   const items = normalizedProduct.items || []
   const sku = items.find(findAvailableProduct) || items[0]
   if (sku) {
-    const [seller] = pathOr([defaultSeller], ['sellers'], sku)
-    const [referenceId] = pathOr([defaultReference], ['referenceId'], sku)
-    const [image] = pathOr([defaultImage], ['images'], sku)
+    const [seller = defaultSeller] = pathOr([], ['sellers'], sku)
+    const [referenceId = defaultReference] = pathOr([], ['referenceId'], sku)
+    const [image = defaultImage] = pathOr([], ['images'], sku)
+
     const resizedImage = changeImageUrlSize(toHttps(image.imageUrl), 500)
     const normalizedImage = { ...image, imageUrl: resizedImage }
     normalizedProduct.sku = {
