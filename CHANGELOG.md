@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.28.1] - 2019-08-28
 ### Fixed
 - `itemPerPage` would not be taken into consideration if its value was greater than 5, as this limit was set in the `ShelfContent` component.
 
