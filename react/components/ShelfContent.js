@@ -86,6 +86,7 @@ class ShelfContent extends Component {
       gap,
       arrows,
       summary,
+      itemsPerPage,
       minItemsPerPage,
       paginationDotsVisibility,
       isMobile,
@@ -103,13 +104,14 @@ class ShelfContent extends Component {
       !products || !products.length ? Array(maxItems).fill(null) : products
 
     const roundedMinItems = this.roundHalf(minItemsPerPage)
+    const customPerPage = !isMobile && itemsPerPage
 
     return (
       <div className="flex justify-center">
         <SliderContainer className="w-100 mw9">
           <Slider
             minPerPage={roundedMinItems}
-            perPage={this.perPage}
+            perPage={customPerPage || this.perPage}
             onChangeSlide={this.handleChangeSlide}
             currentSlide={Math.ceil(currentSlide)}
             arrowRender={arrows && this.arrowRender}
