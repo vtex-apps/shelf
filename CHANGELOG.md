@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.28.3] - 2019-08-29
+
 ## [1.28.2] - 2019-08-28
 ### Fixed
 - Protect against empty images array in product impression parsing.
