@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
+import { useDevice } from 'vtex.device-detector'
 
 import productRecommendations from './queries/productRecommendations.gql'
 
@@ -20,7 +21,11 @@ const fixRecommendation = recommendation => {
 /**
  * Related Products Component. Queries and shows the related products
  */
-const RelatedProducts = ({ productQuery, productList, recommendation: cmsRecommendation }) => {
+const RelatedProducts = ({
+  productQuery,
+  productList,
+  recommendation: cmsRecommendation,
+}) => {
   const productId = path(['product', 'productId'], productQuery)
   if (!productId) {
     return null
@@ -33,6 +38,7 @@ const RelatedProducts = ({ productQuery, productList, recommendation: cmsRecomme
     }),
     [productId, recommendation]
   )
+  const { isMobile } = useDevice()
 
   return (
     <Query
@@ -41,22 +47,23 @@ const RelatedProducts = ({ productQuery, productList, recommendation: cmsRecomme
       partialRefetch
       ssr={false}
     >
-    {({data, loading}) => {
-      if (!data) {
-        return null
-      }
-      const { productRecommendations } = data
-      const productListProps = {
-        products: productRecommendations || [],
-        loading,
-        ...productList,
-      }
-      return (
-        <div className={shelf.relatedProducts}>
-          <ProductList {...productListProps} />
-        </div>
-      )
-    }}
+      {({ data, loading }) => {
+        if (!data) {
+          return null
+        }
+        const { productRecommendations } = data
+        const productListProps = {
+          products: productRecommendations || [],
+          loading,
+          isMobile,
+          ...productList,
+        }
+        return (
+          <div className={shelf.relatedProducts}>
+            <ProductList {...productListProps} />
+          </div>
+        )
+      }}
     </Query>
   )
 }
@@ -103,7 +110,7 @@ RelatedProducts.getSchema = props => {
           'buy',
           'accessories',
           'viewAndBought',
-          'suggestions'
+          'suggestions',
         ],
         enumNames: [
           'admin/editor.relatedProducts.similars',
