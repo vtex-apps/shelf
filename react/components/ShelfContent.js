@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
-import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
+import { SliderNext } from 'vtex.slider'
 
 import { getGapPaddingValues } from '../utils/paddingEnum'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
@@ -106,51 +106,44 @@ class ShelfContent extends Component {
     const roundedMinItems = this.roundHalf(minItemsPerPage)
     const customPerPage = !isMobile && itemsPerPage
 
+    const visibleElements = {
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 5,
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 720 },
+        items: 3,
+      },
+      mobile: {
+        breakpoint: { max: 720, min: 320 },
+        items: 1,
+      },
+    }
+
+    const sliderElements = {
+      visible: visibleElements,
+      toPass: 'visible',
+    }
+
     return (
       <div className="flex justify-center">
-        <SliderContainer className="w-100 mw9">
-          <Slider
-            minPerPage={roundedMinItems}
-            perPage={customPerPage || this.perPage}
-            onChangeSlide={this.handleChangeSlide}
-            currentSlide={Math.ceil(currentSlide)}
-            arrowRender={arrows && this.arrowRender}
-            scrollByPage={isScrollByPage}
-            duration={500}
-            loop
-            easing="ease"
-          >
-            {productList.slice(0, maxItems).map((item, index) => (
-              <Slide
-                sliderTransitionDuration={500}
-                className={classNames('justify-center h-100', gap)}
-                key={path(['productId'], item) || index}
-                defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
-              >
-                <ShelfItem item={item} summary={summary} />
-              </Slide>
-            ))}
-          </Slider>
-          {showPaginationDots && (
-            <NoSSR>
-              <Dots
-                loop
-                showDotsPerPage={isScrollByPage}
-                minPerPage={roundedMinItems}
-                perPage={this.perPage}
-                currentSlide={Math.ceil(currentSlide)}
-                totalSlides={productList.slice(0, maxItems).length}
-                onChangeSlide={this.handleChangeSlide}
-                classes={{
-                  root: 'pt4',
-                  notActiveDot: 'bg-muted-3',
-                  dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
-                  activeDot: 'bg-emphasis',
-                }}
-              />
-            </NoSSR>
-          )}
-        </SliderContainer>
+        <SliderNext
+          elements={sliderElements}
+          // minPerPage={roundedMinItems}
+          // perPage={customPerPage || this.perPage}
+          // onChangeSlide={this.handleChangeSlide}
+          // currentSlide={Math.ceil(currentSlide)}
+          // arrowRender={arrows && this.arrowRender}
+          // scrollByPage={isScrollByPage}
+          // duration={500}
+          // loop
+          // easing="ease"
+        >
+          {productList.slice(0, maxItems).map((item, index) => (
+            <ShelfItem item={item} summary={summary} />
+          ))}
+        </SliderNext>
       </div>
     )
   }
