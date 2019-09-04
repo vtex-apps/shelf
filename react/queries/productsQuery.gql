@@ -15,13 +15,12 @@ query Products(
     from: $from
     to: $to
     hideUnavailableItems: $hideUnavailableItems
-  ) {
+  ) @context(provider: "vtex.search-graphql") {
     cacheId
     productId
     productName
     productReference
     description
-    categories
     link
     linkText
     brand
@@ -42,7 +41,7 @@ query Products(
       sellers {
         sellerId
         commertialOffer {
-          Installments (criteria: MAX) {
+          Installments(criteria: MAX) {
             Value
             InterestRate
             TotalValuePlusInterestRate
