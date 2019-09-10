@@ -51,6 +51,12 @@ query Products(
           AvailableQuantity
           Price
           ListPrice
+          teasers {
+            name
+          }
+          discountHighlights {
+            name
+          }
         }
       }
     }
