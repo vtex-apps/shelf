@@ -2,12 +2,12 @@ query ProductRecommendations(
   $identifier: ProductUniqueIdentifier
   $type: CrossSelingInputEnum
 ) {
-  productRecommendations(identifier: $identifier, type: $type) {
+  productRecommendations(identifier: $identifier, type: $type)
+    @context(provider: "vtex.search-graphql") {
     cacheId
     productId
     productName
     description
-    categories
     link
     linkText
     brand
@@ -40,7 +40,7 @@ query ProductRecommendations(
           AvailableQuantity
           Tax
           CacheVersionUsedToCallCheckout
-          Installments (criteria: MAX) {
+          Installments(criteria: MAX) {
             Value
             InterestRate
             TotalValuePlusInterestRate
