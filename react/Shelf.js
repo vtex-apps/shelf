@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
 import { graphql } from 'react-apollo'
-import { Loading } from 'vtex.render-runtime'
+import { Loading, withRuntimeContext } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 import { useInView } from 'react-intersection-observer'
@@ -112,8 +112,10 @@ const options = {
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
+    runtime: { amp },
   }) => ({
-    ssr: true,
+    // only render on server if we are in AMP page
+    ssr: amp,
     variables: {
       category,
       ...(collection != null ? {
@@ -184,4 +186,4 @@ EnhancedShelf.getSchema = props => {
   }
 }
 
-export default EnhancedShelf
+export default withRuntimeContext(EnhancedShelf)
