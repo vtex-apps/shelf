@@ -1,0 +1,16 @@
+{
+  "name": "vtex-shelf",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx ."
+  },
+  "dependencies": {
+    "@types/node": "^12.7.8",
+    "eslint": "^6.4.0",
+    "eslint-config-vtex": "^11.1.0",
+    "eslint-config-vtex-react": "^5.0.1",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.3"
+  }
+}

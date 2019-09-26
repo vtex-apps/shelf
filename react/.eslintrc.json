@@ -1,0 +1,7 @@
+{
+  "extends": "vtex-react",
+  "env": {
+    "browser": true,
+    "jest": true
+  }
+}
