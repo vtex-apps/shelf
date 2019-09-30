@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
 import { useDevice } from 'vtex.device-detector'
 
+import { ProductContext } from 'vtex.product-context'
 import productRecommendations from './queries/productRecommendations.gql'
 
 import ProductList from './components/ProductList'
@@ -26,7 +27,10 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
 }) => {
-  const productId = path(['product', 'productId'], productQuery)
+  const context = useContext(ProductContext)
+
+  const productId = path(['product', 'productId'], productQuery) || path(['product', 'productId'], context)
+
   if (!productId) {
     return null
   }
