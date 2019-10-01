@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
