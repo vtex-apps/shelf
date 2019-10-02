@@ -4,6 +4,7 @@ import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
 import { useDevice } from 'vtex.device-detector'
 
+import { useProduct } from 'vtex.product-context'
 import productRecommendations from './queries/productRecommendations.gql'
 
 import ProductList from './components/ProductList'
@@ -26,7 +27,10 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
 }) => {
-  const productId = path(['product', 'productId'], productQuery)
+  const productContext = useProduct()
+
+  const productId = path(['product', 'productId'], productQuery) || path(['product', 'productId'], productContext)
+
   if (!productId) {
     return null
   }
