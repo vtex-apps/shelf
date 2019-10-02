@@ -25,6 +25,13 @@ query Products(
     linkText
     brand
     brandId
+    specificationGroups {
+      name
+      specifications {
+        name
+        values
+      }
+    }
     items {
       name
       itemId
