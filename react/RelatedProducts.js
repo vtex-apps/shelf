@@ -27,22 +27,30 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
 }) => {
+  const { isMobile } = useDevice()
+
   const productContext = useProduct()
 
   const productId = path(['product', 'productId'], productQuery) || path(['product', 'productId'], productContext)
 
+  const recommendation = productId ? fixRecommendation(cmsRecommendation) : null
+  const variables = useMemo(
+    () => {
+      if (!productId) {
+        return null
+      }
+
+      return {
+        identifier: { field: 'id', value: productId },
+        type: recommendation,
+      }
+    },
+    [productId, recommendation]
+  )
+
   if (!productId) {
     return null
   }
-  const recommendation = fixRecommendation(cmsRecommendation)
-  const variables = useMemo(
-    () => ({
-      identifier: { field: 'id', value: productId },
-      type: recommendation,
-    }),
-    [productId, recommendation]
-  )
-  const { isMobile } = useDevice()
 
   return (
     <Query
