@@ -7,7 +7,7 @@ export const shelfItemPropTypes = {
     productId: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    categories: PropTypes.array.isRequired,
+    categories: PropTypes.array,
     link: PropTypes.string.isRequired,
     linkText: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
