@@ -2,3 +2,4 @@
 react/__test__
 react/__mocks__
 react/setupTests.js
+.git/**
