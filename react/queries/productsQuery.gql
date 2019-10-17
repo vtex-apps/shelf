@@ -45,6 +45,10 @@ query Products(
         imageTag
         imageLabel
       }
+      variations {
+        name
+        values
+      }
       sellers {
         sellerId
         commertialOffer {
