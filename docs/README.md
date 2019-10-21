@@ -234,14 +234,30 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 #### CSS namespaces
 
-Below, we describe the namespaces that are defined in the `Shelf` and `RelatedProducts`.
+Below, we describe the namespaces that are defined in the `Shelf`, `RelatedProducts` and  `TabbedShelf`.
 
-| Class name        | Description                             | Component Source                |
-| ----------------- | --------------------------------------- | ------------------------------- |
-| `container`       | The main container of `Shelf`           | [index](/react/Shelf.js)        |
-| `title`           | Shelf title label                       | [index](/react/ProductList.js)  |
-| `relatedProducts` | The main container of `RelatedProducts` | [index](/react/index.js)        |
-| `slide`           | Slider in Shelf                         | [Popup](/react/ShelfContent.js) |
+| Class name        | 
+| ----------------- | 
+| `container`       | 
+| `title`           | 
+| `relatedProducts` | 
+| `arrow`           |
+| `dot`           |
+| `slide`           |
+| `blockContainer`           |
+| `blockText`           |
+| `buttonContainer`           |
+| `arrowLeft`           |
+| `arrowRight`           |
+| `shelfContentContainer`           |
+| `sliderContainer`           |
+| `headline`           |
+| `itemContainer`           |
+| `itemContainerSelected`           |
+| `itemContainerUnselected`           |
+| `tabsContainer`           |
+| `tabsNamesContainer`           |
+| `shelfContainer`           |
 
 ## Troubleshooting
 
