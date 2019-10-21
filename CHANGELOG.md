@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+<<<<<<< HEAD
 
 ## [1.33.2] - 2019-11-22
 ### Fixed
@@ -44,6 +45,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - A few new css class handles and changed them to use the `cssHandles` app
 
 ## [1.31.4] - 2019-10-22
+=======
+### Changed
+- Use apollo hooks.
+
+>>>>>>> use apollo hooks
 ### Fixed
 - Get `specificationGroups` resolver in productRecommendations query to be able to show badges.
 
@@ -75,7 +81,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Add `Discounts` And `Teasers` Fields in Products And Recommendations Query
 
-## [1.29.0] - 2019-09-10
+## [1.29.0] - 2019-09-10  
 ### Changed
 - Start using `search-graphql` for product queries.
 

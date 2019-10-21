@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
-import React, { useMemo, useEffect, useRef } from 'react'
-import { graphql } from 'react-apollo'
+import React, { useMemo, useEffect, useRef, useState } from 'react'
+import { useQuery } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 import { useCssHandles } from 'vtex.css-handles'
+import { path } from 'ramda'
 import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
@@ -14,11 +15,100 @@ import OrdenationTypes, {
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
+import productsNoSimulationQuery from './queries/productsNoSimulationQuery.gql'
 import { shelfContentPropTypes } from './utils/propTypes'
 
 import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
 const CSS_HANDLES = ['container']
+
+const useProductsQueries = (variables, lazyPrice) => {
+  const withSimulationDoneRef = useRef(false)
+  const noSimulationDoneRef = useRef(false)
+  const productsRef = useRef(undefined)
+  const [finalProducts, setFinalProducts] = useState(undefined)
+  const {
+    data: { products: simulatedProducts } = {},
+    loading: simulationLoading,
+    error,
+  } = useQuery(productsQuery, {
+    variables,
+    onCompleted: simulatedData => {
+      withSimulationDoneRef.current = true
+      if (!noSimulationDoneRef.current) {
+        productsRef.current = path(['products'], simulatedData)
+        setFinalProducts(productsRef.current)
+        return
+      }
+
+      if (productsRef.current) {
+        const products = productsRef.current
+        const newProducts = simulatedData.products
+        if (newProducts && products.length !== newProducts.length) {
+          productsRef.current = newProducts
+          setFinalProducts(productsRef.current)
+          return
+        }
+        const areEqual = products.every(
+          (p, i) => p.productId === newProducts[i].productId
+        )
+        if (!areEqual) {
+          productsRef.current = newProducts
+          setFinalProducts(productsRef.current)
+          return
+        }
+        for (let i = 0; i < products.length; i++) {
+          products[i] = { ...products[i] }
+
+          products[i].priceRange = newProducts[i].priceRange
+          products[i].items.forEach((item, itemIndex) => {
+            if (item.itemId !== newProducts[i].items[itemIndex].itemId) {
+              item = newProducts[i].items[itemIndex]
+            } else {
+              item.sellers.forEach((seller, sellerIndex) => {
+                seller.commertialOffer =
+                  newProducts[i].items[itemIndex].sellers[
+                    sellerIndex
+                  ].commertialOffer
+              })
+            }
+          })
+        }
+        productsRef.current = products
+        setFinalProducts([...productsRef.current])
+      }
+    },
+  })
+
+  const { loading: noSimulationLoading } = useQuery(productsNoSimulationQuery, {
+    variables,
+    skip: !lazyPrice,
+    onCompleted: notSimulatedData => {
+      noSimulationDoneRef.current = true
+      if (!withSimulationDoneRef.current) {
+        productsRef.current = path(['productsNoSimulations'], notSimulatedData)
+        setFinalProducts(productsRef.current)
+        return
+      }
+    },
+  })
+
+  return {
+    loading: lazyPrice ? noSimulationLoading : simulationLoading,
+    error,
+    products: lazyPrice ? finalProducts : simulatedProducts,
+  }
+}
+
+const pathToSkippedSimulation = [
+  '0',
+  'items',
+  '0',
+  'sellers',
+  '0',
+  'commertialOffer',
+  'skippedSimulation',
+]
 
 const useProductImpression = (products, inView) => {
   const viewed = useRef(false)
@@ -32,11 +122,15 @@ const useProductImpression = (products, inView) => {
   }, [products])
 
   useEffect(() => {
-    if (!products || viewed.current || !inView) {
+    const skippedSimulation = path(pathToSkippedSimulation, products)
+    if (!products || viewed.current || !inView || skippedSimulation) {
       return
     }
     const normalizedProducts = products.map(parseToProductImpression)
-    const impressions = normalizedProducts.map((product, index) => ({ product, position: index + 1 }))
+    const impressions = normalizedProducts.map((product, index) => ({
+      product,
+      position: index + 1,
+    }))
     push({
       event: 'productImpression',
       list: 'Shelf',
@@ -46,25 +140,56 @@ const useProductImpression = (products, inView) => {
   }, [viewed, push, products, inView])
 }
 
+const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
+
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVisibility = 'visible' }) => {
+
+const Shelf = ({
+  productList = ProductList.defaultProps,
+  paginationDotsVisibility = 'visible',
+  category,
+  collection,
+  hideUnavailableItems,
+  orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+  specificationFilters = [],
+  maxItems = ProductList.defaultProps.maxItems,
+  skusFilter,
+  lazyPrice,
+}) => {
   const handles = useCssHandles(CSS_HANDLES)
-  const { isMobile }  = useDevice()
-  const { loading, error, products } = data || {}
+  const variables = {
+    ...(category != null ? {
+      category: category.toString(),
+    } : {}),
+    ...(collection != null ? {
+      collection: collection.toString(),
+    } : {}),
+    specificationFilters: specificationFilters.map(parseFilters),
+    orderBy,
+    from: 0,
+    to: maxItems - 1,
+    hideUnavailableItems,
+    skusFilter,
+  }
+  const { loading, error, products } = useProductsQueries(variables, lazyPrice)
+  const { isMobile } = useDevice()
 
   const filteredProducts = useMemo(() => {
     return products && products.map(normalizeBuyable).filter(Boolean)
   }, [products])
 
-  const productListProps = useMemo(() => ({
-    products: filteredProducts,
-    loading: loading,
-    isMobile,
-    paginationDotsVisibility,
-    ...productList,
-  }), [filteredProducts, loading, isMobile, productList])
+  const productListProps = useMemo(
+    () => ({
+      products: filteredProducts,
+      loading: loading,
+      isMobile,
+      paginationDotsVisibility,
+      ...productList,
+    }),
+    [filteredProducts, loading, isMobile, productList]
+  )
   const [ref, inView] = useInView({
     // Triggers the event when the element is 75% visible
     threshold: 0.75,
@@ -100,44 +225,17 @@ Shelf.propTypes = {
   /** Hide unavailable items */
   hideUnavailableItems: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  paginationDotsVisibility: PropTypes.oneOf(['visible', 'hidden', 'mobileOnly', 'desktopOnly']),
+  paginationDotsVisibility: PropTypes.oneOf([
+    'visible',
+    'hidden',
+    'mobileOnly',
+    'desktopOnly',
+  ]),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
-const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
-
-const options = {
-  options: ({
-    category,
-    collection,
-    hideUnavailableItems,
-    orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-    specificationFilters = [],
-    maxItems = ProductList.defaultProps.maxItems,
-    skusFilter,
-  }) => ({
-    ssr: true,
-    variables: {
-      ...(category != null ? {
-        category: category.toString(),
-      } : {}),
-      ...(collection != null ? {
-        collection: collection.toString(),
-      } : {}),
-      specificationFilters: specificationFilters.map(parseFilters),
-      orderBy,
-      from: 0,
-      to: maxItems - 1,
-      hideUnavailableItems,
-      skusFilter,
-    },
-  }),
-}
-
-const EnhancedShelf = graphql(productsQuery, options)(Shelf)
-
-EnhancedShelf.getSchema = props => {
+Shelf.getSchema = props => {
   return {
     title: 'admin/editor.shelf.title',
     description: 'admin/editor.shelf.description',
@@ -189,8 +287,7 @@ EnhancedShelf.getSchema = props => {
       },
       skusFilter: {
         title: 'admin/editor.shelf.skusFilter',
-        description:
-          'admin/editor.shelf.skusFilter.description',
+        description: 'admin/editor.shelf.skusFilter.description',
         type: 'string',
         default: 'ALL_AVAILABLE',
         enum: ['ALL_AVAILABLE', 'ALL', 'FIRST_AVAILABLE'],
@@ -204,4 +301,4 @@ EnhancedShelf.getSchema = props => {
   }
 }
 
-export default EnhancedShelf
+export default Shelf

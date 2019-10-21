@@ -1,4 +1,4 @@
-query Products(
+query ProductsNoSimulation(
   $category: String
   $collection: String
   $specificationFilters: [String]
@@ -8,7 +8,7 @@ query Products(
   $hideUnavailableItems: Boolean = false
   $skusFilter: ItemsFilter = ALL_AVAILABLE
 ) {
-  products(
+  productsNoSimulations(
     category: $category
     collection: $collection
     specificationFilters: $specificationFilters
