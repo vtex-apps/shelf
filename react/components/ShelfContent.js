@@ -5,15 +5,15 @@ import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
-
+import { withCssHandles } from 'vtex.css-handles'
 import { getGapPaddingValues } from '../utils/paddingEnum'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
 import { shelfItemPropTypes } from '../utils/propTypes'
-
 import shelf from './shelf.css'
 
+const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide']
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
 const SLIDER_WIDTH_THREE_ELEMENTS = 750
@@ -60,13 +60,13 @@ class ShelfContent extends Component {
   }
 
   arrowRender = ({ orientation, onClick }) => {
-    const { gap } = this.props
+    const { gap, cssHandles } = this.props
     const containerClasses = classNames(
       shelf.arrow,
       'pointer z-1 flex absolute',
       {
-        [`${shelf.arrowLeft} left-0 ${gap}`]: orientation === 'left',
-        [`${shelf.arrowRight} right-0 ${gap}`]: orientation === 'right',
+        [`${cssHandles.arrowLeft} left-0 ${gap}`]: orientation === 'left',
+        [`${cssHandles.arrowRight} right-0 ${gap}`]: orientation === 'right',
       }
     )
     return (
@@ -90,6 +90,7 @@ class ShelfContent extends Component {
       minItemsPerPage,
       paginationDotsVisibility,
       isMobile,
+      cssHandles
     } = this.props
 
     const { currentSlide } = this.state
@@ -107,8 +108,8 @@ class ShelfContent extends Component {
     const customPerPage = !isMobile && itemsPerPage
 
     return (
-      <div className="flex justify-center">
-        <SliderContainer className="w-100 mw9">
+      <div className={`${cssHandles.shelfContentContainer} flex justify-center`}>
+        <SliderContainer className={`${cssHandles.sliderContainer} w-100 mw9`}>
           <Slider
             minPerPage={roundedMinItems}
             perPage={customPerPage || this.perPage}
@@ -123,7 +124,7 @@ class ShelfContent extends Component {
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide
                 sliderTransitionDuration={500}
-                className={classNames('justify-center h-100', gap)}
+                className={classNames('justify-center h-100', gap, cssHandles.slide)}
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
@@ -192,4 +193,4 @@ ShelfContent.propTypes = {
   gap: PropTypes.oneOf(getGapPaddingValues()),
 }
 
-export default ShelfContent
+export default withCssHandles(CSS_HANDLES)(ShelfContent)

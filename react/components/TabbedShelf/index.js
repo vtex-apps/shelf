@@ -5,10 +5,11 @@ import { Button } from 'vtex.styleguide'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import Tabs from './Tabs'
 import Shelf from '../../Shelf'
+import { withCssHandles } from 'vtex.css-handles'
+import tabbedShelf from './tabbedShelf.css'
 
 const MAX_NUMBER_OF_MENUS = 6
-
-import tabbedShelf from './tabbedShelf.css'
+const CSS_HANDLES = ['headline'] 
 
 /**
  * Tabbed Shelf Module
@@ -62,7 +63,8 @@ class TabbedShelf extends Component {
             bottomText,
             buttunUrl,
             buttonText,
-            tabs
+            tabs,
+            cssHandles
         } = this.props
 
         const panes = (tabs.length > 0 ? tabs.map(tab => (
@@ -79,7 +81,7 @@ class TabbedShelf extends Component {
             <Fragment>
                 {isEnabled ? (
                     <div className={`${tabbedShelf.container}`}>
-                        <h3 className={`${tabbedShelf.headline}`}>{headline}</h3>
+                        <h3 className={`${cssHandles.headline}`}>{headline}</h3>
                           <Tabs panes={panes} />
                         <div className={`${tabbedShelf.blockContainer}`}>
                             <p className={`${tabbedShelf.blockText}`}>{bottomText}</p>
@@ -153,4 +155,4 @@ TabbedShelf.getSchema = props => ({
     },
 });
 
-export default withRuntimeContext(injectIntl(TabbedShelf))
+export default withRuntimeContext(injectIntl(withCssHandles(CSS_HANDLES)(TabbedShelf)))
