@@ -11,6 +11,13 @@ query ProductRecommendations(
     link
     linkText
     brand
+    specificationGroups {
+      name
+      specifications {
+        name
+        values
+      }
+    }
     items {
       name
       itemId
