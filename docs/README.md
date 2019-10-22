@@ -258,6 +258,7 @@ Below, we describe the namespaces that are defined in the `Shelf`, `RelatedProdu
 | `tabsContainer`           |
 | `tabsNamesContainer`           |
 | `shelfContainer`           |
+| `tabButton`         |
 
 ## Troubleshooting
 

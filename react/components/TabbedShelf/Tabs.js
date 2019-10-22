@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { withCssHandles } from 'vtex.css-handles'
 
-import tabbedShelf from './tabbedShelf.css'
-
-const CSS_HANDLES = ['itemContainer', 'itemContainerSelected', 'itemContainerUnselected', 'tabsContainer', 'tabsNamesContainer', 'shelfContainer']
+const CSS_HANDLES = ['itemContainer', 'itemContainerSelected', 'itemContainerUnselected', 'tabsContainer', 'tabsNamesContainer', 'shelfContainer', 'tabButton']
 
 class Tabs extends Component {
 
@@ -37,7 +35,7 @@ class Tabs extends Component {
               <button 
                 type="button"
                 onClick={() => this.handleClick(index)}
-                className="bn outline-0 bg-transparent pa0"
+                className={`${cssHandles.tabButton} bn outline-0 bg-transparent pa0`}
               >
                 <div className={itemContainer} key={pane.menuItem} >{pane.menuItem}</div>
               </button>
