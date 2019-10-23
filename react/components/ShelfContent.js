@@ -1,19 +1,17 @@
-import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
-
-import { getGapPaddingValues } from '../utils/paddingEnum'
+import { withCssHandles } from 'vtex.css-handles'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
-import { shelfItemPropTypes } from '../utils/propTypes'
-
+import { shelfContentPropTypes } from '../utils/propTypes'
 import shelf from './shelf.css'
 
+const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide']
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
 const SLIDER_WIDTH_THREE_ELEMENTS = 750
@@ -60,13 +58,13 @@ class ShelfContent extends Component {
   }
 
   arrowRender = ({ orientation, onClick }) => {
-    const { gap } = this.props
+    const { gap, cssHandles } = this.props
     const containerClasses = classNames(
       shelf.arrow,
       'pointer z-1 flex absolute',
       {
-        [`${shelf.arrowLeft} left-0 ${gap}`]: orientation === 'left',
-        [`${shelf.arrowRight} right-0 ${gap}`]: orientation === 'right',
+        [`${cssHandles.arrowLeft} left-0 ${gap}`]: orientation === 'left',
+        [`${cssHandles.arrowRight} right-0 ${gap}`]: orientation === 'right',
       }
     )
     return (
@@ -90,6 +88,7 @@ class ShelfContent extends Component {
       minItemsPerPage,
       paginationDotsVisibility,
       isMobile,
+      cssHandles
     } = this.props
 
     const { currentSlide } = this.state
@@ -107,8 +106,8 @@ class ShelfContent extends Component {
     const customPerPage = !isMobile && itemsPerPage
 
     return (
-      <div className="flex justify-center">
-        <SliderContainer className="w-100 mw9">
+      <div className={`${cssHandles.shelfContentContainer} flex justify-center`}>
+        <SliderContainer className={`${cssHandles.sliderContainer} w-100 mw9`}>
           <Slider
             minPerPage={roundedMinItems}
             perPage={customPerPage || this.perPage}
@@ -123,7 +122,7 @@ class ShelfContent extends Component {
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide
                 sliderTransitionDuration={500}
-                className={classNames('justify-center h-100', gap)}
+                className={classNames('justify-center h-100', gap, cssHandles.slide)}
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
@@ -164,32 +163,27 @@ ShelfContent.defaultProps = {
 
 ShelfContent.propTypes = {
   /** List of products */
-  products: PropTypes.arrayOf(shelfItemPropTypes.item),
+  products: shelfContentPropTypes.products,
   /** Max Items per page */
-  itemsPerPage: PropTypes.number.isRequired,
+  itemsPerPage: shelfContentPropTypes.itemsPerPage,
   /** Minimum Items per page */
-  minItemsPerPage: PropTypes.number.isRequired,
+  minItemsPerPage: shelfContentPropTypes.minItemsPerPage,
   /** Max items in shelf */
-  maxItems: PropTypes.number.isRequired,
+  maxItems: shelfContentPropTypes.maxItems,
   /** Show Arrows */
-  arrows: PropTypes.bool.isRequired,
+  arrows: shelfContentPropTypes.arrows,
   /** Scroll type */
-  scroll: PropTypes.string.isRequired,
+  scroll: shelfContentPropTypes.scroll,
   /** Should display navigation dots below the Shelf */
-  paginationDotsVisibility: PropTypes.oneOf([
-    'visible',
-    'hidden',
-    'desktopOnly',
-    'mobileOnly',
-  ]),
+  paginationDotsVisibility: shelfContentPropTypes.paginationDotsVisibility,
   /** Container width */
-  width: PropTypes.number,
+  width: shelfContentPropTypes.width,
   /** Props to ProductsSummary */
-  summary: PropTypes.any,
+  summary: shelfContentPropTypes.summary,
   /** Is mobile */
-  isMobile: PropTypes.bool,
+  isMobile: shelfContentPropTypes.isMobile,
   /** Gap between Shelf Items */
-  gap: PropTypes.oneOf(getGapPaddingValues()),
+  gap: shelfContentPropTypes.gap,
 }
 
-export default ShelfContent
+export default withCssHandles(CSS_HANDLES)(ShelfContent)

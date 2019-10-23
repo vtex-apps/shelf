@@ -11,7 +11,7 @@ exports[`Shelf component should match the snapshot 1`] = `
   </div>
   <div>
     <div
-      class="flex justify-center"
+      class="shelfContentContainer flex justify-center"
     >
       <div
         class="slider-container-mock"
