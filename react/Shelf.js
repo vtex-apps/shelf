@@ -14,7 +14,7 @@ import OrdenationTypes, {
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
-import ShelfContent from './components/ShelfContent'
+import { shelfContentPropTypes } from './utils/propTypes'
 
 import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
@@ -89,7 +89,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVis
 Shelf.propTypes = {
   /** Graphql data response. */
   data: PropTypes.shape({
-    products: ShelfContent.propTypes.products,
+    products: shelfContentPropTypes.products,
   }),
   /** Category Id. */
   category: PropTypes.string,

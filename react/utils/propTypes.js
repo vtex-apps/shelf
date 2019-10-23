@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
 import { getScrollValues } from './ScrollTypes'
+import { getGapPaddingValues } from './paddingEnum'
 
 export const shelfItemPropTypes = {
   item: PropTypes.shape({
@@ -73,4 +74,34 @@ export const productListSchemaPropTypes = {
   titleText: PropTypes.string,
   /** Product Summary schema props */
   summary: PropTypes.any,
+}
+
+export const shelfContentPropTypes = {
+  /** List of products */
+  products: PropTypes.arrayOf(shelfItemPropTypes.item),
+  /** Max Items per page */
+  itemsPerPage: PropTypes.number.isRequired,
+  /** Minimum Items per page */
+  minItemsPerPage: PropTypes.number.isRequired,
+  /** Max items in shelf */
+  maxItems: PropTypes.number.isRequired,
+  /** Show Arrows */
+  arrows: PropTypes.bool.isRequired,
+  /** Scroll type */
+  scroll: PropTypes.string.isRequired,
+  /** Should display navigation dots below the Shelf */
+  paginationDotsVisibility: PropTypes.oneOf([
+    'visible',
+    'hidden',
+    'desktopOnly',
+    'mobileOnly',
+  ]),
+  /** Container width */
+  width: PropTypes.number,
+  /** Props to ProductsSummary */
+  summary: PropTypes.any,
+  /** Is mobile */
+  isMobile: PropTypes.bool,
+  /** Gap between Shelf Items */
+  gap: PropTypes.oneOf(getGapPaddingValues()),
 }

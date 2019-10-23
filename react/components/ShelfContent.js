@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
@@ -6,11 +5,10 @@ import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 import { withCssHandles } from 'vtex.css-handles'
-import { getGapPaddingValues } from '../utils/paddingEnum'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
-import { shelfItemPropTypes } from '../utils/propTypes'
+import { shelfContentPropTypes } from '../utils/propTypes'
 import shelf from './shelf.css'
 
 const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide']
@@ -165,32 +163,27 @@ ShelfContent.defaultProps = {
 
 ShelfContent.propTypes = {
   /** List of products */
-  products: PropTypes.arrayOf(shelfItemPropTypes.item),
+  products: shelfContentPropTypes.products,
   /** Max Items per page */
-  itemsPerPage: PropTypes.number.isRequired,
+  itemsPerPage: shelfContentPropTypes.itemsPerPage,
   /** Minimum Items per page */
-  minItemsPerPage: PropTypes.number.isRequired,
+  minItemsPerPage: shelfContentPropTypes.minItemsPerPage,
   /** Max items in shelf */
-  maxItems: PropTypes.number.isRequired,
+  maxItems: shelfContentPropTypes.maxItems,
   /** Show Arrows */
-  arrows: PropTypes.bool.isRequired,
+  arrows: shelfContentPropTypes.arrows,
   /** Scroll type */
-  scroll: PropTypes.string.isRequired,
+  scroll: shelfContentPropTypes.scroll,
   /** Should display navigation dots below the Shelf */
-  paginationDotsVisibility: PropTypes.oneOf([
-    'visible',
-    'hidden',
-    'desktopOnly',
-    'mobileOnly',
-  ]),
+  paginationDotsVisibility: shelfContentPropTypes.paginationDotsVisibility,
   /** Container width */
-  width: PropTypes.number,
+  width: shelfContentPropTypes.width,
   /** Props to ProductsSummary */
-  summary: PropTypes.any,
+  summary: shelfContentPropTypes.summary,
   /** Is mobile */
-  isMobile: PropTypes.bool,
+  isMobile: shelfContentPropTypes.isMobile,
   /** Gap between Shelf Items */
-  gap: PropTypes.oneOf(getGapPaddingValues()),
+  gap: shelfContentPropTypes.gap,
 }
 
 export default withCssHandles(CSS_HANDLES)(ShelfContent)
