@@ -11,6 +11,9 @@ query ProductRecommendations(
     link
     linkText
     brand
+    brandId
+    titleTag
+    metaTagDescription
     specificationGroups {
       name
       specifications {

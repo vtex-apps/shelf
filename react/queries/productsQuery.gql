@@ -25,6 +25,8 @@ query Products(
     linkText
     brand
     brandId
+    titleTag
+    metaTagDescription
     specificationGroups {
       name
       specifications {
@@ -34,16 +36,20 @@ query Products(
     }
     items {
       name
+      nameComplete
       itemId
       measurementUnit
       unitMultiplier
       referenceId {
+        Key
         Value
       }
       images {
-        imageUrl
-        imageTag
+        imageId
         imageLabel
+        imageTag
+        imageUrl
+        imageText
       }
       variations {
         name
@@ -51,6 +57,7 @@ query Products(
       }
       sellers {
         sellerId
+        sellerName
         commertialOffer {
           Installments(criteria: MAX) {
             Value
@@ -62,6 +69,9 @@ query Products(
           AvailableQuantity
           Price
           ListPrice
+          PriceWithoutDiscount
+          RewardValue
+          PriceValidUntil
           teasers {
             name
           }
