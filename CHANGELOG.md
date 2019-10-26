@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.31.5] - 2019-10-23
+### Fixed
+-  Add `categoryTree` field in products and recommendations query.
+
 ## [1.31.4] - 2019-10-22
 ### Fixed
 - Get `specificationGroups` resolver in productRecommendations query to be able to show badges.
