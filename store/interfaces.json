@@ -15,8 +15,7 @@
       "properties": {
         "productList": { "$ref": "#/definitions/ProductList"}
       }
-    },
-    "render": "client"
+    }
   },
   "shelf.relatedProducts": {
     "required": [
