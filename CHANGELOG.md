@@ -7,9 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.31.5] - 2019-10-23
+## [1.31.7] - 2019-10-30
 ### Fixed
 -  Add `categoryTree` field in products and recommendations query.
+
+## [1.31.6] - 2019-10-29
+### Changed
+- Render on server-side.
+
+## [1.31.5] - 2019-10-23
+### Added
+- A few new css class handles and changed them to use the `cssHandles` app
 
 ## [1.31.4] - 2019-10-22
 ### Fixed
@@ -125,7 +133,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.21.1] - 2019-07-23
 ### Changed
 - Shelf sorting through the store-front now supports every type of sort available from the API
-- The default `orderBy`is now by relevance 
+- The default `orderBy`is now by relevance
 
 ## [1.21.0] - 2019-07-15
 ### Changed
@@ -147,7 +155,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Hotfix for issue with title schema, which was saving the ID instead of the value. Should be undone once the root issue is fixed.
 
 ## [1.20.2] - 2019-07-03
-### Fixed 
+### Fixed
 - Issue which would break the query if collections was null.
 
 ## [1.20.1] - 2019-06-27

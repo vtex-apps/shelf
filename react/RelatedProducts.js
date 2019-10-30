@@ -5,11 +5,13 @@ import { Query } from 'react-apollo'
 import { useDevice } from 'vtex.device-detector'
 
 import { useProduct } from 'vtex.product-context'
+import { useCssHandles } from 'vtex.css-handles'
 import productRecommendations from './queries/productRecommendations.gql'
 
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
-import shelf from './components/shelf.css'
+
+const CSS_HANDLES = ['relatedProducts']
 
 // Previous values were in a wrong format with the message string in the enum value.
 const fixRecommendation = recommendation => {
@@ -27,6 +29,7 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
 }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
 
   const productContext = useProduct()
@@ -71,7 +74,7 @@ const RelatedProducts = ({
           ...productList,
         }
         return (
-          <div className={shelf.relatedProducts}>
+          <div className={handles.relatedProducts}>
             <ProductList {...productListProps} />
           </div>
         )

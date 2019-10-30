@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
+import { useCssHandles } from 'vtex.css-handles'
 
 import { productListSchemaPropTypes, shelfItemPropTypes } from '../utils/propTypes'
 import ScrollTypes, { getScrollNames, getScrollValues } from '../utils/ScrollTypes'
@@ -11,7 +12,7 @@ import GapPaddingTypes, {
 } from '../utils/paddingEnum'
 import ShelfContent from './ShelfContent'
 
-import shelf from './shelf.css'
+const CSS_HANDLES = ['title']
 
 const DEFAULT_MAX_ITEMS = 10
 const DEFAULT_ITEMS_PER_PAGE = 5
@@ -34,12 +35,13 @@ const ProductList = ({
   showTitle,
   paginationDotsVisibility,
 }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   return products && !products.length ? null : (
     <Fragment>
       {showTitle && (
         <div
           className={`${
-            shelf.title
+            handles.title
           } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
         >
           <IOMessage id={titleText} />

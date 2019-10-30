@@ -2,8 +2,6 @@
   display:block;
 }
 
-.headline {}
-
 .container .mh7-ns,
 .container .pv4,
 .container .pb7 {
@@ -68,10 +66,3 @@
       position: relative;
   }
 }
-
-.itemContainer {}
-.itemContainerSelected {}
-.itemContainerUnselected {}
-.tabsContainer {}
-.tabsNamesContainer {}
-.shelfContainer {}

@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
+import { useCssHandles } from 'vtex.css-handles'
 import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
@@ -13,10 +14,11 @@ import OrdenationTypes, {
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
-import ShelfContent from './components/ShelfContent'
+import { shelfContentPropTypes } from './utils/propTypes'
 
-import shelf from './components/shelf.css'
 import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
+
+const CSS_HANDLES = ['container']
 
 const useProductImpression = (products, inView) => {
   const viewed = useRef(false)
@@ -48,6 +50,7 @@ const useProductImpression = (products, inView) => {
  * Shelf Component. Queries a list of products and shows them.
  */
 const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVisibility = 'visible' }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   const { isMobile }  = useDevice()
   const { loading, error, products } = data || {}
 
@@ -77,7 +80,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVis
   }
 
   return (
-    <div ref={ref} className={`${shelf.container} pv4 pb9`}>
+    <div ref={ref} className={`${handles.container} pv4 pb9`}>
       <ProductList {...productListProps} />
     </div>
   )
@@ -86,7 +89,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVis
 Shelf.propTypes = {
   /** Graphql data response. */
   data: PropTypes.shape({
-    products: ShelfContent.propTypes.products,
+    products: shelfContentPropTypes.products,
   }),
   /** Category Id. */
   category: PropTypes.string,
