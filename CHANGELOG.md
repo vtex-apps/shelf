@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.31.7] - 2019-10-30
 ### Fixed
--  Add `categoryTree` field in products and recommendations query.
+-  Add `categories` field in products and recommendations query.
 
 ## [1.31.6] - 2019-10-29
 ### Changed
