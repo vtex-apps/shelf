@@ -11,16 +11,7 @@ query ProductRecommendations(
     link
     linkText
     brand
-    categoryTree {
-      cacheId
-      href
-      slug
-      id
-      name
-      titleTag
-      hasChildren
-      metaTagDescription
-    }
+    categories
     specificationGroups {
       name
       specifications {

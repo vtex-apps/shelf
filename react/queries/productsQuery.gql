@@ -25,16 +25,7 @@ query Products(
     linkText
     brand
     brandId
-    categoryTree {
-      cacheId
-      href
-      slug
-      id
-      name
-      titleTag
-      hasChildren
-      metaTagDescription
-    }
+    categories
     specificationGroups {
       name
       specifications {
