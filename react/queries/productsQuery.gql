@@ -25,6 +25,7 @@ query Products(
     linkText
     brand
     brandId
+    categories
     specificationGroups {
       name
       specifications {
