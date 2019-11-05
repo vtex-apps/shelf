@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useEffect, useRef } from 'react'
-import { graphql } from 'react-apollo'
+import { useQuery } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
@@ -14,11 +14,14 @@ import OrdenationTypes, {
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
+import productsNoSimulationQuery from './queries/productsNoSimulationQuery.gql'
 import { shelfContentPropTypes } from './utils/propTypes'
 
 import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
 const CSS_HANDLES = ['container']
+
+const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
 
 const useProductImpression = (products, inView) => {
   const viewed = useRef(false)
@@ -49,17 +52,45 @@ const useProductImpression = (products, inView) => {
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVisibility = 'visible' }) => {
+const Shelf = ({
+  productList = ProductList.defaultProps,
+  paginationDotsVisibility = 'visible',
+  category,
+  collection,
+  hideUnavailableItems,
+  orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
+  specificationFilters = [],
+  maxItems = ProductList.defaultProps.maxItems,
+}) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile }  = useDevice()
-  const { loading, error, products } = data || {}
+  const variables = {
+    category,
+      ...(collection != null ? {
+        collection,
+      } : {}),
+      specificationFilters: specificationFilters.map(parseFilters),
+      orderBy,
+      from: 0,
+      to: maxItems - 1,
+      hideUnavailableItems,
+  }
+  const { data: {productsNoSimulations}={}, loading } = useQuery(productsNoSimulationQuery, {
+    ssr: false,
+    variables,
+  })
+  const { data: {products}={}, error: fullQueryError } = useQuery(productsQuery, {
+    ssr: false,
+    variables,
+  })
+
 
   const filteredProducts = useMemo(() => {
     return products && products.map(normalizeBuyable).filter(Boolean)
   }, [products])
 
   const productListProps = useMemo(() => ({
-    products: filteredProducts,
+    products: products || productsNoSimulations,
     loading: loading,
     isMobile,
     paginationDotsVisibility,
@@ -75,7 +106,7 @@ const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVis
     return <Loading />
   }
 
-  if (error) {
+  if (fullQueryError) {
     return null
   }
 
@@ -105,35 +136,7 @@ Shelf.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
-const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
-
-const options = {
-  options: ({
-    category,
-    collection,
-    hideUnavailableItems,
-    orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
-    specificationFilters = [],
-    maxItems = ProductList.defaultProps.maxItems,
-  }) => ({
-    ssr: true,
-    variables: {
-      category,
-      ...(collection != null ? {
-        collection,
-      } : {}),
-      specificationFilters: specificationFilters.map(parseFilters),
-      orderBy,
-      from: 0,
-      to: maxItems - 1,
-      hideUnavailableItems,
-    },
-  }),
-}
-
-const EnhancedShelf = graphql(productsQuery, options)(Shelf)
-
-EnhancedShelf.getSchema = props => {
+Shelf.getSchema = props => {
   return {
     title: 'admin/editor.shelf.title',
     description: 'admin/editor.shelf.description',
@@ -187,4 +190,4 @@ EnhancedShelf.getSchema = props => {
   }
 }
 
-export default EnhancedShelf
+export default Shelf

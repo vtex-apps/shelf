@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
-import { Query } from 'react-apollo'
+import { useQuery } from 'react-apollo'
 import { useDevice } from 'vtex.device-detector'
 
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
-import productRecommendations from './queries/productRecommendations.gql'
+import productRecommendationsQuery from './queries/productRecommendations.gql'
 
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
@@ -51,35 +51,27 @@ const RelatedProducts = ({
     [productId, recommendation]
   )
 
-  if (!productId) {
+  const { data, loading, error } = useQuery(productRecommendationsQuery, {
+    ssr: false,
+    variables,
+
+  })
+
+  if (!productId || !data || error) {
     return null
   }
 
+  const { productRecommendations } = data
+  const productListProps = {
+    products: productRecommendations || [],
+    loading,
+    isMobile,
+    ...productList,
+  }
   return (
-    <Query
-      query={productRecommendations}
-      variables={variables}
-      partialRefetch
-      ssr={false}
-    >
-      {({ data, loading }) => {
-        if (!data) {
-          return null
-        }
-        const { productRecommendations } = data
-        const productListProps = {
-          products: productRecommendations || [],
-          loading,
-          isMobile,
-          ...productList,
-        }
-        return (
-          <div className={handles.relatedProducts}>
-            <ProductList {...productListProps} />
-          </div>
-        )
-      }}
-    </Query>
+    <div className={handles.relatedProducts}>
+      <ProductList {...productListProps} />
+    </div>
   )
 }
 
