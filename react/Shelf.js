@@ -115,6 +115,7 @@ const options = {
     orderBy = OrdenationTypes.ORDER_BY_TOP_SALE_DESC.value,
     specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
+    skusFilter,
   }) => ({
     ssr: true,
     variables: {
@@ -127,6 +128,7 @@ const options = {
       from: 0,
       to: maxItems - 1,
       hideUnavailableItems,
+      skusFilter,
     },
   }),
 }
@@ -182,6 +184,18 @@ EnhancedShelf.getSchema = props => {
         type: 'boolean',
         default: false,
         isLayout: false,
+      },
+      skusFilter: {
+        title: 'admin/editor.shelf.skusFilter',
+        description:
+          'admin/editor.shelf.skusFilter.description',
+        type: 'string',
+        default: '',
+        enum: ['', 'FIRST_AVAILABLE'],
+        enumNames: [
+          'admin/editor.shelf.query.skusFilter.none',
+          'admin/editor.shelf.skusFilter.first-available',
+        ],
       },
     },
   }

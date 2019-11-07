@@ -6,6 +6,7 @@ query Products(
   $from: Int
   $to: Int
   $hideUnavailableItems: Boolean = false
+  $skusFilter: ItemsFilter
 ) {
   products(
     category: $category
@@ -33,7 +34,7 @@ query Products(
         values
       }
     }
-    items {
+    items(filter: $skusFilter) {
       name
       itemId
       measurementUnit
