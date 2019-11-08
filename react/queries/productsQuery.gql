@@ -6,7 +6,7 @@ query Products(
   $from: Int
   $to: Int
   $hideUnavailableItems: Boolean = false
-  $skusFilter: ItemsFilter
+  $skusFilter: ItemsFilter = ALL_AVAILABLE
 ) {
   products(
     category: $category
