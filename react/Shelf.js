@@ -190,8 +190,8 @@ EnhancedShelf.getSchema = props => {
         description:
           'admin/editor.shelf.skusFilter.description',
         type: 'string',
-        default: '',
-        enum: ['', 'FIRST_AVAILABLE'],
+        default: 'ALL',
+        enum: ['ALL', 'FIRST_AVAILABLE'],
         enumNames: [
           'admin/editor.shelf.query.skusFilter.none',
           'admin/editor.shelf.skusFilter.first-available',
