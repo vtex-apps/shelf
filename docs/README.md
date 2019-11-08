@@ -57,6 +57,7 @@ Now, you can change the behavior of the shelf block that is in the store home. S
       "arrows": true,
       "titleText": "New collection",
       "hideUnavailableItems": true,
+      "skusFilter": "FIRST_AVAILABLE",
       "summary": {
         "isOneClickBuy": false,
         "showBadge": true,
@@ -105,8 +106,16 @@ For `Shelf`:
 | `collection`               | `Number`                         | Shows the remove button in each item                                                                                                                                                                                                                   | -             |
 | `orderBy`                  | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''`          |
 | `hideUnavailableItems`     | `Boolean`                        | Hides items that are unavailable.                                                                                                                                                                                                                      | `false`       |
+| `skusFilter`               | `SkusFilterEnum`                 | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                                                                | `""`          |
 | `paginationDotsVisibility` | `Enum`                           | Controls if pagination dots below the Shelf should be rendered or not. Possible values: `visible` (always show), `hidden` (never show), `desktopOnly`, `mobileOnly`                                                                                    | `visible`     |
 | `productList`              | `ProductListSchema`              | Product list schema. `See ProductListSchema`                                                                                                                                                                                                           | -             |
+
+`SkusFilterEnum`:
+| Name | Value | Description |
+| ---- | ----- | ----------- |
+| First Available | `FIRST_AVAILABLE` | Most performant, ideal if you do not have a SKU selector in your shelf. Will return only the first available SKU for that product in your shelf query. |
+| All Available | `ALL_AVAILABLE` | A bit better performace, will only return SKUs that are available, ideal if you have a SKU selector but still want a better performance. |
+| All | `ALL` | Returns all SKUs related to that product, least performant option. |
 
 For `SpecificationFilterItem`:
 
@@ -134,7 +143,7 @@ For `RelatedProducts`:
 | `summary`         | `Object`  | Product Summary schema properties.                                                                                                                                                                                                                                                   | -             |
 | `gap`             | `Enum`    | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`.                                                                                                                                                                                                                       | `ph3`         |
 | `minItemsPerPage` | `Number`  | Minimum amount of slides to be on the screen, can be used to control how many itens will be displayed in the smallest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf. | `1`           |
-| `itemsPerPage`    | `Number`  | Maximum amount of slides to be on the screen. Can be used to control how many items will be displayed in the biggest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf.                                                                                                             | `5`           |
+| `itemsPerPage`    | `Number`  | Maximum amount of slides to be on the screen. Can be used to control how many items will be displayed in the biggest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf.  | `5`           |
 
 For `TabbedShelf`:
 
@@ -234,31 +243,31 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 #### CSS namespaces
 
-Below, we describe the namespaces that are defined in the `Shelf`, `RelatedProducts` and  `TabbedShelf`.
+Below, we describe the namespaces that are defined in the `Shelf`, `RelatedProducts` and `TabbedShelf`.
 
-| Class name        | 
-| ----------------- | 
-| `container`       | 
-| `title`           | 
-| `relatedProducts` | 
-| `arrow`           |
-| `dot`           |
-| `slide`           |
-| `blockContainer`           |
-| `blockText`           |
-| `buttonContainer`           |
-| `arrowLeft`           |
-| `arrowRight`           |
-| `shelfContentContainer`           |
-| `sliderContainer`           |
-| `headline`           |
+| Class name                |
+| ------------------------- |
+| `container`               |
+| `title`                   |
+| `relatedProducts`         |
+| `arrow`                   |
+| `dot`                     |
+| `slide`                   |
+| `blockContainer`          |
+| `blockText`               |
+| `buttonContainer`         |
+| `arrowLeft`               |
+| `arrowRight`              |
+| `shelfContentContainer`   |
+| `sliderContainer`         |
+| `headline`                |
 | `itemContainer`           |
-| `itemContainerSelected`           |
-| `itemContainerUnselected`           |
+| `itemContainerSelected`   |
+| `itemContainerUnselected` |
 | `tabsContainer`           |
-| `tabsNamesContainer`           |
-| `shelfContainer`           |
-| `tabButton`         |
+| `tabsNamesContainer`      |
+| `shelfContainer`          |
+| `tabButton`               |
 
 ## Troubleshooting
 
