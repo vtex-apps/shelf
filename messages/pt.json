@@ -10,6 +10,7 @@
   "admin/editor.shelf.skusFilter.description": "Configurando o valor de primeiro disponível faz sua query ser mais rápida!",
   "admin/editor.shelf.skusFilter.none": "Nenhum",
   "admin/editor.shelf.skusFilter.first-available": "Primeiro Disponível",
+  "admin/editor.shelf.skusFilter.all-available": "Todos Disponíveis",
   "admin/editor.shelf.maxItems.title": "Quantidade máxima de itens",
   "admin/editor.shelf.itemsPerPage.title": "Itens por Página (web)",
   "admin/editor.shelf.gap.title": "Espaço entre os itens",

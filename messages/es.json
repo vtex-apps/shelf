@@ -9,6 +9,7 @@
   "admin/editor.shelf.skusFilter": "Filtro de SKUs",
   "admin/editor.shelf.skusFilter.description": "¡Establecer el primer iten disponible agiliza su consulta!",
   "admin/editor.shelf.skusFilter.none": "Ninguno",
+  "admin/editor.shelf.skusFilter.all-available": "Todos disponibles",
   "admin/editor.shelf.skusFilter.first-available": "Primero disponible",
   "admin/editor.shelf.maxItems.title": "Cantidad máxima de Elementos",
   "admin/editor.shelf.itemsPerPage.title": "Productos por Página (web)",

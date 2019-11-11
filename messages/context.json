@@ -10,6 +10,7 @@
   "admin/editor.shelf.skusFilter.description": "admin/editor.shelf.skusFilter.description",
   "admin/editor.shelf.skusFilter.none": "admin/editor.shelf.skusFilter.none",
   "admin/editor.shelf.skusFilter.first-available": "admin/editor.shelf.skusFilter.first-available",
+  "admin/editor.shelf.skusFilter.all-available": "admin/editor.shelf.skusFilter.all-available",
   "admin/editor.shelf.maxItems.title": "admin/editor.shelf.maxItems.title",
   "admin/editor.shelf.itemsPerPage.title": "admin/editor.shelf.itemsPerPage.title",
   "admin/editor.shelf.gap.title": "admin/editor.shelf.gap.title",
