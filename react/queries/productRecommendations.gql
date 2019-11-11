@@ -12,6 +12,16 @@ query ProductRecommendations(
     linkText
     brand
     categories
+    priceRange {
+      sellingPrice {
+        highPrice
+        lowPrice
+      }
+      listPrice {
+        highPrice
+        lowPrice
+      }
+    }
     specificationGroups {
       name
       specifications {
