@@ -11,6 +11,7 @@ export const shelfItemPropTypes = {
     categories: PropTypes.array,
     link: PropTypes.string.isRequired,
     linkText: PropTypes.string.isRequired,
+    brandId: PropTypes.number,
     brand: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
