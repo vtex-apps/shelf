@@ -107,6 +107,10 @@ Shelf.propTypes = {
 
 const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
 
+const toBoolean = (x) => typeof x === 'boolean'
+  ? x
+  : x === "true"
+
 const options = {
   options: ({
     category,
@@ -129,7 +133,7 @@ const options = {
       orderBy,
       from: 0,
       to: maxItems - 1,
-      hideUnavailableItems,
+      hideUnavailableItems: toBoolean(hideUnavailableItems),
       skusFilter,
     },
   }),
