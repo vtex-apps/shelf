@@ -119,9 +119,11 @@ const options = {
   }) => ({
     ssr: true,
     variables: {
-      category,
+      ...(category != null ? {
+        category: category.toString(),
+      } : {}),
       ...(collection != null ? {
-        collection,
+        collection: collection.toString(),
       } : {}),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
@@ -167,7 +169,7 @@ EnhancedShelf.getSchema = props => {
       },
       collection: {
         title: 'admin/editor.shelf.collection.title',
-        type: 'number',
+        type: 'string',
         isLayout: false,
       },
       orderBy: {
