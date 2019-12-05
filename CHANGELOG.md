@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.33.4] - 2019-12-05
+
 ## [1.33.3] - 2019-11-22
 ### Fixed
 - Forces hideUnavailableItems to be a boolean value
