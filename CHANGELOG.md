@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Problem that caused the product impression event to be sent for every event on the shelf, including the ones that were't seen yet.
+
 ### Changed
 - The `ProductImpression` is now handled by the `product-context-list` app.
 
