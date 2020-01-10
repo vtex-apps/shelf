@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Added sliderRoot css handle
+
 ## [1.33.5] - 2019-12-05
 
 ## [1.33.4] - 2019-12-05
