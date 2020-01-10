@@ -11,7 +11,7 @@ import ShelfItem from './ShelfItem'
 import { shelfContentPropTypes } from '../utils/propTypes'
 import shelf from './shelf.css'
 
-const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide']
+const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide', 'sliderRoot']
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
 const SLIDER_WIDTH_THREE_ELEMENTS = 750
@@ -117,6 +117,9 @@ class ShelfContent extends Component {
             scrollByPage={isScrollByPage}
             duration={500}
             loop
+            classes={{
+              root: cssHandles.sliderRoot
+            }}
             easing="ease"
           >
             {productList.slice(0, maxItems).map((item, index) => (
