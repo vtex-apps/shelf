@@ -1,53 +1,75 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import { graphql } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
+import { usePixel } from 'vtex.pixel-manager/PixelContext'
 import { useCssHandles } from 'vtex.css-handles'
-import { ProductListContext } from 'vtex.product-list-context'
+import { useInView } from 'react-intersection-observer'
 
 import OrdenationTypes, {
   getOrdenationNames,
   getOrdenationValues,
 } from './utils/OrdenationTypes'
 import ProductList from './components/ProductList'
-import {
-  productListSchemaPropTypes,
-  shelfContentPropTypes,
-} from './utils/propTypes'
+import { productListSchemaPropTypes } from './utils/propTypes'
 import productsQuery from './queries/productsQuery.gql'
-import { normalizeBuyable } from './utils/normalize'
+import { shelfContentPropTypes } from './utils/propTypes'
+
+import { parseToProductImpression, normalizeBuyable } from './utils/normalize'
 
 const CSS_HANDLES = ['container']
 
-const { ProductListProvider } = ProductListContext
+const useProductImpression = (products, inView) => {
+  const viewed = useRef(false)
+  const { push } = usePixel()
+
+  // This hook checks if the products changes, we need to send a new event
+  useEffect(() => {
+    if (products) {
+      viewed.current = false
+    }
+  }, [products])
+
+  useEffect(() => {
+    if (!products || viewed.current || !inView) {
+      return
+    }
+    const normalizedProducts = products.map(parseToProductImpression)
+    const impressions = normalizedProducts.map((product, index) => ({ product, position: index + 1 }))
+    push({
+      event: 'productImpression',
+      list: 'Shelf',
+      impressions,
+    })
+    viewed.current = true
+  }, [viewed, push, products, inView])
+}
 
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({
-  data,
-  productList = ProductList.defaultProps,
-  paginationDotsVisibility = 'visible',
-}) => {
+const Shelf = ({ data, productList = ProductList.defaultProps, paginationDotsVisibility = 'visible' }) => {
   const handles = useCssHandles(CSS_HANDLES)
-  const { isMobile } = useDevice()
+  const { isMobile }  = useDevice()
   const { loading, error, products } = data || {}
 
   const filteredProducts = useMemo(() => {
     return products && products.map(normalizeBuyable).filter(Boolean)
   }, [products])
 
-  const productListProps = useMemo(
-    () => ({
-      products: filteredProducts,
-      loading: loading,
-      isMobile,
-      paginationDotsVisibility,
-      ...productList,
-    }),
-    [filteredProducts, loading, isMobile, productList]
-  )
+  const productListProps = useMemo(() => ({
+    products: filteredProducts,
+    loading: loading,
+    isMobile,
+    paginationDotsVisibility,
+    ...productList,
+  }), [filteredProducts, loading, isMobile, productList])
+  const [ref, inView] = useInView({
+    // Triggers the event when the element is 75% visible
+    threshold: 0.75,
+  })
+  useProductImpression(filteredProducts, inView)
 
   if (loading) {
     return <Loading />
@@ -58,10 +80,8 @@ const Shelf = ({
   }
 
   return (
-    <div className={`${handles.container} pv4 pb9`}>
-      <ProductListProvider>
-        <ProductList {...productListProps} />
-      </ProductListProvider>
+    <div ref={ref} className={`${handles.container} pv4 pb9`}>
+      <ProductList {...productListProps} />
     </div>
   )
 }
@@ -80,19 +100,16 @@ Shelf.propTypes = {
   /** Hide unavailable items */
   hideUnavailableItems: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  paginationDotsVisibility: PropTypes.oneOf([
-    'visible',
-    'hidden',
-    'mobileOnly',
-    'desktopOnly',
-  ]),
+  paginationDotsVisibility: PropTypes.oneOf(['visible', 'hidden', 'mobileOnly', 'desktopOnly']),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
 }
 
-const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
+const parseFilters = ({id, value}) => `specificationFilter_${id}:${value}`
 
-const toBoolean = x => (typeof x === 'boolean' ? x : x === 'true')
+const toBoolean = (x) => typeof x === 'boolean'
+  ? x
+  : x === "true"
 
 const options = {
   options: ({
@@ -106,8 +123,12 @@ const options = {
   }) => ({
     ssr: true,
     variables: {
-      ...(category && { category: category.toString() }),
-      ...(collection && { collection: collection.toString() }),
+      ...(category != null ? {
+        category: category.toString(),
+      } : {}),
+      ...(collection != null ? {
+        collection: collection.toString(),
+      } : {}),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
       from: 0,
@@ -172,7 +193,8 @@ EnhancedShelf.getSchema = props => {
       },
       skusFilter: {
         title: 'admin/editor.shelf.skusFilter',
-        description: 'admin/editor.shelf.skusFilter.description',
+        description:
+          'admin/editor.shelf.skusFilter.description',
         type: 'string',
         default: 'ALL_AVAILABLE',
         enum: ['ALL_AVAILABLE', 'ALL', 'FIRST_AVAILABLE'],

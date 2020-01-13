@@ -3,16 +3,9 @@ import React, { Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
-import { useProductImpression } from 'vtex.product-list-context'
 
-import {
-  productListSchemaPropTypes,
-  shelfItemPropTypes,
-} from '../utils/propTypes'
-import ScrollTypes, {
-  getScrollNames,
-  getScrollValues,
-} from '../utils/ScrollTypes'
+import { productListSchemaPropTypes, shelfItemPropTypes } from '../utils/propTypes'
+import ScrollTypes, { getScrollNames, getScrollValues } from '../utils/ScrollTypes'
 import GapPaddingTypes, {
   getGapPaddingNames,
   getGapPaddingValues,
@@ -42,13 +35,14 @@ const ProductList = ({
   showTitle,
   paginationDotsVisibility,
 }) => {
-  useProductImpression()
   const handles = useCssHandles(CSS_HANDLES)
   return products && !products.length ? null : (
     <Fragment>
       {showTitle && (
         <div
-          className={`${handles.title} t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
+          className={`${
+            handles.title
+          } t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}
         >
           <IOMessage id={titleText} />
         </div>
@@ -120,7 +114,7 @@ ProductList.getSchema = () => {
         type: 'boolean',
         default: ProductList.defaultProps.showTitle,
         isLayout: true,
-      },
+      }
     },
   }
 }
@@ -145,12 +139,7 @@ ProductList.propTypes = {
   /** Verifies if is a mobile device. */
   isMobile: PropTypes.bool,
   /** Should display navigation dots below the Shelf */
-  paginationDotsVisibility: PropTypes.oneOf([
-    'visible',
-    'hidden',
-    'desktopOnly',
-    'mobileOnly',
-  ]),
+  paginationDotsVisibility: PropTypes.oneOf(['visible', 'hidden', 'desktopOnly', 'mobileOnly']),
   ...productListSchemaPropTypes,
 }
 
