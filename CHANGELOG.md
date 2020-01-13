@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.34.0] - 2020-01-13
 ### Fixed
 - Problem that caused the product impression event to be sent for every item on the shelf, including the ones that were't seen yet.
 
