@@ -106,16 +106,8 @@ const options = {
   }) => ({
     ssr: true,
     variables: {
-      ...(category != null
-        ? {
-            category: category.toString(),
-          }
-        : {}),
-      ...(collection != null
-        ? {
-            collection: collection.toString(),
-          }
-        : {}),
+      ...(category && { category: category.toString() }),
+      ...(collection && { collection: collection.toString() }),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
       from: 0,

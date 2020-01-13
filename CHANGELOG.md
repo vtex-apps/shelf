@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Problem that caused the product impression event to be sent for every event on the shelf, including the ones that were't seen yet.
+- Problem that caused the product impression event to be sent for every item on the shelf, including the ones that were't seen yet.
 
 ### Changed
 - The `ProductImpression` is now handled by the `product-context-list` app.
