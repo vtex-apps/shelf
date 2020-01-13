@@ -29,17 +29,19 @@ const DEFAULT_MIN_ITEMS_PER_PAGE = 1
  * Product List Component. Shows a collection of products.
  */
 const ProductList = ({
-  products,
-  maxItems,
-  titleText,
+  gap,
   arrows,
   scroll,
-  minItemsPerPage,
-  itemsPerPage,
   summary,
+  maxItems,
+  products,
   isMobile,
-  gap,
+  autoplay,
   showTitle,
+  titleText,
+  itemsPerPage,
+  navigationStep,
+  minItemsPerPage,
   paginationDotsVisibility,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
@@ -55,17 +57,19 @@ const ProductList = ({
       <ReactResizeDetector handleWidth>
         {width => (
           <ShelfContent
-            products={products}
-            maxItems={maxItems}
+            gap={gap}
+            width={width}
             arrows={arrows}
             scroll={scroll}
-            paginationDotsVisibility={paginationDotsVisibility}
-            minItemsPerPage={minItemsPerPage}
-            itemsPerPage={itemsPerPage}
             summary={summary}
+            products={products}
+            maxItems={maxItems}
             isMobile={isMobile}
-            width={width}
-            gap={gap}
+            autoplay={autoplay}
+            itemsPerPage={itemsPerPage}
+            navigationStep={navigationStep}
+            minItemsPerPage={minItemsPerPage}
+            paginationDotsVisibility={paginationDotsVisibility}
           />
         )}
       </ReactResizeDetector>

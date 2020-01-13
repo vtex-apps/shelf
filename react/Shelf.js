@@ -25,11 +25,19 @@ const { ProductListProvider } = ProductListContext
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = ({
-  data,
-  productList = ProductList.defaultProps,
-  paginationDotsVisibility = 'visible',
-}) => {
+const Shelf = props => {
+  const {
+    data,
+    title,
+    arrows,
+    autoplay,
+    showTitle,
+    itemsPerPage,
+    minItemsPerPage,
+    navigationStep: navigationStepProp,
+    paginationDotsVisibility = 'visible',
+    productList = ProductList.defaultProps,
+  } = props
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
   const { loading, error, products } = data || {}
@@ -38,16 +46,21 @@ const Shelf = ({
     return products && products.map(normalizeBuyable).filter(Boolean)
   }, [products])
 
-  const productListProps = useMemo(
-    () => ({
-      products: filteredProducts,
-      loading: loading,
-      isMobile,
-      paginationDotsVisibility,
-      ...productList,
-    }),
-    [filteredProducts, loading, isMobile, paginationDotsVisibility, productList]
-  )
+  const navigationStep = isNaN(parseInt(navigationStepProp)) ? navigationStepProp : parseInt(navigationStepProp)
+  const productListProps = {
+    ...productList,
+    arrows,
+    autoplay,
+    isMobile,
+    showTitle,
+    itemsPerPage,
+    navigationStep,
+    minItemsPerPage,
+    loading: loading,
+    ...(title && { titleText: title }),
+    paginationDotsVisibility,
+    products: filteredProducts,
+  }
 
   if (loading) {
     return <Loading />
@@ -129,6 +142,51 @@ EnhancedShelf.getSchema = props => {
       category: {
         title: 'admin/editor.shelf.category.title',
         description: 'admin/editor.shelf.category.description',
+        type: 'string',
+        isLayout: false,
+      },
+      title: {
+        title: 'admin/editor.shelf-properties.title.title',
+        description: 'admin/editor.shelf-properties.title.description',
+        type: 'string',
+        isLayout: false,
+      },
+      showTitle: {
+        title: 'admin/editor.shelf-properties.show-title.title',
+        description: 'admin/editor.shelf-properties.show-title.description',
+        type: 'boolean',
+        isLayout: false,
+      },
+      minItemsPerPage: {
+        title: 'admin/editor.shelf-properties.min-items-per-page.title',
+        description: 'admin/editor.shelf-properties.min-items-per-page.description',
+        type: 'number',
+        isLayout:  false,
+        default: 1,
+      },
+      itemsPerPage: {
+        title: 'admin/editor.shelf-properties.items-per-page.title',
+        description: 'admin/editor.shelf-properties.items-per-page.description',
+        type: 'number',
+        isLayout: false,
+      },
+      arrows: {
+        title: 'admin/editor.shelf-properties.arrows.title',
+        description: 'admin/editor.shelf-properties.arrows.description',
+        type: 'boolean',
+        isLayout: false,
+        default: true,
+      },
+      autoplay: {
+        title: 'admin/editor.shelf-properties.autoplay.title',
+        description: 'admin/editor.shelf-properties.autoplay.description',
+        type: 'boolean',
+        isLayout: false,
+        default: false,
+      },
+      navigationStep: {
+        title: 'admin/editor.shelf-properties.navigation-step.title',
+        description: 'admin/editor.shelf-properties.navigation-step.description',
         type: 'string',
         isLayout: false,
       },
