@@ -46,7 +46,7 @@ const Shelf = ({
       paginationDotsVisibility,
       ...productList,
     }),
-    [filteredProducts, loading, isMobile, productList]
+    [filteredProducts, loading, isMobile, paginationDotsVisibility, productList]
   )
 
   if (loading) {

@@ -31,6 +31,7 @@ const ShelfItem = ({ item, summary }) => {
   const [inViewRef, inView] = useInView({
     // Triggers the event when the element is 75% visible
     threshold: 0.75,
+    triggerOnce: true,
   })
 
   const dispatch = useProductListDispatch()
@@ -39,7 +40,7 @@ const ShelfItem = ({ item, summary }) => {
     if (inView) {
       dispatch({ type: 'SEND_IMPRESSION', args: { product: product } })
     }
-  }, [inView])
+  }, [dispatch, inView, product])
 
   return (
     <ExtensionPoint
