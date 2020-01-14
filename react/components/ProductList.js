@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import { IOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
-import { useProductImpression } from 'vtex.product-list-context'
 
 import {
   productListSchemaPropTypes,
@@ -18,6 +17,7 @@ import GapPaddingTypes, {
   getGapPaddingValues,
 } from '../utils/paddingEnum'
 import ShelfContent from './ShelfContent'
+import ProductListEventCaller from './ProductListEventCaller'
 
 const CSS_HANDLES = ['title']
 
@@ -42,7 +42,6 @@ const ProductList = ({
   showTitle,
   paginationDotsVisibility,
 }) => {
-  useProductImpression()
   const handles = useCssHandles(CSS_HANDLES)
   return products && !products.length ? null : (
     <Fragment>
@@ -70,6 +69,7 @@ const ProductList = ({
           />
         )}
       </ReactResizeDetector>
+      <ProductListEventCaller />
     </Fragment>
   )
 }
