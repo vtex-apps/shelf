@@ -16,11 +16,7 @@ describe('Shelf component', () => {
       showTitle: true,
     }
 
-    // TODO: Remove this later when we have a better way to resolve contentSchemas.json at test-tools
-    const rawData = fs.readFileSync('../store/contentSchemas.json')
-    const contentSchema = JSON.parse(rawData)
-    const titleTextId = contentSchema.definitions.ProductList.properties.titleText.default
-
+    const titleTextId = Shelf.getSchema(props).properties.title.default
     const wrapper = render(<ProductList titleText={titleTextId} {...props} {...customProps} />)
     return wrapper
   }

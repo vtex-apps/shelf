@@ -150,6 +150,7 @@ EnhancedShelf.getSchema = props => {
         description: 'admin/editor.shelf-properties.title.description',
         type: 'string',
         isLayout: false,
+        default: 'store/shelf.title',
       },
       showTitle: {
         title: 'admin/editor.shelf-properties.show-title.title',
