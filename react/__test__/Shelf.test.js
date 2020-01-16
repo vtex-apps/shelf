@@ -16,7 +16,7 @@ describe('Shelf component', () => {
       showTitle: true,
     }
 
-    const titleTextId = Shelf.getSchema(props).properties.title.default
+    const titleTextId = Shelf.schema.properties.title.default
     const wrapper = render(<ProductList titleText={titleTextId} {...props} {...customProps} />)
     return wrapper
   }
@@ -38,7 +38,7 @@ describe('Shelf component', () => {
   })
 
   it('should show in Site Editor', () => {
-    const schema = Shelf.schema || Shelf.getSchema({})
+    const { schema } = Shelf
     expect(schema).toBeDefined()
     expect(typeof schema.title).toBe('string')
   })

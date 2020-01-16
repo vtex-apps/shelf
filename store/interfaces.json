@@ -12,9 +12,7 @@
       "height": 550
     },
     "content": {
-      "properties": {
-        "productList": { "$ref": "#/definitions/ProductList"}
-      }
+      "properties": {}
     }
   },
   "shelf.relatedProducts": {

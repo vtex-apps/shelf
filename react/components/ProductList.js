@@ -78,57 +78,6 @@ const ProductList = ({
   )
 }
 
-ProductList.getSchema = () => {
-  return {
-    title: 'admin/editor.shelf.title',
-    description: 'admin/editor.shelf.description',
-    type: 'object',
-    properties: {
-      maxItems: {
-        title: 'admin/editor.shelf.maxItems.title',
-        type: 'number',
-        default: ProductList.defaultProps.maxItems,
-        isLayout: true,
-      },
-      gap: {
-        title: 'admin/editor.shelf.gap.title',
-        type: 'string',
-        enum: getGapPaddingValues(),
-        enumNames: getGapPaddingNames(),
-        default: GapPaddingTypes.SMALL.value,
-        isLayout: true,
-      },
-      itemsPerPage: {
-        title: 'admin/editor.shelf.itemsPerPage.title',
-        type: 'number',
-        enum: [3, 4, 5],
-        default: ProductList.defaultProps.itemsPerPage,
-        isLayout: true,
-      },
-      scroll: {
-        title: 'admin/editor.shelf.scrollType.title',
-        type: 'string',
-        enum: getScrollValues(),
-        enumNames: getScrollNames(),
-        default: ScrollTypes.BY_PAGE.value,
-        isLayout: true,
-      },
-      arrows: {
-        title: 'admin/editor.shelf.arrows.title',
-        type: 'boolean',
-        default: ProductList.defaultProps.arrows,
-        isLayout: true,
-      },
-      showTitle: {
-        title: 'admin/editor.shelf.titleText.showTitle',
-        type: 'boolean',
-        default: ProductList.defaultProps.showTitle,
-        isLayout: true,
-      },
-    },
-  }
-}
-
 ProductList.defaultProps = {
   maxItems: DEFAULT_MAX_ITEMS,
   minItemsPerPage: DEFAULT_MIN_ITEMS_PER_PAGE,
@@ -156,6 +105,55 @@ ProductList.propTypes = {
     'mobileOnly',
   ]),
   ...productListSchemaPropTypes,
+}
+
+ProductList.schema = {
+  title: 'admin/editor.shelf.title',
+  description: 'admin/editor.shelf.description',
+  type: 'object',
+  properties: {
+    maxItems: {
+      title: 'admin/editor.shelf.maxItems.title',
+      type: 'number',
+      default: ProductList.defaultProps.maxItems,
+      isLayout: true,
+    },
+    gap: {
+      title: 'admin/editor.shelf.gap.title',
+      type: 'string',
+      enum: getGapPaddingValues(),
+      enumNames: getGapPaddingNames(),
+      default: GapPaddingTypes.SMALL.value,
+      isLayout: true,
+    },
+    itemsPerPage: {
+      title: 'admin/editor.shelf.itemsPerPage.title',
+      type: 'number',
+      enum: [3, 4, 5],
+      default: ProductList.defaultProps.itemsPerPage,
+      isLayout: true,
+    },
+    scroll: {
+      title: 'admin/editor.shelf.scrollType.title',
+      type: 'string',
+      enum: getScrollValues(),
+      enumNames: getScrollNames(),
+      default: ScrollTypes.BY_PAGE.value,
+      isLayout: true,
+    },
+    arrows: {
+      title: 'admin/editor.shelf.arrows.title',
+      type: 'boolean',
+      default: ProductList.defaultProps.arrows,
+      isLayout: true,
+    },
+    showTitle: {
+      title: 'admin/editor.shelf.titleText.showTitle',
+      type: 'boolean',
+      default: ProductList.defaultProps.showTitle,
+      isLayout: true,
+    },
+  },
 }
 
 export default ProductList

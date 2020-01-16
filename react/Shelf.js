@@ -133,116 +133,114 @@ const options = {
 
 const EnhancedShelf = graphql(productsQuery, options)(Shelf)
 
-EnhancedShelf.getSchema = props => {
-  return {
-    title: 'admin/editor.shelf.title',
-    description: 'admin/editor.shelf.description',
-    type: 'object',
-    properties: {
-      category: {
-        title: 'admin/editor.shelf.category.title',
-        description: 'admin/editor.shelf.category.description',
-        type: 'string',
-        isLayout: false,
-      },
-      title: {
-        title: 'admin/editor.shelf-properties.title.title',
-        description: 'admin/editor.shelf-properties.title.description',
-        type: 'string',
-        isLayout: false,
-        default: 'store/shelf.title',
-      },
-      showTitle: {
-        title: 'admin/editor.shelf-properties.show-title.title',
-        description: 'admin/editor.shelf-properties.show-title.description',
-        type: 'boolean',
-        isLayout: false,
-      },
-      minItemsPerPage: {
-        title: 'admin/editor.shelf-properties.min-items-per-page.title',
-        description: 'admin/editor.shelf-properties.min-items-per-page.description',
-        type: 'number',
-        isLayout:  false,
-        default: 1,
-      },
-      itemsPerPage: {
-        title: 'admin/editor.shelf-properties.items-per-page.title',
-        description: 'admin/editor.shelf-properties.items-per-page.description',
-        type: 'number',
-        isLayout: false,
-      },
-      arrows: {
-        title: 'admin/editor.shelf-properties.arrows.title',
-        description: 'admin/editor.shelf-properties.arrows.description',
-        type: 'boolean',
-        isLayout: false,
-        default: true,
-      },
-      autoplay: {
-        title: 'admin/editor.shelf-properties.autoplay.title',
-        description: 'admin/editor.shelf-properties.autoplay.description',
-        type: 'boolean',
-        isLayout: false,
-        default: false,
-      },
-      navigationStep: {
-        title: 'admin/editor.shelf-properties.navigation-step.title',
-        description: 'admin/editor.shelf-properties.navigation-step.description',
-        type: 'string',
-        isLayout: false,
-      },
-      specificationFilters: {
-        title: 'admin/editor.shelf.specificationFilters.title',
-        type: 'array',
-        items: {
-          title: 'admin/editor.shelf.specificationFilters.item.title',
-          type: 'object',
-          properties: {
-            id: {
-              type: 'string',
-              title: 'admin/editor.shelf.specificationFilters.item.id.title',
-            },
-            value: {
-              type: 'string',
-              title: 'admin/editor.shelf.specificationFilters.item.value.title',
-            },
+EnhancedShelf.schema = {
+  title: 'admin/editor.shelf.title',
+  description: 'admin/editor.shelf.description',
+  type: 'object',
+  properties: {
+    category: {
+      title: 'admin/editor.shelf.category.title',
+      description: 'admin/editor.shelf.category.description',
+      type: 'string',
+      isLayout: false,
+    },
+    title: {
+      title: 'admin/editor.shelf-properties.title.title',
+      description: 'admin/editor.shelf-properties.title.description',
+      type: 'string',
+      isLayout: false,
+      default: 'store/shelf.title',
+    },
+    showTitle: {
+      title: 'admin/editor.shelf-properties.show-title.title',
+      description: 'admin/editor.shelf-properties.show-title.description',
+      type: 'boolean',
+      isLayout: false,
+    },
+    minItemsPerPage: {
+      title: 'admin/editor.shelf-properties.min-items-per-page.title',
+      description: 'admin/editor.shelf-properties.min-items-per-page.description',
+      type: 'number',
+      isLayout:  false,
+      default: 1,
+    },
+    itemsPerPage: {
+      title: 'admin/editor.shelf-properties.items-per-page.title',
+      description: 'admin/editor.shelf-properties.items-per-page.description',
+      type: 'number',
+      isLayout: false,
+    },
+    arrows: {
+      title: 'admin/editor.shelf-properties.arrows.title',
+      description: 'admin/editor.shelf-properties.arrows.description',
+      type: 'boolean',
+      isLayout: false,
+      default: true,
+    },
+    autoplay: {
+      title: 'admin/editor.shelf-properties.autoplay.title',
+      description: 'admin/editor.shelf-properties.autoplay.description',
+      type: 'boolean',
+      isLayout: false,
+      default: false,
+    },
+    navigationStep: {
+      title: 'admin/editor.shelf-properties.navigation-step.title',
+      description: 'admin/editor.shelf-properties.navigation-step.description',
+      type: 'string',
+      isLayout: false,
+    },
+    specificationFilters: {
+      title: 'admin/editor.shelf.specificationFilters.title',
+      type: 'array',
+      items: {
+        title: 'admin/editor.shelf.specificationFilters.item.title',
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string',
+            title: 'admin/editor.shelf.specificationFilters.item.id.title',
+          },
+          value: {
+            type: 'string',
+            title: 'admin/editor.shelf.specificationFilters.item.value.title',
           },
         },
       },
-      collection: {
-        title: 'admin/editor.shelf.collection.title',
-        type: 'string',
-        isLayout: false,
-      },
-      orderBy: {
-        title: 'admin/editor.shelf.orderBy.title',
-        type: 'string',
-        enum: getOrdenationValues(),
-        enumNames: getOrdenationNames(),
-        default: OrdenationTypes.ORDER_BY_RELEVANCE.value,
-        isLayout: false,
-      },
-      productList: ProductList.getSchema(props),
-      hideUnavailableItems: {
-        title: 'admin/editor.shelf.hideUnavailableItems',
-        type: 'boolean',
-        default: false,
-        isLayout: false,
-      },
-      skusFilter: {
-        title: 'admin/editor.shelf.skusFilter',
-        description: 'admin/editor.shelf.skusFilter.description',
-        type: 'string',
-        default: 'ALL_AVAILABLE',
-        enum: ['ALL_AVAILABLE', 'ALL', 'FIRST_AVAILABLE'],
-        enumNames: [
-          'admin/editor.shelf.skusFilter.all-available',
-          'admin/editor.shelf.skusFilter.none',
-          'admin/editor.shelf.skusFilter.first-available',
-        ],
-      },
     },
-  }
+    collection: {
+      title: 'admin/editor.shelf.collection.title',
+      type: 'string',
+      isLayout: false,
+    },
+    orderBy: {
+      title: 'admin/editor.shelf.orderBy.title',
+      type: 'string',
+      enum: getOrdenationValues(),
+      enumNames: getOrdenationNames(),
+      default: OrdenationTypes.ORDER_BY_RELEVANCE.value,
+      isLayout: false,
+    },
+    productList: ProductList.schema,
+    hideUnavailableItems: {
+      title: 'admin/editor.shelf.hideUnavailableItems',
+      type: 'boolean',
+      default: false,
+      isLayout: false,
+    },
+    skusFilter: {
+      title: 'admin/editor.shelf.skusFilter',
+      description: 'admin/editor.shelf.skusFilter.description',
+      type: 'string',
+      default: 'ALL_AVAILABLE',
+      enum: ['ALL_AVAILABLE', 'ALL', 'FIRST_AVAILABLE'],
+      enumNames: [
+        'admin/editor.shelf.skusFilter.all-available',
+        'admin/editor.shelf.skusFilter.none',
+        'admin/editor.shelf.skusFilter.first-available',
+      ],
+    },
+  },
 }
 
 export default EnhancedShelf
