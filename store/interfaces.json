@@ -12,7 +12,7 @@
       "height": 550
     },
     "content": {
-      "properties": {}
+      "$ref": "app:vtex.shelf#/definitions/Shelf"
     }
   },
   "shelf.relatedProducts": {
