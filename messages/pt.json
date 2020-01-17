@@ -56,7 +56,7 @@
   "admin/editor.shelf-properties.items-per-page.title": "Itens por janela do slide",
   "admin/editor.shelf-properties.items-per-page.description": "A quantidade de itens que devem estar na tela ao mesmo tempo",
   "admin/editor.shelf-properties.arrows.title": "Mostrar setas",
-  "admin/editor.shelf-properties.arrows.description": "Se deve exibir as setas para controlar a vitrine",
+  "admin/editor.shelf-properties.arrows.description": "Se deveria exibir as setas para controlar a vitrine",
   "admin/editor.shelf-properties.autoplay.title": "Reprodução automática",
   "admin/editor.shelf-properties.autoplay.description": "Se deveria passar os slides automaticamente",
   "admin/editor.shelf-properties.navigation-step.title": "Passo de navegação",

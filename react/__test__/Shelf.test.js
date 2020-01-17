@@ -16,8 +16,8 @@ describe('Shelf component', () => {
       showTitle: true,
     }
 
-    const titleTextId = Shelf.schema.properties.title.default
-    const wrapper = render(<ProductList titleText={titleTextId} {...props} {...customProps} />)
+    const titleText = 'store/shelf.title'
+    const wrapper = render(<ProductList titleText={titleText} {...props} {...customProps} />)
     return wrapper
   }
 
