@@ -81,9 +81,9 @@ export const shelfContentPropTypes = {
   /** List of products */
   products: PropTypes.arrayOf(shelfItemPropTypes.item),
   /** Max Items per page */
-  itemsPerPage: PropTypes.number.isRequired,
+  itemsPerPage: PropTypes.number,
   /** Minimum Items per page */
-  minItemsPerPage: PropTypes.number.isRequired,
+  minItemsPerPage: PropTypes.number,
   /** Max items in shelf */
   maxItems: PropTypes.number.isRequired,
   /** Show Arrows */

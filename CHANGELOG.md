@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `arrows`, `autoplay`, `nativationStep`, `titleText`, `showTitle`, `itemsPerPage`, `minItemsPerPage` and `gap` props to the schema of the Shelf.
 
 ## [1.34.1] - 2020-01-14
 ### Fixed

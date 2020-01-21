@@ -12,9 +12,7 @@
       "height": 550
     },
     "content": {
-      "properties": {
-        "productList": { "$ref": "#/definitions/ProductList"}
-      }
+      "$ref": "app:vtex.shelf#/definitions/Shelf"
     }
   },
   "shelf.relatedProducts": {

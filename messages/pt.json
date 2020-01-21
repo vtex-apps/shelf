@@ -46,5 +46,19 @@
   "admin/editor.relatedProducts.accessories": "Produtos de acessórios",
   "admin/editor.relatedProducts.viewAndBought": "Quem viu isto, comprou também...",
   "admin/editor.relatedProducts.suggestions": "Sugestões",
-  "store/shelf.title": "Melhores Produtos"
+  "store/shelf.title": "Melhores Produtos",
+  "admin/editor.shelf-properties.title.title": "Título",
+  "admin/editor.shelf-properties.title.description": "Título da vitrine",
+  "admin/editor.shelf-properties.show-title.title": "Mostrar título",
+  "admin/editor.shelf-properties.show-title.description": "Se deveria mostrar o título da vitrine",
+  "admin/editor.shelf-properties.min-items-per-page.title": "Mínimo de itens por janela de slide",
+  "admin/editor.shelf-properties.min-items-per-page.description": "A quantidade mínima de itens que devem estar na tela ao mesmo tempo (ex. 1/2/3)",
+  "admin/editor.shelf-properties.items-per-page.title": "Itens por janela do slide",
+  "admin/editor.shelf-properties.items-per-page.description": "A quantidade de itens que devem estar na tela ao mesmo tempo (ex. 1/2/3)",
+  "admin/editor.shelf-properties.arrows.title": "Mostrar setas",
+  "admin/editor.shelf-properties.arrows.description": "Se deveria exibir as setas para controlar a vitrine",
+  "admin/editor.shelf-properties.autoplay.title": "Reprodução automática",
+  "admin/editor.shelf-properties.autoplay.description": "Se deveria passar os slides automaticamente",
+  "admin/editor.shelf-properties.navigation-step.title": "Passo de navegação",
+  "admin/editor.shelf-properties.navigation-step.description": "Quantos itens ele deve passar quando as setas são clicadas. Você pode passar um número ou \"page\" (sem as aspas) para passar todos os itens da janela"
 }

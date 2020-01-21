@@ -46,5 +46,19 @@
   "admin/editor.relatedProducts.accessories": "Productos de accesorios",
   "admin/editor.relatedProducts.viewAndBought": "Quien vio esto, también compró ...",
   "admin/editor.relatedProducts.suggestions": "Sugerencias",
-  "store/shelf.title": "Mejores Productos"
+  "store/shelf.title": "Mejores Productos",
+  "admin/editor.shelf-properties.title.title": "Título",
+  "admin/editor.shelf-properties.title.description": "Título del estante",
+  "admin/editor.shelf-properties.show-title.title": "Mostrar título",
+  "admin/editor.shelf-properties.show-title.description": "Si debe mostrar el título del vitrina",
+  "admin/editor.shelf-properties.min-items-per-page.title": "Artículos mínimos por página",
+  "admin/editor.shelf-properties.min-items-per-page.description": "La cantidad mínima de elementos que deben estar en la pantalla al mismo tiempo (ejemplo 1/2/3)",
+  "admin/editor.shelf-properties.items-per-page.title": "Artículos por ventana de diapositivas",
+  "admin/editor.shelf-properties.items-per-page.description": "La cantidad de elementos que deberían estar en la pantalla al mismo tiempo (ejemplo 1/2/3)",
+  "admin/editor.shelf-properties.arrows.title": "Mostrar flechas",
+  "admin/editor.shelf-properties.arrows.description": "Si debe mostrar las flechas para controlar el vitrina",
+  "admin/editor.shelf-properties.autoplay.title": "Reproducción automática",
+  "admin/editor.shelf-properties.autoplay.description": "Si pasar diapositivas automáticamente",
+  "admin/editor.shelf-properties.navigation-step.title": "Paso de navegación",
+  "admin/editor.shelf-properties.navigation-step.description": "Cuántos elementos debe pasar cuando se hace clic en las flechas. Puede pasar un número o puede passar \"page\" 9sin las comillas) para pasar todos los elementos de la ventana"
 }

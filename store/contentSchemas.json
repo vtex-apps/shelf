@@ -1,13 +1,142 @@
 {
   "definitions": {
-    "ProductList": {
+    "Shelf": {
+      "title": "admin/editor.shelf.title",
+      "description": "admin/editor.shelf.description",
+      "type": "object",
       "properties": {
-        "titleText": {
-          "title": "admin/editor.shelf.titleText.title",
-          "$ref": "app:vtex.native-types#/definitions/text",
-          "default": "store/shelf.title"
+        "category": {
+          "title": "admin/editor.shelf.category.title",
+          "description": "admin/editor.shelf.category.description",
+          "type": "string",
+          "isLayout": false
+        },
+        "specificationFilters": {
+          "title": "admin/editor.shelf.specificationFilters.title",
+          "type": "array",
+          "items": {
+            "title": "admin/editor.shelf.specificationFilters.item.title",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "admin/editor.shelf.specificationFilters.item.id.title"
+              },
+              "value": {
+                "type": "string",
+                "title": "admin/editor.shelf.specificationFilters.item.value.title"
+              }
+            }
+          }
+        },
+        "collection": {
+          "title": "admin/editor.shelf.collection.title",
+          "type": "string",
+          "isLayout": false
+        },
+        "orderBy": {
+          "title": "admin/editor.shelf.orderBy.title",
+          "type": "string",
+          "enum": ["", "OrderByTopSaleDESC", "OrderByPriceDESC", "OrderByPriceASC", "OrderByNameASC", "OrderByNameDESC", "OrderByReleaseDateDESC", "OrderByBestDiscountDESC"],
+          "enumNames": ["admin/editor.shelf.orderType.relevance", "admin/editor.shelf.orderType.sales", "admin/editor.shelf.orderType.priceDesc", "admin/editor.shelf.orderType.priceAsc", "admin/editor.shelf.orderType.nameAsc", "admin/editor.shelf.orderType.nameDesc", "admin/editor.shelf.orderType.releaseDate", "admin/editor.shelf.orderType.discount"],
+          "default": "",
+          "isLayout": false
+        },
+        "productList": { "$ref": "app:vtex.shelf#/definitions/ProductList" },
+        "hideUnavailableItems": {
+          "title": "admin/editor.shelf.hideUnavailableItems",
+          "type": "boolean",
+          "default": false,
+          "isLayout": false
+        },
+        "skusFilter": {
+          "title": "admin/editor.shelf.skusFilter",
+          "description": "admin/editor.shelf.skusFilter.description",
+          "type": "string",
+          "default": "ALL_AVAILABLE",
+          "enum": ["ALL_AVAILABLE", "ALL", "FIRST_AVAILABLE"],
+          "enumNames": [
+            "admin/editor.shelf.skusFilter.all-available",
+            "admin/editor.shelf.skusFilter.none",
+            "admin/editor.shelf.skusFilter.first-available"
+          ]
         }
-      }    
+      }
+    },
+    "ProductList": {
+      "title": "admin/editor.shelf.title",
+      "properties": {
+        "maxItems": {
+          "title": "admin/editor.shelf.maxItems.title",
+          "type": "number",
+          "default": 10,
+          "isLayout": true
+        },
+        "arrows": {
+          "title": "admin/editor.shelf-properties.arrows.title",
+          "description": "admin/editor.shelf-properties.arrows.description",
+          "type": "boolean",
+          "isLayout": false,
+          "default": true
+        },
+        "autoplay": {
+          "title": "admin/editor.shelf-properties.autoplay.title",
+          "description": "admin/editor.shelf-properties.autoplay.description",
+          "type": "boolean",
+          "isLayout": false,
+          "default": false
+        },
+        "navigationStep": {
+          "title": "admin/editor.shelf-properties.navigation-step.title",
+          "description": "admin/editor.shelf-properties.navigation-step.description",
+          "type": "string",
+          "isLayout": false
+        },
+        "titleText": {
+          "title": "admin/editor.shelf-properties.title.title",
+          "description": "admin/editor.shelf-properties.title.description",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "isLayout": false,
+          "default": "admin/editor.shelf.title"
+        },
+        "showTitle": {
+          "title": "admin/editor.shelf-properties.show-title.title",
+          "description": "admin/editor.shelf-properties.show-title.description",
+          "type": "boolean",
+          "default": true,
+          "isLayout": false
+        },
+        "itemsPerPage": {
+          "title": "admin/editor.shelf-properties.items-per-page.title",
+          "description": "admin/editor.shelf-properties.items-per-page.description",
+          "type": "number",
+          "default": 5,
+          "isLayout": false
+        },
+        "minItemsPerPage": {
+          "title": "admin/editor.shelf-properties.min-items-per-page.title",
+          "description": "admin/editor.shelf-properties.min-items-per-page.description",
+          "type": "number",
+          "isLayout":  false,
+          "default": 1
+        },
+        "gap": {
+          "title": "admin/editor.shelf.gap.title",
+          "type": "string",
+          "enum": ["admin/editor.shelf.gapType.none", "admin/editor.shelf.gapType.small", "admin/editor.shelf.gapType.medium", "admin/editor.shelf.gapType.large"],
+          "enumNames": ["ph0", "ph3", "ph5", "ph7"],
+          "default": "ph0",
+          "isLayout": true
+        },
+        "scroll": {
+          "title": "admin/editor.shelf.scrollType.title",
+          "type": "string",
+          "enum": ["admin/editor.shelf.scrollType.byPage", "admin/editor.shelf.scrollType.oneByOne"],
+          "enumNames": ["BY_PAGE", "ONE_BY_ONE"],
+          "default": "BY_PAGE",
+          "isLayout": true
+        }
+      }
     }
   }
 }

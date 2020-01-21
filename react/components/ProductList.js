@@ -8,14 +8,8 @@ import {
   productListSchemaPropTypes,
   shelfItemPropTypes,
 } from '../utils/propTypes'
-import ScrollTypes, {
-  getScrollNames,
-  getScrollValues,
-} from '../utils/ScrollTypes'
-import GapPaddingTypes, {
-  getGapPaddingNames,
-  getGapPaddingValues,
-} from '../utils/paddingEnum'
+import ScrollTypes from '../utils/ScrollTypes'
+import GapPaddingTypes from '../utils/paddingEnum'
 import ShelfContent from './ShelfContent'
 import ProductListEventCaller from './ProductListEventCaller'
 
@@ -29,20 +23,24 @@ const DEFAULT_MIN_ITEMS_PER_PAGE = 1
  * Product List Component. Shows a collection of products.
  */
 const ProductList = ({
-  products,
-  maxItems,
-  titleText,
+  gap,
   arrows,
   scroll,
-  minItemsPerPage,
-  itemsPerPage,
   summary,
+  maxItems,
+  products,
   isMobile,
-  gap,
+  autoplay,
   showTitle,
+  titleText,
+  itemsPerPage,
+  minItemsPerPage,
   paginationDotsVisibility,
+  navigationStep: navigationStepProp,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
+  const navigationStep = isNaN(parseInt(navigationStepProp)) ? navigationStepProp : parseInt(navigationStepProp)
+
   return products && !products.length ? null : (
     <Fragment>
       {showTitle && (
@@ -55,74 +53,25 @@ const ProductList = ({
       <ReactResizeDetector handleWidth>
         {width => (
           <ShelfContent
-            products={products}
-            maxItems={maxItems}
+            gap={gap}
+            width={width}
             arrows={arrows}
             scroll={scroll}
-            paginationDotsVisibility={paginationDotsVisibility}
-            minItemsPerPage={minItemsPerPage}
-            itemsPerPage={itemsPerPage}
             summary={summary}
+            products={products}
+            maxItems={maxItems}
             isMobile={isMobile}
-            width={width}
-            gap={gap}
+            autoplay={autoplay}
+            itemsPerPage={itemsPerPage}
+            navigationStep={navigationStep}
+            minItemsPerPage={minItemsPerPage}
+            paginationDotsVisibility={paginationDotsVisibility}
           />
         )}
       </ReactResizeDetector>
       <ProductListEventCaller />
     </Fragment>
   )
-}
-
-ProductList.getSchema = () => {
-  return {
-    title: 'admin/editor.shelf.title',
-    description: 'admin/editor.shelf.description',
-    type: 'object',
-    properties: {
-      maxItems: {
-        title: 'admin/editor.shelf.maxItems.title',
-        type: 'number',
-        default: ProductList.defaultProps.maxItems,
-        isLayout: true,
-      },
-      gap: {
-        title: 'admin/editor.shelf.gap.title',
-        type: 'string',
-        enum: getGapPaddingValues(),
-        enumNames: getGapPaddingNames(),
-        default: GapPaddingTypes.SMALL.value,
-        isLayout: true,
-      },
-      itemsPerPage: {
-        title: 'admin/editor.shelf.itemsPerPage.title',
-        type: 'number',
-        enum: [3, 4, 5],
-        default: ProductList.defaultProps.itemsPerPage,
-        isLayout: true,
-      },
-      scroll: {
-        title: 'admin/editor.shelf.scrollType.title',
-        type: 'string',
-        enum: getScrollValues(),
-        enumNames: getScrollNames(),
-        default: ScrollTypes.BY_PAGE.value,
-        isLayout: true,
-      },
-      arrows: {
-        title: 'admin/editor.shelf.arrows.title',
-        type: 'boolean',
-        default: ProductList.defaultProps.arrows,
-        isLayout: true,
-      },
-      showTitle: {
-        title: 'admin/editor.shelf.titleText.showTitle',
-        type: 'boolean',
-        default: ProductList.defaultProps.showTitle,
-        isLayout: true,
-      },
-    },
-  }
 }
 
 ProductList.defaultProps = {
@@ -152,6 +101,10 @@ ProductList.propTypes = {
     'mobileOnly',
   ]),
   ...productListSchemaPropTypes,
+}
+
+ProductList.schema = {
+  title: 'admin/editor.shelf.title',
 }
 
 export default ProductList

@@ -51,6 +51,17 @@ class ShelfContent extends Component {
     this.setState({ currentSlide: i })
   }
 
+  handleNextSlide = () => {
+    const { currentSlide } = this.state
+    const { itemsPerPage, maxItems, products, isMobile } = this.props
+    const productList =
+      !products || !products.length ? Array(maxItems).fill(null) : products
+    const totalItems = productList.slice(0, maxItems).length
+    const customPerPage = (!isMobile && itemsPerPage) || this.perPage
+    const nextSlide = ((currentSlide) % totalItems) + customPerPage
+    this.handleChangeSlide(nextSlide)
+  }
+
   componentDidMount() {
     this.setState({
       firstRender: false,
@@ -78,17 +89,19 @@ class ShelfContent extends Component {
 
   render() {
     const {
-      products,
-      maxItems,
-      scroll,
       gap,
+      scroll,
       arrows,
       summary,
+      autoplay,
+      isMobile,
+      maxItems,
+      products,
+      cssHandles,
       itemsPerPage,
+      navigationStep,
       minItemsPerPage,
       paginationDotsVisibility,
-      isMobile,
-      cssHandles
     } = this.props
 
     const { currentSlide } = this.state
@@ -107,17 +120,22 @@ class ShelfContent extends Component {
 
     return (
       <div className={`${cssHandles.shelfContentContainer} flex justify-center`}>
-        <SliderContainer className={`${cssHandles.sliderContainer} w-100 mw9`}>
+        <SliderContainer
+          autoplay={autoplay}
+          onNextSlide={this.handleNextSlide}
+          className={`${cssHandles.sliderContainer} w-100 mw9`}
+        >
           <Slider
-            minPerPage={roundedMinItems}
-            perPage={customPerPage || this.perPage}
-            onChangeSlide={this.handleChangeSlide}
-            currentSlide={Math.ceil(currentSlide)}
-            arrowRender={arrows && this.arrowRender}
-            scrollByPage={isScrollByPage}
-            duration={500}
             loop
             easing="ease"
+            duration={500}
+            minPerPage={roundedMinItems}
+            scrollByPage={isScrollByPage}
+            navigationStep={navigationStep}
+            currentSlide={Math.ceil(currentSlide)}
+            onChangeSlide={this.handleChangeSlide}
+            perPage={customPerPage || this.perPage}
+            arrowRender={arrows && this.arrowRender}
           >
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide

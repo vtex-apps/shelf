@@ -57,5 +57,19 @@
   "admin/editor.tabbed-shelf.buttonUrl": "Button URL (absolute)",
   "admin/editor.tabbed-shelf.tabs.items": "Category Item",
   "admin/editor.tabbed-shelf.tabs.items.id": "Category Id",
-  "admin/editor.tabbed-shelf.shelf.title": "Shelf properties"
+  "admin/editor.tabbed-shelf.shelf.title": "Shelf properties",
+  "admin/editor.shelf-properties.title.title": "Title",
+  "admin/editor.shelf-properties.title.description": "Title of the shelf",
+  "admin/editor.shelf-properties.show-title.title": "Show title",
+  "admin/editor.shelf-properties.show-title.description": "If it should show the title of the shelf",
+  "admin/editor.shelf-properties.min-items-per-page.title": "Minimum items per page",
+  "admin/editor.shelf-properties.min-items-per-page.description": "The minimum amount of items that should be on the screen at the same time (e.g. 1/2/3)",
+  "admin/editor.shelf-properties.items-per-page.title": "Items per slide window",
+  "admin/editor.shelf-properties.items-per-page.description": "The amount of items that should be on the screen at the same time (e.g. 1/2/3)",
+  "admin/editor.shelf-properties.arrows.title": "Show arrows",
+  "admin/editor.shelf-properties.arrows.description": "If it should display the arrows to control the shelf",
+  "admin/editor.shelf-properties.autoplay.title": "Autoplay",
+  "admin/editor.shelf-properties.autoplay.description": "If it should be passing the slides automatically",
+  "admin/editor.shelf-properties.navigation-step.title": "Navigation step",
+  "admin/editor.shelf-properties.navigation-step.description": "How many items it should pass when the arrows are clicked. You can pass a number or you can pass \"page\" (without the quotes) to pass all the items of the window"
 }

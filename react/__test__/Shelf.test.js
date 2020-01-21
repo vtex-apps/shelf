@@ -16,12 +16,8 @@ describe('Shelf component', () => {
       showTitle: true,
     }
 
-    // TODO: Remove this later when we have a better way to resolve contentSchemas.json at test-tools
-    const rawData = fs.readFileSync('../store/contentSchemas.json')
-    const contentSchema = JSON.parse(rawData)
-    const titleTextId = contentSchema.definitions.ProductList.properties.titleText.default
-
-    const wrapper = render(<ProductList titleText={titleTextId} {...props} {...customProps} />)
+    const titleText = 'store/shelf.title'
+    const wrapper = render(<ProductList titleText={titleText} {...props} {...customProps} />)
     return wrapper
   }
 
@@ -42,7 +38,7 @@ describe('Shelf component', () => {
   })
 
   it('should show in Site Editor', () => {
-    const schema = Shelf.schema || Shelf.getSchema({})
+    const { schema } = Shelf
     expect(schema).toBeDefined()
     expect(typeof schema.title).toBe('string')
   })
