@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `RelatedProducts.getSchema` by replacing call to`ProductList.getSchema` to reading from `ProductList.schema`.
+
 ## [1.35.0] - 2020-01-21
 ### Added
 - `arrows`, `autoplay`, `nativationStep`, `titleText`, `showTitle`, `itemsPerPage`, `minItemsPerPage` and `gap` props to the schema of the Shelf.

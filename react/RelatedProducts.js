@@ -106,10 +106,7 @@ RelatedProducts.defaultProps = {
   },
 }
 
-RelatedProducts.getSchema = props => {
-  const productListSchema = ProductList.getSchema(props)
-
-  return {
+RelatedProducts.schema = {
     title: 'admin/editor.relatedProducts.title',
     description: 'admin/editor.relatedProducts.description',
     type: 'object',
@@ -136,9 +133,8 @@ RelatedProducts.getSchema = props => {
           'admin/editor.relatedProducts.suggestions',
         ],
       },
-      productList: productListSchema,
+    productList: ProductList.schema,
     },
   }
-}
 
 export default RelatedProducts
