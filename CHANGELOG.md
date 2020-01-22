@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.35.1] - 2020-01-22
+
 ### Fixed
 - `RelatedProducts.getSchema` by replacing call to`ProductList.getSchema` to reading from `ProductList.schema`.
 
