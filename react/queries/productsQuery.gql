@@ -73,6 +73,7 @@ query Products(
           }
           AvailableQuantity
           Price
+          PriceWithoutDiscount
           ListPrice
           teasers {
             name
