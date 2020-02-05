@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { path, last } from 'ramda'
 import { Query } from 'react-apollo'
 import { useDevice } from 'vtex.device-detector'
-
+import { ProductListContext } from 'vtex.product-list-context'
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
-import productRecommendations from './queries/productRecommendations.gql'
 
+import productRecommendations from './queries/productRecommendations.gql'
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 
 const CSS_HANDLES = ['relatedProducts']
+
+const { ProductListProvider } = ProductListContext
 
 // Previous values were in a wrong format with the message string in the enum value.
 const fixRecommendation = recommendation => {
@@ -34,22 +36,21 @@ const RelatedProducts = ({
 
   const productContext = useProduct()
 
-  const productId = path(['product', 'productId'], productQuery) || path(['product', 'productId'], productContext)
+  const productId =
+    path(['product', 'productId'], productQuery) ||
+    path(['product', 'productId'], productContext)
 
   const recommendation = productId ? fixRecommendation(cmsRecommendation) : null
-  const variables = useMemo(
-    () => {
-      if (!productId) {
-        return null
-      }
+  const variables = useMemo(() => {
+    if (!productId) {
+      return null
+    }
 
-      return {
-        identifier: { field: 'id', value: productId },
-        type: recommendation,
-      }
-    },
-    [productId, recommendation]
-  )
+    return {
+      identifier: { field: 'id', value: productId },
+      type: recommendation,
+    }
+  }, [productId, recommendation])
 
   if (!productId) {
     return null
@@ -75,7 +76,9 @@ const RelatedProducts = ({
         }
         return (
           <div className={handles.relatedProducts}>
-            <ProductList {...productListProps} />
+            <ProductListProvider>
+              <ProductList {...productListProps} />
+            </ProductListProvider>
           </div>
         )
       }}
@@ -107,34 +110,34 @@ RelatedProducts.defaultProps = {
 }
 
 RelatedProducts.schema = {
-    title: 'admin/editor.relatedProducts.title',
-    description: 'admin/editor.relatedProducts.description',
-    type: 'object',
-    properties: {
-      recommendation: {
-        title: 'admin/editor.relatedProducts.recommendation',
-        description: 'admin/editor.relatedProducts.recommendation.description',
-        type: 'string',
-        default: RelatedProducts.defaultProps.recommendation,
-        enum: [
-          'similars',
-          'view',
-          'buy',
-          'accessories',
-          'viewAndBought',
-          'suggestions',
-        ],
-        enumNames: [
-          'admin/editor.relatedProducts.similars',
-          'admin/editor.relatedProducts.view',
-          'admin/editor.relatedProducts.buy',
-          'admin/editor.relatedProducts.accessories',
-          'admin/editor.relatedProducts.viewAndBought',
-          'admin/editor.relatedProducts.suggestions',
-        ],
-      },
-    productList: ProductList.schema,
+  title: 'admin/editor.relatedProducts.title',
+  description: 'admin/editor.relatedProducts.description',
+  type: 'object',
+  properties: {
+    recommendation: {
+      title: 'admin/editor.relatedProducts.recommendation',
+      description: 'admin/editor.relatedProducts.recommendation.description',
+      type: 'string',
+      default: RelatedProducts.defaultProps.recommendation,
+      enum: [
+        'similars',
+        'view',
+        'buy',
+        'accessories',
+        'viewAndBought',
+        'suggestions',
+      ],
+      enumNames: [
+        'admin/editor.relatedProducts.similars',
+        'admin/editor.relatedProducts.view',
+        'admin/editor.relatedProducts.buy',
+        'admin/editor.relatedProducts.accessories',
+        'admin/editor.relatedProducts.viewAndBought',
+        'admin/editor.relatedProducts.suggestions',
+      ],
     },
-  }
+    productList: ProductList.schema,
+  },
+}
 
 export default RelatedProducts
