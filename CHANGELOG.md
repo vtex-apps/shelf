@@ -6,14 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Impression events on `RelatedProducts`.
 
 ## [1.35.2] - 2020-01-27
-
 ### Added
 - `PriceWithoutDiscount` in products query.
 
 ## [1.35.1] - 2020-01-22
-
 ### Fixed
 - `RelatedProducts.getSchema` by replacing call to`ProductList.getSchema` to reading from `ProductList.schema`.
 
