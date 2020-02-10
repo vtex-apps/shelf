@@ -1,12 +1,9 @@
-import React, { useMemo, useCallback, useEffect } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { assocPath } from 'ramda'
-import { useInView } from 'react-intersection-observer'
-import { ProductListContext } from 'vtex.product-list-context'
 import ProductSummary from 'vtex.product-summary/ProductSummaryCustom'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager/PixelContext'
 
-const { useProductListDispatch } = ProductListContext
 /**
  * ShelfItem Component. Normalizes the item received in the props
  * to adapt to the extension point prop.
@@ -28,24 +25,9 @@ const ShelfItem = ({ item, summary }) => {
     })
   }, [product, push])
 
-  const [inViewRef, inView] = useInView({
-    // Triggers the event when the element is 75% visible
-    threshold: 0.75,
-    triggerOnce: true,
-  })
-
-  const dispatch = useProductListDispatch()
-
-  useEffect(() => {
-    if (inView) {
-      dispatch({ type: 'SEND_IMPRESSION', args: { product: product } })
-    }
-  }, [dispatch, inView, product])
-
   return (
     <ExtensionPoint
       id="product-summary"
-      containerRef={inViewRef}
       product={product}
       actionOnClick={pushPixelProductClick}
       {...newSummary}
