@@ -4,6 +4,24 @@
       "title": "admin/editor.shelf.title",
       "description": "admin/editor.shelf.description",
       "type": "object",
+      "dependencies": {
+        "advancedProperties": {
+          "oneOf": [
+            {
+              "properties": {
+                "advancedProperties": {
+                  "enum": [true]
+                },
+                "trackingId": {
+                  "title": "admin/editor.shelf.advanced-properties.tracking-id.title",
+                  "description": "admin/editor.shelf.advanced-properties.tracking-id.description",
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      },
       "properties": {
         "category": {
           "title": "admin/editor.shelf.category.title",
@@ -60,6 +78,11 @@
             "admin/editor.shelf.skusFilter.none",
             "admin/editor.shelf.skusFilter.first-available"
           ]
+        },
+        "advancedProperties": {
+          "title": "admin/editor.shelf.advanced-properties.title",
+          "type": "boolean",
+          "default": false
         }
       }
     },
