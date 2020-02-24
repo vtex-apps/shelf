@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Issue where there would be an infinite `setState` loop if there were multiple items per page and autoplay enabled.
 
 ## [1.35.4] - 2020-02-10
 ### Removed
