@@ -6,6 +6,7 @@ import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 import { withCssHandles } from 'vtex.css-handles'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
+import resolveSlidesNumber from '../utils/resolveSlidesNumber'
 import ScrollTypes from '../utils/ScrollTypes'
 import ShelfItem from './ShelfItem'
 import { shelfContentPropTypes } from '../utils/propTypes'
@@ -57,8 +58,22 @@ class ShelfContent extends Component {
     const productList =
       !products || !products.length ? Array(maxItems).fill(null) : products
     const totalItems = productList.slice(0, maxItems).length
-    const customPerPage = (!isMobile && itemsPerPage) || this.perPage
+    let customPerPage = (!isMobile && itemsPerPage) || this.perPage
+
+    /** Fix for a case where customPerPage would come from this.perPage,
+     * which would be an object, and would cause nextSlide to be cast into
+     * a string in the sum below. This was a quick fix, feel free to improve
+     * this code later on if you judge it necessary.
+    */
+    if (typeof customPerPage !== 'number') {
+      let minPerPage = this.props.minItemsPerPage
+      if (typeof minPerPage !== 'number') {
+        minPerPage = 1
+      }
+      customPerPage = resolveSlidesNumber(this.roundHalf(minPerPage), customPerPage, isMobile)
+    }
     const nextSlide = ((currentSlide) % totalItems) + customPerPage
+
     this.handleChangeSlide(nextSlide)
   }
 
