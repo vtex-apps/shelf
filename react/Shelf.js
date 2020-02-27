@@ -4,10 +4,10 @@ import { graphql } from 'react-apollo'
 import { Loading } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { useCssHandles } from 'vtex.css-handles'
+import { useTreePath } from 'vtex.render-runtime'
 import { ProductListContext } from 'vtex.product-list-context'
 
 import OrdenationTypes, {
-  getOrdenationNames,
   getOrdenationValues,
 } from './utils/OrdenationTypes'
 import ProductList from './components/ProductList'
@@ -31,9 +31,16 @@ const Shelf = props => {
     paginationDotsVisibility = 'visible',
     productList = ProductList.defaultProps,
   } = props
+  let { trackingId } = props
+  const treePath = useTreePath()
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
   const { loading, error, products } = data || {}
+  if (!trackingId) {
+    // Taking the block name to pass to listName if no trackingId is passed
+    const treePathList = (typeof treePath === 'string' && treePath.split()) || []
+    trackingId = treePathList[treePathList.length - 1] || 'Shelf'
+  }
 
   const filteredProducts = useMemo(() => {
     return products && products.map(normalizeBuyable).filter(Boolean)
@@ -57,7 +64,7 @@ const Shelf = props => {
 
   return (
     <div className={`${handles.container} pv4 pb9`}>
-      <ProductListProvider>
+      <ProductListProvider listName={trackingId}>
         <ProductList {...productListProps} />
       </ProductListProvider>
     </div>

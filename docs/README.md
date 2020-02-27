@@ -81,6 +81,7 @@ The Shelf is a theme block responsible for showing a **collection of products** 
 | `paginationDotsVisibility` | `Enum`                           | Controls if pagination dots below the Shelf should be rendered or not. Possible values: `visible` (always show), `hidden` (never show), `desktopOnly`, `mobileOnly`                                                                                    | `visible`         |
 | `navigationStep` | `number` &#124; `'page'` | How many elements should pass when you click in the arrows to navigate | `'page'` |
 | `productList`              | `ProductListSchema`              | Product list schema. For its configuration, you can check the `ProductListSchema` table below.                                                                                                                                                                                                           | -                 |
+| `trackingId` | `string` | Name to show in the Google Analytics | If nothing is passed it will use the name of the block instead |
 
 - For `SkusFilterEnum`:
 
