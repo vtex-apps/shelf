@@ -1,4 +1,4 @@
-📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+📢 Use this project, [contribute](https://github.com/vtex-apps/shelf) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
 # Shelf
 
@@ -6,58 +6,44 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-The Shelf is a theme block responsible for showing a **collection of products** in the home page. 
+The Shelf is a theme block responsible for showing a **collection of products** in the home page.
 
 ![shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
 ## Configuration
 
-1. Import the Shelf app to your theme's dependencies on the `manifest.json`, for example:
+Our new approach to the Shelf is through a *list of products* using the `list-context.product-list` block, a `product-summary.shelf` and a `slider-layout`.
+
+1. Add the `ProductSummary` app to your theme's dependencies on the `manifest.json`, for example:
 
 ```json
-  dependencies: {
-    "vtex.shelf": "1.x"
+  "dependencies": {
+    "vtex.product-summary": "1.x"
   }
 ```
 
-2. Add the `shelf` block into your theme. The Shelf block queries a list of products and it can be added into any template of your theme. For it to properly function, the [**Product Summary**](https://github.com/vtex-apps/product-summary) also needs to be added to the Shelf. Check an implementation example below:
-
+2. Add the `list-context.product-list`, `product-summary.shelf` and `slider-layout` blocks into your theme. These block comes from [**Product Summary**](https://github.com/vtex-apps/product-summary) and [**Slider-Layout**](https://github.com/vtex-apps/slider-layout). Check an implementation example below:
 
 ```json
 {
-  "shelf": {
-    "blocks": ["product-summary.shelf"],
-    "props": {
-      "category": 1,
-      "orderBy": "OrderByTopSaleDESC",
-      "paginationDotsVisibility": "desktopOnly",
-      "productList": {
-        "maxItems": 8,
-        "itemsPerPage": 4,
-        "minItemsPerPage": 1,
-        "scroll": "BY_PAGE",
-        "arrows": true,
-        "titleText": "Top sellers"
-      }
-    }
+  "product-summary.shelf#demo1": {
+    "children": [
+      "stack-layout#prodsum",
+      "product-summary-name",
+      "product-rating-inline",
+      "product-summary-space",
+      "product-summary-price",
+      "product-summary-buy-button"
+    ]
   },
-  
-  "product-summary": {
-  "props": {
-    "isOneClickBuy": false,
-    "showBadge": true,
-    "badgeText": "OFF",
-    "displayBuyButton": "displayButtonHover",
-    "showCollections": false,
-    "showListPrice": true,
-    "showLabels": false,
-    "showInstallments": true,
-    "showSavings": true
+  "list-context.product-list#demo1": {
+    "blocks": ["product-summary.shelf#demo1"],
+    "children": ["slider-layout#demo-products"]
   }
 }
-
-}
 ```
+
+The `list-context.product-list` is the block responsible for performing the GraphQL query that fetches the list of products and its props can be found below.
 
 :warning: `RelatedProducts` is a subtype of a Shelf block (`shelf.relatedProduct`) that queries and displays the related products on a Product Details Page. It can therefore only be declared in a product template (`store.product`), for example:
 
@@ -69,43 +55,20 @@ The Shelf is a theme block responsible for showing a **collection of products** 
       "flex-layout.row#main",
       "shelf.relatedProducts"
     ]
-  },
+  }
+}
 ```
 
-### Shelf 
+| Prop name              | Type                                   | Description                                                                                                                                                                                                                               | Default value |
+| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `category`             | `String`                               | Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3")                                                                                                                                                               | -             |
+| `specificationFilters` | `Array({ id: String, value: String })` | Specification Filters of the listed items.                                                                                                                                                                                                | []            |
+| `collection`           | `String`                               | Filter by collection.                                                                                                                                                                                                                     | -             |
+| `orderBy`              | `Enum`                                 | Ordination type of the items. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`          |
+| `hideUnavailableItems` | `Boolean`                              | Hides items that are unavailable.                                                                                                                                                                                                         | `false`       |
+| `maxItems` | `Number`                              | Maximum items to be fetched.                                                                                                                                                                                                         | `10`       |
 
-| Prop name                  | Type                             | Description                                                                                                                                                                                                                                            | Default value     |
-| -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
-| `category`                 | `String`                         | Category ID of the listed items in the shelf. For sub-categories, use "/" before the ID.                                                                                                                                                              | -                 |
-| `specificationFilters`     | `Array(SpecificationFilterItem)` | Specification Filters of the listed items in the shelf. )                                                                                                                                                                                              | []                |
-| `collection`               | `String`                         | Input a collection ID to display products from a collection.                                                                                                                                                                                                                   | -                 |
-| `orderBy`                  | `Enum`                           | Ordenation type of the items in the shelf. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` or `''` (default value by relevance) | `''`              |
-| `hideUnavailableItems`     | `Boolean`                        | Hides items that are unavailable.                                                                                                                                                                                                                      | `false`           |
-| `skusFilter`               | `SkusFilterEnum`                 | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                                                    | `"ALL_AVAILABLE"` |
-| `paginationDotsVisibility` | `Enum`                           | Controls if pagination dots below the Shelf should be rendered or not. Possible values: `visible` (always show), `hidden` (never show), `desktopOnly`, `mobileOnly`                                                                                    | `visible`         |
-| `navigationStep` | `number` &#124; `'page'` | How many elements should pass when you click in the arrows to navigate | `'page'` |
-| `productList`              | `ProductListSchema`              | Product list schema. For its configuration, you can check the `ProductListSchema` table below.                                                                                                                                                                                                           | -                 |
-| `trackingId` | `string` | Name to show in the Google Analytics | If nothing is passed it will use the name of the block instead |
-
-- For `SkusFilterEnum`:
-
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| First Available | `FIRST_AVAILABLE` | Most performant, ideal if you do not have a SKU selector in your shelf. Will return only the first available SKU for that product in your shelf query. |
-| All Available | `ALL_AVAILABLE` | A bit better performace, will only return SKUs that are available, ideal if you have a SKU selector but still want a better performance. |
-| All | `ALL` | Returns all SKUs related to that product, least performant option. |
-
-- For `SpecificationFilterItem`:
-
-| Prop name | Type     | Description                                      | Default value |
-| --------- | -------- | ------------------------------------------------ | ------------- |
-| `id`      | `String` | ID of Specification Filter to be searched for    | ""            |
-| `value`   | `String` | Value of Specification Filter to be searched for | ""            |
-
-
-It is possible to add a related products shelf in a Product Details Page. Once its content depends on product data, the `RelatedProducts`block can only be declared in a product template (`store.product`). 
-
-### `RelatedProducts`:
+### `RelatedProducts`
 
 | Prop name        | Type                | Description                                                                                                                                            | Default value                     |
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
@@ -126,10 +89,9 @@ It is possible to add a related products shelf in a Product Details Page. Once i
 | `minItemsPerPage` | `Number`  | Minimum amount of slides to be on the screen, can be used to control how many itens will be displayed in the smallest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf. | `1`           |
 | `itemsPerPage`    | `Number`  | Maximum amount of slides to be on the screen. Can be used to control how many items will be displayed in the biggest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf.  | `5`           |
 
-
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization). 
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
 | CSS Handles               |
 | ------------------------- |
@@ -154,7 +116,6 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 | `tabsNamesContainer`      |
 | `shelfContainer`          |
 | `tabButton`               |
-
 
 ## Contributors ✨
 
