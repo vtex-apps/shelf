@@ -45,6 +45,10 @@ query ProductRecommendations(
         imageUrl
         imageText
       }
+      variations {
+        name
+        values
+      }
       sellers {
         sellerId
         sellerName
