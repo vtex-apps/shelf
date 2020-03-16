@@ -6,23 +6,26 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-The Shelf is a theme block responsible for showing a **collection of products** in the home page.
+The Shelf block is responsible for displaying a list of products in the store home page.
 
 ![shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
 ## Configuration
 
-Our new approach to the Shelf is through a *list of products* using the `list-context.product-list` block, a `product-summary.shelf` and a `slider-layout`.
+Aiming to display a flexible product list, the Shelf block as we know is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks.
 
-1. Add the `ProductSummary` app to your theme's dependencies on the `manifest.json`, for example:
+1. Add the `ProductSummary` and `Slider-Layout` apps to your theme's dependencies on the `manifest.json`, for example:
 
 ```json
   "dependencies": {
-    "vtex.product-summary": "2.x"
+    "vtex.product-summary": "2.x",
+    "vtex.slider-layout": "0.x"
   }
 ```
 
-2. Add the `list-context.product-list`, `product-summary.shelf` and `slider-layout` blocks into your theme. These block comes from [**Product Summary**](https://github.com/vtex-apps/product-summary) and [**Slider-Layout**](https://github.com/vtex-apps/slider-layout). Check an implementation example below:
+⚠️ The Product Summary app, added in the `manifest.json` file in the previous step, exports (among others) 2 blocks that will be useful to build the Shelf: The Product Summary Shelf and the Product Summary List blocks. The last one is not rendered and, in turn, exports one of the blocks we are going to declare in the next step: the `list-context.product-list`.
+
+2. Add the `list-context.product-list`, `product-summary.shelf` and `slider-layout` blocks into your theme. These block come from the [**Product Summary**](https://github.com/vtex-apps/product-summary) and the [**Slider-Layout**](https://github.com/vtex-apps/slider-layout) apps.
 
 ```json
 {
@@ -45,7 +48,25 @@ Our new approach to the Shelf is through a *list of products* using the `list-co
 
 The `list-context.product-list` is the block responsible for performing the GraphQL query that fetches the list of products and its props can be found below.
 
-:warning: `RelatedProducts` is a subtype of a Shelf block (`shelf.relatedProduct`) that queries and displays the related products on a Product Details Page. It can therefore only be declared in a product template (`store.product`), for example:
+| Prop name              | Type                                   | Description                                                                                                                                                                                                                               | Default value |
+| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `category`             | `String`         |  Category ID of the Shelf listed items. For sub-categories, use `/` before the ID to indicate which category it belongs to. For example: `"1/2"`, considering `2` as a sub-category ID)                                                                                                                                                               |  `undefined`         |
+| `specificationFilters` | `Array` | Specification Filters of the Shelf listed items.                                                                                                                                                                                                | `undefined`        |
+| `collection`           | `String`                | Collection ID of the Shelf listed items.                                                                                                                                                                                                                  | `undefined`          |
+| `orderBy`              | `Enum`                                 | Ordination criterion for the Shelf listed items. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`          |
+| `hideUnavailableItems` | `Boolean`    | Whether unavailable items should be hidden (`true`) or not (`false`)                                                                                                                                                                                                      | `false`       |
+| `maxItems` | `Number`       | Maximum items fetched in the context to be displayed on the Shelf.                                                                                                                                                                                                   | `10`       |
+
+- **`specificationFilters` array**
+
+| Prop name              | Type                   | Description                 | Default value |
+| ---------------------- | ---------------------- | --------------------------- | ------------- |
+| `Id`            | `String`      | Specification Filters ID     | `undefined`         |
+| `value`           | `String`       | Specification Filters values  | `undefined`         |
+
+## Related Products Shelf
+
+`RelatedProducts` is a subtype of a Shelf block (`shelf.relatedProduct`) that queries and displays the related products on a Product Details Page. It can therefore only be declared in a product template (`store.product`), for example:
 
 ```json
 {
@@ -58,17 +79,6 @@ The `list-context.product-list` is the block responsible for performing the Grap
   }
 }
 ```
-
-| Prop name              | Type                                   | Description                                                                                                                                                                                                                               | Default value |
-| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `category`             | `String`                               | Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3")                                                                                                                                                               | -             |
-| `specificationFilters` | `Array({ id: String, value: String })` | Specification Filters of the listed items.                                                                                                                                                                                                | []            |
-| `collection`           | `String`                               | Filter by collection.                                                                                                                                                                                                                     | -             |
-| `orderBy`              | `Enum`                                 | Ordination type of the items. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`          |
-| `hideUnavailableItems` | `Boolean`                              | Hides items that are unavailable.                                                                                                                                                                                                         | `false`       |
-| `maxItems` | `Number`                              | Maximum items to be fetched.                                                                                                                                                                                                         | `10`       |
-
-### `RelatedProducts`
 
 | Prop name        | Type                | Description                                                                                                                                            | Default value                     |
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
@@ -86,14 +96,14 @@ The `list-context.product-list` is the block responsible for performing the Grap
 | `titleText`       | `String`  | Shelf title                                                                                                                                                                                                                                                                  | `null`        |
 | `summary`         | `Object`  | Product Summary schema properties.                                                                                                                                                                                                                                                   | -             |
 | `gap`             | `Enum`    | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`.                                                                                                                                                                                                                       | `ph3`         |
-| `minItemsPerPage` | `Number`  | Minimum amount of slides to be on the screen, can be used to control how many itens will be displayed in the smallest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf. | `1`           |
-| `itemsPerPage`    | `Number`  | Maximum amount of slides to be on the screen. Can be used to control how many items will be displayed in the biggest screen size. This value can be a **Float**, which should be a multiple of 0.5 and would indicate that you want to show a "peek" of the next item in the Shelf.  | `5`           |
+| `minItemsPerPage` | `Number`  | Minimum amount of Shelf slides. This prop can be used to control how many itens will be displayed on the Shelf even in the smallest screen size. Its value can be a **float**,  which means that you can choose a multiple of 0.5 to indicate that you want to show a "peek" of the next slide on the Shelf. | `1`   |
+| `itemsPerPage`    | `Number`  | Maximum amount of Shelf slides. This prop can be used to control how many itens will be displayed on the Shelf even in the biggest screen size. Its value can be a float, which means that you can choose a multiple of 0.5 to indicate that you want to show a "peek" of the next slide on the Shelf.   | `5`           |
 
 ## Customization
 
 In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-Notice that this list **does not** apply to the `list-context.product-list` block.
+:warning: Notice: **this list does not apply to the** `list-context.product-list` **block**.
 
 | CSS Handles               |
 | ------------------------- |
