@@ -7,6 +7,7 @@ query ProductRecommendations(
     cacheId
     productId
     productName
+    productReference
     description
     link
     linkText
