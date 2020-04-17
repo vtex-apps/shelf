@@ -12,5 +12,8 @@
     "eslint-config-vtex-react": "^5.0.1",
     "prettier": "^1.18.2",
     "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@vtex/danger": "^0.0.16"
   }
 }
