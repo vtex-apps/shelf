@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import { graphql } from 'react-apollo'
-import { Loading } from 'vtex.render-runtime'
+import { Loading, useTreePath } from 'vtex.render-runtime'
 import { useDevice } from 'vtex.device-detector'
 import { useCssHandles } from 'vtex.css-handles'
-import { useTreePath } from 'vtex.render-runtime'
 import { ProductListContext } from 'vtex.product-list-context'
 
-import OrdenationTypes, {
-  getOrdenationValues,
-} from './utils/OrdenationTypes'
+import OrdenationTypes, { getOrdenationValues } from './utils/OrdenationTypes'
 import ProductList from './components/ProductList'
 import {
   productListSchemaPropTypes,
@@ -25,7 +22,7 @@ const { ProductListProvider } = ProductListContext
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = props => {
+const Shelf = (props) => {
   const {
     data,
     paginationDotsVisibility = 'visible',
@@ -38,7 +35,8 @@ const Shelf = props => {
   const { loading, error, products } = data || {}
   if (!trackingId) {
     // Taking the block name to pass to listName if no trackingId is passed
-    const treePathList = (typeof treePath === 'string' && treePath.split()) || []
+    const treePathList =
+      (typeof treePath === 'string' && treePath.split()) || []
     trackingId = treePathList[treePathList.length - 1] || 'Shelf'
   }
 
@@ -49,7 +47,7 @@ const Shelf = props => {
   const productListProps = {
     ...productList,
     isMobile,
-    loading: loading,
+    loading,
     paginationDotsVisibility,
     products: filteredProducts,
   }
@@ -93,11 +91,12 @@ Shelf.propTypes = {
   ]),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
+  trackingId: PropTypes.string,
 }
 
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
 
-const toBoolean = x => (typeof x === 'boolean' ? x : x === 'true')
+const toBoolean = (x) => (typeof x === 'boolean' ? x : x === 'true')
 
 const options = {
   options: ({

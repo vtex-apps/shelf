@@ -39,7 +39,9 @@ const ProductList = ({
   navigationStep: navigationStepProp,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
-  const navigationStep = isNaN(parseInt(navigationStepProp)) ? navigationStepProp : parseInt(navigationStepProp)
+  const navigationStep = isNaN(parseInt(navigationStepProp))
+    ? navigationStepProp
+    : parseInt(navigationStepProp)
 
   return products && !products.length ? null : (
     <Fragment>
@@ -51,7 +53,7 @@ const ProductList = ({
         </div>
       )}
       <ReactResizeDetector handleWidth>
-        {width => (
+        {(width) => (
           <ShelfContent
             gap={gap}
             width={width}

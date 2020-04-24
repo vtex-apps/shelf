@@ -1,9 +1,7 @@
-export const useProductImpression = () => {
-  return
-}
+export const useProductImpression = () => {}
 
 export const ProductListContext = {
   useProductListDispatch: () => {
-    return x => x
+    return (x) => x
   },
 }

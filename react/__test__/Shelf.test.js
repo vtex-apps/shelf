@@ -1,14 +1,14 @@
 /* eslint-env jest */
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
+
 import ProductList from '../components/ProductList'
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
-const fs = require('fs')
 
 describe('Shelf component', () => {
-  const renderComponent = customProps => {
+  const renderComponent = (customProps) => {
     const props = {
       maxItems: 1,
       itemsPerPage: 1,
@@ -17,7 +17,9 @@ describe('Shelf component', () => {
     }
 
     const titleText = 'store/shelf.title'
-    const wrapper = render(<ProductList titleText={titleText} {...props} {...customProps} />)
+    const wrapper = render(
+      <ProductList titleText={titleText} {...props} {...customProps} />
+    )
     return wrapper
   }
 

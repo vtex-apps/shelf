@@ -21,7 +21,7 @@ const ShelfItem = ({ item, summary }) => {
   const pushPixelProductClick = useCallback(() => {
     push({
       event: 'productClick',
-      product: product,
+      product,
     })
   }, [product, push])
 
