@@ -3,6 +3,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "test": "cd ./react && yarn test",
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\""
   },
