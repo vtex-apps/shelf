@@ -1,12 +1,12 @@
 {
-  "rules": {
-    "react/jsx-uses-vars": 1
-  },
-  "env": {
-    "node": false,
-    "browser": true,
-    "es6": true
-  },
-  "parser": "babel-eslint",
-  "plugins": ["eslint-plugin-react"]
+  "extends": "vtex",
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "babel-eslint",
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ]
 }

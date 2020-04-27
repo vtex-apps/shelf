@@ -47,6 +47,7 @@ class Tabs extends Component {
               )
               return (
                 <button
+                  key={index}
                   type="button"
                   onClick={() => this.handleClick(index)}
                   className={`${cssHandles.tabButton} bn outline-0 bg-transparent pa0`}

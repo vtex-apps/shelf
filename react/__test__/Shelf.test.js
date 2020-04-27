@@ -3,6 +3,7 @@ import React from 'react'
 import { render } from '@vtex/test-tools/react'
 
 import ProductList from '../components/ProductList'
+// eslint-disable-next-line jest/no-mocks-import
 import { productMock } from '../__mocks__/productMock'
 import Shelf from '../Shelf'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'

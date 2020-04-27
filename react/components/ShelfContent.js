@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
@@ -106,7 +107,13 @@ class ShelfContent extends Component {
       }
     )
     return (
-      <div className={containerClasses} onClick={onClick}>
+      <div
+        className={containerClasses}
+        onClick={onClick}
+        role="button"
+        tabIndex="0"
+        onKeypress={e => e.key === 'Enter' || (e.key === ' ' && onClick(e))}
+      >
         <IconCaret orientation={orientation} thin size={20} />
       </div>
     )

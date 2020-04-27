@@ -48,7 +48,7 @@ class TabbedShelf extends Component {
    * Handle primary call to action button click
    */
   handleButtonClick(url) {
-    if (url != undefined && url != '') {
+    if (url !== undefined && url !== '') {
       window.open(url.buttunUrl, '_self')
     }
   }

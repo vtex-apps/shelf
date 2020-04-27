@@ -39,9 +39,9 @@ const ProductList = ({
   navigationStep: navigationStepProp,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
-  const navigationStep = isNaN(parseInt(navigationStepProp))
+  const navigationStep = Number.isNaN(parseInt(navigationStepProp, 10))
     ? navigationStepProp
-    : parseInt(navigationStepProp)
+    : parseInt(navigationStepProp, 10)
 
   return products && !products.length ? null : (
     <Fragment>
