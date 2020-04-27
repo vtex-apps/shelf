@@ -13,11 +13,7 @@ export function applyModifiers(baseClass, modifier) {
   return `${baseClass}--${modifier}`
 }
 
-export const withCssHandles = (
-  handles
-) => (
-  Component
-) => {
+export const withCssHandles = handles => Component => {
   const EnhancedComponent = props => {
     const cssHandles = useCssHandles(handles)
 

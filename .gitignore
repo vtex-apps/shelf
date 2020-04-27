@@ -33,7 +33,5 @@ docs/_book/
 .idea
 npm-debug.log
 .build/
-lib
-.eslintrc
 react/package-lock.json
 coverage/

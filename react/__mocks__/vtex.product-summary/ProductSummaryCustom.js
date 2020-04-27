@@ -1,7 +1,8 @@
 import React from 'react'
+
 const ProductSummary = () => <div>ProductSummary</div>
 
- ProductSummary.mapCatalogProductToProductSummary = product => {
+ProductSummary.mapCatalogProductToProductSummary = product => {
   if (!product) {
     return null
   }
@@ -17,4 +18,4 @@ const ProductSummary = () => <div>ProductSummary</div>
   }
 }
 
- export default ProductSummary
+export default ProductSummary

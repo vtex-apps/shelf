@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { IconCaret } from 'vtex.store-icons'
@@ -5,6 +6,7 @@ import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
 import { withCssHandles } from 'vtex.css-handles'
+
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import resolveSlidesNumber from '../utils/resolveSlidesNumber'
 import ScrollTypes from '../utils/ScrollTypes'
@@ -12,7 +14,14 @@ import ShelfItem from './ShelfItem'
 import { shelfContentPropTypes } from '../utils/propTypes'
 import shelf from './shelf.css'
 
-const CSS_HANDLES = ['arrow', 'arrowLeft', 'arrowRight', 'shelfContentContainer', 'sliderContainer', 'slide']
+const CSS_HANDLES = [
+  'arrow',
+  'arrowLeft',
+  'arrowRight',
+  'shelfContentContainer',
+  'sliderContainer',
+  'slide',
+]
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
 const SLIDER_WIDTH_THREE_ELEMENTS = 750
@@ -43,7 +52,7 @@ class ShelfContent extends Component {
 
   calcItemsPerPage = () => {
     const { itemsPerPage } = this.props
-    for (let key in this.perPage) {
+    for (const key in this.perPage) {
       if (this.perPage[key] > itemsPerPage) delete this.perPage[key]
     }
   }
@@ -64,15 +73,19 @@ class ShelfContent extends Component {
      * which would be an object, and would cause nextSlide to be cast into
      * a string in the sum below. This was a quick fix, feel free to improve
      * this code later on if you judge it necessary.
-    */
+     */
     if (typeof customPerPage !== 'number') {
       let minPerPage = this.props.minItemsPerPage
       if (typeof minPerPage !== 'number') {
         minPerPage = 1
       }
-      customPerPage = resolveSlidesNumber(this.roundHalf(minPerPage), customPerPage, isMobile)
+      customPerPage = resolveSlidesNumber(
+        this.roundHalf(minPerPage),
+        customPerPage,
+        isMobile
+      )
     }
-    const nextSlide = ((currentSlide) % totalItems) + customPerPage
+    const nextSlide = (currentSlide % totalItems) + customPerPage
 
     this.handleChangeSlide(nextSlide)
   }
@@ -94,7 +107,13 @@ class ShelfContent extends Component {
       }
     )
     return (
-      <div className={containerClasses} onClick={onClick}>
+      <div
+        className={containerClasses}
+        onClick={onClick}
+        role="button"
+        tabIndex="0"
+        onKeypress={e => e.key === 'Enter' || (e.key === ' ' && onClick(e))}
+      >
         <IconCaret orientation={orientation} thin size={20} />
       </div>
     )
@@ -134,7 +153,9 @@ class ShelfContent extends Component {
     const customPerPage = !isMobile && itemsPerPage
 
     return (
-      <div className={`${cssHandles.shelfContentContainer} flex justify-center`}>
+      <div
+        className={`${cssHandles.shelfContentContainer} flex justify-center`}
+      >
         <SliderContainer
           autoplay={autoplay}
           onNextSlide={this.handleNextSlide}
@@ -155,7 +176,11 @@ class ShelfContent extends Component {
             {productList.slice(0, maxItems).map((item, index) => (
               <Slide
                 sliderTransitionDuration={500}
-                className={classNames('justify-center h-100', gap, cssHandles.slide)}
+                className={classNames(
+                  'justify-center h-100',
+                  gap,
+                  cssHandles.slide
+                )}
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >

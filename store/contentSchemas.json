@@ -55,8 +55,26 @@
         "orderBy": {
           "title": "admin/editor.shelf.orderBy.title",
           "type": "string",
-          "enum": ["", "OrderByTopSaleDESC", "OrderByPriceDESC", "OrderByPriceASC", "OrderByNameASC", "OrderByNameDESC", "OrderByReleaseDateDESC", "OrderByBestDiscountDESC"],
-          "enumNames": ["admin/editor.shelf.orderType.relevance", "admin/editor.shelf.orderType.sales", "admin/editor.shelf.orderType.priceDesc", "admin/editor.shelf.orderType.priceAsc", "admin/editor.shelf.orderType.nameAsc", "admin/editor.shelf.orderType.nameDesc", "admin/editor.shelf.orderType.releaseDate", "admin/editor.shelf.orderType.discount"],
+          "enum": [
+            "",
+            "OrderByTopSaleDESC",
+            "OrderByPriceDESC",
+            "OrderByPriceASC",
+            "OrderByNameASC",
+            "OrderByNameDESC",
+            "OrderByReleaseDateDESC",
+            "OrderByBestDiscountDESC"
+          ],
+          "enumNames": [
+            "admin/editor.shelf.orderType.relevance",
+            "admin/editor.shelf.orderType.sales",
+            "admin/editor.shelf.orderType.priceDesc",
+            "admin/editor.shelf.orderType.priceAsc",
+            "admin/editor.shelf.orderType.nameAsc",
+            "admin/editor.shelf.orderType.nameDesc",
+            "admin/editor.shelf.orderType.releaseDate",
+            "admin/editor.shelf.orderType.discount"
+          ],
           "default": "",
           "isLayout": false
         },
@@ -140,13 +158,18 @@
           "title": "admin/editor.shelf-properties.min-items-per-page.title",
           "description": "admin/editor.shelf-properties.min-items-per-page.description",
           "type": "number",
-          "isLayout":  false,
+          "isLayout": false,
           "default": 1
         },
         "gap": {
           "title": "admin/editor.shelf.gap.title",
           "type": "string",
-          "enum": ["admin/editor.shelf.gapType.none", "admin/editor.shelf.gapType.small", "admin/editor.shelf.gapType.medium", "admin/editor.shelf.gapType.large"],
+          "enum": [
+            "admin/editor.shelf.gapType.none",
+            "admin/editor.shelf.gapType.small",
+            "admin/editor.shelf.gapType.medium",
+            "admin/editor.shelf.gapType.large"
+          ],
           "enumNames": ["ph0", "ph3", "ph5", "ph7"],
           "default": "ph0",
           "isLayout": true
@@ -154,7 +177,10 @@
         "scroll": {
           "title": "admin/editor.shelf.scrollType.title",
           "type": "string",
-          "enum": ["admin/editor.shelf.scrollType.byPage", "admin/editor.shelf.scrollType.oneByOne"],
+          "enum": [
+            "admin/editor.shelf.scrollType.byPage",
+            "admin/editor.shelf.scrollType.oneByOne"
+          ],
           "enumNames": ["BY_PAGE", "ONE_BY_ONE"],
           "default": "BY_PAGE",
           "isLayout": true

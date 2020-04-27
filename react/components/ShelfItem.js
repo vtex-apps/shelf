@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback } from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { assocPath } from 'ramda'
 import ProductSummary from 'vtex.product-summary/ProductSummaryCustom'
 import { ExtensionPoint } from 'vtex.render-runtime'
@@ -21,7 +22,7 @@ const ShelfItem = ({ item, summary }) => {
   const pushPixelProductClick = useCallback(() => {
     push({
       event: 'productClick',
-      product: product,
+      product,
     })
   }, [product, push])
 

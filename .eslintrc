@@ -1,0 +1,12 @@
+{
+  "extends": "vtex",
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "babel-eslint",
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ]
+}

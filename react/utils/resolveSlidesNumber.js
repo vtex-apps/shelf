@@ -35,4 +35,3 @@ function resolveSlidesNumber(minPerPage, perPage, isMobile) {
 }
 
 export default resolveSlidesNumber
-
