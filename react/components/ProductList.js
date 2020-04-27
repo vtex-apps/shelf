@@ -53,7 +53,7 @@ const ProductList = ({
         </div>
       )}
       <ReactResizeDetector handleWidth>
-        {(width) => (
+        {width => (
           <ShelfContent
             gap={gap}
             width={width}

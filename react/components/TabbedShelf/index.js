@@ -71,7 +71,7 @@ class TabbedShelf extends Component {
 
     const panes =
       tabs.length > 0
-        ? tabs.map((tab) => ({
+        ? tabs.map(tab => ({
             menuItem: tab.__editorItemTitle,
             render: () => (
               <Shelf {...{ ...this.props.shelf }} category={tab.id} />
@@ -107,7 +107,7 @@ class TabbedShelf extends Component {
 /**
  * Schema for component to allow configuration of props from admin configuration
  */
-TabbedShelf.getSchema = (props) => ({
+TabbedShelf.getSchema = props => ({
   title: 'admin/editor.tabbed-shelf.title',
   description: 'admin/editor.tabbed-shelf.description',
   type: 'object',

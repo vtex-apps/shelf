@@ -56,7 +56,7 @@ class ShelfContent extends Component {
     }
   }
 
-  handleChangeSlide = (i) => {
+  handleChangeSlide = i => {
     this.setState({ currentSlide: i })
   }
 
@@ -112,7 +112,7 @@ class ShelfContent extends Component {
     )
   }
 
-  roundHalf = (num) => Math.round(num * 2) / 2
+  roundHalf = num => Math.round(num * 2) / 2
 
   render() {
     const {

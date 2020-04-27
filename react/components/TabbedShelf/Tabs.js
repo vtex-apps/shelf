@@ -17,7 +17,7 @@ class Tabs extends Component {
     selectedIndex: 0,
   }
 
-  handleClick = (index) => this.setState({ selectedIndex: index })
+  handleClick = index => this.setState({ selectedIndex: index })
 
   render() {
     const { panes, cssHandles } = this.props

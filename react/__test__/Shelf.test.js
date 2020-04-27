@@ -8,7 +8,7 @@ import Shelf from '../Shelf'
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 
 describe('Shelf component', () => {
-  const renderComponent = (customProps) => {
+  const renderComponent = customProps => {
     const props = {
       maxItems: 1,
       itemsPerPage: 1,

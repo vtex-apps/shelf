@@ -1,12 +1,8 @@
 {
   "shelf": {
-    "required": [
-      "product-summary"
-    ],
+    "required": ["product-summary"],
     "component": "Shelf",
-    "track": [
-      "click"
-    ],
+    "track": ["click"],
     "preview": {
       "type": "grid",
       "height": 550
@@ -16,9 +12,7 @@
     }
   },
   "shelf.relatedProducts": {
-    "required": [
-      "product-summary"
-    ],
+    "required": ["product-summary"],
     "component": "RelatedProducts",
     "preview": {
       "type": "grid",
@@ -26,9 +20,7 @@
     }
   },
   "shelf.tabbed": {
-    "required": [
-      "product-summary"
-    ],
+    "required": ["product-summary"],
     "component": "TabbedShelf",
     "preview": {
       "type": "grid",

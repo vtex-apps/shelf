@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const useCssHandles = (cssHandles) => {
+export const useCssHandles = cssHandles => {
   const handles = {}
-  cssHandles.forEach((handle) => {
+  cssHandles.forEach(handle => {
     handles[handle] = handle
   })
 
@@ -13,8 +13,8 @@ export function applyModifiers(baseClass, modifier) {
   return `${baseClass}--${modifier}`
 }
 
-export const withCssHandles = (handles) => (Component) => {
-  const EnhancedComponent = (props) => {
+export const withCssHandles = handles => Component => {
+  const EnhancedComponent = props => {
     const cssHandles = useCssHandles(handles)
 
     return <Component cssHandles={cssHandles} {...props} />

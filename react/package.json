@@ -6,7 +6,6 @@
   "author": "VTEX",
   "private": true,
   "scripts": {
-    "lint": "tsc --noEmit && eslint --quiet --fix --ext ts,tsx .",
     "test": "vtex-test-tools test"
   },
   "dependencies": {

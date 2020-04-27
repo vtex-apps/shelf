@@ -16,7 +16,7 @@ const CSS_HANDLES = ['relatedProducts']
 const { ProductListProvider } = ProductListContext
 
 // Previous values were in a wrong format with the message string in the enum value.
-const fixRecommendation = (recommendation) => {
+const fixRecommendation = recommendation => {
   if (recommendation.includes('editor.relatedProducts.')) {
     return last(recommendation.split('.'))
   }

@@ -22,7 +22,7 @@ const { ProductListProvider } = ProductListContext
 /**
  * Shelf Component. Queries a list of products and shows them.
  */
-const Shelf = (props) => {
+const Shelf = props => {
   const {
     data,
     paginationDotsVisibility = 'visible',
@@ -96,7 +96,7 @@ Shelf.propTypes = {
 
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
 
-const toBoolean = (x) => (typeof x === 'boolean' ? x : x === 'true')
+const toBoolean = x => (typeof x === 'boolean' ? x : x === 'true')
 
 const options = {
   options: ({
