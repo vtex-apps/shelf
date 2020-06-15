@@ -75,6 +75,8 @@ query Products(
           Price
           PriceWithoutDiscount
           ListPrice
+          Tax
+          taxPercentage
           teasers {
             name
           }

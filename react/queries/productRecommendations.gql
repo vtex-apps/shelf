@@ -56,14 +56,6 @@ query ProductRecommendations(
         addToCartLink
         sellerDefault
         commertialOffer {
-          Price
-          ListPrice
-          PriceWithoutDiscount
-          RewardValue
-          PriceValidUntil
-          AvailableQuantity
-          Tax
-          CacheVersionUsedToCallCheckout
           Installments(criteria: MAX) {
             Value
             InterestRate
@@ -71,6 +63,15 @@ query ProductRecommendations(
             NumberOfInstallments
             Name
           }
+          Price
+          ListPrice
+          PriceWithoutDiscount
+          RewardValue
+          PriceValidUntil
+          AvailableQuantity
+          Tax
+          taxPercentage
+          CacheVersionUsedToCallCheckout
           teasers {
             name
           }
