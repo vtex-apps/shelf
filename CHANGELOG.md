@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Fixed
-- Fixed number of related products in mobile view
+- `isMobile` prop passed to `ProductList` by `RelatedProducts` component would always be `false` due to object spreading order.
 
 ## [1.39.0] - 2020-06-15
 ### Added
