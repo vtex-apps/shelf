@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed number of related products in mobile view
+
 ## [1.39.0] - 2020-06-15
 ### Added
 - `taxPercentage` and `Tax` field to product query.
