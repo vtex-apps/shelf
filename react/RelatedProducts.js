@@ -72,8 +72,8 @@ const RelatedProducts = ({
         const productListProps = {
           products: productRecommendations || [],
           loading,
-          isMobile,
           ...productList,
+          isMobile,
         }
         return (
           <div className={handles.relatedProducts}>
