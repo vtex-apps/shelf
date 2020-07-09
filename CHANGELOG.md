@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.39.1] - 2020-07-09
+
 ### Fixed
 - `isMobile` prop passed to `ProductList` by `RelatedProducts` component would always be `false` due to object spreading order.
 
