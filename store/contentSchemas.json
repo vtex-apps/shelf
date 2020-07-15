@@ -2,7 +2,6 @@
   "definitions": {
     "Shelf": {
       "title": "admin/editor.shelf.title",
-      "description": "admin/editor.shelf.description",
       "type": "object",
       "dependencies": {
         "advancedProperties": {
