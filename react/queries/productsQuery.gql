@@ -39,9 +39,21 @@ query Products(
     }
     specificationGroups {
       name
+      originalName
       specifications {
         name
+        originalName
         values
+      }
+    }
+    skuSpecifications {
+      field {
+        name
+        originalName
+      }
+      values {
+        name
+        originalName
       }
     }
     items(filter: $skusFilter) {
