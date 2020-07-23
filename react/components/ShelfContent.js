@@ -5,7 +5,7 @@ import { IconCaret } from 'vtex.store-icons'
 import classNames from 'classnames'
 import { NoSSR } from 'vtex.render-runtime'
 import { Slider, Slide, Dots, SliderContainer } from 'vtex.slider'
-import { withCssHandles, applyModifiers } from 'vtex.css-handles'
+import { withCssHandles } from 'vtex.css-handles'
 
 import { resolvePaginationDotsVisibility } from '../utils/resolvePaginationDots'
 import resolveSlidesNumber from '../utils/resolveSlidesNumber'
