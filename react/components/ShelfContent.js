@@ -21,6 +21,7 @@ const CSS_HANDLES = [
   'shelfContentContainer',
   'sliderContainer',
   'slide',
+  'dot--isActive',
 ]
 const SLIDER_WIDTH_ONE_ELEMENT = 320
 const SLIDER_WIDTH_TWO_ELEMENTS = 500
@@ -202,7 +203,7 @@ class ShelfContent extends Component {
                   root: 'pt4',
                   notActiveDot: 'bg-muted-3',
                   dot: classNames(shelf.dot, 'mh2 mv0 pointer br-100'),
-                  activeDot: 'bg-emphasis',
+                  activeDot: `${cssHandles['dot--isActive']} bg-emphasis`,
                 }}
               />
             </NoSSR>
