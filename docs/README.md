@@ -27,7 +27,7 @@ Now, you can use all the blocks exported by the `shelf` app. Check out the full 
 | `shelf` | ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Renders in the store home page a list of products. | 
 | `shelf.relatedProduct` | Renders in the product details page a list of related products. |
 
-:warning: Aiming to display a flexible product list, **the `shelf` block is deprecated** and is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks. To learn how to configure it, access [](). 
+:warning: **Aiming to display a flexible product list, the `shelf` block is deprecated and is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks. To learn how to configure it, access []().** 
 
 2. Declare the `shelf.relatedProduct` in the product template (`store.product`) using its props. For example:
 
