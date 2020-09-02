@@ -75,6 +75,7 @@ query Products(
       }
       sellers {
         sellerId
+        sellerName
         commertialOffer {
           Installments(criteria: MAX) {
             Value
