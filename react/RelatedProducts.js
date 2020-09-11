@@ -7,8 +7,8 @@ import { useDevice } from 'vtex.device-detector'
 import { ProductListContext } from 'vtex.product-list-context'
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
-
 import productRecommendationsQuery from 'vtex.store-resources/QueryProductRecommendations'
+
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 
@@ -100,6 +100,7 @@ RelatedProducts.propTypes = {
   }),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
+  recommendation: PropTypes.string,
 }
 
 RelatedProducts.defaultProps = {
