@@ -8,7 +8,7 @@ import { ProductListContext } from 'vtex.product-list-context'
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
 
-import productRecommendationsQuery from './queries/productRecommendations.gql'
+import productRecommendationsQuery from 'vtex.store-resources/QueryProductRecommendations'
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
 

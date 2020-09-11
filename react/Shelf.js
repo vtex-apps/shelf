@@ -12,7 +12,7 @@ import {
   productListSchemaPropTypes,
   shelfContentPropTypes,
 } from './utils/propTypes'
-import productsQuery from './queries/productsQuery.gql'
+import productsQuery from 'vtex.store-resources/QueryProducts'
 import { normalizeBuyable } from './utils/normalize'
 
 const CSS_HANDLES = ['container']
@@ -118,6 +118,7 @@ const options = {
       to: maxItems - 1,
       hideUnavailableItems: toBoolean(hideUnavailableItems),
       skusFilter,
+      installmentCriteria: 'MAX',
     },
   }),
 }
