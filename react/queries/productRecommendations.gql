@@ -75,15 +75,16 @@ query ProductRecommendations(
             NumberOfInstallments
             Name
           }
-          Price
+          AvailableQuantity
+          CacheVersionUsedToCallCheckout
           ListPrice
+          Price
+          PriceValidUntil
           PriceWithoutDiscount
           RewardValue
-          PriceValidUntil
-          AvailableQuantity
+          spotPrice
           Tax
           taxPercentage
-          CacheVersionUsedToCallCheckout
           teasers {
             name
           }
@@ -92,6 +93,10 @@ query ProductRecommendations(
           }
         }
       }
+    }
+    productClusters {
+      id
+      name
     }
     properties {
       name
