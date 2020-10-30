@@ -110,7 +110,13 @@ class ShelfContent extends Component {
     return (
       <div
         className={containerClasses}
-        onClick={onClick}
+        onClick={(e) => {
+          if (e) {
+            e.stopPropagation()
+            e.preventDefault()
+          }
+          onClick(e)
+        }}
         role="button"
         tabIndex="0"
         onKeypress={e => e.key === 'Enter' || (e.key === ' ' && onClick(e))}
@@ -185,7 +191,7 @@ class ShelfContent extends Component {
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
-                <ShelfItem item={item} summary={summary} />
+                <ShelfItem item={item} summary={summary}/>
               </Slide>
             ))}
           </Slider>
