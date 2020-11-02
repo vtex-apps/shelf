@@ -110,7 +110,7 @@ class ShelfContent extends Component {
     return (
       <div
         className={containerClasses}
-        onClick={(e) => {
+        onClick={e => {
           if (e) {
             e.stopPropagation()
             e.preventDefault()
