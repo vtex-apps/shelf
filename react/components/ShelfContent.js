@@ -110,7 +110,13 @@ class ShelfContent extends Component {
     return (
       <div
         className={containerClasses}
-        onClick={onClick}
+        onClick={e => {
+          if (e) {
+            e.stopPropagation()
+            e.preventDefault()
+          }
+          onClick(e)
+        }}
         role="button"
         tabIndex="0"
         onKeypress={e => e.key === 'Enter' || (e.key === ' ' && onClick(e))}
