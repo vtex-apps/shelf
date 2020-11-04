@@ -6,13 +6,13 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+> ⚠️ ***The Shelf app has been deprecated. The component as we know is now build with the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks, as shown in the Configuration section below**. Although support for this app is still granted, we strongly recommend you to update your store theme with the new configuration in order to keep up with the component's evolution.* 
+
 The Shelf block is responsible for displaying a list of products in the store home page.
 
 ![shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
 ## Configuration
-
-Aiming to display a flexible product list, the Shelf block as we know is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks.
 
 1. Add the `ProductSummary` and `Slider-Layout` apps to your theme's dependencies on the `manifest.json`, for example:
 
