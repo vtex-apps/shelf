@@ -6,7 +6,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-> ⚠️ ***The Shelf app has been deprecated. The component as we know is now build with the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks, as shown in the Configuration section below**. Although support for this app is still granted, we strongly recommend you to update your store theme with the new configuration in order to keep up with the component's evolution.* 
+> ⚠️ ***The Shelf app has been deprecated. The component as we know is now built with the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks, as shown in the Configuration section below**. Although support for this app is still granted, we strongly recommend you to update your store theme with the new configuration in order to keep up with the component's evolution.* 
 
 The Shelf block is responsible for displaying a list of products in the store home page.
 
