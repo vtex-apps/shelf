@@ -26,6 +26,7 @@ const Shelf = props => {
   const {
     data,
     paginationDotsVisibility = 'visible',
+    maxItems,
     productList = ProductList.defaultProps,
   } = props
   let { trackingId } = props
@@ -46,6 +47,7 @@ const Shelf = props => {
 
   const productListProps = {
     ...productList,
+    maxItems,
     isMobile,
     loading,
     paginationDotsVisibility,
@@ -92,6 +94,7 @@ Shelf.propTypes = {
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
   trackingId: PropTypes.string,
+  maxItems: PropTypes.number,
 }
 
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
