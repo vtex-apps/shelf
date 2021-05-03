@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-import { IOMessage } from 'vtex.native-types'
+import { IOMessage, formatIOMessage } from 'vtex.native-types'
 import { useCssHandles } from 'vtex.css-handles'
 
 import {
@@ -43,6 +43,9 @@ const ProductList = ({
     ? navigationStepProp
     : parseInt(navigationStepProp, 10)
 
+  const formattedTitle =
+    showTitle && titleText ? formatIOMessage(titleText) : 'List of products'
+
   return products && !products.length ? null : (
     <Fragment>
       {showTitle && (
@@ -68,6 +71,7 @@ const ProductList = ({
             navigationStep={navigationStep}
             minItemsPerPage={minItemsPerPage}
             paginationDotsVisibility={paginationDotsVisibility}
+            listName={formattedTitle}
           />
         )}
       </ReactResizeDetector>
