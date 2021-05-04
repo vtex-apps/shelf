@@ -7,6 +7,7 @@ import { useDevice } from 'vtex.device-detector'
 import { ProductListContext } from 'vtex.product-list-context'
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
+import { useTreePath } from 'vtex.render-runtime'
 
 import productRecommendationsQuery from './queries/productRecommendations.gql'
 import ProductList from './components/ProductList'
@@ -31,11 +32,22 @@ const RelatedProducts = ({
   productQuery,
   productList,
   recommendation: cmsRecommendation,
+  trackingId: rawTrackingId,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
+  const treePath = useTreePath()
 
   const productContext = useProduct()
+
+  let trackingId = rawTrackingId
+
+  if (!trackingId) {
+    // Taking the block name to pass to listName if no trackingId is passed
+    const treePathList =
+      (typeof treePath === 'string' && treePath.split()) || []
+    trackingId = treePathList[treePathList.length - 1] || 'List of products'
+  }
 
   const productId =
     path(['product', 'productId'], productQuery) ||
@@ -74,10 +86,11 @@ const RelatedProducts = ({
           loading,
           ...productList,
           isMobile,
+          trackingId,
         }
         return (
           <div className={handles.relatedProducts}>
-            <ProductListProvider>
+            <ProductListProvider listName={trackingId}>
               <ProductList {...productListProps} />
             </ProductListProvider>
           </div>
@@ -100,6 +113,7 @@ RelatedProducts.propTypes = {
   }),
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
+  trackingId: PropTypes.string,
 }
 
 RelatedProducts.defaultProps = {

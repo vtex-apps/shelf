@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - List name to GTM `productClick` event.
 - Passing `listName` prop to Product Summary.
 
+### Fixed
+- `trackingId` is now being used on `RelatedProducts` shelf
+
 ## [1.44.2] - 2020-12-01
 ### Fixed
 - Prop `maxItems`.
