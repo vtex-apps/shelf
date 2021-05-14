@@ -194,7 +194,7 @@ class ShelfContent extends Component {
               >
                 <ShelfItem
                   item={item}
-                  position={index}
+                  position={index + 1}
                   summary={summary}
                   listName={listName}
                 />

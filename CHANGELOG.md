@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Passing `listName` prop to Product Summary.
 
 ### Fixed
-- `trackingId` is now being used on `RelatedProducts` shelf
+- `trackingId` is now being used on `RelatedProducts` shelf.
+- Shelf item's position now starts at 1.
 
 ## [1.44.2] - 2020-12-01
 ### Fixed
