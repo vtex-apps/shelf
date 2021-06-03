@@ -34,6 +34,7 @@ const ShelfItem = ({ item, summary, position, listName }) => {
       product={product}
       listName={listName}
       actionOnClick={pushPixelProductClick}
+      position={position}
       {...newSummary}
     />
   )
