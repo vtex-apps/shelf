@@ -143,6 +143,7 @@ class ShelfContent extends Component {
       navigationStep,
       minItemsPerPage,
       paginationDotsVisibility,
+      listName,
     } = this.props
 
     const { currentSlide } = this.state
@@ -191,7 +192,12 @@ class ShelfContent extends Component {
                 key={path(['productId'], item) || index}
                 defaultWidth={DEFAULT_SHELF_ITEM_WIDTH}
               >
-                <ShelfItem item={item} summary={summary} />
+                <ShelfItem
+                  item={item}
+                  position={index + 1}
+                  summary={summary}
+                  listName={listName}
+                />
               </Slide>
             ))}
           </Slider>
@@ -249,6 +255,8 @@ ShelfContent.propTypes = {
   isMobile: shelfContentPropTypes.isMobile,
   /** Gap between Shelf Items */
   gap: shelfContentPropTypes.gap,
+  /** Title of the shelf */
+  listName: shelfContentPropTypes.listName,
 }
 
 export default withCssHandles(CSS_HANDLES)(ShelfContent)

@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- List name to GTM `productClick` event.
+- Passing `listName` and `position` prop to Product Summary.
+
+### Fixed
+- `trackingId` is now being used on `RelatedProducts` shelf.
+- Shelf item's position now starts at 1.
 
 ## [1.44.2] - 2020-12-01
 ### Fixed

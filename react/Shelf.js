@@ -38,7 +38,7 @@ const Shelf = props => {
     // Taking the block name to pass to listName if no trackingId is passed
     const treePathList =
       (typeof treePath === 'string' && treePath.split()) || []
-    trackingId = treePathList[treePathList.length - 1] || 'Shelf'
+    trackingId = treePathList[treePathList.length - 1] || 'List of products'
   }
 
   const filteredProducts = useMemo(() => {
@@ -52,6 +52,7 @@ const Shelf = props => {
     loading,
     paginationDotsVisibility,
     products: filteredProducts,
+    trackingId,
   }
 
   if (loading) {

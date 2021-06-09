@@ -105,4 +105,6 @@ export const shelfContentPropTypes = {
   isMobile: PropTypes.bool,
   /** Gap between Shelf Items */
   gap: PropTypes.oneOf(getGapPaddingValues()),
+  /** Title of the shelf */
+  listName: PropTypes.string.isRequired,
 }

@@ -9,7 +9,7 @@ import { usePixel } from 'vtex.pixel-manager/PixelContext'
  * ShelfItem Component. Normalizes the item received in the props
  * to adapt to the extension point prop.
  */
-const ShelfItem = ({ item, summary }) => {
+const ShelfItem = ({ item, summary, position, listName }) => {
   const { push } = usePixel()
   const newSummary = useMemo(() => assocPath(['name', 'tag'], 'h2', summary), [
     summary,
@@ -23,14 +23,18 @@ const ShelfItem = ({ item, summary }) => {
     push({
       event: 'productClick',
       product,
+      list: listName,
+      position,
     })
-  }, [product, push])
+  }, [product, position, listName, push])
 
   return (
     <ExtensionPoint
       id="product-summary"
       product={product}
+      listName={listName}
       actionOnClick={pushPixelProductClick}
+      position={position}
       {...newSummary}
     />
   )
