@@ -83,6 +83,7 @@ The `list-context.product-list` is the block responsible for performing the Grap
 | Prop name        | Type                | Description                                                                                                                                            | Default value                     |
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
 | `recommendation` | `Enum`              | Type of recommendations that will be displayed in the Shelf. Possible values: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog) and `view`, `buy`, `viewandBought` (These 3 are automatically generated according to the store’s activity) | `similars` |
+| `hideOutOfStock` | `Boolean` | Whether out of stock items should be hidden (`true`) or not (`false`) | `false` |
 | `productList`    | `ProductListSchema` | Product list schema. `See ProductListSchema`                                                                                                           | -                                 |
 
 `ProductListSchema`:

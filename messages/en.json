@@ -6,6 +6,7 @@
   "admin/editor.shelf.collection.title": "Collection",
   "admin/editor.shelf.orderBy.title": "List Ordenation",
   "admin/editor.shelf.hideUnavailableItems": "Hide unavailable items",
+  "admin/editor.shelf.hideOutOfStockItems": "Hide out of stock items",
   "admin/editor.shelf.skusFilter": "SKUs Filter",
   "admin/editor.shelf.skusFilter.description": "Setting the first available filter makes your query much faster!",
   "admin/editor.shelf.skusFilter.none": "None",

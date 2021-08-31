@@ -12,6 +12,7 @@ import { useTreePath } from 'vtex.render-runtime'
 import productRecommendationsQuery from './queries/productRecommendations.gql'
 import ProductList from './components/ProductList'
 import { productListSchemaPropTypes } from './utils/propTypes'
+import { filterOutOfStock } from './utils/filterOutOfStock'
 
 const CSS_HANDLES = ['relatedProducts']
 
@@ -33,6 +34,7 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
   trackingId: rawTrackingId,
+  hideOutOfStock,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
@@ -65,6 +67,12 @@ const RelatedProducts = ({
     }
   }, [productId, recommendation])
 
+  const checkForOutOfStock = (productRecommendations = []) => {
+    return hideOutOfStock
+      ? filterOutOfStock(productRecommendations)
+      : productRecommendations
+  }
+
   if (!productId) {
     return null
   }
@@ -81,8 +89,9 @@ const RelatedProducts = ({
           return null
         }
         const { productRecommendations } = data
+
         const productListProps = {
-          products: productRecommendations || [],
+          products: checkForOutOfStock(productRecommendations),
           loading,
           ...productList,
           isMobile,
@@ -114,6 +123,7 @@ RelatedProducts.propTypes = {
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
   trackingId: PropTypes.string,
+  hideOutOfStock: PropTypes.bool,
 }
 
 RelatedProducts.defaultProps = {
@@ -122,6 +132,7 @@ RelatedProducts.defaultProps = {
     ...ProductList.defaultProps,
     titleText: 'Related Products',
   },
+  hideOutOfStock: false,
 }
 
 RelatedProducts.schema = {
@@ -152,6 +163,11 @@ RelatedProducts.schema = {
       ],
     },
     productList: ProductList.schema,
+    hideOutOfStock: {
+      title: 'admin/editor.shelf.hideOutOfStockItems',
+      type: 'boolean',
+      default: false,
+    },
   },
 }
 

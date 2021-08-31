@@ -6,6 +6,7 @@
   "admin/editor.shelf.collection.title": "admin/editor.shelf.collection.title",
   "admin/editor.shelf.orderBy.title": "admin/editor.shelf.orderBy.title",
   "admin/editor.shelf.hideUnavailableItems": "admin/editor.shelf.hideUnavailableItems",
+  "admin/editor.shelf.hideOutOfStockItems": "admin/editor.shelf.hideOutOfStock",
   "admin/editor.shelf.skusFilter": "admin/editor.shelf.skusFilter",
   "admin/editor.shelf.skusFilter.description": "admin/editor.shelf.skusFilter.description",
   "admin/editor.shelf.skusFilter.none": "admin/editor.shelf.skusFilter.none",
