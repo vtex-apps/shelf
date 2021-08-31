@@ -34,7 +34,7 @@ const RelatedProducts = ({
   productList,
   recommendation: cmsRecommendation,
   trackingId: rawTrackingId,
-  hideOutOfStock,
+  hideOutOfStockItems,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
@@ -68,7 +68,7 @@ const RelatedProducts = ({
   }, [productId, recommendation])
 
   const checkForOutOfStock = (productRecommendations = []) => {
-    return hideOutOfStock
+    return hideOutOfStockItems
       ? filterOutOfStock(productRecommendations)
       : productRecommendations
   }
@@ -123,7 +123,7 @@ RelatedProducts.propTypes = {
   /** ProductList schema configuration */
   productList: PropTypes.shape(productListSchemaPropTypes),
   trackingId: PropTypes.string,
-  hideOutOfStock: PropTypes.bool,
+  hideOutOfStockItems: PropTypes.bool,
 }
 
 RelatedProducts.defaultProps = {
@@ -132,7 +132,7 @@ RelatedProducts.defaultProps = {
     ...ProductList.defaultProps,
     titleText: 'Related Products',
   },
-  hideOutOfStock: false,
+  hideOutOfStockItems: false,
 }
 
 RelatedProducts.schema = {
@@ -163,7 +163,7 @@ RelatedProducts.schema = {
       ],
     },
     productList: ProductList.schema,
-    hideOutOfStock: {
+    hideOutOfStockItems: {
       title: 'admin/editor.shelf.hideOutOfStockItems',
       type: 'boolean',
       default: false,

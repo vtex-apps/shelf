@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `hideOutOfStock` prop to `RelatedProducts` shelf
+- `hideOutOfStockItems` prop to `RelatedProducts` shelf
 ## [1.45.0] - 2021-06-09
 ### Added
 - List name to GTM `productClick` event.
