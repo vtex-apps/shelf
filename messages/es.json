@@ -6,7 +6,7 @@
   "admin/editor.shelf.collection.title": "Colección",
   "admin/editor.shelf.orderBy.title": "Ordenación de la Lista",
   "admin/editor.shelf.hideUnavailableItems": "Ocultar artículos no disponibles",
-  "admin/editor.shelf.hideOutOfStockItems": "Ocultar artículos agotados",
+  "admin/editor.shelf.hideOutOfStockItems": "Ocultar ítems sin stock",
   "admin/editor.shelf.skusFilter": "Filtro de SKUs",
   "admin/editor.shelf.skusFilter.description": "¡Establecer el primer iten disponible agiliza su consulta!",
   "admin/editor.shelf.skusFilter.none": "Ninguno",
