@@ -94,6 +94,10 @@ query ProductRecommendations(
         }
       }
     }
+    clusterHighlights {
+      id
+      name
+    }
     productClusters {
       id
       name
