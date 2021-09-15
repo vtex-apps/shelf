@@ -67,12 +67,6 @@ const RelatedProducts = ({
     }
   }, [productId, recommendation])
 
-  const checkForOutOfStock = (productRecommendations = []) => {
-    return hideOutOfStockItems
-      ? filterOutOfStock(productRecommendations)
-      : productRecommendations
-  }
-
   if (!productId) {
     return null
   }
@@ -88,10 +82,12 @@ const RelatedProducts = ({
         if (!data) {
           return null
         }
-        const { productRecommendations } = data
+        const { productRecommendations = [] } = data
 
         const productListProps = {
-          products: checkForOutOfStock(productRecommendations),
+          products: hideOutOfStockItems
+            ? filterOutOfStock(productRecommendations)
+            : productRecommendations,
           loading,
           ...productList,
           isMobile,
