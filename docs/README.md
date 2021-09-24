@@ -2,71 +2,32 @@
 
 # Shelf
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+> :warning: **Aiming to display a flexible product list, the `shelf` block is deprecated and is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks. To learn how to configure it, access [Building a Shelf](https://developers.vtex.com/vtex-developer-docs/docs/building-a-shelf).** 
 
-The Shelf block is responsible for displaying a list of products in the store home page.
+
+The Shelf app displays a list of products in your store pages, helping you to build your own shop window and work on your store's visual merchandising.  
 
 ![shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
 ## Configuration
 
-Aiming to display a flexible product list, the Shelf block as we know is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks.
-
-1. Add the `ProductSummary` and `Slider-Layout` apps to your theme's dependencies on the `manifest.json`, for example:
+1. Add the `shelf` app to your theme's dependencies in the `manifest.json` file:
 
 ```json
   "dependencies": {
-    "vtex.product-summary": "2.x",
-    "vtex.slider-layout": "0.x"
+    "vtex.shelf": "1.x",
   }
 ```
 
-⚠️ The Product Summary app, added in the `manifest.json` file in the previous step, exports (among others) 2 blocks that will be useful to build the Shelf: The Product Summary Shelf and the Product Summary List blocks. The last one is not rendered and, in turn, exports one of the blocks we are going to declare in the next step: the `list-context.product-list`.
+Now, you can use all the blocks exported by the `shelf` app. Check out the full list below:
 
-2. Add the `list-context.product-list`, `product-summary.shelf` and `slider-layout` blocks into your theme. These block come from the [**Product Summary**](https://github.com/vtex-apps/product-summary) and the [**Slider-Layout**](https://github.com/vtex-apps/slider-layout) apps.
+| Block name          |  Description |
+| --------------------| -------- |
+|`shelf`| ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Renders in the store home page a list of products. | 
+| `shelf.relatedProduct` | Renders in the product details page a list of related products. |
 
-```json
-{
-  "product-summary.shelf#demo1": {
-    "children": [
-      "stack-layout#prodsum",
-      "product-summary-name",
-      "product-rating-inline",
-      "product-summary-space",
-      "product-summary-price",
-      "product-summary-buy-button"
-    ]
-  },
-  "list-context.product-list#demo1": {
-    "blocks": ["product-summary.shelf#demo1"],
-    "children": ["slider-layout#demo-products"]
-  }
-}
-```
 
-The `list-context.product-list` is the block responsible for performing the GraphQL query that fetches the list of products and its props can be found below.
-
-| Prop name              | Type                                   | Description                                                                                                                                                                                                                               | Default value |
-| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `category`             | `String`         |  Category ID of the Shelf listed items. For sub-categories, use `/` before the ID to indicate which category it belongs to. For example: `"1/2"`, considering `2` as a sub-category ID)                                                                                                                                                               |  `undefined`         |
-| `specificationFilters` | `Array` | Specification Filters of the Shelf listed items.                                                                                                                                                                                                | `undefined`        |
-| `collection`           | `String`                | Collection ID of the Shelf listed items.                                                                                                                                                                                                                  | `undefined`          |
-| `orderBy`              | `Enum`                                 | Ordination criterion for the Shelf listed items. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`          |
-| `hideUnavailableItems` | `Boolean`    | Whether unavailable items should be hidden (`true`) or not (`false`)                                                                                                                                                                                                      | `false`       |
-| `maxItems` | `Number`       | Maximum items fetched in the context to be displayed on the Shelf.                                                                                                                                                                                                   | `10`       |
-
-- **`specificationFilters` array**
-
-| Prop name              | Type                   | Description                 | Default value |
-| ---------------------- | ---------------------- | --------------------------- | ------------- |
-| `Id`            | `String`      | Specification Filters ID     | `undefined`         |
-| `value`           | `String`       | Specification Filters values  | `undefined`         |
-
-## Related Products Shelf
-
-`RelatedProducts` is a subtype of a Shelf block (`shelf.relatedProduct`) that queries and displays the related products on a Product Details Page. It can therefore only be declared in a product template (`store.product`), for example:
+2. Declare the `shelf.relatedProduct` in the product template (`store.product`) using its props. For example:
 
 ```json
 {
@@ -80,55 +41,35 @@ The `list-context.product-list` is the block responsible for performing the Grap
 }
 ```
 
-| Prop name        | Type                | Description                                                                                                                                            | Default value                     |
-| ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
-| `recommendation` | `Enum`              | Type of recommendations that will be displayed in the Shelf. Possible values: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog) and `view`, `buy`, `viewandBought` (These 3 are automatically generated according to the store’s activity) | `similars` |
-| `productList`    | `ProductListSchema` | Product list schema. `See ProductListSchema`                                                                                                           | -                                 |
+| Prop name        | Type                | Description  | Default value                     |
+| ---------------- | ------------------- | ----------------------- | --------------------------------- |
+| `recommendation` | `enum`   | Type of recommendations that will be displayed in the related products shelf. Possible values are: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog), `view`, `buy`, and `viewandBought` (these 3 are automatically generated according to the store’s activity). | `similars` |
+| `productList`    | `object` | Defines the related product shelf behavior and list of products.    | `undefined`  |
 
-`ProductListSchema`:
+- **`ProductListSchema` object**
 
-| Prop name         | Type      | Description                                                                                                                                                                                                                                                                          | Default value |
-| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| `maxItems`        | `Number`  | Maximum number of items in the Shelf.                                                                                                                                                                                                                                                | 10            |
-| `scroll`          | `Enum`    | Slide transition scroll type. Possible values: `BY_PAGE`, `ONE_BY_ONE`                                                                                                                                                                                                           | `BY_PAGE`     |
-| `arrows`          | `Boolean` | If the arrows are displayable or not.                                                                                                                                                                                                                                                   | `true`        |
-| `showTitle`       | `Boolean` | If a title should be displayed in the Shelf or not.                                                                                                                                                                                                                                                             | `true`        |
-| `titleText`       | `String`  | Shelf title                                                                                                                                                                                                                                                                  | `null`        |
-| `summary`         | `Object`  | Product Summary schema properties.                                                                                                                                                                                                                                                   | -             |
-| `gap`             | `Enum`    | Gap between items. Possible values: `ph0`, `ph3`,`ph5`, `ph7`.                                                                                                                                                                                                                       | `ph3`         |
-| `minItemsPerPage` | `Number`  | Minimum amount of Shelf slides. This prop can be used to control how many itens will be displayed on the Shelf even in the smallest screen size. Its value can be a **float**,  which means that you can choose a multiple of 0.5 to indicate that you want to show a "peek" of the next slide on the Shelf. | `1`   |
-| `itemsPerPage`    | `Number`  | Maximum amount of Shelf slides. This prop can be used to control how many itens will be displayed on the Shelf even in the biggest screen size. Its value can be a float, which means that you can choose a multiple of 0.5 to indicate that you want to show a "peek" of the next slide on the Shelf.   | `5`           |
+| Prop name         | Type      | Description  | Default value |
+| ----------------- | --------- | --------------------------------------------------------- | ------------- |
+| `maxItems`        | `number`  | Maximum number of items to be displayed on the related product shelf.  | `10`   |
+| `scroll`          | `enum`    | Slide transition scroll type. Possible values are: `BY_PAGE` or `ONE_BY_ONE`.  | `BY_PAGE`     |
+| `arrows`          | `boolean` | Whether the arrows should be displayed on the shelf (`true`) or not (`false`).    | `true`  | 
+| `showTitle`       | `boolean` | Whether a title should be displayed in the product related shelf (`true`) or not (`false`). | `true`        |
+| `titleText`       | `string`  | Related product shelf title.  | `null`        |
+| `gap`             | `enum`    | Gap between items being displayed. Possible values are: `ph0`, `ph3`,`ph5`, or `ph7`.   | `ph3`         |
+| `minItemsPerPage` | `number`  | Minimum number of items per shelf slides. This prop can be used to control how many itens will be displayed on the related product shelf even in the smallest screen size. Its value can be a float,  which means that you can choose a multiple of `0.5` to indicate that you want to show a *peek* of the next slide on the shelf. | `1`   |
+| `itemsPerPage`    | `number`  | Maximum number of items per shelf slides. This prop can be used to control how many itens will be displayed on the related product shelf even in the biggest screen size. Its value can be a float, which means that you can choose a multiple of `0.5` to indicate that you want to show a *peek* of the next slide on the Shelf.   | `5`   |
+| `summary`         | `object`  | Schema declaring the desired related product shelf's items. This prop object must contain the [`product-summary.shelf` block's props](https://vtex.io/docs/components/all/vtex.product-summary@2.58.2/).   | `undefined` | 
 
 ## Customization
 
 In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-:warning: Notice: **this list does not apply to the** `list-context.product-list` **block**.
-
 | CSS Handles               |
 | ------------------------- |
-| `container`               |
-| `title`                   |
 | `relatedProducts`         |
-| `arrow`                   |
-| `dot`                     |
-| `dot--isActive`           |
-| `slide`                   |
-| `blockContainer`          |
-| `blockText`               |
-| `buttonContainer`         |
-| `arrowLeft`               |
-| `arrowRight`              |
-| `shelfContentContainer`   |
-| `sliderContainer`         |
-| `headline`                |
-| `itemContainer`           |
-| `itemContainerSelected`   |
-| `itemContainerUnselected` |
-| `tabsContainer`           |
-| `tabsNamesContainer`      |
-| `shelfContainer`          |
-| `tabButton`               |
+
+:warning: *The CSS Handles list above refers to the `shelf.relatedProduct` block. Since the `shelf` block is deprecated, your traditional shelf customization must be done using the CSS Handles available for the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks.* 
+
 
 ## Contributors ✨
 
