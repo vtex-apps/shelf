@@ -5,7 +5,7 @@
 > :warning: **Aiming to display a flexible product list, the `shelf` block is deprecated and is now configured using the [Product Summary List](https://vtex.io/docs/components/all/vtex.product-summary/), the [Product Summary Shelf](https://vtex.io/docs/components/all/vtex.product-summary/) and the [Slider Layout](https://vtex.io/docs/components/all/vtex.slider-layout/) blocks. To learn how to configure it, access [Building a Shelf](https://developers.vtex.com/vtex-developer-docs/docs/building-a-shelf).** 
 
 
-The Shelf app displays a list of products in your store pages, helping you to build your own shop window and work on your store's visual merchandising.  
+The Shelf app displays a list of products on your store pages, helping you build your shop window and work on your store's visual merchandising.
 
 ![shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
