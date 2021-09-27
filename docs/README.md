@@ -19,7 +19,7 @@ The Shelf app displays a list of products on your store pages, helping you build
   }
 ```
 
-Now, you can use all the blocks exported by the `shelf` app. Check out the full list below:
+Now, you can use all the blocks exported by the `shelf` app. Check out the complete list below:
 
 | Block name          |  Description |
 | --------------------| -------- |
