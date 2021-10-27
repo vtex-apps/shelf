@@ -41,12 +41,13 @@ Now, you can use all the blocks exported by the `shelf` app. Check out the compl
 }
 ```
 
-| Prop name        | Type                | Description  | Default value                     |
-| ---------------- | ------------------- | ----------------------- | --------------------------------- |
-| `recommendation` | `enum`   | Type of recommendations that will be displayed in the related products shelf. Possible values are: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog), `view`, `buy`, and `viewandBought` (these 3 are automatically generated according to the store’s activity). | `similars` |
-| `productList`    | `object` | Defines the related product shelf behavior and list of products.    | `undefined`  |
+| Prop name        | Type                | Description                                                                                                                                            | Default value                     |
+| ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `recommendation` | `Enum`              | Type of recommendations that will be displayed in the Shelf. Possible values: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog) and `view`, `buy`, `viewandBought` (These 3 are automatically generated according to the store’s activity) | `similars` |
+| `hideOutOfStockItems` | `Boolean` | Whether out of stock items should be hidden (`true`) or not (`false`) | `false` |
+| `productList`    | `ProductListSchema` | Product list schema. See `ProductListSchema`                                                                                                           | -                                 |
 
-- **`ProductListSchema` object**
+`ProductListSchema`:
 
 | Prop name         | Type      | Description  | Default value |
 | ----------------- | --------- | --------------------------------------------------------- | ------------- |
