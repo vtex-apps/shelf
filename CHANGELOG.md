@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.47.1] - 2021-10-28
+
 ### Added
 - Shelf app's documentation: added the deprecation of the app in it and indicated the new recipe teaching how to assemble the component correctly using other blocks: the Product Summary List, the Product Summary Shelf, and the Slider Layout blocks.
 
