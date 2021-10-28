@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Shelf app's documentation: added the deprecation of the app in it and indicated the new recipe teaching how to assemble the component correctly using other blocks: the Product Summary List, the Product Summary Shelf, and the Slider Layout blocks.
+
 ## [1.47.0] - 2021-09-30
 ### Added
 - `hideOutOfStockItems` prop to `RelatedProducts` shelf
+
 
 ## [1.46.0] - 2021-09-06
 
