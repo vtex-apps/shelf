@@ -4,7 +4,7 @@
 
 >⚠️ Warning
 >
-> Aiming to display a flexible product list, the `shelf` block is deprecated and is now configured using the [Product Summary List](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist), the [Product Summary Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) and the [Slider Layout](https://developers.vtex.com/vtex-developer-docs/docs/vtex-slider-layout) blocks. To learn how to configure it, access [Building a Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-building-a-shelf).
+> Aiming to display a flexible product list, the `shelf` and `shelf.relatedProducts` block is deprecated and is now configured using the [Product Summary List](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist), the [Product Summary Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) and the [Slider Layout](https://developers.vtex.com/vtex-developer-docs/docs/vtex-slider-layout) blocks. To learn how to configure it, access [Building a Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-building-a-shelf).
 
 
 The Shelf app displays a list of products on your store pages, helping you build your shop window and work on your store's visual merchandising.
@@ -26,7 +26,7 @@ Now, you can use all the blocks exported by the `shelf` app. Check out the compl
 | Block name          |  Description |
 | --------------------| -------- |
 |`shelf`| ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Renders in the store home page a list of products. | 
-| `shelf.relatedProduct` | Renders in the product details page a list of related products. |
+| `shelf.relatedProducts` | ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Renders in the product details page a list of related products. |
 
 
 2. Declare the `shelf.relatedProduct` in the product template (`store.product`) using its props. For example:
@@ -73,7 +73,7 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 
 >⚠️ Warning 
 >
-> The CSS Handles list above refers to the `shelf.relatedProduct` block. Since the `shelf` block is deprecated, your traditional shelf customization must be done using the CSS Handles available for the [Product Summary List](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist), the [Product Summary Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) and the [Slider Layout](https://developers.vtex.com/vtex-developer-docs/docs/vtex-slider-layout) blocks. 
+> The CSS Handles list above refers to the `shelf.relatedProducts` block. Since the `shelf` block is deprecated, your traditional shelf customization must be done using the CSS Handles available for the [Product Summary List](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist), the [Product Summary Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) and the [Slider Layout](https://developers.vtex.com/vtex-developer-docs/docs/vtex-slider-layout) blocks. 
 
 
 ## Contributors ✨
