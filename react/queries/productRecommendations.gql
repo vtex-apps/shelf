@@ -1,6 +1,7 @@
 query ProductRecommendations(
   $identifier: ProductUniqueIdentifier
   $type: CrossSelingInputEnum
+  $installmentCriteria: InstallmentsCriteria = MAX_WITHOUT_INTEREST
 ) {
   productRecommendations(identifier: $identifier, type: $type)
     @context(provider: "vtex.search-graphql") {
@@ -68,7 +69,7 @@ query ProductRecommendations(
         addToCartLink
         sellerDefault
         commertialOffer {
-          Installments(criteria: MAX) {
+          Installments(criteria: $installmentCriteria) {
             Value
             InterestRate
             TotalValuePlusInterestRate
