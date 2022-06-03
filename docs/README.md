@@ -48,7 +48,7 @@ Now, you can use all the blocks exported by the `shelf` app. Check out the compl
 | `recommendation` | `Enum`              | Type of recommendations that will be displayed in the Shelf. Possible values: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog) and `view`, `buy`, `viewandBought` (These 3 are automatically generated according to the store’s activity) | `similars` |
 | `hideOutOfStockItems` | `Boolean` | Whether out of stock items should be hidden (`true`) or not (`false`) | `false` |
 | `productList`    | `ProductListSchema` | Product list schema. See `ProductListSchema`                                                                                                           | -                                 |
-| `installmentCriteria`  | `InstallmentCriteriaEnum`              | Control what price to be shown when price has different installments (`"MAX_WITHOUT_INTEREST"` | `"MAX_WITH_INTEREST"`) options.                                                                                                                              | `"MAX_WITHOUT_INTEREST"` |
+| `installmentCriteria`  | `InstallmentCriteriaEnum`              | Control what price to be shown when price has different installments (`"MAX_WITHOUT_INTEREST"` / `"MAX_WITH_INTEREST"`) options.                                                                                                                              | `"MAX_WITHOUT_INTEREST"` |
 
 
 `ProductListSchema`:
