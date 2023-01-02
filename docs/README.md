@@ -43,6 +43,25 @@ Now, you can use all the blocks exported by the `shelf` app. Check out the compl
 }
 ```
 
+>⚠️ Warning
+>
+> Note that for hiding unavailable/out-of-stock items, there are 2 different props: `hideUnavailableItems` and `hideOutOfStockItems`. They do the same thing, but each is used by a different component: `Shelf` and `RelatedProducts`, respectively.
+
+### Shelf
+
+| Prop name        | Type                | Description                                                                                                                                            | Default value                     |
+| ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `category` | `String`              | The category ID |
+| `collection` | `String`              | The collection ID |
+| `orderBy` | `Enum`              | `OrderByTopSaleDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC` |
+| `hideUnavailableItems` | `Boolean` | Whether out of stock items should be hidden (`true`) or not (`false`) | `false` |
+| `paginationDotsVisibility` | `Enum`              | `visible`, `hidden`, `mobileOnly`, `desktopOnly` |
+| `productList`    | `ProductListSchema` | Product list schema. See `ProductListSchema`                                                                                                           | -                                 |
+| `trackingId` | `String`              | Name to show in the Google Analytics. If nothing is passed it will use the name of the block instead |
+| `maxItems` | `Number`              | Max items |
+
+### RelatedProducts
+
 | Prop name        | Type                | Description                                                                                                                                            | Default value                     |
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
 | `recommendation` | `Enum`              | Type of recommendations that will be displayed in the Shelf. Possible values: `similars`, `suggestions`, `accessories` (these first three depend on the product's data given in the admin's catalog) and `view`, `buy`, `viewandBought` (These 3 are automatically generated according to the store’s activity) | `similars` |

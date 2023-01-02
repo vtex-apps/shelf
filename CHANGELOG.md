@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Documentation to better clarify the props for the `Shelf` and `RelatedProducts` components.
+
 ## [1.47.2] - 2022-02-01
 ### Changed
 - Deprecated `shelf.relatedProducts` block
