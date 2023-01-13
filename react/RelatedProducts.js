@@ -35,6 +35,7 @@ const RelatedProducts = ({
   recommendation: cmsRecommendation,
   trackingId: rawTrackingId,
   hideOutOfStockItems,
+  installmentCriteria = 'MAX_WITHOUT_INTEREST'
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
@@ -64,8 +65,9 @@ const RelatedProducts = ({
     return {
       identifier: { field: 'id', value: productId },
       type: recommendation,
+      installmentCriteria:installmentCriteria
     }
-  }, [productId, recommendation])
+  }, [productId, recommendation,installmentCriteria])
 
   if (!productId) {
     return null
@@ -120,6 +122,11 @@ RelatedProducts.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
   trackingId: PropTypes.string,
   hideOutOfStockItems: PropTypes.bool,
+  /**
+   * Control what price to be shown when price has different installments options.
+   * @default "MAX_WITHOUT_INTEREST"
+   */
+   installmentCriteria: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
 }
 
 RelatedProducts.defaultProps = {
@@ -129,6 +136,7 @@ RelatedProducts.defaultProps = {
     titleText: 'Related Products',
   },
   hideOutOfStockItems: false,
+  installmentCriteria:'MAX_WITHOUT_INTEREST'
 }
 
 RelatedProducts.schema = {

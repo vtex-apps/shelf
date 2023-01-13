@@ -7,6 +7,7 @@ query Products(
   $to: Int
   $hideUnavailableItems: Boolean = false
   $skusFilter: ItemsFilter = ALL_AVAILABLE
+  $installmentCriteria: InstallmentsCriteria = MAX_WITHOUT_INTEREST
 ) {
   products(
     category: $category
@@ -77,7 +78,7 @@ query Products(
         sellerId
         sellerName
         commertialOffer {
-          Installments(criteria: MAX) {
+          Installments(criteria: $installmentCriteria) {
             Value
             InterestRate
             TotalValuePlusInterestRate

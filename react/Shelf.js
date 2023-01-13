@@ -28,6 +28,7 @@ const Shelf = props => {
     paginationDotsVisibility = 'visible',
     maxItems,
     productList = ProductList.defaultProps,
+    installmentCriteria = 'MAX_WITHOUT_INTEREST'
   } = props
   let { trackingId } = props
   const treePath = useTreePath()
@@ -53,6 +54,7 @@ const Shelf = props => {
     paginationDotsVisibility,
     products: filteredProducts,
     trackingId,
+    installmentCriteria
   }
 
   if (loading) {
@@ -96,6 +98,11 @@ Shelf.propTypes = {
   productList: PropTypes.shape(productListSchemaPropTypes),
   trackingId: PropTypes.string,
   maxItems: PropTypes.number,
+  /**
+   * Control what price to be shown when price has different installments options.
+   * @default "MAX_WITHOUT_INTEREST"
+   */
+   installmentCriteria: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
 }
 
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
@@ -111,6 +118,7 @@ const options = {
     specificationFilters = [],
     maxItems = ProductList.defaultProps.maxItems,
     skusFilter,
+    installmentCriteria
   }) => ({
     ssr: true,
     variables: {
@@ -122,6 +130,7 @@ const options = {
       to: maxItems - 1,
       hideUnavailableItems: toBoolean(hideUnavailableItems),
       skusFilter,
+      installmentCriteria
     },
   }),
 }
