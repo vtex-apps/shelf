@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.47.4] - 2023-06-30
+
 ### Fixed
 
 - Fixes of i18n on readme.md according to task LOC-10671.
