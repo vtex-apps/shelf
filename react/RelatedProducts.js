@@ -65,7 +65,7 @@ const RelatedProducts = ({
     return {
       identifier: { field: 'id', value: productId },
       type: recommendation,
-      groupBy
+      groupBy,
     }
   }, [productId, recommendation, groupBy])
 
@@ -161,15 +161,12 @@ RelatedProducts.schema = {
         'admin/editor.relatedProducts.suggestions',
       ],
     },
-    groupBy:{
+    groupBy: {
       title: 'admin/editor.relatedProducts.groupBy.title',
       description: 'admin/editor.relatedProducts.groupBy.description',
       type: 'string',
       default: RelatedProducts.defaultProps.groupBy,
-      enum: [
-        'PRODUCT',
-        'NONE',
-      ],
+      enum: ['PRODUCT','NONE'],
       enumNames: [
         'admin/editor.relatedProducts.groupBy.product',
         'admin/editor.relatedProducts.groupBy.none'

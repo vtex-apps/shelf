@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- GroupBy prop in `shelf.relatedProducts`
+
 ## [1.47.4] - 2023-06-30
 
 ### Fixed
