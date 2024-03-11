@@ -166,10 +166,10 @@ RelatedProducts.schema = {
       description: 'admin/editor.relatedProducts.groupBy.description',
       type: 'string',
       default: RelatedProducts.defaultProps.groupBy,
-      enum: ['PRODUCT','NONE'],
+      enum: ['PRODUCT', 'NONE'],
       enumNames: [
         'admin/editor.relatedProducts.groupBy.product',
-        'admin/editor.relatedProducts.groupBy.none'
+        'admin/editor.relatedProducts.groupBy.none',
       ],
     },
     productList: ProductList.schema,
