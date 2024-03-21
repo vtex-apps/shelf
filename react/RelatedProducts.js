@@ -32,6 +32,7 @@ const fixRecommendation = recommendation => {
 const RelatedProducts = ({
   productQuery,
   productList,
+  groupBy,
   recommendation: cmsRecommendation,
   trackingId: rawTrackingId,
   hideOutOfStockItems,
@@ -64,8 +65,9 @@ const RelatedProducts = ({
     return {
       identifier: { field: 'id', value: productId },
       type: recommendation,
+      groupBy,
     }
-  }, [productId, recommendation])
+  }, [productId, recommendation, groupBy])
 
   if (!productId) {
     return null
@@ -128,6 +130,7 @@ RelatedProducts.defaultProps = {
     ...ProductList.defaultProps,
     titleText: 'Related Products',
   },
+  groupBy: 'PRODUCT',
   hideOutOfStockItems: false,
 }
 
@@ -156,6 +159,17 @@ RelatedProducts.schema = {
         'admin/editor.relatedProducts.accessories',
         'admin/editor.relatedProducts.viewAndBought',
         'admin/editor.relatedProducts.suggestions',
+      ],
+    },
+    groupBy: {
+      title: 'admin/editor.relatedProducts.groupBy.title',
+      description: 'admin/editor.relatedProducts.groupBy.description',
+      type: 'string',
+      default: RelatedProducts.defaultProps.groupBy,
+      enum: ['PRODUCT', 'NONE'],
+      enumNames: [
+        'admin/editor.relatedProducts.groupBy.product',
+        'admin/editor.relatedProducts.groupBy.none',
       ],
     },
     productList: ProductList.schema,

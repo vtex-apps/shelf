@@ -1,8 +1,9 @@
 query ProductRecommendations(
   $identifier: ProductUniqueIdentifier
   $type: CrossSelingInputEnum
+  $groupBy: CrossSelingGroupByEnum
 ) {
-  productRecommendations(identifier: $identifier, type: $type)
+  productRecommendations(identifier: $identifier, type: $type, groupBy: $groupBy)
     @context(provider: "vtex.search-graphql") {
     cacheId
     productId

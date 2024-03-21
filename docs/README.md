@@ -61,6 +61,7 @@ Now, you can use all the blocks exported by the `shelf` app. See the full list b
 | Prop name | Type | Description | Default value |
 | -  | -  | -  | - |
 | `recommendation` | `enum` | Type of recommendations that will be displayed on the shelf. Possible values: `similars`, `suggestions`, and `accessories` (these depend on the product information given in the Admin Catalog); and `view`, `buy`, and `viewandBought` (these are automatically generated according to the activity of the store). | `similars` |
+| `groupBy` | `enum` | Defines if you are ot nog going to group your recommendations by: `PRODUCT` (only display individual products and not SKUs, limited by 12 products) or `NONE` (if you want to display all registered SKUs, limited by 50 products). | `PRODUCT` |
 | `hideOutOfStockItems` | `boolean` | Whether out of stock items should be hidden: (`true`) or (`false`). | `false` |
 | `productList` | `ProductListSchema` | Product list schema. See `ProductListSchema`. | - |
 
