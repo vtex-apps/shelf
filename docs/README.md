@@ -78,6 +78,7 @@ Now, you can use all the blocks exported by the `shelf` app. See the full list b
 | `minItemsPerPage` | `number` | Minimum number of items per shelf slides. This prop defines how many items will be displayed on the related product shelf, even in the smallest screen size. Its value can be a float, which means that you can choose a multiple of `0.5` to indicate that you want to show a *peek* of the next slide on the shelf. | `1` |
 | `itemsPerPage` | `number` | Maximum number of items per shelf slides. This prop defines how many items will be displayed on the related product shelf, even in the largest screen size. Its value can be a float, which means that you can choose a multiple of `0.5` to indicate that you want to show a *peek* of the next slide on the shelf.  | `5` |
 | `summary` | `object`  | Schema declaring the desired related product shelf items. This prop object must contain the [`product-summary.shelf` block props](https://developers.vtex.com/docs/guides/vtex-product-summary#configuration). | `undefined` |
+' `infinite` | `boolean` | Determines whether the list should be infinite (`true`) or not (`false`). When this prop is set as `false`, the slider will have an explicit end for users. | `true` |
 
 ## Customization
 
