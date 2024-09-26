@@ -107,4 +107,6 @@ export const shelfContentPropTypes = {
   gap: PropTypes.oneOf(getGapPaddingValues()),
   /** Title of the shelf */
   listName: PropTypes.string.isRequired,
+  /** Is infinite */
+  infinite: PropTypes.bool,
 }

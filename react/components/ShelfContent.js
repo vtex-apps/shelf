@@ -144,6 +144,7 @@ class ShelfContent extends Component {
       minItemsPerPage,
       paginationDotsVisibility,
       listName,
+      infinite,
     } = this.props
 
     const { currentSlide } = this.state
@@ -170,7 +171,7 @@ class ShelfContent extends Component {
           className={`${cssHandles.sliderContainer} w-100 mw9`}
         >
           <Slider
-            loop
+            loop={infinite}
             easing="ease"
             duration={500}
             minPerPage={roundedMinItems}
@@ -257,6 +258,8 @@ ShelfContent.propTypes = {
   gap: shelfContentPropTypes.gap,
   /** Title of the shelf */
   listName: shelfContentPropTypes.listName,
+  /** Is infinite */
+  infinite: shelfContentPropTypes.infinite,
 }
 
 export default withCssHandles(CSS_HANDLES)(ShelfContent)

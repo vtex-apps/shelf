@@ -38,6 +38,7 @@ const ProductList = ({
   paginationDotsVisibility,
   navigationStep: navigationStepProp,
   trackingId,
+  infinite,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const navigationStep = Number.isNaN(parseInt(navigationStepProp, 10))
@@ -77,6 +78,7 @@ const ProductList = ({
             minItemsPerPage={minItemsPerPage}
             paginationDotsVisibility={paginationDotsVisibility}
             listName={listName}
+            infinite={infinite}
           />
         )}
       </ReactResizeDetector>
@@ -95,6 +97,7 @@ ProductList.defaultProps = {
   showTitle: true,
   titleText: null,
   isMobile: false,
+  infinite: true,
 }
 
 ProductList.propTypes = {
@@ -112,6 +115,7 @@ ProductList.propTypes = {
     'mobileOnly',
   ]),
   trackingId: PropTypes.string,
+  infinite: PropTypes.bool,
   ...productListSchemaPropTypes,
 }
 
